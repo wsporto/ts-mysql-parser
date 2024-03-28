@@ -1,10 +1,8 @@
-# ts-mysql-parser
-
-![Alt Text](https://github.com/stevenmiller888/ts-mysql-parser/workflows/CI/badge.svg)
+This is a fork of @stevenmiller888's [ts-mysql-parser](https://github.com/stevenmiller888/ts-mysql-parser).
 
 > A standalone, grammar-complete MySQL parser.
 
-![Alt Text](https://github.com/stevenmiller888/ts-mysql-parser/raw/master/.github/code.png)
+![Alt Text](https://github.com/wsporto/ts-mysql-parser/raw/master/.github/code.png)
 
 ## Features
 
@@ -153,9 +151,3 @@ The `MySQLBaseLexer` class represents a superclass to the lexer class and custom
 ## License
 
 [MIT](https://tldrlegal.com/license/mit-license)
-
----
-
-> [stevenmiller888.github.io](https://stevenmiller888.github.io) &nbsp;&middot;&nbsp;
-> GitHub [@stevenmiller888](https://github.com/stevenmiller888) &nbsp;&middot;&nbsp;
-> Twitter [@stevenmiller888](https://twitter.com/stevenmiller888)
