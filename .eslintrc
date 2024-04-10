@@ -1,15 +1,25 @@
 {
-  "ignorePatterns": ["/node_modules/", "/dist/", "/examples/"],
+  "ignorePatterns": [
+    "/node_modules/",
+    "/dist/",
+    "/examples/",
+    "/src/sqlite"
+  ],
   "parserOptions": {
     "ecmaVersion": 2019
   },
   "env": {
     "node": true
   },
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ],
   "overrides": [
     {
-      "files": ["*.{ts,tsx}"],
+      "files": [
+        "*.{ts,tsx}"
+      ],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "project": "./tsconfig.json"
