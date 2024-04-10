@@ -1,6 +1,6 @@
 {
   "name": "@wsporto/ts-mysql-parser",
-  "version": "0.3.0-alpha.2",
+  "version": "0.3.0-alpha.3",
   "description": "A standalone, grammar-complete MySQL parser.",
   "license": "MIT",
   "repository": "wsporto/ts-mysql-parser",
