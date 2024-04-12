@@ -1,7 +1,4 @@
-import { CharStreams, CommonTokenStream } from 'antlr4'
 import parser from './parser'
-import SQLiteLexer from './sqlite/SQLiteLexer'
-import SQLiteParser from './sqlite/SQLiteParser'
 
 export default parser
 
@@ -20,10 +17,3 @@ export * from './lib/rule-name'
 export * from './listeners/parser-listener'
 export * from './listeners/lexer-error-listener'
 export * from './listeners/parser-error-listener'
-
-export function parseSql(sql: string): SQLiteParser {
-  const input = CharStreams.fromString(sql)
-  const lexer = new SQLiteLexer(input)
-  const parser = new SQLiteParser(new CommonTokenStream(lexer))
-  return parser
-}
