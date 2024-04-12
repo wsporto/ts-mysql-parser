@@ -1,30 +1,34 @@
-// Generated from ./src/grammar/SQLiteParser.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from ./src/grammar/SQLiteParser.g4 by ANTLR 4.13.1
+// noinspection ES6UnusedImports,JSUnusedGlobalSymbols,JSUnusedLocalSymbols
 
-import { ATN } from 'antlr4ts/atn/ATN'
-import { ATNDeserializer } from 'antlr4ts/atn/ATNDeserializer'
-import { FailedPredicateException } from 'antlr4ts/FailedPredicateException'
-import { NotNull } from 'antlr4ts/Decorators'
-import { NoViableAltException } from 'antlr4ts/NoViableAltException'
-import { Override } from 'antlr4ts/Decorators'
-import { Parser } from 'antlr4ts/Parser'
-import { ParserRuleContext } from 'antlr4ts/ParserRuleContext'
-import { ParserATNSimulator } from 'antlr4ts/atn/ParserATNSimulator'
-import { ParseTreeListener } from 'antlr4ts/tree/ParseTreeListener'
-import { ParseTreeVisitor } from 'antlr4ts/tree/ParseTreeVisitor'
-import { RecognitionException } from 'antlr4ts/RecognitionException'
-import { RuleContext } from 'antlr4ts/RuleContext'
-//import { RuleVersion } from "antlr4ts/RuleVersion";
-import { TerminalNode } from 'antlr4ts/tree/TerminalNode'
-import { Token } from 'antlr4ts/Token'
-import { TokenStream } from 'antlr4ts/TokenStream'
-import { Vocabulary } from 'antlr4ts/Vocabulary'
-import { VocabularyImpl } from 'antlr4ts/VocabularyImpl'
+import {
+  ATN,
+  ATNDeserializer,
+  DecisionState,
+  DFA,
+  FailedPredicateException,
+  RecognitionException,
+  NoViableAltException,
+  BailErrorStrategy,
+  Parser,
+  ParserATNSimulator,
+  RuleContext,
+  ParserRuleContext,
+  PredictionMode,
+  PredictionContextCache,
+  TerminalNode,
+  RuleNode,
+  Token,
+  TokenStream,
+  Interval,
+  IntervalSet
+} from 'antlr4'
+import SQLiteParserListener from './SQLiteParserListener.js'
+// for running tests with parameters, TODO: discuss strategy for typed parameters in CI
+// eslint-disable-next-line no-unused-vars
+type int = number
 
-import * as Utils from 'antlr4ts/misc/Utils'
-
-import { SQLiteParserListener } from './SQLiteParserListener'
-
-export class SQLiteParser extends Parser {
+export default class SQLiteParser extends Parser {
   public static readonly SCOL = 1
   public static readonly DOT = 2
   public static readonly OPEN_PAR = 3
@@ -218,6 +222,7 @@ export class SQLiteParser extends Parser {
   public static readonly MULTILINE_COMMENT = 191
   public static readonly SPACES = 192
   public static readonly UNEXPECTED_CHAR = 193
+  public static readonly EOF = Token.EOF
   public static readonly RULE_parse = 0
   public static readonly RULE_sql_stmt_list = 1
   public static readonly RULE_sql_stmt = 2
@@ -331,125 +336,8 @@ export class SQLiteParser extends Parser {
   public static readonly RULE_aggregate_func = 110
   public static readonly RULE_table_function_name = 111
   public static readonly RULE_any_name = 112
-  // tslint:disable:no-trailing-whitespace
-  public static readonly ruleNames: string[] = [
-    'parse',
-    'sql_stmt_list',
-    'sql_stmt',
-    'alter_table_stmt',
-    'analyze_stmt',
-    'attach_stmt',
-    'begin_stmt',
-    'commit_stmt',
-    'rollback_stmt',
-    'savepoint_stmt',
-    'release_stmt',
-    'create_index_stmt',
-    'indexed_column',
-    'create_table_stmt',
-    'column_def',
-    'type_name',
-    'column_constraint',
-    'signed_number',
-    'table_constraint',
-    'foreign_key_clause',
-    'conflict_clause',
-    'create_trigger_stmt',
-    'create_view_stmt',
-    'create_virtual_table_stmt',
-    'with_clause',
-    'cte_table_name',
-    'recursive_cte',
-    'common_table_expression',
-    'delete_stmt',
-    'delete_stmt_limited',
-    'detach_stmt',
-    'drop_stmt',
-    'expr',
-    'raise_function',
-    'literal_value',
-    'value_row',
-    'values_clause',
-    'insert_stmt',
-    'returning_clause',
-    'upsert_clause',
-    'pragma_stmt',
-    'pragma_value',
-    'reindex_stmt',
-    'select_stmt',
-    'join_clause',
-    'select_core',
-    'factored_select_stmt',
-    'simple_select_stmt',
-    'compound_select_stmt',
-    'table_or_subquery',
-    'result_column',
-    'join_operator',
-    'join_constraint',
-    'compound_operator',
-    'update_stmt',
-    'column_name_list',
-    'update_stmt_limited',
-    'qualified_table_name',
-    'vacuum_stmt',
-    'filter_clause',
-    'window_defn',
-    'over_clause',
-    'frame_spec',
-    'frame_clause',
-    'simple_function_invocation',
-    'aggregate_function_invocation',
-    'window_function_invocation',
-    'common_table_stmt',
-    'order_by_stmt',
-    'limit_stmt',
-    'ordering_term',
-    'asc_desc',
-    'frame_left',
-    'frame_right',
-    'frame_single',
-    'window_function',
-    'offset',
-    'default_value',
-    'partition_by',
-    'order_by_expr',
-    'order_by_expr_asc_desc',
-    'expr_asc_desc',
-    'initial_select',
-    'recursive_select',
-    'unary_operator',
-    'error_message',
-    'module_argument',
-    'column_alias',
-    'keyword',
-    'name',
-    'function_name',
-    'schema_name',
-    'table_name',
-    'table_or_index_name',
-    'column_name',
-    'collation_name',
-    'foreign_table',
-    'index_name',
-    'trigger_name',
-    'view_name',
-    'module_name',
-    'pragma_name',
-    'savepoint_name',
-    'table_alias',
-    'transaction_name',
-    'window_name',
-    'alias',
-    'filename',
-    'base_window_name',
-    'simple_func',
-    'aggregate_func',
-    'table_function_name',
-    'any_name'
-  ]
-
-  private static readonly _LITERAL_NAMES: Array<string | undefined> = [
-    undefined,
+  public static readonly literalNames: (string | null)[] = [
+    null,
     "';'",
     "'.'",
     "'('",
@@ -635,8 +523,8 @@ export class SQLiteParser extends Parser {
     "'DO'",
     "'NOTHING'"
   ]
-  private static readonly _SYMBOLIC_NAMES: Array<string | undefined> = [
-    undefined,
+  public static readonly symbolicNames: (string | null)[] = [
+    null,
     'SCOL',
     'DOT',
     'OPEN_PAR',
@@ -831,31 +719,135 @@ export class SQLiteParser extends Parser {
     'SPACES',
     'UNEXPECTED_CHAR'
   ]
-  public static readonly VOCABULARY: Vocabulary = new VocabularyImpl(
-    SQLiteParser._LITERAL_NAMES,
-    SQLiteParser._SYMBOLIC_NAMES,
-    []
-  )
-
-  // @Override
-  // @NotNull
-  public get vocabulary(): Vocabulary {
-    return SQLiteParser.VOCABULARY
-  }
-  // tslint:enable:no-trailing-whitespace
-
-  // @Override
+  // tslint:disable:no-trailing-whitespace
+  public static readonly ruleNames: string[] = [
+    'parse',
+    'sql_stmt_list',
+    'sql_stmt',
+    'alter_table_stmt',
+    'analyze_stmt',
+    'attach_stmt',
+    'begin_stmt',
+    'commit_stmt',
+    'rollback_stmt',
+    'savepoint_stmt',
+    'release_stmt',
+    'create_index_stmt',
+    'indexed_column',
+    'create_table_stmt',
+    'column_def',
+    'type_name',
+    'column_constraint',
+    'signed_number',
+    'table_constraint',
+    'foreign_key_clause',
+    'conflict_clause',
+    'create_trigger_stmt',
+    'create_view_stmt',
+    'create_virtual_table_stmt',
+    'with_clause',
+    'cte_table_name',
+    'recursive_cte',
+    'common_table_expression',
+    'delete_stmt',
+    'delete_stmt_limited',
+    'detach_stmt',
+    'drop_stmt',
+    'expr',
+    'raise_function',
+    'literal_value',
+    'value_row',
+    'values_clause',
+    'insert_stmt',
+    'returning_clause',
+    'upsert_clause',
+    'pragma_stmt',
+    'pragma_value',
+    'reindex_stmt',
+    'select_stmt',
+    'join_clause',
+    'select_core',
+    'factored_select_stmt',
+    'simple_select_stmt',
+    'compound_select_stmt',
+    'table_or_subquery',
+    'result_column',
+    'join_operator',
+    'join_constraint',
+    'compound_operator',
+    'update_stmt',
+    'column_name_list',
+    'update_stmt_limited',
+    'qualified_table_name',
+    'vacuum_stmt',
+    'filter_clause',
+    'window_defn',
+    'over_clause',
+    'frame_spec',
+    'frame_clause',
+    'simple_function_invocation',
+    'aggregate_function_invocation',
+    'window_function_invocation',
+    'common_table_stmt',
+    'order_by_stmt',
+    'limit_stmt',
+    'ordering_term',
+    'asc_desc',
+    'frame_left',
+    'frame_right',
+    'frame_single',
+    'window_function',
+    'offset',
+    'default_value',
+    'partition_by',
+    'order_by_expr',
+    'order_by_expr_asc_desc',
+    'expr_asc_desc',
+    'initial_select',
+    'recursive_select',
+    'unary_operator',
+    'error_message',
+    'module_argument',
+    'column_alias',
+    'keyword',
+    'name',
+    'function_name',
+    'schema_name',
+    'table_name',
+    'table_or_index_name',
+    'column_name',
+    'collation_name',
+    'foreign_table',
+    'index_name',
+    'trigger_name',
+    'view_name',
+    'module_name',
+    'pragma_name',
+    'savepoint_name',
+    'table_alias',
+    'transaction_name',
+    'window_name',
+    'alias',
+    'filename',
+    'base_window_name',
+    'simple_func',
+    'aggregate_func',
+    'table_function_name',
+    'any_name'
+  ]
   public get grammarFileName(): string {
     return 'SQLiteParser.g4'
   }
-
-  // @Override
+  public get literalNames(): (string | null)[] {
+    return SQLiteParser.literalNames
+  }
+  public get symbolicNames(): (string | null)[] {
+    return SQLiteParser.symbolicNames
+  }
   public get ruleNames(): string[] {
     return SQLiteParser.ruleNames
   }
-
-  // @Override
-  public get serializedATN(): string {
+  public get serializedATN(): number[] {
     return SQLiteParser._serializedATN
   }
 
@@ -865,50 +857,32 @@ export class SQLiteParser extends Parser {
 
   constructor(input: TokenStream) {
     super(input)
-    this._interp = new ParserATNSimulator(SQLiteParser._ATN, this)
+    this._interp = new ParserATNSimulator(
+      this,
+      SQLiteParser._ATN,
+      SQLiteParser.DecisionsToDFA,
+      new PredictionContextCache()
+    )
   }
   // @RuleVersion(0)
   public parse(): ParseContext {
-    let _localctx: ParseContext = new ParseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 0, SQLiteParser.RULE_parse)
+    let localctx: ParseContext = new ParseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 0, SQLiteParser.RULE_parse)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 229
         this._errHandler.sync(this)
         _la = this._input.LA(1)
         while (
-          ((_la & ~0x1f) === 0 &&
-            ((1 << _la) & ((1 << SQLiteParser.SCOL) | (1 << SQLiteParser.ALTER_) | (1 << SQLiteParser.ANALYZE_))) !==
-              0) ||
-          (((_la - 35) & ~0x1f) === 0 &&
-            ((1 << (_la - 35)) &
-              ((1 << (SQLiteParser.ATTACH_ - 35)) |
-                (1 << (SQLiteParser.BEGIN_ - 35)) |
-                (1 << (SQLiteParser.COMMIT_ - 35)) |
-                (1 << (SQLiteParser.CREATE_ - 35)) |
-                (1 << (SQLiteParser.DELETE_ - 35)) |
-                (1 << (SQLiteParser.DETACH_ - 35)) |
-                (1 << (SQLiteParser.DROP_ - 35)) |
-                (1 << (SQLiteParser.END_ - 35)))) !==
-              0) ||
-          _la === SQLiteParser.EXPLAIN_ ||
-          _la === SQLiteParser.INSERT_ ||
-          (((_la - 112) & ~0x1f) === 0 &&
-            ((1 << (_la - 112)) &
-              ((1 << (SQLiteParser.PRAGMA_ - 112)) |
-                (1 << (SQLiteParser.REINDEX_ - 112)) |
-                (1 << (SQLiteParser.RELEASE_ - 112)) |
-                (1 << (SQLiteParser.REPLACE_ - 112)) |
-                (1 << (SQLiteParser.ROLLBACK_ - 112)) |
-                (1 << (SQLiteParser.SAVEPOINT_ - 112)) |
-                (1 << (SQLiteParser.SELECT_ - 112)) |
-                (1 << (SQLiteParser.UPDATE_ - 112)) |
-                (1 << (SQLiteParser.VACUUM_ - 112)))) !==
-              0) ||
-          _la === SQLiteParser.VALUES_ ||
-          _la === SQLiteParser.WITH_
+          ((_la & ~0x1f) === 0 && ((1 << _la) & 3221225474) !== 0) ||
+          (((_la - 35) & ~0x1f) === 0 && ((1 << (_la - 35)) & 2499842057) !== 0) ||
+          _la === 71 ||
+          _la === 88 ||
+          (((_la - 112) & ~0x1f) === 0 && ((1 << (_la - 112)) & 2684765569) !== 0) ||
+          _la === 144 ||
+          _la === 149
         ) {
           {
             {
@@ -925,7 +899,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -934,21 +908,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public sql_stmt_list(): Sql_stmt_listContext {
-    let _localctx: Sql_stmt_listContext = new Sql_stmt_listContext(this._ctx, this.state)
-    this.enterRule(_localctx, 2, SQLiteParser.RULE_sql_stmt_list)
+    let localctx: Sql_stmt_listContext = new Sql_stmt_listContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 2, SQLiteParser.RULE_sql_stmt_list)
     let _la: number
     try {
       let _alt: number
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 237
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.SCOL) {
+        while (_la === 1) {
           {
             {
               this.state = 234
@@ -963,7 +937,7 @@ export class SQLiteParser extends Parser {
         this.sql_stmt()
         this.state = 249
         this._errHandler.sync(this)
-        _alt = this.interpreter.adaptivePredict(this._input, 3, this._ctx)
+        _alt = this._interp.adaptivePredict(this._input, 3, this._ctx)
         while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
           if (_alt === 1) {
             {
@@ -981,7 +955,7 @@ export class SQLiteParser extends Parser {
                   this.state = 244
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                } while (_la === SQLiteParser.SCOL)
+                } while (_la === 1)
                 this.state = 246
                 this.sql_stmt()
               }
@@ -989,11 +963,11 @@ export class SQLiteParser extends Parser {
           }
           this.state = 251
           this._errHandler.sync(this)
-          _alt = this.interpreter.adaptivePredict(this._input, 3, this._ctx)
+          _alt = this._interp.adaptivePredict(this._input, 3, this._ctx)
         }
         this.state = 255
         this._errHandler.sync(this)
-        _alt = this.interpreter.adaptivePredict(this._input, 4, this._ctx)
+        _alt = this._interp.adaptivePredict(this._input, 4, this._ctx)
         while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
           if (_alt === 1) {
             {
@@ -1005,12 +979,12 @@ export class SQLiteParser extends Parser {
           }
           this.state = 257
           this._errHandler.sync(this)
-          _alt = this.interpreter.adaptivePredict(this._input, 4, this._ctx)
+          _alt = this._interp.adaptivePredict(this._input, 4, this._ctx)
         }
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1019,27 +993,27 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public sql_stmt(): Sql_stmtContext {
-    let _localctx: Sql_stmtContext = new Sql_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 4, SQLiteParser.RULE_sql_stmt)
+    let localctx: Sql_stmtContext = new Sql_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 4, SQLiteParser.RULE_sql_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 263
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.EXPLAIN_) {
+        if (_la === 71) {
           {
             this.state = 258
             this.match(SQLiteParser.EXPLAIN_)
             this.state = 261
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.QUERY_) {
+            if (_la === 114) {
               {
                 this.state = 259
                 this.match(SQLiteParser.QUERY_)
@@ -1052,168 +1026,145 @@ export class SQLiteParser extends Parser {
 
         this.state = 289
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 7, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 7, this._ctx)) {
           case 1:
             {
               this.state = 265
               this.alter_table_stmt()
             }
             break
-
           case 2:
             {
               this.state = 266
               this.analyze_stmt()
             }
             break
-
           case 3:
             {
               this.state = 267
               this.attach_stmt()
             }
             break
-
           case 4:
             {
               this.state = 268
               this.begin_stmt()
             }
             break
-
           case 5:
             {
               this.state = 269
               this.commit_stmt()
             }
             break
-
           case 6:
             {
               this.state = 270
               this.create_index_stmt()
             }
             break
-
           case 7:
             {
               this.state = 271
               this.create_table_stmt()
             }
             break
-
           case 8:
             {
               this.state = 272
               this.create_trigger_stmt()
             }
             break
-
           case 9:
             {
               this.state = 273
               this.create_view_stmt()
             }
             break
-
           case 10:
             {
               this.state = 274
               this.create_virtual_table_stmt()
             }
             break
-
           case 11:
             {
               this.state = 275
               this.delete_stmt()
             }
             break
-
           case 12:
             {
               this.state = 276
               this.delete_stmt_limited()
             }
             break
-
           case 13:
             {
               this.state = 277
               this.detach_stmt()
             }
             break
-
           case 14:
             {
               this.state = 278
               this.drop_stmt()
             }
             break
-
           case 15:
             {
               this.state = 279
               this.insert_stmt()
             }
             break
-
           case 16:
             {
               this.state = 280
               this.pragma_stmt()
             }
             break
-
           case 17:
             {
               this.state = 281
               this.reindex_stmt()
             }
             break
-
           case 18:
             {
               this.state = 282
               this.release_stmt()
             }
             break
-
           case 19:
             {
               this.state = 283
               this.rollback_stmt()
             }
             break
-
           case 20:
             {
               this.state = 284
               this.savepoint_stmt()
             }
             break
-
           case 21:
             {
               this.state = 285
               this.select_stmt()
             }
             break
-
           case 22:
             {
               this.state = 286
               this.update_stmt()
             }
             break
-
           case 23:
             {
               this.state = 287
               this.update_stmt_limited()
             }
             break
-
           case 24:
             {
               this.state = 288
@@ -1224,7 +1175,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1233,14 +1184,14 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public alter_table_stmt(): Alter_table_stmtContext {
-    let _localctx: Alter_table_stmtContext = new Alter_table_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 6, SQLiteParser.RULE_alter_table_stmt)
+    let localctx: Alter_table_stmtContext = new Alter_table_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 6, SQLiteParser.RULE_alter_table_stmt)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 291
         this.match(SQLiteParser.ALTER_)
@@ -1248,7 +1199,7 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.TABLE_)
         this.state = 296
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 8, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 8, this._ctx)) {
           case 1:
             {
               this.state = 293
@@ -1263,27 +1214,26 @@ export class SQLiteParser extends Parser {
         this.state = 321
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.RENAME_:
+          case 121:
             {
               this.state = 299
               this.match(SQLiteParser.RENAME_)
               this.state = 309
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 10, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 10, this._ctx)) {
                 case 1:
                   {
                     this.state = 300
                     this.match(SQLiteParser.TO_)
                     this.state = 301
-                    _localctx._new_table_name = this.table_name()
+                    localctx._new_table_name = this.table_name()
                   }
                   break
-
                 case 2:
                   {
                     this.state = 303
                     this._errHandler.sync(this)
-                    switch (this.interpreter.adaptivePredict(this._input, 9, this._ctx)) {
+                    switch (this._interp.adaptivePredict(this._input, 9, this._ctx)) {
                       case 1:
                         {
                           this.state = 302
@@ -1292,23 +1242,23 @@ export class SQLiteParser extends Parser {
                         break
                     }
                     this.state = 305
-                    _localctx._old_column_name = this.column_name()
+                    localctx._old_column_name = this.column_name()
                     this.state = 306
                     this.match(SQLiteParser.TO_)
                     this.state = 307
-                    _localctx._new_column_name = this.column_name()
+                    localctx._new_column_name = this.column_name()
                   }
                   break
               }
             }
             break
-          case SQLiteParser.ADD_:
+          case 27:
             {
               this.state = 311
               this.match(SQLiteParser.ADD_)
               this.state = 313
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 11, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 11, this._ctx)) {
                 case 1:
                   {
                     this.state = 312
@@ -1320,13 +1270,13 @@ export class SQLiteParser extends Parser {
               this.column_def()
             }
             break
-          case SQLiteParser.DROP_:
+          case 63:
             {
               this.state = 316
               this.match(SQLiteParser.DROP_)
               this.state = 318
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 12, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 12, this._ctx)) {
                 case 1:
                   {
                     this.state = 317
@@ -1344,7 +1294,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1353,32 +1303,31 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public analyze_stmt(): Analyze_stmtContext {
-    let _localctx: Analyze_stmtContext = new Analyze_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 8, SQLiteParser.RULE_analyze_stmt)
+    let localctx: Analyze_stmtContext = new Analyze_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 8, SQLiteParser.RULE_analyze_stmt)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 323
         this.match(SQLiteParser.ANALYZE_)
         this.state = 331
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 15, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 15, this._ctx)) {
           case 1:
             {
               this.state = 324
               this.schema_name()
             }
             break
-
           case 2:
             {
               this.state = 328
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 14, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 14, this._ctx)) {
                 case 1:
                   {
                     this.state = 325
@@ -1396,7 +1345,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1405,20 +1354,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public attach_stmt(): Attach_stmtContext {
-    let _localctx: Attach_stmtContext = new Attach_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 10, SQLiteParser.RULE_attach_stmt)
+    let localctx: Attach_stmtContext = new Attach_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 10, SQLiteParser.RULE_attach_stmt)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 333
         this.match(SQLiteParser.ATTACH_)
         this.state = 335
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 16, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 16, this._ctx)) {
           case 1:
             {
               this.state = 334
@@ -1435,7 +1384,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1444,48 +1393,28 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public begin_stmt(): Begin_stmtContext {
-    let _localctx: Begin_stmtContext = new Begin_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 12, SQLiteParser.RULE_begin_stmt)
+    let localctx: Begin_stmtContext = new Begin_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 12, SQLiteParser.RULE_begin_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 341
         this.match(SQLiteParser.BEGIN_)
         this.state = 343
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (
-          ((_la - 58) & ~0x1f) === 0 &&
-          ((1 << (_la - 58)) &
-            ((1 << (SQLiteParser.DEFERRED_ - 58)) |
-              (1 << (SQLiteParser.EXCLUSIVE_ - 58)) |
-              (1 << (SQLiteParser.IMMEDIATE_ - 58)))) !==
-            0
-        ) {
+        if (((_la - 58) & ~0x1f) === 0 && ((1 << (_la - 58)) & 16779265) !== 0) {
           {
             this.state = 342
             _la = this._input.LA(1)
-            if (
-              !(
-                ((_la - 58) & ~0x1f) === 0 &&
-                ((1 << (_la - 58)) &
-                  ((1 << (SQLiteParser.DEFERRED_ - 58)) |
-                    (1 << (SQLiteParser.EXCLUSIVE_ - 58)) |
-                    (1 << (SQLiteParser.IMMEDIATE_ - 58)))) !==
-                  0
-              )
-            ) {
+            if (!(((_la - 58) & ~0x1f) === 0 && ((1 << (_la - 58)) & 16779265) !== 0)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -1495,13 +1424,13 @@ export class SQLiteParser extends Parser {
         this.state = 349
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.TRANSACTION_) {
+        if (_la === 137) {
           {
             this.state = 345
             this.match(SQLiteParser.TRANSACTION_)
             this.state = 347
             this._errHandler.sync(this)
-            switch (this.interpreter.adaptivePredict(this._input, 18, this._ctx)) {
+            switch (this._interp.adaptivePredict(this._input, 18, this._ctx)) {
               case 1:
                 {
                   this.state = 346
@@ -1514,7 +1443,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1523,32 +1452,28 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public commit_stmt(): Commit_stmtContext {
-    let _localctx: Commit_stmtContext = new Commit_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 14, SQLiteParser.RULE_commit_stmt)
+    let localctx: Commit_stmtContext = new Commit_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 14, SQLiteParser.RULE_commit_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 351
         _la = this._input.LA(1)
-        if (!(_la === SQLiteParser.COMMIT_ || _la === SQLiteParser.END_)) {
+        if (!(_la === 47 || _la === 66)) {
           this._errHandler.recoverInline(this)
         } else {
-          if (this._input.LA(1) === Token.EOF) {
-            this.matchedEOF = true
-          }
-
           this._errHandler.reportMatch(this)
           this.consume()
         }
         this.state = 353
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.TRANSACTION_) {
+        if (_la === 137) {
           {
             this.state = 352
             this.match(SQLiteParser.TRANSACTION_)
@@ -1557,7 +1482,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1566,22 +1491,22 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public rollback_stmt(): Rollback_stmtContext {
-    let _localctx: Rollback_stmtContext = new Rollback_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 16, SQLiteParser.RULE_rollback_stmt)
+    let localctx: Rollback_stmtContext = new Rollback_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 16, SQLiteParser.RULE_rollback_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 355
         this.match(SQLiteParser.ROLLBACK_)
         this.state = 357
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.TRANSACTION_) {
+        if (_la === 137) {
           {
             this.state = 356
             this.match(SQLiteParser.TRANSACTION_)
@@ -1591,13 +1516,13 @@ export class SQLiteParser extends Parser {
         this.state = 364
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.TO_) {
+        if (_la === 136) {
           {
             this.state = 359
             this.match(SQLiteParser.TO_)
             this.state = 361
             this._errHandler.sync(this)
-            switch (this.interpreter.adaptivePredict(this._input, 22, this._ctx)) {
+            switch (this._interp.adaptivePredict(this._input, 22, this._ctx)) {
               case 1:
                 {
                   this.state = 360
@@ -1612,7 +1537,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1621,14 +1546,14 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public savepoint_stmt(): Savepoint_stmtContext {
-    let _localctx: Savepoint_stmtContext = new Savepoint_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 18, SQLiteParser.RULE_savepoint_stmt)
+    let localctx: Savepoint_stmtContext = new Savepoint_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 18, SQLiteParser.RULE_savepoint_stmt)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 366
         this.match(SQLiteParser.SAVEPOINT_)
@@ -1637,7 +1562,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1646,20 +1571,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public release_stmt(): Release_stmtContext {
-    let _localctx: Release_stmtContext = new Release_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 20, SQLiteParser.RULE_release_stmt)
+    let localctx: Release_stmtContext = new Release_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 20, SQLiteParser.RULE_release_stmt)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 369
         this.match(SQLiteParser.RELEASE_)
         this.state = 371
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 24, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 24, this._ctx)) {
           case 1:
             {
               this.state = 370
@@ -1672,7 +1597,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1681,22 +1606,22 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public create_index_stmt(): Create_index_stmtContext {
-    let _localctx: Create_index_stmtContext = new Create_index_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 22, SQLiteParser.RULE_create_index_stmt)
+    let localctx: Create_index_stmtContext = new Create_index_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 22, SQLiteParser.RULE_create_index_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 375
         this.match(SQLiteParser.CREATE_)
         this.state = 377
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.UNIQUE_) {
+        if (_la === 140) {
           {
             this.state = 376
             this.match(SQLiteParser.UNIQUE_)
@@ -1707,7 +1632,7 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.INDEX_)
         this.state = 383
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 26, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 26, this._ctx)) {
           case 1:
             {
               this.state = 380
@@ -1721,7 +1646,7 @@ export class SQLiteParser extends Parser {
         }
         this.state = 388
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 27, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 27, this._ctx)) {
           case 1:
             {
               this.state = 385
@@ -1744,7 +1669,7 @@ export class SQLiteParser extends Parser {
         this.state = 399
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 395
@@ -1762,7 +1687,7 @@ export class SQLiteParser extends Parser {
         this.state = 405
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WHERE_) {
+        if (_la === 148) {
           {
             this.state = 403
             this.match(SQLiteParser.WHERE_)
@@ -1773,7 +1698,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1782,26 +1707,25 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public indexed_column(): Indexed_columnContext {
-    let _localctx: Indexed_columnContext = new Indexed_columnContext(this._ctx, this.state)
-    this.enterRule(_localctx, 24, SQLiteParser.RULE_indexed_column)
+    let localctx: Indexed_columnContext = new Indexed_columnContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 24, SQLiteParser.RULE_indexed_column)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 409
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 30, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 30, this._ctx)) {
           case 1:
             {
               this.state = 407
               this.column_name()
             }
             break
-
           case 2:
             {
               this.state = 408
@@ -1812,7 +1736,7 @@ export class SQLiteParser extends Parser {
         this.state = 413
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.COLLATE_) {
+        if (_la === 45) {
           {
             this.state = 411
             this.match(SQLiteParser.COLLATE_)
@@ -1824,7 +1748,7 @@ export class SQLiteParser extends Parser {
         this.state = 416
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.ASC_ || _la === SQLiteParser.DESC_) {
+        if (_la === 34 || _la === 60) {
           {
             this.state = 415
             this.asc_desc()
@@ -1833,7 +1757,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1842,33 +1766,29 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public create_table_stmt(): Create_table_stmtContext {
-    let _localctx: Create_table_stmtContext = new Create_table_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 26, SQLiteParser.RULE_create_table_stmt)
+    let localctx: Create_table_stmtContext = new Create_table_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 26, SQLiteParser.RULE_create_table_stmt)
     let _la: number
     try {
       let _alt: number
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 418
         this.match(SQLiteParser.CREATE_)
         this.state = 420
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.TEMP_ || _la === SQLiteParser.TEMPORARY_) {
+        if (_la === 133 || _la === 134) {
           {
             this.state = 419
             _la = this._input.LA(1)
-            if (!(_la === SQLiteParser.TEMP_ || _la === SQLiteParser.TEMPORARY_)) {
+            if (!(_la === 133 || _la === 134)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -1879,7 +1799,7 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.TABLE_)
         this.state = 426
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 34, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 34, this._ctx)) {
           case 1:
             {
               this.state = 423
@@ -1893,7 +1813,7 @@ export class SQLiteParser extends Parser {
         }
         this.state = 431
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 35, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 35, this._ctx)) {
           case 1:
             {
               this.state = 428
@@ -1908,7 +1828,7 @@ export class SQLiteParser extends Parser {
         this.state = 457
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.OPEN_PAR:
+          case 3:
             {
               this.state = 434
               this.match(SQLiteParser.OPEN_PAR)
@@ -1916,7 +1836,7 @@ export class SQLiteParser extends Parser {
               this.column_def()
               this.state = 440
               this._errHandler.sync(this)
-              _alt = this.interpreter.adaptivePredict(this._input, 36, this._ctx)
+              _alt = this._interp.adaptivePredict(this._input, 36, this._ctx)
               while (_alt !== 1 && _alt !== ATN.INVALID_ALT_NUMBER) {
                 if (_alt === 1 + 1) {
                   {
@@ -1930,12 +1850,12 @@ export class SQLiteParser extends Parser {
                 }
                 this.state = 442
                 this._errHandler.sync(this)
-                _alt = this.interpreter.adaptivePredict(this._input, 36, this._ctx)
+                _alt = this._interp.adaptivePredict(this._input, 36, this._ctx)
               }
               this.state = 447
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              while (_la === SQLiteParser.COMMA) {
+              while (_la === 5) {
                 {
                   {
                     this.state = 443
@@ -1953,17 +1873,17 @@ export class SQLiteParser extends Parser {
               this.state = 453
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.WITHOUT_) {
+              if (_la === 150) {
                 {
                   this.state = 451
                   this.match(SQLiteParser.WITHOUT_)
                   this.state = 452
-                  _localctx._row_ROW_ID = this.match(SQLiteParser.IDENTIFIER)
+                  localctx._row_ROW_ID = this.match(SQLiteParser.IDENTIFIER)
                 }
               }
             }
             break
-          case SQLiteParser.AS_:
+          case 33:
             {
               this.state = 455
               this.match(SQLiteParser.AS_)
@@ -1977,7 +1897,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -1986,21 +1906,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public column_def(): Column_defContext {
-    let _localctx: Column_defContext = new Column_defContext(this._ctx, this.state)
-    this.enterRule(_localctx, 28, SQLiteParser.RULE_column_def)
+    let localctx: Column_defContext = new Column_defContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 28, SQLiteParser.RULE_column_def)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 459
         this.column_name()
         this.state = 461
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 40, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 40, this._ctx)) {
           case 1:
             {
               this.state = 460
@@ -2012,23 +1932,10 @@ export class SQLiteParser extends Parser {
         this._errHandler.sync(this)
         _la = this._input.LA(1)
         while (
-          (((_la - 33) & ~0x1f) === 0 &&
-            ((1 << (_la - 33)) &
-              ((1 << (SQLiteParser.AS_ - 33)) |
-                (1 << (SQLiteParser.CHECK_ - 33)) |
-                (1 << (SQLiteParser.COLLATE_ - 33)) |
-                (1 << (SQLiteParser.CONSTRAINT_ - 33)) |
-                (1 << (SQLiteParser.DEFAULT_ - 33)))) !==
-              0) ||
-          (((_la - 102) & ~0x1f) === 0 &&
-            ((1 << (_la - 102)) &
-              ((1 << (SQLiteParser.NOT_ - 102)) |
-                (1 << (SQLiteParser.NULL_ - 102)) |
-                (1 << (SQLiteParser.PRIMARY_ - 102)) |
-                (1 << (SQLiteParser.REFERENCES_ - 102)))) !==
-              0) ||
-          _la === SQLiteParser.UNIQUE_ ||
-          _la === SQLiteParser.GENERATED_
+          (((_la - 33) & ~0x1f) === 0 && ((1 << (_la - 33)) & 8460289) !== 0) ||
+          (((_la - 102) & ~0x1f) === 0 && ((1 << (_la - 102)) & 34821) !== 0) ||
+          _la === 140 ||
+          _la === 169
         ) {
           {
             {
@@ -2043,7 +1950,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -2052,15 +1959,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public type_name(): Type_nameContext {
-    let _localctx: Type_nameContext = new Type_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 30, SQLiteParser.RULE_type_name)
+    let localctx: Type_nameContext = new Type_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 30, SQLiteParser.RULE_type_name)
     try {
       let _alt: number
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 470
         this._errHandler.sync(this)
@@ -2080,11 +1987,11 @@ export class SQLiteParser extends Parser {
           }
           this.state = 472
           this._errHandler.sync(this)
-          _alt = this.interpreter.adaptivePredict(this._input, 42, this._ctx)
+          _alt = this._interp.adaptivePredict(this._input, 42, this._ctx)
         } while (_alt !== 1 && _alt !== ATN.INVALID_ALT_NUMBER)
         this.state = 484
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 43, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 43, this._ctx)) {
           case 1:
             {
               this.state = 474
@@ -2095,7 +2002,6 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.CLOSE_PAR)
             }
             break
-
           case 2:
             {
               this.state = 478
@@ -2114,7 +2020,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -2123,20 +2029,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public column_constraint(): Column_constraintContext {
-    let _localctx: Column_constraintContext = new Column_constraintContext(this._ctx, this.state)
-    this.enterRule(_localctx, 32, SQLiteParser.RULE_column_constraint)
+    let localctx: Column_constraintContext = new Column_constraintContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 32, SQLiteParser.RULE_column_constraint)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 488
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.CONSTRAINT_) {
+        if (_la === 49) {
           {
             this.state = 486
             this.match(SQLiteParser.CONSTRAINT_)
@@ -2148,7 +2054,7 @@ export class SQLiteParser extends Parser {
         this.state = 539
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.PRIMARY_:
+          case 113:
             {
               {
                 this.state = 490
@@ -2158,7 +2064,7 @@ export class SQLiteParser extends Parser {
                 this.state = 493
                 this._errHandler.sync(this)
                 _la = this._input.LA(1)
-                if (_la === SQLiteParser.ASC_ || _la === SQLiteParser.DESC_) {
+                if (_la === 34 || _la === 60) {
                   {
                     this.state = 492
                     this.asc_desc()
@@ -2168,7 +2074,7 @@ export class SQLiteParser extends Parser {
                 this.state = 496
                 this._errHandler.sync(this)
                 _la = this._input.LA(1)
-                if (_la === SQLiteParser.ON_) {
+                if (_la === 107) {
                   {
                     this.state = 495
                     this.conflict_clause()
@@ -2178,7 +2084,7 @@ export class SQLiteParser extends Parser {
                 this.state = 499
                 this._errHandler.sync(this)
                 _la = this._input.LA(1)
-                if (_la === SQLiteParser.AUTOINCREMENT_) {
+                if (_la === 36) {
                   {
                     this.state = 498
                     this.match(SQLiteParser.AUTOINCREMENT_)
@@ -2187,20 +2093,20 @@ export class SQLiteParser extends Parser {
               }
             }
             break
-          case SQLiteParser.NOT_:
-          case SQLiteParser.NULL_:
-          case SQLiteParser.UNIQUE_:
+          case 102:
+          case 104:
+          case 140:
             {
               this.state = 506
               this._errHandler.sync(this)
               switch (this._input.LA(1)) {
-                case SQLiteParser.NOT_:
-                case SQLiteParser.NULL_:
+                case 102:
+                case 104:
                   {
                     this.state = 502
                     this._errHandler.sync(this)
                     _la = this._input.LA(1)
-                    if (_la === SQLiteParser.NOT_) {
+                    if (_la === 102) {
                       {
                         this.state = 501
                         this.match(SQLiteParser.NOT_)
@@ -2211,7 +2117,7 @@ export class SQLiteParser extends Parser {
                     this.match(SQLiteParser.NULL_)
                   }
                   break
-                case SQLiteParser.UNIQUE_:
+                case 140:
                   {
                     this.state = 505
                     this.match(SQLiteParser.UNIQUE_)
@@ -2223,7 +2129,7 @@ export class SQLiteParser extends Parser {
               this.state = 509
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.ON_) {
+              if (_la === 107) {
                 {
                   this.state = 508
                   this.conflict_clause()
@@ -2231,7 +2137,7 @@ export class SQLiteParser extends Parser {
               }
             }
             break
-          case SQLiteParser.CHECK_:
+          case 44:
             {
               this.state = 511
               this.match(SQLiteParser.CHECK_)
@@ -2243,27 +2149,25 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.CLOSE_PAR)
             }
             break
-          case SQLiteParser.DEFAULT_:
+          case 56:
             {
               this.state = 516
               this.match(SQLiteParser.DEFAULT_)
               this.state = 523
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 51, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 51, this._ctx)) {
                 case 1:
                   {
                     this.state = 517
                     this.signed_number()
                   }
                   break
-
                 case 2:
                   {
                     this.state = 518
                     this.literal_value()
                   }
                   break
-
                 case 3:
                   {
                     this.state = 519
@@ -2277,7 +2181,7 @@ export class SQLiteParser extends Parser {
               }
             }
             break
-          case SQLiteParser.COLLATE_:
+          case 45:
             {
               this.state = 525
               this.match(SQLiteParser.COLLATE_)
@@ -2285,19 +2189,19 @@ export class SQLiteParser extends Parser {
               this.collation_name()
             }
             break
-          case SQLiteParser.REFERENCES_:
+          case 117:
             {
               this.state = 527
               this.foreign_key_clause()
             }
             break
-          case SQLiteParser.AS_:
-          case SQLiteParser.GENERATED_:
+          case 33:
+          case 169:
             {
               this.state = 530
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.GENERATED_) {
+              if (_la === 169) {
                 {
                   this.state = 528
                   this.match(SQLiteParser.GENERATED_)
@@ -2317,17 +2221,13 @@ export class SQLiteParser extends Parser {
               this.state = 537
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.VIRTUAL_ || _la === SQLiteParser.STORED_) {
+              if (_la === 146 || _la === 171) {
                 {
                   this.state = 536
                   _la = this._input.LA(1)
-                  if (!(_la === SQLiteParser.VIRTUAL_ || _la === SQLiteParser.STORED_)) {
+                  if (!(_la === 146 || _la === 171)) {
                     this._errHandler.recoverInline(this)
                   } else {
-                    if (this._input.LA(1) === Token.EOF) {
-                      this.matchedEOF = true
-                    }
-
                     this._errHandler.reportMatch(this)
                     this.consume()
                   }
@@ -2341,7 +2241,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -2350,30 +2250,26 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public signed_number(): Signed_numberContext {
-    let _localctx: Signed_numberContext = new Signed_numberContext(this._ctx, this.state)
-    this.enterRule(_localctx, 34, SQLiteParser.RULE_signed_number)
+    let localctx: Signed_numberContext = new Signed_numberContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 34, SQLiteParser.RULE_signed_number)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 542
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.PLUS || _la === SQLiteParser.MINUS) {
+        if (_la === 8 || _la === 9) {
           {
             this.state = 541
             _la = this._input.LA(1)
-            if (!(_la === SQLiteParser.PLUS || _la === SQLiteParser.MINUS)) {
+            if (!(_la === 8 || _la === 9)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -2385,7 +2281,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -2394,20 +2290,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public table_constraint(): Table_constraintContext {
-    let _localctx: Table_constraintContext = new Table_constraintContext(this._ctx, this.state)
-    this.enterRule(_localctx, 36, SQLiteParser.RULE_table_constraint)
+    let localctx: Table_constraintContext = new Table_constraintContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 36, SQLiteParser.RULE_table_constraint)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 548
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.CONSTRAINT_) {
+        if (_la === 49) {
           {
             this.state = 546
             this.match(SQLiteParser.CONSTRAINT_)
@@ -2419,13 +2315,13 @@ export class SQLiteParser extends Parser {
         this.state = 587
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.PRIMARY_:
-          case SQLiteParser.UNIQUE_:
+          case 113:
+          case 140:
             {
               this.state = 553
               this._errHandler.sync(this)
               switch (this._input.LA(1)) {
-                case SQLiteParser.PRIMARY_:
+                case 113:
                   {
                     this.state = 550
                     this.match(SQLiteParser.PRIMARY_)
@@ -2433,7 +2329,7 @@ export class SQLiteParser extends Parser {
                     this.match(SQLiteParser.KEY_)
                   }
                   break
-                case SQLiteParser.UNIQUE_:
+                case 140:
                   {
                     this.state = 552
                     this.match(SQLiteParser.UNIQUE_)
@@ -2449,7 +2345,7 @@ export class SQLiteParser extends Parser {
               this.state = 561
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              while (_la === SQLiteParser.COMMA) {
+              while (_la === 5) {
                 {
                   {
                     this.state = 557
@@ -2467,7 +2363,7 @@ export class SQLiteParser extends Parser {
               this.state = 566
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.ON_) {
+              if (_la === 107) {
                 {
                   this.state = 565
                   this.conflict_clause()
@@ -2475,7 +2371,7 @@ export class SQLiteParser extends Parser {
               }
             }
             break
-          case SQLiteParser.CHECK_:
+          case 44:
             {
               this.state = 568
               this.match(SQLiteParser.CHECK_)
@@ -2487,7 +2383,7 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.CLOSE_PAR)
             }
             break
-          case SQLiteParser.FOREIGN_:
+          case 74:
             {
               this.state = 573
               this.match(SQLiteParser.FOREIGN_)
@@ -2500,7 +2396,7 @@ export class SQLiteParser extends Parser {
               this.state = 581
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              while (_la === SQLiteParser.COMMA) {
+              while (_la === 5) {
                 {
                   {
                     this.state = 577
@@ -2525,7 +2421,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -2534,15 +2430,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public foreign_key_clause(): Foreign_key_clauseContext {
-    let _localctx: Foreign_key_clauseContext = new Foreign_key_clauseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 38, SQLiteParser.RULE_foreign_key_clause)
+    let localctx: Foreign_key_clauseContext = new Foreign_key_clauseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 38, SQLiteParser.RULE_foreign_key_clause)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 589
         this.match(SQLiteParser.REFERENCES_)
@@ -2551,7 +2447,7 @@ export class SQLiteParser extends Parser {
         this.state = 602
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.OPEN_PAR) {
+        if (_la === 3) {
           {
             this.state = 591
             this.match(SQLiteParser.OPEN_PAR)
@@ -2560,7 +2456,7 @@ export class SQLiteParser extends Parser {
             this.state = 597
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            while (_la === SQLiteParser.COMMA) {
+            while (_la === 5) {
               {
                 {
                   this.state = 593
@@ -2581,61 +2477,53 @@ export class SQLiteParser extends Parser {
         this.state = 618
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.MATCH_ || _la === SQLiteParser.ON_) {
+        while (_la === 99 || _la === 107) {
           {
             this.state = 616
             this._errHandler.sync(this)
             switch (this._input.LA(1)) {
-              case SQLiteParser.ON_:
+              case 107:
                 {
                   this.state = 604
                   this.match(SQLiteParser.ON_)
                   this.state = 605
                   _la = this._input.LA(1)
-                  if (!(_la === SQLiteParser.DELETE_ || _la === SQLiteParser.UPDATE_)) {
+                  if (!(_la === 59 || _la === 141)) {
                     this._errHandler.recoverInline(this)
                   } else {
-                    if (this._input.LA(1) === Token.EOF) {
-                      this.matchedEOF = true
-                    }
-
                     this._errHandler.reportMatch(this)
                     this.consume()
                   }
                   this.state = 612
                   this._errHandler.sync(this)
                   switch (this._input.LA(1)) {
-                    case SQLiteParser.SET_:
+                    case 131:
                       {
                         this.state = 606
                         this.match(SQLiteParser.SET_)
                         this.state = 607
                         _la = this._input.LA(1)
-                        if (!(_la === SQLiteParser.DEFAULT_ || _la === SQLiteParser.NULL_)) {
+                        if (!(_la === 56 || _la === 104)) {
                           this._errHandler.recoverInline(this)
                         } else {
-                          if (this._input.LA(1) === Token.EOF) {
-                            this.matchedEOF = true
-                          }
-
                           this._errHandler.reportMatch(this)
                           this.consume()
                         }
                       }
                       break
-                    case SQLiteParser.CASCADE_:
+                    case 41:
                       {
                         this.state = 608
                         this.match(SQLiteParser.CASCADE_)
                       }
                       break
-                    case SQLiteParser.RESTRICT_:
+                    case 123:
                       {
                         this.state = 609
                         this.match(SQLiteParser.RESTRICT_)
                       }
                       break
-                    case SQLiteParser.NO_:
+                    case 101:
                       {
                         this.state = 610
                         this.match(SQLiteParser.NO_)
@@ -2648,7 +2536,7 @@ export class SQLiteParser extends Parser {
                   }
                 }
                 break
-              case SQLiteParser.MATCH_:
+              case 99:
                 {
                   this.state = 614
                   this.match(SQLiteParser.MATCH_)
@@ -2666,13 +2554,13 @@ export class SQLiteParser extends Parser {
         }
         this.state = 629
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 69, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 69, this._ctx)) {
           case 1:
             {
               this.state = 622
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.NOT_) {
+              if (_la === 102) {
                 {
                   this.state = 621
                   this.match(SQLiteParser.NOT_)
@@ -2684,19 +2572,15 @@ export class SQLiteParser extends Parser {
               this.state = 627
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.INITIALLY_) {
+              if (_la === 86) {
                 {
                   this.state = 625
                   this.match(SQLiteParser.INITIALLY_)
                   this.state = 626
                   _la = this._input.LA(1)
-                  if (!(_la === SQLiteParser.DEFERRED_ || _la === SQLiteParser.IMMEDIATE_)) {
+                  if (!(_la === 58 || _la === 82)) {
                     this._errHandler.recoverInline(this)
                   } else {
-                    if (this._input.LA(1) === Token.EOF) {
-                      this.matchedEOF = true
-                    }
-
                     this._errHandler.reportMatch(this)
                     this.consume()
                   }
@@ -2708,7 +2592,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -2717,15 +2601,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public conflict_clause(): Conflict_clauseContext {
-    let _localctx: Conflict_clauseContext = new Conflict_clauseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 40, SQLiteParser.RULE_conflict_clause)
+    let localctx: Conflict_clauseContext = new Conflict_clauseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 40, SQLiteParser.RULE_conflict_clause)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 631
         this.match(SQLiteParser.ON_)
@@ -2733,28 +2617,16 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.CONFLICT_)
         this.state = 633
         _la = this._input.LA(1)
-        if (
-          !(
-            _la === SQLiteParser.ABORT_ ||
-            _la === SQLiteParser.FAIL_ ||
-            _la === SQLiteParser.IGNORE_ ||
-            _la === SQLiteParser.REPLACE_ ||
-            _la === SQLiteParser.ROLLBACK_
-          )
-        ) {
+        if (!(_la === 25 || _la === 72 || _la === 81 || _la === 122 || _la === 126)) {
           this._errHandler.recoverInline(this)
         } else {
-          if (this._input.LA(1) === Token.EOF) {
-            this.matchedEOF = true
-          }
-
           this._errHandler.reportMatch(this)
           this.consume()
         }
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -2763,32 +2635,28 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public create_trigger_stmt(): Create_trigger_stmtContext {
-    let _localctx: Create_trigger_stmtContext = new Create_trigger_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 42, SQLiteParser.RULE_create_trigger_stmt)
+    let localctx: Create_trigger_stmtContext = new Create_trigger_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 42, SQLiteParser.RULE_create_trigger_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 635
         this.match(SQLiteParser.CREATE_)
         this.state = 637
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.TEMP_ || _la === SQLiteParser.TEMPORARY_) {
+        if (_la === 133 || _la === 134) {
           {
             this.state = 636
             _la = this._input.LA(1)
-            if (!(_la === SQLiteParser.TEMP_ || _la === SQLiteParser.TEMPORARY_)) {
+            if (!(_la === 133 || _la === 134)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -2799,7 +2667,7 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.TRIGGER_)
         this.state = 643
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 71, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 71, this._ctx)) {
           case 1:
             {
               this.state = 640
@@ -2813,7 +2681,7 @@ export class SQLiteParser extends Parser {
         }
         this.state = 648
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 72, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 72, this._ctx)) {
           case 1:
             {
               this.state = 645
@@ -2828,19 +2696,19 @@ export class SQLiteParser extends Parser {
         this.state = 655
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.BEFORE_:
+          case 37:
             {
               this.state = 651
               this.match(SQLiteParser.BEFORE_)
             }
             break
-          case SQLiteParser.AFTER_:
+          case 28:
             {
               this.state = 652
               this.match(SQLiteParser.AFTER_)
             }
             break
-          case SQLiteParser.INSTEAD_:
+          case 89:
             {
               this.state = 653
               this.match(SQLiteParser.INSTEAD_)
@@ -2848,9 +2716,9 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.OF_)
             }
             break
-          case SQLiteParser.DELETE_:
-          case SQLiteParser.INSERT_:
-          case SQLiteParser.UPDATE_:
+          case 59:
+          case 88:
+          case 141:
             break
           default:
             break
@@ -2858,26 +2726,26 @@ export class SQLiteParser extends Parser {
         this.state = 671
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.DELETE_:
+          case 59:
             {
               this.state = 657
               this.match(SQLiteParser.DELETE_)
             }
             break
-          case SQLiteParser.INSERT_:
+          case 88:
             {
               this.state = 658
               this.match(SQLiteParser.INSERT_)
             }
             break
-          case SQLiteParser.UPDATE_:
+          case 141:
             {
               this.state = 659
               this.match(SQLiteParser.UPDATE_)
               this.state = 669
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.OF_) {
+              if (_la === 105) {
                 {
                   this.state = 660
                   this.match(SQLiteParser.OF_)
@@ -2886,7 +2754,7 @@ export class SQLiteParser extends Parser {
                   this.state = 666
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                  while (_la === SQLiteParser.COMMA) {
+                  while (_la === 5) {
                     {
                       {
                         this.state = 662
@@ -2913,7 +2781,7 @@ export class SQLiteParser extends Parser {
         this.state = 678
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.FOR_) {
+        if (_la === 73) {
           {
             this.state = 675
             this.match(SQLiteParser.FOR_)
@@ -2927,7 +2795,7 @@ export class SQLiteParser extends Parser {
         this.state = 682
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WHEN_) {
+        if (_la === 147) {
           {
             this.state = 680
             this.match(SQLiteParser.WHEN_)
@@ -2946,28 +2814,25 @@ export class SQLiteParser extends Parser {
             {
               this.state = 689
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 79, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 79, this._ctx)) {
                 case 1:
                   {
                     this.state = 685
                     this.update_stmt()
                   }
                   break
-
                 case 2:
                   {
                     this.state = 686
                     this.insert_stmt()
                   }
                   break
-
                 case 3:
                   {
                     this.state = 687
                     this.delete_stmt()
                   }
                   break
-
                 case 4:
                   {
                     this.state = 688
@@ -2982,24 +2847,13 @@ export class SQLiteParser extends Parser {
           this.state = 695
           this._errHandler.sync(this)
           _la = this._input.LA(1)
-        } while (
-          _la === SQLiteParser.DELETE_ ||
-          _la === SQLiteParser.INSERT_ ||
-          (((_la - 122) & ~0x1f) === 0 &&
-            ((1 << (_la - 122)) &
-              ((1 << (SQLiteParser.REPLACE_ - 122)) |
-                (1 << (SQLiteParser.SELECT_ - 122)) |
-                (1 << (SQLiteParser.UPDATE_ - 122)) |
-                (1 << (SQLiteParser.VALUES_ - 122)) |
-                (1 << (SQLiteParser.WITH_ - 122)))) !==
-              0)
-        )
+        } while (_la === 59 || _la === 88 || (((_la - 122) & ~0x1f) === 0 && ((1 << (_la - 122)) & 138936577) !== 0))
         this.state = 697
         this.match(SQLiteParser.END_)
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3008,32 +2862,28 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public create_view_stmt(): Create_view_stmtContext {
-    let _localctx: Create_view_stmtContext = new Create_view_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 44, SQLiteParser.RULE_create_view_stmt)
+    let localctx: Create_view_stmtContext = new Create_view_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 44, SQLiteParser.RULE_create_view_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 699
         this.match(SQLiteParser.CREATE_)
         this.state = 701
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.TEMP_ || _la === SQLiteParser.TEMPORARY_) {
+        if (_la === 133 || _la === 134) {
           {
             this.state = 700
             _la = this._input.LA(1)
-            if (!(_la === SQLiteParser.TEMP_ || _la === SQLiteParser.TEMPORARY_)) {
+            if (!(_la === 133 || _la === 134)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -3044,7 +2894,7 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.VIEW_)
         this.state = 707
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 82, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 82, this._ctx)) {
           case 1:
             {
               this.state = 704
@@ -3058,7 +2908,7 @@ export class SQLiteParser extends Parser {
         }
         this.state = 712
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 83, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 83, this._ctx)) {
           case 1:
             {
               this.state = 709
@@ -3073,7 +2923,7 @@ export class SQLiteParser extends Parser {
         this.state = 726
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.OPEN_PAR) {
+        if (_la === 3) {
           {
             this.state = 715
             this.match(SQLiteParser.OPEN_PAR)
@@ -3082,7 +2932,7 @@ export class SQLiteParser extends Parser {
             this.state = 721
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            while (_la === SQLiteParser.COMMA) {
+            while (_la === 5) {
               {
                 {
                   this.state = 717
@@ -3107,7 +2957,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3116,15 +2966,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public create_virtual_table_stmt(): Create_virtual_table_stmtContext {
-    let _localctx: Create_virtual_table_stmtContext = new Create_virtual_table_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 46, SQLiteParser.RULE_create_virtual_table_stmt)
+    let localctx: Create_virtual_table_stmtContext = new Create_virtual_table_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 46, SQLiteParser.RULE_create_virtual_table_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 731
         this.match(SQLiteParser.CREATE_)
@@ -3134,7 +2984,7 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.TABLE_)
         this.state = 737
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 86, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 86, this._ctx)) {
           case 1:
             {
               this.state = 734
@@ -3148,7 +2998,7 @@ export class SQLiteParser extends Parser {
         }
         this.state = 742
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 87, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 87, this._ctx)) {
           case 1:
             {
               this.state = 739
@@ -3167,7 +3017,7 @@ export class SQLiteParser extends Parser {
         this.state = 758
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.OPEN_PAR) {
+        if (_la === 3) {
           {
             this.state = 747
             this.match(SQLiteParser.OPEN_PAR)
@@ -3176,7 +3026,7 @@ export class SQLiteParser extends Parser {
             this.state = 753
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            while (_la === SQLiteParser.COMMA) {
+            while (_la === 5) {
               {
                 {
                   this.state = 749
@@ -3196,7 +3046,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3205,21 +3055,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public with_clause(): With_clauseContext {
-    let _localctx: With_clauseContext = new With_clauseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 48, SQLiteParser.RULE_with_clause)
+    let localctx: With_clauseContext = new With_clauseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 48, SQLiteParser.RULE_with_clause)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 760
         this.match(SQLiteParser.WITH_)
         this.state = 762
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 90, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 90, this._ctx)) {
           case 1:
             {
               this.state = 761
@@ -3240,7 +3090,7 @@ export class SQLiteParser extends Parser {
         this.state = 778
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 769
@@ -3264,7 +3114,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3273,22 +3123,22 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public cte_table_name(): Cte_table_nameContext {
-    let _localctx: Cte_table_nameContext = new Cte_table_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 50, SQLiteParser.RULE_cte_table_name)
+    let localctx: Cte_table_nameContext = new Cte_table_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 50, SQLiteParser.RULE_cte_table_name)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 781
         this.table_name()
         this.state = 793
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.OPEN_PAR) {
+        if (_la === 3) {
           {
             this.state = 782
             this.match(SQLiteParser.OPEN_PAR)
@@ -3297,7 +3147,7 @@ export class SQLiteParser extends Parser {
             this.state = 788
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            while (_la === SQLiteParser.COMMA) {
+            while (_la === 5) {
               {
                 {
                   this.state = 784
@@ -3317,7 +3167,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3326,15 +3176,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public recursive_cte(): Recursive_cteContext {
-    let _localctx: Recursive_cteContext = new Recursive_cteContext(this._ctx, this.state)
-    this.enterRule(_localctx, 52, SQLiteParser.RULE_recursive_cte)
+    let localctx: Recursive_cteContext = new Recursive_cteContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 52, SQLiteParser.RULE_recursive_cte)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 795
         this.cte_table_name()
@@ -3349,7 +3199,7 @@ export class SQLiteParser extends Parser {
         this.state = 801
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.ALL_) {
+        if (_la === 29) {
           {
             this.state = 800
             this.match(SQLiteParser.ALL_)
@@ -3363,7 +3213,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3372,22 +3222,22 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public common_table_expression(): Common_table_expressionContext {
-    let _localctx: Common_table_expressionContext = new Common_table_expressionContext(this._ctx, this.state)
-    this.enterRule(_localctx, 54, SQLiteParser.RULE_common_table_expression)
+    let localctx: Common_table_expressionContext = new Common_table_expressionContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 54, SQLiteParser.RULE_common_table_expression)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 806
         this.table_name()
         this.state = 818
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.OPEN_PAR) {
+        if (_la === 3) {
           {
             this.state = 807
             this.match(SQLiteParser.OPEN_PAR)
@@ -3396,7 +3246,7 @@ export class SQLiteParser extends Parser {
             this.state = 813
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            while (_la === SQLiteParser.COMMA) {
+            while (_la === 5) {
               {
                 {
                   this.state = 809
@@ -3425,7 +3275,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3434,20 +3284,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public delete_stmt(): Delete_stmtContext {
-    let _localctx: Delete_stmtContext = new Delete_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 56, SQLiteParser.RULE_delete_stmt)
+    let localctx: Delete_stmtContext = new Delete_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 56, SQLiteParser.RULE_delete_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 826
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WITH_) {
+        if (_la === 149) {
           {
             this.state = 825
             this.with_clause()
@@ -3463,7 +3313,7 @@ export class SQLiteParser extends Parser {
         this.state = 833
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WHERE_) {
+        if (_la === 148) {
           {
             this.state = 831
             this.match(SQLiteParser.WHERE_)
@@ -3475,7 +3325,7 @@ export class SQLiteParser extends Parser {
         this.state = 836
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.RETURNING_) {
+        if (_la === 124) {
           {
             this.state = 835
             this.returning_clause()
@@ -3484,7 +3334,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3493,20 +3343,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public delete_stmt_limited(): Delete_stmt_limitedContext {
-    let _localctx: Delete_stmt_limitedContext = new Delete_stmt_limitedContext(this._ctx, this.state)
-    this.enterRule(_localctx, 58, SQLiteParser.RULE_delete_stmt_limited)
+    let localctx: Delete_stmt_limitedContext = new Delete_stmt_limitedContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 58, SQLiteParser.RULE_delete_stmt_limited)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 839
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WITH_) {
+        if (_la === 149) {
           {
             this.state = 838
             this.with_clause()
@@ -3522,7 +3372,7 @@ export class SQLiteParser extends Parser {
         this.state = 846
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WHERE_) {
+        if (_la === 148) {
           {
             this.state = 844
             this.match(SQLiteParser.WHERE_)
@@ -3534,7 +3384,7 @@ export class SQLiteParser extends Parser {
         this.state = 849
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.RETURNING_) {
+        if (_la === 124) {
           {
             this.state = 848
             this.returning_clause()
@@ -3544,12 +3394,12 @@ export class SQLiteParser extends Parser {
         this.state = 855
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.LIMIT_ || _la === SQLiteParser.ORDER_) {
+        if (_la === 98 || _la === 109) {
           {
             this.state = 852
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.ORDER_) {
+            if (_la === 109) {
               {
                 this.state = 851
                 this.order_by_stmt()
@@ -3563,7 +3413,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3572,20 +3422,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public detach_stmt(): Detach_stmtContext {
-    let _localctx: Detach_stmtContext = new Detach_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 60, SQLiteParser.RULE_detach_stmt)
+    let localctx: Detach_stmtContext = new Detach_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 60, SQLiteParser.RULE_detach_stmt)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 857
         this.match(SQLiteParser.DETACH_)
         this.state = 859
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 105, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 105, this._ctx)) {
           case 1:
             {
               this.state = 858
@@ -3598,7 +3448,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3607,44 +3457,30 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public drop_stmt(): Drop_stmtContext {
-    let _localctx: Drop_stmtContext = new Drop_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 62, SQLiteParser.RULE_drop_stmt)
+    let localctx: Drop_stmtContext = new Drop_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 62, SQLiteParser.RULE_drop_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 863
         this.match(SQLiteParser.DROP_)
         this.state = 864
-        _localctx._object = this._input.LT(1)
+        localctx._object = this._input.LT(1)
         _la = this._input.LA(1)
-        if (
-          !(
-            _la === SQLiteParser.INDEX_ ||
-            (((_la - 132) & ~0x1f) === 0 &&
-              ((1 << (_la - 132)) &
-                ((1 << (SQLiteParser.TABLE_ - 132)) |
-                  (1 << (SQLiteParser.TRIGGER_ - 132)) |
-                  (1 << (SQLiteParser.VIEW_ - 132)))) !==
-                0)
-          )
-        ) {
-          _localctx._object = this._errHandler.recoverInline(this)
+        if (!(_la === 84 || (((_la - 132) & ~0x1f) === 0 && ((1 << (_la - 132)) & 8257) !== 0))) {
+          localctx._object = this._errHandler.recoverInline(this)
         } else {
-          if (this._input.LA(1) === Token.EOF) {
-            this.matchedEOF = true
-          }
-
           this._errHandler.reportMatch(this)
           this.consume()
         }
         this.state = 867
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 106, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 106, this._ctx)) {
           case 1:
             {
               this.state = 865
@@ -3656,7 +3492,7 @@ export class SQLiteParser extends Parser {
         }
         this.state = 872
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 107, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 107, this._ctx)) {
           case 1:
             {
               this.state = 869
@@ -3671,7 +3507,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -3680,7 +3516,7 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
 
   public expr(): ExprContext
@@ -3693,42 +3529,40 @@ export class SQLiteParser extends Parser {
 
     let _parentctx: ParserRuleContext = this._ctx
     let _parentState: number = this.state
-    let _localctx: ExprContext = new ExprContext(this._ctx, _parentState)
-    let _prevctx: ExprContext = _localctx
+    let localctx: ExprContext = new ExprContext(this, this._ctx, _parentState)
+    let _prevctx: ExprContext = localctx
     let _startState: number = 64
-    this.enterRecursionRule(_localctx, 64, SQLiteParser.RULE_expr, _p)
+    this.enterRecursionRule(localctx, 64, SQLiteParser.RULE_expr, _p)
     let _la: number
     try {
       let _alt: number
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 964
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 121, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 121, this._ctx)) {
           case 1:
             {
               this.state = 877
               this.literal_value()
             }
             break
-
           case 2:
             {
               this.state = 878
               this.match(SQLiteParser.BIND_PARAMETER)
             }
             break
-
           case 3:
             {
               this.state = 887
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 109, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 109, this._ctx)) {
                 case 1:
                   {
                     this.state = 882
                     this._errHandler.sync(this)
-                    switch (this.interpreter.adaptivePredict(this._input, 108, this._ctx)) {
+                    switch (this._interp.adaptivePredict(this._input, 108, this._ctx)) {
                       case 1:
                         {
                           this.state = 879
@@ -3749,7 +3583,6 @@ export class SQLiteParser extends Parser {
               this.column_name()
             }
             break
-
           case 4:
             {
               this.state = 890
@@ -3758,7 +3591,6 @@ export class SQLiteParser extends Parser {
               this.expr(21)
             }
             break
-
           case 5:
             {
               this.state = 893
@@ -3768,175 +3600,175 @@ export class SQLiteParser extends Parser {
               this.state = 907
               this._errHandler.sync(this)
               switch (this._input.LA(1)) {
-                case SQLiteParser.OPEN_PAR:
-                case SQLiteParser.PLUS:
-                case SQLiteParser.MINUS:
-                case SQLiteParser.TILDE:
-                case SQLiteParser.ABORT_:
-                case SQLiteParser.ACTION_:
-                case SQLiteParser.ADD_:
-                case SQLiteParser.AFTER_:
-                case SQLiteParser.ALL_:
-                case SQLiteParser.ALTER_:
-                case SQLiteParser.ANALYZE_:
-                case SQLiteParser.AND_:
-                case SQLiteParser.AS_:
-                case SQLiteParser.ASC_:
-                case SQLiteParser.ATTACH_:
-                case SQLiteParser.AUTOINCREMENT_:
-                case SQLiteParser.BEFORE_:
-                case SQLiteParser.BEGIN_:
-                case SQLiteParser.BETWEEN_:
-                case SQLiteParser.BY_:
-                case SQLiteParser.CASCADE_:
-                case SQLiteParser.CASE_:
-                case SQLiteParser.CAST_:
-                case SQLiteParser.CHECK_:
-                case SQLiteParser.COLLATE_:
-                case SQLiteParser.COLUMN_:
-                case SQLiteParser.COMMIT_:
-                case SQLiteParser.CONFLICT_:
-                case SQLiteParser.CONSTRAINT_:
-                case SQLiteParser.CREATE_:
-                case SQLiteParser.CROSS_:
-                case SQLiteParser.CURRENT_DATE_:
-                case SQLiteParser.CURRENT_TIME_:
-                case SQLiteParser.CURRENT_TIMESTAMP_:
-                case SQLiteParser.DATABASE_:
-                case SQLiteParser.DEFAULT_:
-                case SQLiteParser.DEFERRABLE_:
-                case SQLiteParser.DEFERRED_:
-                case SQLiteParser.DELETE_:
-                case SQLiteParser.DESC_:
-                case SQLiteParser.DETACH_:
-                case SQLiteParser.DISTINCT_:
-                case SQLiteParser.DROP_:
-                case SQLiteParser.EACH_:
-                case SQLiteParser.ELSE_:
-                case SQLiteParser.END_:
-                case SQLiteParser.ESCAPE_:
-                case SQLiteParser.EXCEPT_:
-                case SQLiteParser.EXCLUSIVE_:
-                case SQLiteParser.EXISTS_:
-                case SQLiteParser.EXPLAIN_:
-                case SQLiteParser.FAIL_:
-                case SQLiteParser.FOR_:
-                case SQLiteParser.FOREIGN_:
-                case SQLiteParser.FROM_:
-                case SQLiteParser.FULL_:
-                case SQLiteParser.GLOB_:
-                case SQLiteParser.GROUP_:
-                case SQLiteParser.HAVING_:
-                case SQLiteParser.IF_:
-                case SQLiteParser.IGNORE_:
-                case SQLiteParser.IMMEDIATE_:
-                case SQLiteParser.IN_:
-                case SQLiteParser.INDEX_:
-                case SQLiteParser.INDEXED_:
-                case SQLiteParser.INITIALLY_:
-                case SQLiteParser.INNER_:
-                case SQLiteParser.INSERT_:
-                case SQLiteParser.INSTEAD_:
-                case SQLiteParser.INTERSECT_:
-                case SQLiteParser.INTO_:
-                case SQLiteParser.IS_:
-                case SQLiteParser.ISNULL_:
-                case SQLiteParser.JOIN_:
-                case SQLiteParser.KEY_:
-                case SQLiteParser.LEFT_:
-                case SQLiteParser.LIKE_:
-                case SQLiteParser.LIMIT_:
-                case SQLiteParser.MATCH_:
-                case SQLiteParser.NATURAL_:
-                case SQLiteParser.NO_:
-                case SQLiteParser.NOT_:
-                case SQLiteParser.NOTNULL_:
-                case SQLiteParser.NULL_:
-                case SQLiteParser.OF_:
-                case SQLiteParser.OFFSET_:
-                case SQLiteParser.ON_:
-                case SQLiteParser.OR_:
-                case SQLiteParser.ORDER_:
-                case SQLiteParser.OUTER_:
-                case SQLiteParser.PLAN_:
-                case SQLiteParser.PRAGMA_:
-                case SQLiteParser.PRIMARY_:
-                case SQLiteParser.QUERY_:
-                case SQLiteParser.RAISE_:
-                case SQLiteParser.RECURSIVE_:
-                case SQLiteParser.REFERENCES_:
-                case SQLiteParser.REGEXP_:
-                case SQLiteParser.REINDEX_:
-                case SQLiteParser.RELEASE_:
-                case SQLiteParser.RENAME_:
-                case SQLiteParser.REPLACE_:
-                case SQLiteParser.RESTRICT_:
-                case SQLiteParser.RIGHT_:
-                case SQLiteParser.ROLLBACK_:
-                case SQLiteParser.ROW_:
-                case SQLiteParser.ROWS_:
-                case SQLiteParser.SAVEPOINT_:
-                case SQLiteParser.SELECT_:
-                case SQLiteParser.SET_:
-                case SQLiteParser.TABLE_:
-                case SQLiteParser.TEMP_:
-                case SQLiteParser.TEMPORARY_:
-                case SQLiteParser.THEN_:
-                case SQLiteParser.TO_:
-                case SQLiteParser.TRANSACTION_:
-                case SQLiteParser.TRIGGER_:
-                case SQLiteParser.UNION_:
-                case SQLiteParser.UNIQUE_:
-                case SQLiteParser.UPDATE_:
-                case SQLiteParser.USING_:
-                case SQLiteParser.VACUUM_:
-                case SQLiteParser.VALUES_:
-                case SQLiteParser.VIEW_:
-                case SQLiteParser.VIRTUAL_:
-                case SQLiteParser.WHEN_:
-                case SQLiteParser.WHERE_:
-                case SQLiteParser.WITH_:
-                case SQLiteParser.WITHOUT_:
-                case SQLiteParser.FIRST_VALUE_:
-                case SQLiteParser.OVER_:
-                case SQLiteParser.PARTITION_:
-                case SQLiteParser.RANGE_:
-                case SQLiteParser.PRECEDING_:
-                case SQLiteParser.UNBOUNDED_:
-                case SQLiteParser.CURRENT_:
-                case SQLiteParser.FOLLOWING_:
-                case SQLiteParser.CUME_DIST_:
-                case SQLiteParser.DENSE_RANK_:
-                case SQLiteParser.LAG_:
-                case SQLiteParser.LAST_VALUE_:
-                case SQLiteParser.LEAD_:
-                case SQLiteParser.NTH_VALUE_:
-                case SQLiteParser.NTILE_:
-                case SQLiteParser.PERCENT_RANK_:
-                case SQLiteParser.RANK_:
-                case SQLiteParser.ROW_NUMBER_:
-                case SQLiteParser.GENERATED_:
-                case SQLiteParser.ALWAYS_:
-                case SQLiteParser.STORED_:
-                case SQLiteParser.TRUE_:
-                case SQLiteParser.FALSE_:
-                case SQLiteParser.WINDOW_:
-                case SQLiteParser.NULLS_:
-                case SQLiteParser.FIRST_:
-                case SQLiteParser.LAST_:
-                case SQLiteParser.FILTER_:
-                case SQLiteParser.GROUPS_:
-                case SQLiteParser.EXCLUDE_:
-                case SQLiteParser.IDENTIFIER:
-                case SQLiteParser.NUMERIC_LITERAL:
-                case SQLiteParser.BIND_PARAMETER:
-                case SQLiteParser.STRING_LITERAL:
-                case SQLiteParser.BLOB_LITERAL:
+                case 3:
+                case 8:
+                case 9:
+                case 10:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                case 54:
+                case 55:
+                case 56:
+                case 57:
+                case 58:
+                case 59:
+                case 60:
+                case 61:
+                case 62:
+                case 63:
+                case 64:
+                case 65:
+                case 66:
+                case 67:
+                case 68:
+                case 69:
+                case 70:
+                case 71:
+                case 72:
+                case 73:
+                case 74:
+                case 75:
+                case 76:
+                case 77:
+                case 78:
+                case 79:
+                case 80:
+                case 81:
+                case 82:
+                case 83:
+                case 84:
+                case 85:
+                case 86:
+                case 87:
+                case 88:
+                case 89:
+                case 90:
+                case 91:
+                case 92:
+                case 93:
+                case 94:
+                case 95:
+                case 96:
+                case 97:
+                case 98:
+                case 99:
+                case 100:
+                case 101:
+                case 102:
+                case 103:
+                case 104:
+                case 105:
+                case 106:
+                case 107:
+                case 108:
+                case 109:
+                case 110:
+                case 111:
+                case 112:
+                case 113:
+                case 114:
+                case 115:
+                case 116:
+                case 117:
+                case 118:
+                case 119:
+                case 120:
+                case 121:
+                case 122:
+                case 123:
+                case 125:
+                case 126:
+                case 127:
+                case 128:
+                case 129:
+                case 130:
+                case 131:
+                case 132:
+                case 133:
+                case 134:
+                case 135:
+                case 136:
+                case 137:
+                case 138:
+                case 139:
+                case 140:
+                case 141:
+                case 142:
+                case 143:
+                case 144:
+                case 145:
+                case 146:
+                case 147:
+                case 148:
+                case 149:
+                case 150:
+                case 151:
+                case 152:
+                case 153:
+                case 154:
+                case 155:
+                case 156:
+                case 157:
+                case 158:
+                case 159:
+                case 160:
+                case 161:
+                case 162:
+                case 163:
+                case 164:
+                case 165:
+                case 166:
+                case 167:
+                case 168:
+                case 169:
+                case 170:
+                case 171:
+                case 172:
+                case 173:
+                case 174:
+                case 175:
+                case 176:
+                case 177:
+                case 178:
+                case 179:
+                case 180:
+                case 185:
+                case 186:
+                case 187:
+                case 188:
+                case 189:
                   {
                     {
                       this.state = 896
                       this._errHandler.sync(this)
-                      switch (this.interpreter.adaptivePredict(this._input, 110, this._ctx)) {
+                      switch (this._interp.adaptivePredict(this._input, 110, this._ctx)) {
                         case 1:
                           {
                             this.state = 895
@@ -3949,7 +3781,7 @@ export class SQLiteParser extends Parser {
                       this.state = 903
                       this._errHandler.sync(this)
                       _la = this._input.LA(1)
-                      while (_la === SQLiteParser.COMMA) {
+                      while (_la === 5) {
                         {
                           {
                             this.state = 899
@@ -3965,13 +3797,13 @@ export class SQLiteParser extends Parser {
                     }
                   }
                   break
-                case SQLiteParser.STAR:
+                case 7:
                   {
                     this.state = 906
                     this.match(SQLiteParser.STAR)
                   }
                   break
-                case SQLiteParser.CLOSE_PAR:
+                case 4:
                   break
                 default:
                   break
@@ -3980,7 +3812,7 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.CLOSE_PAR)
               this.state = 911
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 113, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 113, this._ctx)) {
                 case 1:
                   {
                     this.state = 910
@@ -3990,7 +3822,7 @@ export class SQLiteParser extends Parser {
               }
               this.state = 914
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 114, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 114, this._ctx)) {
                 case 1:
                   {
                     this.state = 913
@@ -4000,7 +3832,6 @@ export class SQLiteParser extends Parser {
               }
             }
             break
-
           case 6:
             {
               this.state = 916
@@ -4010,7 +3841,7 @@ export class SQLiteParser extends Parser {
               this.state = 922
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              while (_la === SQLiteParser.COMMA) {
+              while (_la === 5) {
                 {
                   {
                     this.state = 918
@@ -4027,7 +3858,6 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.CLOSE_PAR)
             }
             break
-
           case 7:
             {
               this.state = 927
@@ -4044,18 +3874,17 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.CLOSE_PAR)
             }
             break
-
           case 8:
             {
               this.state = 938
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.EXISTS_ || _la === SQLiteParser.NOT_) {
+              if (_la === 70 || _la === 102) {
                 {
                   this.state = 935
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                  if (_la === SQLiteParser.NOT_) {
+                  if (_la === 102) {
                     {
                       this.state = 934
                       this.match(SQLiteParser.NOT_)
@@ -4075,14 +3904,13 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.CLOSE_PAR)
             }
             break
-
           case 9:
             {
               this.state = 944
               this.match(SQLiteParser.CASE_)
               this.state = 946
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 118, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 118, this._ctx)) {
                 case 1:
                   {
                     this.state = 945
@@ -4109,11 +3937,11 @@ export class SQLiteParser extends Parser {
                 this.state = 955
                 this._errHandler.sync(this)
                 _la = this._input.LA(1)
-              } while (_la === SQLiteParser.WHEN_)
+              } while (_la === 147)
               this.state = 959
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.ELSE_) {
+              if (_la === 65) {
                 {
                   this.state = 957
                   this.match(SQLiteParser.ELSE_)
@@ -4126,7 +3954,6 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.END_)
             }
             break
-
           case 10:
             {
               this.state = 963
@@ -4134,24 +3961,24 @@ export class SQLiteParser extends Parser {
             }
             break
         }
-        this._ctx._stop = this._input.tryLT(-1)
+        this._ctx.stop = this._input.LT(-1)
         this.state = 1085
         this._errHandler.sync(this)
-        _alt = this.interpreter.adaptivePredict(this._input, 137, this._ctx)
+        _alt = this._interp.adaptivePredict(this._input, 137, this._ctx)
         while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
           if (_alt === 1) {
             if (this._parseListeners != null) {
               this.triggerExitRuleEvent()
             }
-            _prevctx = _localctx
+            _prevctx = localctx
             {
               this.state = 1083
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 136, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 136, this._ctx)) {
                 case 1:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 966
                     if (!this.precpred(this._ctx, 20)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 20)')
@@ -4162,31 +3989,19 @@ export class SQLiteParser extends Parser {
                     this.expr(21)
                   }
                   break
-
                 case 2:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 969
                     if (!this.precpred(this._ctx, 19)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 19)')
                     }
                     this.state = 970
                     _la = this._input.LA(1)
-                    if (
-                      !(
-                        (_la & ~0x1f) === 0 &&
-                        ((1 << _la) &
-                          ((1 << SQLiteParser.STAR) | (1 << SQLiteParser.DIV) | (1 << SQLiteParser.MOD))) !==
-                          0
-                      )
-                    ) {
+                    if (!((_la & ~0x1f) === 0 && ((1 << _la) & 12416) !== 0)) {
                       this._errHandler.recoverInline(this)
                     } else {
-                      if (this._input.LA(1) === Token.EOF) {
-                        this.matchedEOF = true
-                      }
-
                       this._errHandler.reportMatch(this)
                       this.consume()
                     }
@@ -4194,24 +4009,19 @@ export class SQLiteParser extends Parser {
                     this.expr(20)
                   }
                   break
-
                 case 3:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 972
                     if (!this.precpred(this._ctx, 18)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 18)')
                     }
                     this.state = 973
                     _la = this._input.LA(1)
-                    if (!(_la === SQLiteParser.PLUS || _la === SQLiteParser.MINUS)) {
+                    if (!(_la === 8 || _la === 9)) {
                       this._errHandler.recoverInline(this)
                     } else {
-                      if (this._input.LA(1) === Token.EOF) {
-                        this.matchedEOF = true
-                      }
-
                       this._errHandler.reportMatch(this)
                       this.consume()
                     }
@@ -4219,34 +4029,19 @@ export class SQLiteParser extends Parser {
                     this.expr(19)
                   }
                   break
-
                 case 4:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 975
                     if (!this.precpred(this._ctx, 17)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 17)')
                     }
                     this.state = 976
                     _la = this._input.LA(1)
-                    if (
-                      !(
-                        (_la & ~0x1f) === 0 &&
-                        ((1 << _la) &
-                          ((1 << SQLiteParser.LT2) |
-                            (1 << SQLiteParser.GT2) |
-                            (1 << SQLiteParser.AMP) |
-                            (1 << SQLiteParser.PIPE))) !==
-                          0
-                      )
-                    ) {
+                    if (!((_la & ~0x1f) === 0 && ((1 << _la) & 245760) !== 0)) {
                       this._errHandler.recoverInline(this)
                     } else {
-                      if (this._input.LA(1) === Token.EOF) {
-                        this.matchedEOF = true
-                      }
-
                       this._errHandler.reportMatch(this)
                       this.consume()
                     }
@@ -4254,34 +4049,19 @@ export class SQLiteParser extends Parser {
                     this.expr(18)
                   }
                   break
-
                 case 5:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 978
                     if (!this.precpred(this._ctx, 16)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 16)')
                     }
                     this.state = 979
                     _la = this._input.LA(1)
-                    if (
-                      !(
-                        (_la & ~0x1f) === 0 &&
-                        ((1 << _la) &
-                          ((1 << SQLiteParser.LT) |
-                            (1 << SQLiteParser.LT_EQ) |
-                            (1 << SQLiteParser.GT) |
-                            (1 << SQLiteParser.GT_EQ))) !==
-                          0
-                      )
-                    ) {
+                    if (!((_la & ~0x1f) === 0 && ((1 << _la) & 3932160) !== 0)) {
                       this._errHandler.recoverInline(this)
                     } else {
-                      if (this._input.LA(1) === Token.EOF) {
-                        this.matchedEOF = true
-                      }
-
                       this._errHandler.reportMatch(this)
                       this.consume()
                     }
@@ -4289,53 +4069,47 @@ export class SQLiteParser extends Parser {
                     this.expr(17)
                   }
                   break
-
                 case 6:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 981
                     if (!this.precpred(this._ctx, 15)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 15)')
                     }
                     this.state = 994
                     this._errHandler.sync(this)
-                    switch (this.interpreter.adaptivePredict(this._input, 122, this._ctx)) {
+                    switch (this._interp.adaptivePredict(this._input, 122, this._ctx)) {
                       case 1:
                         {
                           this.state = 982
                           this.match(SQLiteParser.ASSIGN)
                         }
                         break
-
                       case 2:
                         {
                           this.state = 983
                           this.match(SQLiteParser.EQ)
                         }
                         break
-
                       case 3:
                         {
                           this.state = 984
                           this.match(SQLiteParser.NOT_EQ1)
                         }
                         break
-
                       case 4:
                         {
                           this.state = 985
                           this.match(SQLiteParser.NOT_EQ2)
                         }
                         break
-
                       case 5:
                         {
                           this.state = 986
                           this.match(SQLiteParser.IS_)
                         }
                         break
-
                       case 6:
                         {
                           this.state = 987
@@ -4344,35 +4118,30 @@ export class SQLiteParser extends Parser {
                           this.match(SQLiteParser.NOT_)
                         }
                         break
-
                       case 7:
                         {
                           this.state = 989
                           this.match(SQLiteParser.IN_)
                         }
                         break
-
                       case 8:
                         {
                           this.state = 990
                           this.match(SQLiteParser.LIKE_)
                         }
                         break
-
                       case 9:
                         {
                           this.state = 991
                           this.match(SQLiteParser.GLOB_)
                         }
                         break
-
                       case 10:
                         {
                           this.state = 992
                           this.match(SQLiteParser.MATCH_)
                         }
                         break
-
                       case 11:
                         {
                           this.state = 993
@@ -4384,11 +4153,10 @@ export class SQLiteParser extends Parser {
                     this.expr(16)
                   }
                   break
-
                 case 7:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 997
                     if (!this.precpred(this._ctx, 14)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 14)')
@@ -4399,11 +4167,10 @@ export class SQLiteParser extends Parser {
                     this.expr(15)
                   }
                   break
-
                 case 8:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 1000
                     if (!this.precpred(this._ctx, 13)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 13)')
@@ -4414,11 +4181,10 @@ export class SQLiteParser extends Parser {
                     this.expr(14)
                   }
                   break
-
                 case 9:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 1003
                     if (!this.precpred(this._ctx, 6)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 6)')
@@ -4427,7 +4193,7 @@ export class SQLiteParser extends Parser {
                     this.match(SQLiteParser.IS_)
                     this.state = 1006
                     this._errHandler.sync(this)
-                    switch (this.interpreter.adaptivePredict(this._input, 123, this._ctx)) {
+                    switch (this._interp.adaptivePredict(this._input, 123, this._ctx)) {
                       case 1:
                         {
                           this.state = 1005
@@ -4439,11 +4205,10 @@ export class SQLiteParser extends Parser {
                     this.expr(7)
                   }
                   break
-
                 case 10:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 1009
                     if (!this.precpred(this._ctx, 5)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 5)')
@@ -4451,7 +4216,7 @@ export class SQLiteParser extends Parser {
                     this.state = 1011
                     this._errHandler.sync(this)
                     _la = this._input.LA(1)
-                    if (_la === SQLiteParser.NOT_) {
+                    if (_la === 102) {
                       {
                         this.state = 1010
                         this.match(SQLiteParser.NOT_)
@@ -4468,11 +4233,10 @@ export class SQLiteParser extends Parser {
                     this.expr(6)
                   }
                   break
-
                 case 11:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 1018
                     if (!this.precpred(this._ctx, 9)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 9)')
@@ -4483,11 +4247,10 @@ export class SQLiteParser extends Parser {
                     this.collation_name()
                   }
                   break
-
                 case 12:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 1021
                     if (!this.precpred(this._ctx, 8)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 8)')
@@ -4495,7 +4258,7 @@ export class SQLiteParser extends Parser {
                     this.state = 1023
                     this._errHandler.sync(this)
                     _la = this._input.LA(1)
-                    if (_la === SQLiteParser.NOT_) {
+                    if (_la === 102) {
                       {
                         this.state = 1022
                         this.match(SQLiteParser.NOT_)
@@ -4504,23 +4267,9 @@ export class SQLiteParser extends Parser {
 
                     this.state = 1025
                     _la = this._input.LA(1)
-                    if (
-                      !(
-                        (((_la - 77) & ~0x1f) === 0 &&
-                          ((1 << (_la - 77)) &
-                            ((1 << (SQLiteParser.GLOB_ - 77)) |
-                              (1 << (SQLiteParser.LIKE_ - 77)) |
-                              (1 << (SQLiteParser.MATCH_ - 77)))) !==
-                            0) ||
-                        _la === SQLiteParser.REGEXP_
-                      )
-                    ) {
+                    if (!((((_la - 77) & ~0x1f) === 0 && ((1 << (_la - 77)) & 5242881) !== 0) || _la === 118)) {
                       this._errHandler.recoverInline(this)
                     } else {
-                      if (this._input.LA(1) === Token.EOF) {
-                        this.matchedEOF = true
-                      }
-
                       this._errHandler.reportMatch(this)
                       this.consume()
                     }
@@ -4528,7 +4277,7 @@ export class SQLiteParser extends Parser {
                     this.expr(0)
                     this.state = 1029
                     this._errHandler.sync(this)
-                    switch (this.interpreter.adaptivePredict(this._input, 126, this._ctx)) {
+                    switch (this._interp.adaptivePredict(this._input, 126, this._ctx)) {
                       case 1:
                         {
                           this.state = 1027
@@ -4540,11 +4289,10 @@ export class SQLiteParser extends Parser {
                     }
                   }
                   break
-
                 case 13:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 1031
                     if (!this.precpred(this._ctx, 7)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 7)')
@@ -4552,19 +4300,19 @@ export class SQLiteParser extends Parser {
                     this.state = 1036
                     this._errHandler.sync(this)
                     switch (this._input.LA(1)) {
-                      case SQLiteParser.ISNULL_:
+                      case 93:
                         {
                           this.state = 1032
                           this.match(SQLiteParser.ISNULL_)
                         }
                         break
-                      case SQLiteParser.NOTNULL_:
+                      case 103:
                         {
                           this.state = 1033
                           this.match(SQLiteParser.NOTNULL_)
                         }
                         break
-                      case SQLiteParser.NOT_:
+                      case 102:
                         {
                           this.state = 1034
                           this.match(SQLiteParser.NOT_)
@@ -4577,11 +4325,10 @@ export class SQLiteParser extends Parser {
                     }
                   }
                   break
-
                 case 14:
                   {
-                    _localctx = new ExprContext(_parentctx, _parentState)
-                    this.pushNewRecursionContext(_localctx, _startState, SQLiteParser.RULE_expr)
+                    localctx = new ExprContext(this, _parentctx, _parentState)
+                    this.pushNewRecursionContext(localctx, _startState, SQLiteParser.RULE_expr)
                     this.state = 1038
                     if (!this.precpred(this._ctx, 4)) {
                       throw this.createFailedPredicateException('this.precpred(this._ctx, 4)')
@@ -4589,7 +4336,7 @@ export class SQLiteParser extends Parser {
                     this.state = 1040
                     this._errHandler.sync(this)
                     _la = this._input.LA(1)
-                    if (_la === SQLiteParser.NOT_) {
+                    if (_la === 102) {
                       {
                         this.state = 1039
                         this.match(SQLiteParser.NOT_)
@@ -4600,21 +4347,20 @@ export class SQLiteParser extends Parser {
                     this.match(SQLiteParser.IN_)
                     this.state = 1081
                     this._errHandler.sync(this)
-                    switch (this.interpreter.adaptivePredict(this._input, 135, this._ctx)) {
+                    switch (this._interp.adaptivePredict(this._input, 135, this._ctx)) {
                       case 1:
                         {
                           this.state = 1043
                           this.match(SQLiteParser.OPEN_PAR)
                           this.state = 1053
                           this._errHandler.sync(this)
-                          switch (this.interpreter.adaptivePredict(this._input, 130, this._ctx)) {
+                          switch (this._interp.adaptivePredict(this._input, 130, this._ctx)) {
                             case 1:
                               {
                                 this.state = 1044
                                 this.select_stmt()
                               }
                               break
-
                             case 2:
                               {
                                 this.state = 1045
@@ -4622,7 +4368,7 @@ export class SQLiteParser extends Parser {
                                 this.state = 1050
                                 this._errHandler.sync(this)
                                 _la = this._input.LA(1)
-                                while (_la === SQLiteParser.COMMA) {
+                                while (_la === 5) {
                                   {
                                     {
                                       this.state = 1046
@@ -4642,12 +4388,11 @@ export class SQLiteParser extends Parser {
                           this.match(SQLiteParser.CLOSE_PAR)
                         }
                         break
-
                       case 2:
                         {
                           this.state = 1059
                           this._errHandler.sync(this)
-                          switch (this.interpreter.adaptivePredict(this._input, 131, this._ctx)) {
+                          switch (this._interp.adaptivePredict(this._input, 131, this._ctx)) {
                             case 1:
                               {
                                 this.state = 1056
@@ -4661,12 +4406,11 @@ export class SQLiteParser extends Parser {
                           this.table_name()
                         }
                         break
-
                       case 3:
                         {
                           this.state = 1065
                           this._errHandler.sync(this)
-                          switch (this.interpreter.adaptivePredict(this._input, 132, this._ctx)) {
+                          switch (this._interp.adaptivePredict(this._input, 132, this._ctx)) {
                             case 1:
                               {
                                 this.state = 1062
@@ -4684,188 +4428,12 @@ export class SQLiteParser extends Parser {
                           this._errHandler.sync(this)
                           _la = this._input.LA(1)
                           if (
-                            ((_la & ~0x1f) === 0 &&
-                              ((1 << _la) &
-                                ((1 << SQLiteParser.OPEN_PAR) |
-                                  (1 << SQLiteParser.PLUS) |
-                                  (1 << SQLiteParser.MINUS) |
-                                  (1 << SQLiteParser.TILDE) |
-                                  (1 << SQLiteParser.ABORT_) |
-                                  (1 << SQLiteParser.ACTION_) |
-                                  (1 << SQLiteParser.ADD_) |
-                                  (1 << SQLiteParser.AFTER_) |
-                                  (1 << SQLiteParser.ALL_) |
-                                  (1 << SQLiteParser.ALTER_) |
-                                  (1 << SQLiteParser.ANALYZE_))) !==
-                                0) ||
-                            (((_la - 32) & ~0x1f) === 0 &&
-                              ((1 << (_la - 32)) &
-                                ((1 << (SQLiteParser.AND_ - 32)) |
-                                  (1 << (SQLiteParser.AS_ - 32)) |
-                                  (1 << (SQLiteParser.ASC_ - 32)) |
-                                  (1 << (SQLiteParser.ATTACH_ - 32)) |
-                                  (1 << (SQLiteParser.AUTOINCREMENT_ - 32)) |
-                                  (1 << (SQLiteParser.BEFORE_ - 32)) |
-                                  (1 << (SQLiteParser.BEGIN_ - 32)) |
-                                  (1 << (SQLiteParser.BETWEEN_ - 32)) |
-                                  (1 << (SQLiteParser.BY_ - 32)) |
-                                  (1 << (SQLiteParser.CASCADE_ - 32)) |
-                                  (1 << (SQLiteParser.CASE_ - 32)) |
-                                  (1 << (SQLiteParser.CAST_ - 32)) |
-                                  (1 << (SQLiteParser.CHECK_ - 32)) |
-                                  (1 << (SQLiteParser.COLLATE_ - 32)) |
-                                  (1 << (SQLiteParser.COLUMN_ - 32)) |
-                                  (1 << (SQLiteParser.COMMIT_ - 32)) |
-                                  (1 << (SQLiteParser.CONFLICT_ - 32)) |
-                                  (1 << (SQLiteParser.CONSTRAINT_ - 32)) |
-                                  (1 << (SQLiteParser.CREATE_ - 32)) |
-                                  (1 << (SQLiteParser.CROSS_ - 32)) |
-                                  (1 << (SQLiteParser.CURRENT_DATE_ - 32)) |
-                                  (1 << (SQLiteParser.CURRENT_TIME_ - 32)) |
-                                  (1 << (SQLiteParser.CURRENT_TIMESTAMP_ - 32)) |
-                                  (1 << (SQLiteParser.DATABASE_ - 32)) |
-                                  (1 << (SQLiteParser.DEFAULT_ - 32)) |
-                                  (1 << (SQLiteParser.DEFERRABLE_ - 32)) |
-                                  (1 << (SQLiteParser.DEFERRED_ - 32)) |
-                                  (1 << (SQLiteParser.DELETE_ - 32)) |
-                                  (1 << (SQLiteParser.DESC_ - 32)) |
-                                  (1 << (SQLiteParser.DETACH_ - 32)) |
-                                  (1 << (SQLiteParser.DISTINCT_ - 32)) |
-                                  (1 << (SQLiteParser.DROP_ - 32)))) !==
-                                0) ||
-                            (((_la - 64) & ~0x1f) === 0 &&
-                              ((1 << (_la - 64)) &
-                                ((1 << (SQLiteParser.EACH_ - 64)) |
-                                  (1 << (SQLiteParser.ELSE_ - 64)) |
-                                  (1 << (SQLiteParser.END_ - 64)) |
-                                  (1 << (SQLiteParser.ESCAPE_ - 64)) |
-                                  (1 << (SQLiteParser.EXCEPT_ - 64)) |
-                                  (1 << (SQLiteParser.EXCLUSIVE_ - 64)) |
-                                  (1 << (SQLiteParser.EXISTS_ - 64)) |
-                                  (1 << (SQLiteParser.EXPLAIN_ - 64)) |
-                                  (1 << (SQLiteParser.FAIL_ - 64)) |
-                                  (1 << (SQLiteParser.FOR_ - 64)) |
-                                  (1 << (SQLiteParser.FOREIGN_ - 64)) |
-                                  (1 << (SQLiteParser.FROM_ - 64)) |
-                                  (1 << (SQLiteParser.FULL_ - 64)) |
-                                  (1 << (SQLiteParser.GLOB_ - 64)) |
-                                  (1 << (SQLiteParser.GROUP_ - 64)) |
-                                  (1 << (SQLiteParser.HAVING_ - 64)) |
-                                  (1 << (SQLiteParser.IF_ - 64)) |
-                                  (1 << (SQLiteParser.IGNORE_ - 64)) |
-                                  (1 << (SQLiteParser.IMMEDIATE_ - 64)) |
-                                  (1 << (SQLiteParser.IN_ - 64)) |
-                                  (1 << (SQLiteParser.INDEX_ - 64)) |
-                                  (1 << (SQLiteParser.INDEXED_ - 64)) |
-                                  (1 << (SQLiteParser.INITIALLY_ - 64)) |
-                                  (1 << (SQLiteParser.INNER_ - 64)) |
-                                  (1 << (SQLiteParser.INSERT_ - 64)) |
-                                  (1 << (SQLiteParser.INSTEAD_ - 64)) |
-                                  (1 << (SQLiteParser.INTERSECT_ - 64)) |
-                                  (1 << (SQLiteParser.INTO_ - 64)) |
-                                  (1 << (SQLiteParser.IS_ - 64)) |
-                                  (1 << (SQLiteParser.ISNULL_ - 64)) |
-                                  (1 << (SQLiteParser.JOIN_ - 64)) |
-                                  (1 << (SQLiteParser.KEY_ - 64)))) !==
-                                0) ||
-                            (((_la - 96) & ~0x1f) === 0 &&
-                              ((1 << (_la - 96)) &
-                                ((1 << (SQLiteParser.LEFT_ - 96)) |
-                                  (1 << (SQLiteParser.LIKE_ - 96)) |
-                                  (1 << (SQLiteParser.LIMIT_ - 96)) |
-                                  (1 << (SQLiteParser.MATCH_ - 96)) |
-                                  (1 << (SQLiteParser.NATURAL_ - 96)) |
-                                  (1 << (SQLiteParser.NO_ - 96)) |
-                                  (1 << (SQLiteParser.NOT_ - 96)) |
-                                  (1 << (SQLiteParser.NOTNULL_ - 96)) |
-                                  (1 << (SQLiteParser.NULL_ - 96)) |
-                                  (1 << (SQLiteParser.OF_ - 96)) |
-                                  (1 << (SQLiteParser.OFFSET_ - 96)) |
-                                  (1 << (SQLiteParser.ON_ - 96)) |
-                                  (1 << (SQLiteParser.OR_ - 96)) |
-                                  (1 << (SQLiteParser.ORDER_ - 96)) |
-                                  (1 << (SQLiteParser.OUTER_ - 96)) |
-                                  (1 << (SQLiteParser.PLAN_ - 96)) |
-                                  (1 << (SQLiteParser.PRAGMA_ - 96)) |
-                                  (1 << (SQLiteParser.PRIMARY_ - 96)) |
-                                  (1 << (SQLiteParser.QUERY_ - 96)) |
-                                  (1 << (SQLiteParser.RAISE_ - 96)) |
-                                  (1 << (SQLiteParser.RECURSIVE_ - 96)) |
-                                  (1 << (SQLiteParser.REFERENCES_ - 96)) |
-                                  (1 << (SQLiteParser.REGEXP_ - 96)) |
-                                  (1 << (SQLiteParser.REINDEX_ - 96)) |
-                                  (1 << (SQLiteParser.RELEASE_ - 96)) |
-                                  (1 << (SQLiteParser.RENAME_ - 96)) |
-                                  (1 << (SQLiteParser.REPLACE_ - 96)) |
-                                  (1 << (SQLiteParser.RESTRICT_ - 96)) |
-                                  (1 << (SQLiteParser.RIGHT_ - 96)) |
-                                  (1 << (SQLiteParser.ROLLBACK_ - 96)) |
-                                  (1 << (SQLiteParser.ROW_ - 96)))) !==
-                                0) ||
-                            (((_la - 128) & ~0x1f) === 0 &&
-                              ((1 << (_la - 128)) &
-                                ((1 << (SQLiteParser.ROWS_ - 128)) |
-                                  (1 << (SQLiteParser.SAVEPOINT_ - 128)) |
-                                  (1 << (SQLiteParser.SELECT_ - 128)) |
-                                  (1 << (SQLiteParser.SET_ - 128)) |
-                                  (1 << (SQLiteParser.TABLE_ - 128)) |
-                                  (1 << (SQLiteParser.TEMP_ - 128)) |
-                                  (1 << (SQLiteParser.TEMPORARY_ - 128)) |
-                                  (1 << (SQLiteParser.THEN_ - 128)) |
-                                  (1 << (SQLiteParser.TO_ - 128)) |
-                                  (1 << (SQLiteParser.TRANSACTION_ - 128)) |
-                                  (1 << (SQLiteParser.TRIGGER_ - 128)) |
-                                  (1 << (SQLiteParser.UNION_ - 128)) |
-                                  (1 << (SQLiteParser.UNIQUE_ - 128)) |
-                                  (1 << (SQLiteParser.UPDATE_ - 128)) |
-                                  (1 << (SQLiteParser.USING_ - 128)) |
-                                  (1 << (SQLiteParser.VACUUM_ - 128)) |
-                                  (1 << (SQLiteParser.VALUES_ - 128)) |
-                                  (1 << (SQLiteParser.VIEW_ - 128)) |
-                                  (1 << (SQLiteParser.VIRTUAL_ - 128)) |
-                                  (1 << (SQLiteParser.WHEN_ - 128)) |
-                                  (1 << (SQLiteParser.WHERE_ - 128)) |
-                                  (1 << (SQLiteParser.WITH_ - 128)) |
-                                  (1 << (SQLiteParser.WITHOUT_ - 128)) |
-                                  (1 << (SQLiteParser.FIRST_VALUE_ - 128)) |
-                                  (1 << (SQLiteParser.OVER_ - 128)) |
-                                  (1 << (SQLiteParser.PARTITION_ - 128)) |
-                                  (1 << (SQLiteParser.RANGE_ - 128)) |
-                                  (1 << (SQLiteParser.PRECEDING_ - 128)) |
-                                  (1 << (SQLiteParser.UNBOUNDED_ - 128)) |
-                                  (1 << (SQLiteParser.CURRENT_ - 128)) |
-                                  (1 << (SQLiteParser.FOLLOWING_ - 128)) |
-                                  (1 << (SQLiteParser.CUME_DIST_ - 128)))) !==
-                                0) ||
-                            (((_la - 160) & ~0x1f) === 0 &&
-                              ((1 << (_la - 160)) &
-                                ((1 << (SQLiteParser.DENSE_RANK_ - 160)) |
-                                  (1 << (SQLiteParser.LAG_ - 160)) |
-                                  (1 << (SQLiteParser.LAST_VALUE_ - 160)) |
-                                  (1 << (SQLiteParser.LEAD_ - 160)) |
-                                  (1 << (SQLiteParser.NTH_VALUE_ - 160)) |
-                                  (1 << (SQLiteParser.NTILE_ - 160)) |
-                                  (1 << (SQLiteParser.PERCENT_RANK_ - 160)) |
-                                  (1 << (SQLiteParser.RANK_ - 160)) |
-                                  (1 << (SQLiteParser.ROW_NUMBER_ - 160)) |
-                                  (1 << (SQLiteParser.GENERATED_ - 160)) |
-                                  (1 << (SQLiteParser.ALWAYS_ - 160)) |
-                                  (1 << (SQLiteParser.STORED_ - 160)) |
-                                  (1 << (SQLiteParser.TRUE_ - 160)) |
-                                  (1 << (SQLiteParser.FALSE_ - 160)) |
-                                  (1 << (SQLiteParser.WINDOW_ - 160)) |
-                                  (1 << (SQLiteParser.NULLS_ - 160)) |
-                                  (1 << (SQLiteParser.FIRST_ - 160)) |
-                                  (1 << (SQLiteParser.LAST_ - 160)) |
-                                  (1 << (SQLiteParser.FILTER_ - 160)) |
-                                  (1 << (SQLiteParser.GROUPS_ - 160)) |
-                                  (1 << (SQLiteParser.EXCLUDE_ - 160)) |
-                                  (1 << (SQLiteParser.IDENTIFIER - 160)) |
-                                  (1 << (SQLiteParser.NUMERIC_LITERAL - 160)) |
-                                  (1 << (SQLiteParser.BIND_PARAMETER - 160)) |
-                                  (1 << (SQLiteParser.STRING_LITERAL - 160)) |
-                                  (1 << (SQLiteParser.BLOB_LITERAL - 160)))) !==
-                                0)
+                            ((_la & ~0x1f) === 0 && ((1 << _la) & 4261414664) !== 0) ||
+                            (((_la - 32) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4294967295) !== 0) ||
+                            (((_la - 64) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) ||
+                            (((_la - 96) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4026531839) !== 0) ||
+                            (((_la - 128) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294967295) !== 0) ||
+                            (((_la - 160) & ~0x1f) === 0 && ((1 << (_la - 160)) & 1042284543) !== 0)
                           ) {
                             {
                               this.state = 1069
@@ -4873,7 +4441,7 @@ export class SQLiteParser extends Parser {
                               this.state = 1074
                               this._errHandler.sync(this)
                               _la = this._input.LA(1)
-                              while (_la === SQLiteParser.COMMA) {
+                              while (_la === 5) {
                                 {
                                   {
                                     this.state = 1070
@@ -4901,12 +4469,12 @@ export class SQLiteParser extends Parser {
           }
           this.state = 1087
           this._errHandler.sync(this)
-          _alt = this.interpreter.adaptivePredict(this._input, 137, this._ctx)
+          _alt = this._interp.adaptivePredict(this._input, 137, this._ctx)
         }
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -4915,15 +4483,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.unrollRecursionContexts(_parentctx)
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public raise_function(): Raise_functionContext {
-    let _localctx: Raise_functionContext = new Raise_functionContext(this._ctx, this.state)
-    this.enterRule(_localctx, 66, SQLiteParser.RULE_raise_function)
+    let localctx: Raise_functionContext = new Raise_functionContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 66, SQLiteParser.RULE_raise_function)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1088
         this.match(SQLiteParser.RAISE_)
@@ -4932,25 +4500,21 @@ export class SQLiteParser extends Parser {
         this.state = 1094
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.IGNORE_:
+          case 81:
             {
               this.state = 1090
               this.match(SQLiteParser.IGNORE_)
             }
             break
-          case SQLiteParser.ABORT_:
-          case SQLiteParser.FAIL_:
-          case SQLiteParser.ROLLBACK_:
+          case 25:
+          case 72:
+          case 126:
             {
               this.state = 1091
               _la = this._input.LA(1)
-              if (!(_la === SQLiteParser.ABORT_ || _la === SQLiteParser.FAIL_ || _la === SQLiteParser.ROLLBACK_)) {
+              if (!(_la === 25 || _la === 72 || _la === 126)) {
                 this._errHandler.recoverInline(this)
               } else {
-                if (this._input.LA(1) === Token.EOF) {
-                  this.matchedEOF = true
-                }
-
                 this._errHandler.reportMatch(this)
                 this.consume()
               }
@@ -4968,7 +4532,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -4977,50 +4541,34 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public literal_value(): Literal_valueContext {
-    let _localctx: Literal_valueContext = new Literal_valueContext(this._ctx, this.state)
-    this.enterRule(_localctx, 68, SQLiteParser.RULE_literal_value)
+    let localctx: Literal_valueContext = new Literal_valueContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 68, SQLiteParser.RULE_literal_value)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1098
         _la = this._input.LA(1)
         if (
           !(
-            (((_la - 52) & ~0x1f) === 0 &&
-              ((1 << (_la - 52)) &
-                ((1 << (SQLiteParser.CURRENT_DATE_ - 52)) |
-                  (1 << (SQLiteParser.CURRENT_TIME_ - 52)) |
-                  (1 << (SQLiteParser.CURRENT_TIMESTAMP_ - 52)))) !==
-                0) ||
-            _la === SQLiteParser.NULL_ ||
-            (((_la - 172) & ~0x1f) === 0 &&
-              ((1 << (_la - 172)) &
-                ((1 << (SQLiteParser.TRUE_ - 172)) |
-                  (1 << (SQLiteParser.FALSE_ - 172)) |
-                  (1 << (SQLiteParser.NUMERIC_LITERAL - 172)) |
-                  (1 << (SQLiteParser.STRING_LITERAL - 172)) |
-                  (1 << (SQLiteParser.BLOB_LITERAL - 172)))) !==
-                0)
+            (((_la - 52) & ~0x1f) === 0 && ((1 << (_la - 52)) & 7) !== 0) ||
+            _la === 104 ||
+            (((_la - 172) & ~0x1f) === 0 && ((1 << (_la - 172)) & 212995) !== 0)
           )
         ) {
           this._errHandler.recoverInline(this)
         } else {
-          if (this._input.LA(1) === Token.EOF) {
-            this.matchedEOF = true
-          }
-
           this._errHandler.reportMatch(this)
           this.consume()
         }
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5029,15 +4577,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public value_row(): Value_rowContext {
-    let _localctx: Value_rowContext = new Value_rowContext(this._ctx, this.state)
-    this.enterRule(_localctx, 70, SQLiteParser.RULE_value_row)
+    let localctx: Value_rowContext = new Value_rowContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 70, SQLiteParser.RULE_value_row)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1100
         this.match(SQLiteParser.OPEN_PAR)
@@ -5046,7 +4594,7 @@ export class SQLiteParser extends Parser {
         this.state = 1106
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 1102
@@ -5064,7 +4612,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5073,15 +4621,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public values_clause(): Values_clauseContext {
-    let _localctx: Values_clauseContext = new Values_clauseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 72, SQLiteParser.RULE_values_clause)
+    let localctx: Values_clauseContext = new Values_clauseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 72, SQLiteParser.RULE_values_clause)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1111
         this.match(SQLiteParser.VALUES_)
@@ -5090,7 +4638,7 @@ export class SQLiteParser extends Parser {
         this.state = 1117
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 1113
@@ -5106,7 +4654,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5115,20 +4663,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public insert_stmt(): Insert_stmtContext {
-    let _localctx: Insert_stmtContext = new Insert_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 74, SQLiteParser.RULE_insert_stmt)
+    let localctx: Insert_stmtContext = new Insert_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 74, SQLiteParser.RULE_insert_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1121
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WITH_) {
+        if (_la === 149) {
           {
             this.state = 1120
             this.with_clause()
@@ -5137,21 +4685,19 @@ export class SQLiteParser extends Parser {
 
         this.state = 1128
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 142, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 142, this._ctx)) {
           case 1:
             {
               this.state = 1123
               this.match(SQLiteParser.INSERT_)
             }
             break
-
           case 2:
             {
               this.state = 1124
               this.match(SQLiteParser.REPLACE_)
             }
             break
-
           case 3:
             {
               this.state = 1125
@@ -5160,21 +4706,9 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.OR_)
               this.state = 1127
               _la = this._input.LA(1)
-              if (
-                !(
-                  _la === SQLiteParser.ABORT_ ||
-                  _la === SQLiteParser.FAIL_ ||
-                  _la === SQLiteParser.IGNORE_ ||
-                  _la === SQLiteParser.REPLACE_ ||
-                  _la === SQLiteParser.ROLLBACK_
-                )
-              ) {
+              if (!(_la === 25 || _la === 72 || _la === 81 || _la === 122 || _la === 126)) {
                 this._errHandler.recoverInline(this)
               } else {
-                if (this._input.LA(1) === Token.EOF) {
-                  this.matchedEOF = true
-                }
-
                 this._errHandler.reportMatch(this)
                 this.consume()
               }
@@ -5185,7 +4719,7 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.INTO_)
         this.state = 1134
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 143, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 143, this._ctx)) {
           case 1:
             {
               this.state = 1131
@@ -5200,7 +4734,7 @@ export class SQLiteParser extends Parser {
         this.state = 1139
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.AS_) {
+        if (_la === 33) {
           {
             this.state = 1137
             this.match(SQLiteParser.AS_)
@@ -5212,7 +4746,7 @@ export class SQLiteParser extends Parser {
         this.state = 1152
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.OPEN_PAR) {
+        if (_la === 3) {
           {
             this.state = 1141
             this.match(SQLiteParser.OPEN_PAR)
@@ -5221,7 +4755,7 @@ export class SQLiteParser extends Parser {
             this.state = 1147
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            while (_la === SQLiteParser.COMMA) {
+            while (_la === 5) {
               {
                 {
                   this.state = 1143
@@ -5242,21 +4776,20 @@ export class SQLiteParser extends Parser {
         this.state = 1163
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.SELECT_:
-          case SQLiteParser.VALUES_:
-          case SQLiteParser.WITH_:
+          case 130:
+          case 144:
+          case 149:
             {
               {
                 this.state = 1156
                 this._errHandler.sync(this)
-                switch (this.interpreter.adaptivePredict(this._input, 147, this._ctx)) {
+                switch (this._interp.adaptivePredict(this._input, 147, this._ctx)) {
                   case 1:
                     {
                       this.state = 1154
                       this.values_clause()
                     }
                     break
-
                   case 2:
                     {
                       this.state = 1155
@@ -5267,7 +4800,7 @@ export class SQLiteParser extends Parser {
                 this.state = 1159
                 this._errHandler.sync(this)
                 _la = this._input.LA(1)
-                if (_la === SQLiteParser.ON_) {
+                if (_la === 107) {
                   {
                     this.state = 1158
                     this.upsert_clause()
@@ -5276,7 +4809,7 @@ export class SQLiteParser extends Parser {
               }
             }
             break
-          case SQLiteParser.DEFAULT_:
+          case 56:
             {
               this.state = 1161
               this.match(SQLiteParser.DEFAULT_)
@@ -5290,7 +4823,7 @@ export class SQLiteParser extends Parser {
         this.state = 1166
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.RETURNING_) {
+        if (_la === 124) {
           {
             this.state = 1165
             this.returning_clause()
@@ -5299,7 +4832,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5308,15 +4841,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public returning_clause(): Returning_clauseContext {
-    let _localctx: Returning_clauseContext = new Returning_clauseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 76, SQLiteParser.RULE_returning_clause)
+    let localctx: Returning_clauseContext = new Returning_clauseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 76, SQLiteParser.RULE_returning_clause)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1168
         this.match(SQLiteParser.RETURNING_)
@@ -5325,7 +4858,7 @@ export class SQLiteParser extends Parser {
         this.state = 1174
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 1170
@@ -5341,7 +4874,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5350,15 +4883,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public upsert_clause(): Upsert_clauseContext {
-    let _localctx: Upsert_clauseContext = new Upsert_clauseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 78, SQLiteParser.RULE_upsert_clause)
+    let localctx: Upsert_clauseContext = new Upsert_clauseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 78, SQLiteParser.RULE_upsert_clause)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1177
         this.match(SQLiteParser.ON_)
@@ -5367,7 +4900,7 @@ export class SQLiteParser extends Parser {
         this.state = 1193
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.OPEN_PAR) {
+        if (_la === 3) {
           {
             this.state = 1179
             this.match(SQLiteParser.OPEN_PAR)
@@ -5376,7 +4909,7 @@ export class SQLiteParser extends Parser {
             this.state = 1185
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            while (_la === SQLiteParser.COMMA) {
+            while (_la === 5) {
               {
                 {
                   this.state = 1181
@@ -5394,7 +4927,7 @@ export class SQLiteParser extends Parser {
             this.state = 1191
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.WHERE_) {
+            if (_la === 148) {
               {
                 this.state = 1189
                 this.match(SQLiteParser.WHERE_)
@@ -5410,13 +4943,13 @@ export class SQLiteParser extends Parser {
         this.state = 1222
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.NOTHING_:
+          case 184:
             {
               this.state = 1196
               this.match(SQLiteParser.NOTHING_)
             }
             break
-          case SQLiteParser.UPDATE_:
+          case 141:
             {
               this.state = 1197
               this.match(SQLiteParser.UPDATE_)
@@ -5425,14 +4958,13 @@ export class SQLiteParser extends Parser {
               {
                 this.state = 1201
                 this._errHandler.sync(this)
-                switch (this.interpreter.adaptivePredict(this._input, 155, this._ctx)) {
+                switch (this._interp.adaptivePredict(this._input, 155, this._ctx)) {
                   case 1:
                     {
                       this.state = 1199
                       this.column_name()
                     }
                     break
-
                   case 2:
                     {
                       this.state = 1200
@@ -5447,21 +4979,20 @@ export class SQLiteParser extends Parser {
                 this.state = 1215
                 this._errHandler.sync(this)
                 _la = this._input.LA(1)
-                while (_la === SQLiteParser.COMMA) {
+                while (_la === 5) {
                   {
                     {
                       this.state = 1205
                       this.match(SQLiteParser.COMMA)
                       this.state = 1208
                       this._errHandler.sync(this)
-                      switch (this.interpreter.adaptivePredict(this._input, 156, this._ctx)) {
+                      switch (this._interp.adaptivePredict(this._input, 156, this._ctx)) {
                         case 1:
                           {
                             this.state = 1206
                             this.column_name()
                           }
                           break
-
                         case 2:
                           {
                             this.state = 1207
@@ -5482,7 +5013,7 @@ export class SQLiteParser extends Parser {
                 this.state = 1220
                 this._errHandler.sync(this)
                 _la = this._input.LA(1)
-                if (_la === SQLiteParser.WHERE_) {
+                if (_la === 148) {
                   {
                     this.state = 1218
                     this.match(SQLiteParser.WHERE_)
@@ -5499,7 +5030,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5508,20 +5039,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public pragma_stmt(): Pragma_stmtContext {
-    let _localctx: Pragma_stmtContext = new Pragma_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 80, SQLiteParser.RULE_pragma_stmt)
+    let localctx: Pragma_stmtContext = new Pragma_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 80, SQLiteParser.RULE_pragma_stmt)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1224
         this.match(SQLiteParser.PRAGMA_)
         this.state = 1228
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 160, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 160, this._ctx)) {
           case 1:
             {
               this.state = 1225
@@ -5536,7 +5067,7 @@ export class SQLiteParser extends Parser {
         this.state = 1237
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.ASSIGN:
+          case 6:
             {
               this.state = 1231
               this.match(SQLiteParser.ASSIGN)
@@ -5544,7 +5075,7 @@ export class SQLiteParser extends Parser {
               this.pragma_value()
             }
             break
-          case SQLiteParser.OPEN_PAR:
+          case 3:
             {
               this.state = 1233
               this.match(SQLiteParser.OPEN_PAR)
@@ -5554,31 +5085,31 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.CLOSE_PAR)
             }
             break
-          case SQLiteParser.EOF:
-          case SQLiteParser.SCOL:
-          case SQLiteParser.ALTER_:
-          case SQLiteParser.ANALYZE_:
-          case SQLiteParser.ATTACH_:
-          case SQLiteParser.BEGIN_:
-          case SQLiteParser.COMMIT_:
-          case SQLiteParser.CREATE_:
-          case SQLiteParser.DELETE_:
-          case SQLiteParser.DETACH_:
-          case SQLiteParser.DROP_:
-          case SQLiteParser.END_:
-          case SQLiteParser.EXPLAIN_:
-          case SQLiteParser.INSERT_:
-          case SQLiteParser.PRAGMA_:
-          case SQLiteParser.REINDEX_:
-          case SQLiteParser.RELEASE_:
-          case SQLiteParser.REPLACE_:
-          case SQLiteParser.ROLLBACK_:
-          case SQLiteParser.SAVEPOINT_:
-          case SQLiteParser.SELECT_:
-          case SQLiteParser.UPDATE_:
-          case SQLiteParser.VACUUM_:
-          case SQLiteParser.VALUES_:
-          case SQLiteParser.WITH_:
+          case -1:
+          case 1:
+          case 30:
+          case 31:
+          case 35:
+          case 38:
+          case 47:
+          case 50:
+          case 59:
+          case 61:
+          case 63:
+          case 66:
+          case 71:
+          case 88:
+          case 112:
+          case 119:
+          case 120:
+          case 122:
+          case 126:
+          case 129:
+          case 130:
+          case 141:
+          case 143:
+          case 144:
+          case 149:
             break
           default:
             break
@@ -5586,7 +5117,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5595,34 +5126,32 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public pragma_value(): Pragma_valueContext {
-    let _localctx: Pragma_valueContext = new Pragma_valueContext(this._ctx, this.state)
-    this.enterRule(_localctx, 82, SQLiteParser.RULE_pragma_value)
+    let localctx: Pragma_valueContext = new Pragma_valueContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 82, SQLiteParser.RULE_pragma_value)
     try {
       this.state = 1242
       this._errHandler.sync(this)
-      switch (this.interpreter.adaptivePredict(this._input, 162, this._ctx)) {
+      switch (this._interp.adaptivePredict(this._input, 162, this._ctx)) {
         case 1:
-          this.enterOuterAlt(_localctx, 1)
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 1239
             this.signed_number()
           }
           break
-
         case 2:
-          this.enterOuterAlt(_localctx, 2)
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1240
             this.name()
           }
           break
-
         case 3:
-          this.enterOuterAlt(_localctx, 3)
+          this.enterOuterAlt(localctx, 3)
           {
             this.state = 1241
             this.match(SQLiteParser.STRING_LITERAL)
@@ -5631,7 +5160,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5640,32 +5169,31 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public reindex_stmt(): Reindex_stmtContext {
-    let _localctx: Reindex_stmtContext = new Reindex_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 84, SQLiteParser.RULE_reindex_stmt)
+    let localctx: Reindex_stmtContext = new Reindex_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 84, SQLiteParser.RULE_reindex_stmt)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1244
         this.match(SQLiteParser.REINDEX_)
         this.state = 1255
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 165, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 165, this._ctx)) {
           case 1:
             {
               this.state = 1245
               this.collation_name()
             }
             break
-
           case 2:
             {
               this.state = 1249
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 163, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 163, this._ctx)) {
                 case 1:
                   {
                     this.state = 1246
@@ -5677,14 +5205,13 @@ export class SQLiteParser extends Parser {
               }
               this.state = 1253
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 164, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 164, this._ctx)) {
                 case 1:
                   {
                     this.state = 1251
                     this.table_name()
                   }
                   break
-
                 case 2:
                   {
                     this.state = 1252
@@ -5698,7 +5225,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5707,21 +5234,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public select_stmt(): Select_stmtContext {
-    let _localctx: Select_stmtContext = new Select_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 86, SQLiteParser.RULE_select_stmt)
+    let localctx: Select_stmtContext = new Select_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 86, SQLiteParser.RULE_select_stmt)
     let _la: number
     try {
       let _alt: number
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1258
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WITH_) {
+        if (_la === 149) {
           {
             this.state = 1257
             this.common_table_stmt()
@@ -5732,7 +5259,7 @@ export class SQLiteParser extends Parser {
         this.select_core()
         this.state = 1266
         this._errHandler.sync(this)
-        _alt = this.interpreter.adaptivePredict(this._input, 167, this._ctx)
+        _alt = this._interp.adaptivePredict(this._input, 167, this._ctx)
         while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
           if (_alt === 1) {
             {
@@ -5746,12 +5273,12 @@ export class SQLiteParser extends Parser {
           }
           this.state = 1268
           this._errHandler.sync(this)
-          _alt = this.interpreter.adaptivePredict(this._input, 167, this._ctx)
+          _alt = this._interp.adaptivePredict(this._input, 167, this._ctx)
         }
         this.state = 1270
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.ORDER_) {
+        if (_la === 109) {
           {
             this.state = 1269
             this.order_by_stmt()
@@ -5761,7 +5288,7 @@ export class SQLiteParser extends Parser {
         this.state = 1273
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.LIMIT_) {
+        if (_la === 98) {
           {
             this.state = 1272
             this.limit_stmt()
@@ -5770,7 +5297,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5779,32 +5306,22 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public join_clause(): Join_clauseContext {
-    let _localctx: Join_clauseContext = new Join_clauseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 88, SQLiteParser.RULE_join_clause)
+    let localctx: Join_clauseContext = new Join_clauseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 88, SQLiteParser.RULE_join_clause)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1275
         this.table_or_subquery()
         this.state = 1283
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (
-          _la === SQLiteParser.COMMA ||
-          _la === SQLiteParser.CROSS_ ||
-          (((_la - 87) & ~0x1f) === 0 &&
-            ((1 << (_la - 87)) &
-              ((1 << (SQLiteParser.INNER_ - 87)) |
-                (1 << (SQLiteParser.JOIN_ - 87)) |
-                (1 << (SQLiteParser.LEFT_ - 87)) |
-                (1 << (SQLiteParser.NATURAL_ - 87)))) !==
-              0)
-        ) {
+        while (_la === 5 || _la === 51 || (((_la - 87) & ~0x1f) === 0 && ((1 << (_la - 87)) & 8833) !== 0)) {
           {
             {
               this.state = 1276
@@ -5813,7 +5330,7 @@ export class SQLiteParser extends Parser {
               this.table_or_subquery()
               this.state = 1279
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 170, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 170, this._ctx)) {
                 case 1:
                   {
                     this.state = 1278
@@ -5830,7 +5347,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -5839,37 +5356,33 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public select_core(): Select_coreContext {
-    let _localctx: Select_coreContext = new Select_coreContext(this._ctx, this.state)
-    this.enterRule(_localctx, 90, SQLiteParser.RULE_select_core)
+    let localctx: Select_coreContext = new Select_coreContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 90, SQLiteParser.RULE_select_core)
     let _la: number
     try {
       this.state = 1349
       this._errHandler.sync(this)
       switch (this._input.LA(1)) {
-        case SQLiteParser.SELECT_:
-          this.enterOuterAlt(_localctx, 1)
+        case 130:
+          this.enterOuterAlt(localctx, 1)
           {
             {
               this.state = 1286
               this.match(SQLiteParser.SELECT_)
               this.state = 1288
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 172, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 172, this._ctx)) {
                 case 1:
                   {
                     this.state = 1287
                     _la = this._input.LA(1)
-                    if (!(_la === SQLiteParser.ALL_ || _la === SQLiteParser.DISTINCT_)) {
+                    if (!(_la === 29 || _la === 62)) {
                       this._errHandler.recoverInline(this)
                     } else {
-                      if (this._input.LA(1) === Token.EOF) {
-                        this.matchedEOF = true
-                      }
-
                       this._errHandler.reportMatch(this)
                       this.consume()
                     }
@@ -5881,7 +5394,7 @@ export class SQLiteParser extends Parser {
               this.state = 1295
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              while (_la === SQLiteParser.COMMA) {
+              while (_la === 5) {
                 {
                   {
                     this.state = 1291
@@ -5897,13 +5410,13 @@ export class SQLiteParser extends Parser {
               this.state = 1310
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.FROM_) {
+              if (_la === 75) {
                 {
                   this.state = 1298
                   this.match(SQLiteParser.FROM_)
                   this.state = 1308
                   this._errHandler.sync(this)
-                  switch (this.interpreter.adaptivePredict(this._input, 175, this._ctx)) {
+                  switch (this._interp.adaptivePredict(this._input, 175, this._ctx)) {
                     case 1:
                       {
                         this.state = 1299
@@ -5911,7 +5424,7 @@ export class SQLiteParser extends Parser {
                         this.state = 1304
                         this._errHandler.sync(this)
                         _la = this._input.LA(1)
-                        while (_la === SQLiteParser.COMMA) {
+                        while (_la === 5) {
                           {
                             {
                               this.state = 1300
@@ -5926,7 +5439,6 @@ export class SQLiteParser extends Parser {
                         }
                       }
                       break
-
                     case 2:
                       {
                         this.state = 1307
@@ -5940,38 +5452,38 @@ export class SQLiteParser extends Parser {
               this.state = 1314
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.WHERE_) {
+              if (_la === 148) {
                 {
                   this.state = 1312
                   this.match(SQLiteParser.WHERE_)
                   this.state = 1313
-                  _localctx._whereExpr = this.expr(0)
+                  localctx._whereExpr = this.expr(0)
                 }
               }
 
               this.state = 1330
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.GROUP_) {
+              if (_la === 78) {
                 {
                   this.state = 1316
                   this.match(SQLiteParser.GROUP_)
                   this.state = 1317
                   this.match(SQLiteParser.BY_)
                   this.state = 1318
-                  _localctx._expr = this.expr(0)
-                  _localctx._groupByExpr.push(_localctx._expr)
+                  localctx._expr = this.expr(0)
+                  localctx._groupByExpr.push(localctx._expr)
                   this.state = 1323
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                  while (_la === SQLiteParser.COMMA) {
+                  while (_la === 5) {
                     {
                       {
                         this.state = 1319
                         this.match(SQLiteParser.COMMA)
                         this.state = 1320
-                        _localctx._expr = this.expr(0)
-                        _localctx._groupByExpr.push(_localctx._expr)
+                        localctx._expr = this.expr(0)
+                        localctx._groupByExpr.push(localctx._expr)
                       }
                     }
                     this.state = 1325
@@ -5981,12 +5493,12 @@ export class SQLiteParser extends Parser {
                   this.state = 1328
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                  if (_la === SQLiteParser.HAVING_) {
+                  if (_la === 79) {
                     {
                       this.state = 1326
                       this.match(SQLiteParser.HAVING_)
                       this.state = 1327
-                      _localctx._havingExpr = this.expr(0)
+                      localctx._havingExpr = this.expr(0)
                     }
                   }
                 }
@@ -5995,7 +5507,7 @@ export class SQLiteParser extends Parser {
               this.state = 1346
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.WINDOW_) {
+              if (_la === 174) {
                 {
                   this.state = 1332
                   this.match(SQLiteParser.WINDOW_)
@@ -6008,7 +5520,7 @@ export class SQLiteParser extends Parser {
                   this.state = 1343
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                  while (_la === SQLiteParser.COMMA) {
+                  while (_la === 5) {
                     {
                       {
                         this.state = 1336
@@ -6030,8 +5542,8 @@ export class SQLiteParser extends Parser {
             }
           }
           break
-        case SQLiteParser.VALUES_:
-          this.enterOuterAlt(_localctx, 2)
+        case 144:
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1348
             this.values_clause()
@@ -6042,7 +5554,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -6051,21 +5563,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public factored_select_stmt(): Factored_select_stmtContext {
-    let _localctx: Factored_select_stmtContext = new Factored_select_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 92, SQLiteParser.RULE_factored_select_stmt)
+    let localctx: Factored_select_stmtContext = new Factored_select_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 92, SQLiteParser.RULE_factored_select_stmt)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1351
         this.select_stmt()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -6074,20 +5586,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public simple_select_stmt(): Simple_select_stmtContext {
-    let _localctx: Simple_select_stmtContext = new Simple_select_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 94, SQLiteParser.RULE_simple_select_stmt)
+    let localctx: Simple_select_stmtContext = new Simple_select_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 94, SQLiteParser.RULE_simple_select_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1354
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WITH_) {
+        if (_la === 149) {
           {
             this.state = 1353
             this.common_table_stmt()
@@ -6099,7 +5611,7 @@ export class SQLiteParser extends Parser {
         this.state = 1358
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.ORDER_) {
+        if (_la === 109) {
           {
             this.state = 1357
             this.order_by_stmt()
@@ -6109,7 +5621,7 @@ export class SQLiteParser extends Parser {
         this.state = 1361
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.LIMIT_) {
+        if (_la === 98) {
           {
             this.state = 1360
             this.limit_stmt()
@@ -6118,7 +5630,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -6127,20 +5639,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public compound_select_stmt(): Compound_select_stmtContext {
-    let _localctx: Compound_select_stmtContext = new Compound_select_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 96, SQLiteParser.RULE_compound_select_stmt)
+    let localctx: Compound_select_stmtContext = new Compound_select_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 96, SQLiteParser.RULE_compound_select_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1364
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WITH_) {
+        if (_la === 149) {
           {
             this.state = 1363
             this.common_table_stmt()
@@ -6158,14 +5670,14 @@ export class SQLiteParser extends Parser {
               this.state = 1373
               this._errHandler.sync(this)
               switch (this._input.LA(1)) {
-                case SQLiteParser.UNION_:
+                case 139:
                   {
                     this.state = 1367
                     this.match(SQLiteParser.UNION_)
                     this.state = 1369
                     this._errHandler.sync(this)
                     _la = this._input.LA(1)
-                    if (_la === SQLiteParser.ALL_) {
+                    if (_la === 29) {
                       {
                         this.state = 1368
                         this.match(SQLiteParser.ALL_)
@@ -6173,13 +5685,13 @@ export class SQLiteParser extends Parser {
                     }
                   }
                   break
-                case SQLiteParser.INTERSECT_:
+                case 90:
                   {
                     this.state = 1371
                     this.match(SQLiteParser.INTERSECT_)
                   }
                   break
-                case SQLiteParser.EXCEPT_:
+                case 68:
                   {
                     this.state = 1372
                     this.match(SQLiteParser.EXCEPT_)
@@ -6195,11 +5707,11 @@ export class SQLiteParser extends Parser {
           this.state = 1378
           this._errHandler.sync(this)
           _la = this._input.LA(1)
-        } while (_la === SQLiteParser.EXCEPT_ || _la === SQLiteParser.INTERSECT_ || _la === SQLiteParser.UNION_)
+        } while (_la === 68 || _la === 90 || _la === 139)
         this.state = 1381
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.ORDER_) {
+        if (_la === 109) {
           {
             this.state = 1380
             this.order_by_stmt()
@@ -6209,7 +5721,7 @@ export class SQLiteParser extends Parser {
         this.state = 1384
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.LIMIT_) {
+        if (_la === 98) {
           {
             this.state = 1383
             this.limit_stmt()
@@ -6218,7 +5730,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -6227,24 +5739,24 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public table_or_subquery(): Table_or_subqueryContext {
-    let _localctx: Table_or_subqueryContext = new Table_or_subqueryContext(this._ctx, this.state)
-    this.enterRule(_localctx, 98, SQLiteParser.RULE_table_or_subquery)
+    let localctx: Table_or_subqueryContext = new Table_or_subqueryContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 98, SQLiteParser.RULE_table_or_subquery)
     let _la: number
     try {
       this.state = 1450
       this._errHandler.sync(this)
-      switch (this.interpreter.adaptivePredict(this._input, 205, this._ctx)) {
+      switch (this._interp.adaptivePredict(this._input, 205, this._ctx)) {
         case 1:
-          this.enterOuterAlt(_localctx, 1)
+          this.enterOuterAlt(localctx, 1)
           {
             {
               this.state = 1389
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 193, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 193, this._ctx)) {
                 case 1:
                   {
                     this.state = 1386
@@ -6258,12 +5770,12 @@ export class SQLiteParser extends Parser {
               this.table_name()
               this.state = 1396
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 195, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 195, this._ctx)) {
                 case 1:
                   {
                     this.state = 1393
                     this._errHandler.sync(this)
-                    switch (this.interpreter.adaptivePredict(this._input, 194, this._ctx)) {
+                    switch (this._interp.adaptivePredict(this._input, 194, this._ctx)) {
                       case 1:
                         {
                           this.state = 1392
@@ -6279,7 +5791,7 @@ export class SQLiteParser extends Parser {
               this.state = 1403
               this._errHandler.sync(this)
               switch (this._input.LA(1)) {
-                case SQLiteParser.INDEXED_:
+                case 85:
                   {
                     this.state = 1398
                     this.match(SQLiteParser.INDEXED_)
@@ -6289,7 +5801,7 @@ export class SQLiteParser extends Parser {
                     this.index_name()
                   }
                   break
-                case SQLiteParser.NOT_:
+                case 102:
                   {
                     this.state = 1401
                     this.match(SQLiteParser.NOT_)
@@ -6297,49 +5809,49 @@ export class SQLiteParser extends Parser {
                     this.match(SQLiteParser.INDEXED_)
                   }
                   break
-                case SQLiteParser.EOF:
-                case SQLiteParser.SCOL:
-                case SQLiteParser.CLOSE_PAR:
-                case SQLiteParser.COMMA:
-                case SQLiteParser.ALTER_:
-                case SQLiteParser.ANALYZE_:
-                case SQLiteParser.ATTACH_:
-                case SQLiteParser.BEGIN_:
-                case SQLiteParser.COMMIT_:
-                case SQLiteParser.CREATE_:
-                case SQLiteParser.CROSS_:
-                case SQLiteParser.DELETE_:
-                case SQLiteParser.DETACH_:
-                case SQLiteParser.DROP_:
-                case SQLiteParser.END_:
-                case SQLiteParser.EXCEPT_:
-                case SQLiteParser.EXPLAIN_:
-                case SQLiteParser.GROUP_:
-                case SQLiteParser.INNER_:
-                case SQLiteParser.INSERT_:
-                case SQLiteParser.INTERSECT_:
-                case SQLiteParser.JOIN_:
-                case SQLiteParser.LEFT_:
-                case SQLiteParser.LIMIT_:
-                case SQLiteParser.NATURAL_:
-                case SQLiteParser.ON_:
-                case SQLiteParser.ORDER_:
-                case SQLiteParser.PRAGMA_:
-                case SQLiteParser.REINDEX_:
-                case SQLiteParser.RELEASE_:
-                case SQLiteParser.REPLACE_:
-                case SQLiteParser.RETURNING_:
-                case SQLiteParser.ROLLBACK_:
-                case SQLiteParser.SAVEPOINT_:
-                case SQLiteParser.SELECT_:
-                case SQLiteParser.UNION_:
-                case SQLiteParser.UPDATE_:
-                case SQLiteParser.USING_:
-                case SQLiteParser.VACUUM_:
-                case SQLiteParser.VALUES_:
-                case SQLiteParser.WHERE_:
-                case SQLiteParser.WITH_:
-                case SQLiteParser.WINDOW_:
+                case -1:
+                case 1:
+                case 4:
+                case 5:
+                case 30:
+                case 31:
+                case 35:
+                case 38:
+                case 47:
+                case 50:
+                case 51:
+                case 59:
+                case 61:
+                case 63:
+                case 66:
+                case 68:
+                case 71:
+                case 78:
+                case 87:
+                case 88:
+                case 90:
+                case 94:
+                case 96:
+                case 98:
+                case 100:
+                case 107:
+                case 109:
+                case 112:
+                case 119:
+                case 120:
+                case 122:
+                case 124:
+                case 126:
+                case 129:
+                case 130:
+                case 139:
+                case 141:
+                case 142:
+                case 143:
+                case 144:
+                case 148:
+                case 149:
+                case 174:
                   break
                 default:
                   break
@@ -6347,13 +5859,12 @@ export class SQLiteParser extends Parser {
             }
           }
           break
-
         case 2:
-          this.enterOuterAlt(_localctx, 2)
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1408
             this._errHandler.sync(this)
-            switch (this.interpreter.adaptivePredict(this._input, 197, this._ctx)) {
+            switch (this._interp.adaptivePredict(this._input, 197, this._ctx)) {
               case 1:
                 {
                   this.state = 1405
@@ -6372,7 +5883,7 @@ export class SQLiteParser extends Parser {
             this.state = 1417
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            while (_la === SQLiteParser.COMMA) {
+            while (_la === 5) {
               {
                 {
                   this.state = 1413
@@ -6389,12 +5900,12 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.CLOSE_PAR)
             this.state = 1425
             this._errHandler.sync(this)
-            switch (this.interpreter.adaptivePredict(this._input, 200, this._ctx)) {
+            switch (this._interp.adaptivePredict(this._input, 200, this._ctx)) {
               case 1:
                 {
                   this.state = 1422
                   this._errHandler.sync(this)
-                  switch (this.interpreter.adaptivePredict(this._input, 199, this._ctx)) {
+                  switch (this._interp.adaptivePredict(this._input, 199, this._ctx)) {
                     case 1:
                       {
                         this.state = 1421
@@ -6409,15 +5920,14 @@ export class SQLiteParser extends Parser {
             }
           }
           break
-
         case 3:
-          this.enterOuterAlt(_localctx, 3)
+          this.enterOuterAlt(localctx, 3)
           {
             this.state = 1427
             this.match(SQLiteParser.OPEN_PAR)
             this.state = 1437
             this._errHandler.sync(this)
-            switch (this.interpreter.adaptivePredict(this._input, 202, this._ctx)) {
+            switch (this._interp.adaptivePredict(this._input, 202, this._ctx)) {
               case 1:
                 {
                   this.state = 1428
@@ -6425,7 +5935,7 @@ export class SQLiteParser extends Parser {
                   this.state = 1433
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                  while (_la === SQLiteParser.COMMA) {
+                  while (_la === 5) {
                     {
                       {
                         this.state = 1429
@@ -6440,7 +5950,6 @@ export class SQLiteParser extends Parser {
                   }
                 }
                 break
-
               case 2:
                 {
                   this.state = 1436
@@ -6452,9 +5961,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.CLOSE_PAR)
           }
           break
-
         case 4:
-          this.enterOuterAlt(_localctx, 4)
+          this.enterOuterAlt(localctx, 4)
           {
             this.state = 1441
             this.match(SQLiteParser.OPEN_PAR)
@@ -6464,12 +5972,12 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.CLOSE_PAR)
             this.state = 1448
             this._errHandler.sync(this)
-            switch (this.interpreter.adaptivePredict(this._input, 204, this._ctx)) {
+            switch (this._interp.adaptivePredict(this._input, 204, this._ctx)) {
               case 1:
                 {
                   this.state = 1445
                   this._errHandler.sync(this)
-                  switch (this.interpreter.adaptivePredict(this._input, 203, this._ctx)) {
+                  switch (this._interp.adaptivePredict(this._input, 203, this._ctx)) {
                     case 1:
                       {
                         this.state = 1444
@@ -6487,7 +5995,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -6496,27 +6004,26 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public result_column(): Result_columnContext {
-    let _localctx: Result_columnContext = new Result_columnContext(this._ctx, this.state)
-    this.enterRule(_localctx, 100, SQLiteParser.RULE_result_column)
+    let localctx: Result_columnContext = new Result_columnContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 100, SQLiteParser.RULE_result_column)
     let _la: number
     try {
       this.state = 1464
       this._errHandler.sync(this)
-      switch (this.interpreter.adaptivePredict(this._input, 208, this._ctx)) {
+      switch (this._interp.adaptivePredict(this._input, 208, this._ctx)) {
         case 1:
-          this.enterOuterAlt(_localctx, 1)
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 1452
             this.match(SQLiteParser.STAR)
           }
           break
-
         case 2:
-          this.enterOuterAlt(_localctx, 2)
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1453
             this.table_name()
@@ -6526,21 +6033,20 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.STAR)
           }
           break
-
         case 3:
-          this.enterOuterAlt(_localctx, 3)
+          this.enterOuterAlt(localctx, 3)
           {
             this.state = 1457
             this.expr(0)
             this.state = 1462
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.AS_ || _la === SQLiteParser.IDENTIFIER || _la === SQLiteParser.STRING_LITERAL) {
+            if (_la === 33 || _la === 185 || _la === 188) {
               {
                 this.state = 1459
                 this._errHandler.sync(this)
                 _la = this._input.LA(1)
-                if (_la === SQLiteParser.AS_) {
+                if (_la === 33) {
                   {
                     this.state = 1458
                     this.match(SQLiteParser.AS_)
@@ -6556,7 +6062,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -6565,35 +6071,35 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public join_operator(): Join_operatorContext {
-    let _localctx: Join_operatorContext = new Join_operatorContext(this._ctx, this.state)
-    this.enterRule(_localctx, 102, SQLiteParser.RULE_join_operator)
+    let localctx: Join_operatorContext = new Join_operatorContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 102, SQLiteParser.RULE_join_operator)
     let _la: number
     try {
       this.state = 1479
       this._errHandler.sync(this)
       switch (this._input.LA(1)) {
-        case SQLiteParser.COMMA:
-          this.enterOuterAlt(_localctx, 1)
+        case 5:
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 1466
             this.match(SQLiteParser.COMMA)
           }
           break
-        case SQLiteParser.CROSS_:
-        case SQLiteParser.INNER_:
-        case SQLiteParser.JOIN_:
-        case SQLiteParser.LEFT_:
-        case SQLiteParser.NATURAL_:
-          this.enterOuterAlt(_localctx, 2)
+        case 51:
+        case 87:
+        case 94:
+        case 96:
+        case 100:
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1468
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.NATURAL_) {
+            if (_la === 100) {
               {
                 this.state = 1467
                 this.match(SQLiteParser.NATURAL_)
@@ -6603,14 +6109,14 @@ export class SQLiteParser extends Parser {
             this.state = 1476
             this._errHandler.sync(this)
             switch (this._input.LA(1)) {
-              case SQLiteParser.LEFT_:
+              case 96:
                 {
                   this.state = 1470
                   this.match(SQLiteParser.LEFT_)
                   this.state = 1472
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                  if (_la === SQLiteParser.OUTER_) {
+                  if (_la === 110) {
                     {
                       this.state = 1471
                       this.match(SQLiteParser.OUTER_)
@@ -6618,19 +6124,19 @@ export class SQLiteParser extends Parser {
                   }
                 }
                 break
-              case SQLiteParser.INNER_:
+              case 87:
                 {
                   this.state = 1474
                   this.match(SQLiteParser.INNER_)
                 }
                 break
-              case SQLiteParser.CROSS_:
+              case 51:
                 {
                   this.state = 1475
                   this.match(SQLiteParser.CROSS_)
                 }
                 break
-              case SQLiteParser.JOIN_:
+              case 94:
                 break
               default:
                 break
@@ -6644,7 +6150,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -6653,19 +6159,19 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public join_constraint(): Join_constraintContext {
-    let _localctx: Join_constraintContext = new Join_constraintContext(this._ctx, this.state)
-    this.enterRule(_localctx, 104, SQLiteParser.RULE_join_constraint)
+    let localctx: Join_constraintContext = new Join_constraintContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 104, SQLiteParser.RULE_join_constraint)
     let _la: number
     try {
       this.state = 1495
       this._errHandler.sync(this)
       switch (this._input.LA(1)) {
-        case SQLiteParser.ON_:
-          this.enterOuterAlt(_localctx, 1)
+        case 107:
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 1481
             this.match(SQLiteParser.ON_)
@@ -6673,8 +6179,8 @@ export class SQLiteParser extends Parser {
             this.expr(0)
           }
           break
-        case SQLiteParser.USING_:
-          this.enterOuterAlt(_localctx, 2)
+        case 142:
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1483
             this.match(SQLiteParser.USING_)
@@ -6685,7 +6191,7 @@ export class SQLiteParser extends Parser {
             this.state = 1490
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            while (_la === SQLiteParser.COMMA) {
+            while (_la === 5) {
               {
                 {
                   this.state = 1486
@@ -6707,7 +6213,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -6716,26 +6222,26 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public compound_operator(): Compound_operatorContext {
-    let _localctx: Compound_operatorContext = new Compound_operatorContext(this._ctx, this.state)
-    this.enterRule(_localctx, 106, SQLiteParser.RULE_compound_operator)
+    let localctx: Compound_operatorContext = new Compound_operatorContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 106, SQLiteParser.RULE_compound_operator)
     let _la: number
     try {
       this.state = 1503
       this._errHandler.sync(this)
       switch (this._input.LA(1)) {
-        case SQLiteParser.UNION_:
-          this.enterOuterAlt(_localctx, 1)
+        case 139:
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 1497
             this.match(SQLiteParser.UNION_)
             this.state = 1499
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.ALL_) {
+            if (_la === 29) {
               {
                 this.state = 1498
                 this.match(SQLiteParser.ALL_)
@@ -6743,15 +6249,15 @@ export class SQLiteParser extends Parser {
             }
           }
           break
-        case SQLiteParser.INTERSECT_:
-          this.enterOuterAlt(_localctx, 2)
+        case 90:
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1501
             this.match(SQLiteParser.INTERSECT_)
           }
           break
-        case SQLiteParser.EXCEPT_:
-          this.enterOuterAlt(_localctx, 3)
+        case 68:
+          this.enterOuterAlt(localctx, 3)
           {
             this.state = 1502
             this.match(SQLiteParser.EXCEPT_)
@@ -6762,7 +6268,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -6771,20 +6277,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public update_stmt(): Update_stmtContext {
-    let _localctx: Update_stmtContext = new Update_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 108, SQLiteParser.RULE_update_stmt)
+    let localctx: Update_stmtContext = new Update_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 108, SQLiteParser.RULE_update_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1506
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WITH_) {
+        if (_la === 149) {
           {
             this.state = 1505
             this.with_clause()
@@ -6795,28 +6301,16 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.UPDATE_)
         this.state = 1511
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 218, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 218, this._ctx)) {
           case 1:
             {
               this.state = 1509
               this.match(SQLiteParser.OR_)
               this.state = 1510
               _la = this._input.LA(1)
-              if (
-                !(
-                  _la === SQLiteParser.ABORT_ ||
-                  _la === SQLiteParser.FAIL_ ||
-                  _la === SQLiteParser.IGNORE_ ||
-                  _la === SQLiteParser.REPLACE_ ||
-                  _la === SQLiteParser.ROLLBACK_
-                )
-              ) {
+              if (!(_la === 25 || _la === 72 || _la === 81 || _la === 122 || _la === 126)) {
                 this._errHandler.recoverInline(this)
               } else {
-                if (this._input.LA(1) === Token.EOF) {
-                  this.matchedEOF = true
-                }
-
                 this._errHandler.reportMatch(this)
                 this.consume()
               }
@@ -6829,14 +6323,13 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.SET_)
         this.state = 1517
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 219, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 219, this._ctx)) {
           case 1:
             {
               this.state = 1515
               this.column_name()
             }
             break
-
           case 2:
             {
               this.state = 1516
@@ -6851,21 +6344,20 @@ export class SQLiteParser extends Parser {
         this.state = 1531
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 1521
               this.match(SQLiteParser.COMMA)
               this.state = 1524
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 220, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 220, this._ctx)) {
                 case 1:
                   {
                     this.state = 1522
                     this.column_name()
                   }
                   break
-
                 case 2:
                   {
                     this.state = 1523
@@ -6886,13 +6378,13 @@ export class SQLiteParser extends Parser {
         this.state = 1546
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.FROM_) {
+        if (_la === 75) {
           {
             this.state = 1534
             this.match(SQLiteParser.FROM_)
             this.state = 1544
             this._errHandler.sync(this)
-            switch (this.interpreter.adaptivePredict(this._input, 223, this._ctx)) {
+            switch (this._interp.adaptivePredict(this._input, 223, this._ctx)) {
               case 1:
                 {
                   this.state = 1535
@@ -6900,7 +6392,7 @@ export class SQLiteParser extends Parser {
                   this.state = 1540
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                  while (_la === SQLiteParser.COMMA) {
+                  while (_la === 5) {
                     {
                       {
                         this.state = 1536
@@ -6915,7 +6407,6 @@ export class SQLiteParser extends Parser {
                   }
                 }
                 break
-
               case 2:
                 {
                   this.state = 1543
@@ -6929,7 +6420,7 @@ export class SQLiteParser extends Parser {
         this.state = 1550
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WHERE_) {
+        if (_la === 148) {
           {
             this.state = 1548
             this.match(SQLiteParser.WHERE_)
@@ -6941,7 +6432,7 @@ export class SQLiteParser extends Parser {
         this.state = 1553
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.RETURNING_) {
+        if (_la === 124) {
           {
             this.state = 1552
             this.returning_clause()
@@ -6950,7 +6441,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -6959,15 +6450,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public column_name_list(): Column_name_listContext {
-    let _localctx: Column_name_listContext = new Column_name_listContext(this._ctx, this.state)
-    this.enterRule(_localctx, 110, SQLiteParser.RULE_column_name_list)
+    let localctx: Column_name_listContext = new Column_name_listContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 110, SQLiteParser.RULE_column_name_list)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1555
         this.match(SQLiteParser.OPEN_PAR)
@@ -6976,7 +6467,7 @@ export class SQLiteParser extends Parser {
         this.state = 1561
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 1557
@@ -6994,7 +6485,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -7003,20 +6494,20 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public update_stmt_limited(): Update_stmt_limitedContext {
-    let _localctx: Update_stmt_limitedContext = new Update_stmt_limitedContext(this._ctx, this.state)
-    this.enterRule(_localctx, 112, SQLiteParser.RULE_update_stmt_limited)
+    let localctx: Update_stmt_limitedContext = new Update_stmt_limitedContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 112, SQLiteParser.RULE_update_stmt_limited)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1567
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WITH_) {
+        if (_la === 149) {
           {
             this.state = 1566
             this.with_clause()
@@ -7027,28 +6518,16 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.UPDATE_)
         this.state = 1572
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 229, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 229, this._ctx)) {
           case 1:
             {
               this.state = 1570
               this.match(SQLiteParser.OR_)
               this.state = 1571
               _la = this._input.LA(1)
-              if (
-                !(
-                  _la === SQLiteParser.ABORT_ ||
-                  _la === SQLiteParser.FAIL_ ||
-                  _la === SQLiteParser.IGNORE_ ||
-                  _la === SQLiteParser.REPLACE_ ||
-                  _la === SQLiteParser.ROLLBACK_
-                )
-              ) {
+              if (!(_la === 25 || _la === 72 || _la === 81 || _la === 122 || _la === 126)) {
                 this._errHandler.recoverInline(this)
               } else {
-                if (this._input.LA(1) === Token.EOF) {
-                  this.matchedEOF = true
-                }
-
                 this._errHandler.reportMatch(this)
                 this.consume()
               }
@@ -7061,14 +6540,13 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.SET_)
         this.state = 1578
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 230, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 230, this._ctx)) {
           case 1:
             {
               this.state = 1576
               this.column_name()
             }
             break
-
           case 2:
             {
               this.state = 1577
@@ -7083,21 +6561,20 @@ export class SQLiteParser extends Parser {
         this.state = 1592
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 1582
               this.match(SQLiteParser.COMMA)
               this.state = 1585
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 231, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 231, this._ctx)) {
                 case 1:
                   {
                     this.state = 1583
                     this.column_name()
                   }
                   break
-
                 case 2:
                   {
                     this.state = 1584
@@ -7118,7 +6595,7 @@ export class SQLiteParser extends Parser {
         this.state = 1597
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.WHERE_) {
+        if (_la === 148) {
           {
             this.state = 1595
             this.match(SQLiteParser.WHERE_)
@@ -7130,7 +6607,7 @@ export class SQLiteParser extends Parser {
         this.state = 1600
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.RETURNING_) {
+        if (_la === 124) {
           {
             this.state = 1599
             this.returning_clause()
@@ -7140,12 +6617,12 @@ export class SQLiteParser extends Parser {
         this.state = 1606
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.LIMIT_ || _la === SQLiteParser.ORDER_) {
+        if (_la === 98 || _la === 109) {
           {
             this.state = 1603
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.ORDER_) {
+            if (_la === 109) {
               {
                 this.state = 1602
                 this.order_by_stmt()
@@ -7159,7 +6636,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -7168,19 +6645,19 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public qualified_table_name(): Qualified_table_nameContext {
-    let _localctx: Qualified_table_nameContext = new Qualified_table_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 114, SQLiteParser.RULE_qualified_table_name)
+    let localctx: Qualified_table_nameContext = new Qualified_table_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 114, SQLiteParser.RULE_qualified_table_name)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1611
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 237, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 237, this._ctx)) {
           case 1:
             {
               this.state = 1608
@@ -7195,7 +6672,7 @@ export class SQLiteParser extends Parser {
         this.state = 1616
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.AS_) {
+        if (_la === 33) {
           {
             this.state = 1614
             this.match(SQLiteParser.AS_)
@@ -7207,7 +6684,7 @@ export class SQLiteParser extends Parser {
         this.state = 1623
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.INDEXED_:
+          case 85:
             {
               this.state = 1618
               this.match(SQLiteParser.INDEXED_)
@@ -7217,7 +6694,7 @@ export class SQLiteParser extends Parser {
               this.index_name()
             }
             break
-          case SQLiteParser.NOT_:
+          case 102:
             {
               this.state = 1621
               this.match(SQLiteParser.NOT_)
@@ -7225,36 +6702,36 @@ export class SQLiteParser extends Parser {
               this.match(SQLiteParser.INDEXED_)
             }
             break
-          case SQLiteParser.EOF:
-          case SQLiteParser.SCOL:
-          case SQLiteParser.ALTER_:
-          case SQLiteParser.ANALYZE_:
-          case SQLiteParser.ATTACH_:
-          case SQLiteParser.BEGIN_:
-          case SQLiteParser.COMMIT_:
-          case SQLiteParser.CREATE_:
-          case SQLiteParser.DELETE_:
-          case SQLiteParser.DETACH_:
-          case SQLiteParser.DROP_:
-          case SQLiteParser.END_:
-          case SQLiteParser.EXPLAIN_:
-          case SQLiteParser.INSERT_:
-          case SQLiteParser.LIMIT_:
-          case SQLiteParser.ORDER_:
-          case SQLiteParser.PRAGMA_:
-          case SQLiteParser.REINDEX_:
-          case SQLiteParser.RELEASE_:
-          case SQLiteParser.REPLACE_:
-          case SQLiteParser.RETURNING_:
-          case SQLiteParser.ROLLBACK_:
-          case SQLiteParser.SAVEPOINT_:
-          case SQLiteParser.SELECT_:
-          case SQLiteParser.SET_:
-          case SQLiteParser.UPDATE_:
-          case SQLiteParser.VACUUM_:
-          case SQLiteParser.VALUES_:
-          case SQLiteParser.WHERE_:
-          case SQLiteParser.WITH_:
+          case -1:
+          case 1:
+          case 30:
+          case 31:
+          case 35:
+          case 38:
+          case 47:
+          case 50:
+          case 59:
+          case 61:
+          case 63:
+          case 66:
+          case 71:
+          case 88:
+          case 98:
+          case 109:
+          case 112:
+          case 119:
+          case 120:
+          case 122:
+          case 124:
+          case 126:
+          case 129:
+          case 130:
+          case 131:
+          case 141:
+          case 143:
+          case 144:
+          case 148:
+          case 149:
             break
           default:
             break
@@ -7262,7 +6739,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -7271,21 +6748,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public vacuum_stmt(): Vacuum_stmtContext {
-    let _localctx: Vacuum_stmtContext = new Vacuum_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 116, SQLiteParser.RULE_vacuum_stmt)
+    let localctx: Vacuum_stmtContext = new Vacuum_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 116, SQLiteParser.RULE_vacuum_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1625
         this.match(SQLiteParser.VACUUM_)
         this.state = 1627
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 240, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 240, this._ctx)) {
           case 1:
             {
               this.state = 1626
@@ -7296,7 +6773,7 @@ export class SQLiteParser extends Parser {
         this.state = 1631
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.INTO_) {
+        if (_la === 91) {
           {
             this.state = 1629
             this.match(SQLiteParser.INTO_)
@@ -7307,7 +6784,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -7316,14 +6793,14 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public filter_clause(): Filter_clauseContext {
-    let _localctx: Filter_clauseContext = new Filter_clauseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 118, SQLiteParser.RULE_filter_clause)
+    let localctx: Filter_clauseContext = new Filter_clauseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 118, SQLiteParser.RULE_filter_clause)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1633
         this.match(SQLiteParser.FILTER_)
@@ -7338,7 +6815,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -7347,21 +6824,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public window_defn(): Window_defnContext {
-    let _localctx: Window_defnContext = new Window_defnContext(this._ctx, this.state)
-    this.enterRule(_localctx, 120, SQLiteParser.RULE_window_defn)
+    let localctx: Window_defnContext = new Window_defnContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 120, SQLiteParser.RULE_window_defn)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1639
         this.match(SQLiteParser.OPEN_PAR)
         this.state = 1641
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 242, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 242, this._ctx)) {
           case 1:
             {
               this.state = 1640
@@ -7372,7 +6849,7 @@ export class SQLiteParser extends Parser {
         this.state = 1653
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.PARTITION_) {
+        if (_la === 153) {
           {
             this.state = 1643
             this.match(SQLiteParser.PARTITION_)
@@ -7383,7 +6860,7 @@ export class SQLiteParser extends Parser {
             this.state = 1650
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            while (_la === SQLiteParser.COMMA) {
+            while (_la === 5) {
               {
                 {
                   this.state = 1646
@@ -7409,7 +6886,7 @@ export class SQLiteParser extends Parser {
           this.state = 1662
           this._errHandler.sync(this)
           _la = this._input.LA(1)
-          while (_la === SQLiteParser.COMMA) {
+          while (_la === 5) {
             {
               {
                 this.state = 1658
@@ -7426,7 +6903,7 @@ export class SQLiteParser extends Parser {
         this.state = 1666
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.ROWS_ || _la === SQLiteParser.RANGE_ || _la === SQLiteParser.GROUPS_) {
+        if (_la === 128 || _la === 154 || _la === 179) {
           {
             this.state = 1665
             this.frame_spec()
@@ -7438,7 +6915,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -7447,35 +6924,34 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public over_clause(): Over_clauseContext {
-    let _localctx: Over_clauseContext = new Over_clauseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 122, SQLiteParser.RULE_over_clause)
+    let localctx: Over_clauseContext = new Over_clauseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 122, SQLiteParser.RULE_over_clause)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1670
         this.match(SQLiteParser.OVER_)
         this.state = 1704
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 253, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 253, this._ctx)) {
           case 1:
             {
               this.state = 1671
               this.window_name()
             }
             break
-
           case 2:
             {
               this.state = 1672
               this.match(SQLiteParser.OPEN_PAR)
               this.state = 1674
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 247, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 247, this._ctx)) {
                 case 1:
                   {
                     this.state = 1673
@@ -7486,7 +6962,7 @@ export class SQLiteParser extends Parser {
               this.state = 1686
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.PARTITION_) {
+              if (_la === 153) {
                 {
                   this.state = 1676
                   this.match(SQLiteParser.PARTITION_)
@@ -7497,7 +6973,7 @@ export class SQLiteParser extends Parser {
                   this.state = 1683
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                  while (_la === SQLiteParser.COMMA) {
+                  while (_la === 5) {
                     {
                       {
                         this.state = 1679
@@ -7516,7 +6992,7 @@ export class SQLiteParser extends Parser {
               this.state = 1698
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.ORDER_) {
+              if (_la === 109) {
                 {
                   this.state = 1688
                   this.match(SQLiteParser.ORDER_)
@@ -7527,7 +7003,7 @@ export class SQLiteParser extends Parser {
                   this.state = 1695
                   this._errHandler.sync(this)
                   _la = this._input.LA(1)
-                  while (_la === SQLiteParser.COMMA) {
+                  while (_la === 5) {
                     {
                       {
                         this.state = 1691
@@ -7546,7 +7022,7 @@ export class SQLiteParser extends Parser {
               this.state = 1701
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.ROWS_ || _la === SQLiteParser.RANGE_ || _la === SQLiteParser.GROUPS_) {
+              if (_la === 128 || _la === 154 || _la === 179) {
                 {
                   this.state = 1700
                   this.frame_spec()
@@ -7561,7 +7037,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -7570,29 +7046,29 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public frame_spec(): Frame_specContext {
-    let _localctx: Frame_specContext = new Frame_specContext(this._ctx, this.state)
-    this.enterRule(_localctx, 124, SQLiteParser.RULE_frame_spec)
+    let localctx: Frame_specContext = new Frame_specContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 124, SQLiteParser.RULE_frame_spec)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1706
         this.frame_clause()
         this.state = 1716
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.EXCLUDE_) {
+        if (_la === 180) {
           {
             this.state = 1707
             this.match(SQLiteParser.EXCLUDE_)
             this.state = 1714
             this._errHandler.sync(this)
             switch (this._input.LA(1)) {
-              case SQLiteParser.NO_:
+              case 101:
                 {
                   this.state = 1708
                   this.match(SQLiteParser.NO_)
@@ -7600,7 +7076,7 @@ export class SQLiteParser extends Parser {
                   this.match(SQLiteParser.OTHERS_)
                 }
                 break
-              case SQLiteParser.CURRENT_:
+              case 157:
                 {
                   this.state = 1710
                   this.match(SQLiteParser.CURRENT_)
@@ -7608,13 +7084,13 @@ export class SQLiteParser extends Parser {
                   this.match(SQLiteParser.ROW_)
                 }
                 break
-              case SQLiteParser.GROUP_:
+              case 78:
                 {
                   this.state = 1712
                   this.match(SQLiteParser.GROUP_)
                 }
                 break
-              case SQLiteParser.TIES_:
+              case 181:
                 {
                   this.state = 1713
                   this.match(SQLiteParser.TIES_)
@@ -7628,7 +7104,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -7637,38 +7113,33 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public frame_clause(): Frame_clauseContext {
-    let _localctx: Frame_clauseContext = new Frame_clauseContext(this._ctx, this.state)
-    this.enterRule(_localctx, 126, SQLiteParser.RULE_frame_clause)
+    let localctx: Frame_clauseContext = new Frame_clauseContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 126, SQLiteParser.RULE_frame_clause)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1718
         _la = this._input.LA(1)
-        if (!(_la === SQLiteParser.ROWS_ || _la === SQLiteParser.RANGE_ || _la === SQLiteParser.GROUPS_)) {
+        if (!(_la === 128 || _la === 154 || _la === 179)) {
           this._errHandler.recoverInline(this)
         } else {
-          if (this._input.LA(1) === Token.EOF) {
-            this.matchedEOF = true
-          }
-
           this._errHandler.reportMatch(this)
           this.consume()
         }
         this.state = 1725
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 256, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 256, this._ctx)) {
           case 1:
             {
               this.state = 1719
               this.frame_single()
             }
             break
-
           case 2:
             {
               this.state = 1720
@@ -7685,7 +7156,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -7694,15 +7165,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public simple_function_invocation(): Simple_function_invocationContext {
-    let _localctx: Simple_function_invocationContext = new Simple_function_invocationContext(this._ctx, this.state)
-    this.enterRule(_localctx, 128, SQLiteParser.RULE_simple_function_invocation)
+    let localctx: Simple_function_invocationContext = new Simple_function_invocationContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 128, SQLiteParser.RULE_simple_function_invocation)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1727
         this.simple_func()
@@ -7711,177 +7182,177 @@ export class SQLiteParser extends Parser {
         this.state = 1738
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.OPEN_PAR:
-          case SQLiteParser.PLUS:
-          case SQLiteParser.MINUS:
-          case SQLiteParser.TILDE:
-          case SQLiteParser.ABORT_:
-          case SQLiteParser.ACTION_:
-          case SQLiteParser.ADD_:
-          case SQLiteParser.AFTER_:
-          case SQLiteParser.ALL_:
-          case SQLiteParser.ALTER_:
-          case SQLiteParser.ANALYZE_:
-          case SQLiteParser.AND_:
-          case SQLiteParser.AS_:
-          case SQLiteParser.ASC_:
-          case SQLiteParser.ATTACH_:
-          case SQLiteParser.AUTOINCREMENT_:
-          case SQLiteParser.BEFORE_:
-          case SQLiteParser.BEGIN_:
-          case SQLiteParser.BETWEEN_:
-          case SQLiteParser.BY_:
-          case SQLiteParser.CASCADE_:
-          case SQLiteParser.CASE_:
-          case SQLiteParser.CAST_:
-          case SQLiteParser.CHECK_:
-          case SQLiteParser.COLLATE_:
-          case SQLiteParser.COLUMN_:
-          case SQLiteParser.COMMIT_:
-          case SQLiteParser.CONFLICT_:
-          case SQLiteParser.CONSTRAINT_:
-          case SQLiteParser.CREATE_:
-          case SQLiteParser.CROSS_:
-          case SQLiteParser.CURRENT_DATE_:
-          case SQLiteParser.CURRENT_TIME_:
-          case SQLiteParser.CURRENT_TIMESTAMP_:
-          case SQLiteParser.DATABASE_:
-          case SQLiteParser.DEFAULT_:
-          case SQLiteParser.DEFERRABLE_:
-          case SQLiteParser.DEFERRED_:
-          case SQLiteParser.DELETE_:
-          case SQLiteParser.DESC_:
-          case SQLiteParser.DETACH_:
-          case SQLiteParser.DISTINCT_:
-          case SQLiteParser.DROP_:
-          case SQLiteParser.EACH_:
-          case SQLiteParser.ELSE_:
-          case SQLiteParser.END_:
-          case SQLiteParser.ESCAPE_:
-          case SQLiteParser.EXCEPT_:
-          case SQLiteParser.EXCLUSIVE_:
-          case SQLiteParser.EXISTS_:
-          case SQLiteParser.EXPLAIN_:
-          case SQLiteParser.FAIL_:
-          case SQLiteParser.FOR_:
-          case SQLiteParser.FOREIGN_:
-          case SQLiteParser.FROM_:
-          case SQLiteParser.FULL_:
-          case SQLiteParser.GLOB_:
-          case SQLiteParser.GROUP_:
-          case SQLiteParser.HAVING_:
-          case SQLiteParser.IF_:
-          case SQLiteParser.IGNORE_:
-          case SQLiteParser.IMMEDIATE_:
-          case SQLiteParser.IN_:
-          case SQLiteParser.INDEX_:
-          case SQLiteParser.INDEXED_:
-          case SQLiteParser.INITIALLY_:
-          case SQLiteParser.INNER_:
-          case SQLiteParser.INSERT_:
-          case SQLiteParser.INSTEAD_:
-          case SQLiteParser.INTERSECT_:
-          case SQLiteParser.INTO_:
-          case SQLiteParser.IS_:
-          case SQLiteParser.ISNULL_:
-          case SQLiteParser.JOIN_:
-          case SQLiteParser.KEY_:
-          case SQLiteParser.LEFT_:
-          case SQLiteParser.LIKE_:
-          case SQLiteParser.LIMIT_:
-          case SQLiteParser.MATCH_:
-          case SQLiteParser.NATURAL_:
-          case SQLiteParser.NO_:
-          case SQLiteParser.NOT_:
-          case SQLiteParser.NOTNULL_:
-          case SQLiteParser.NULL_:
-          case SQLiteParser.OF_:
-          case SQLiteParser.OFFSET_:
-          case SQLiteParser.ON_:
-          case SQLiteParser.OR_:
-          case SQLiteParser.ORDER_:
-          case SQLiteParser.OUTER_:
-          case SQLiteParser.PLAN_:
-          case SQLiteParser.PRAGMA_:
-          case SQLiteParser.PRIMARY_:
-          case SQLiteParser.QUERY_:
-          case SQLiteParser.RAISE_:
-          case SQLiteParser.RECURSIVE_:
-          case SQLiteParser.REFERENCES_:
-          case SQLiteParser.REGEXP_:
-          case SQLiteParser.REINDEX_:
-          case SQLiteParser.RELEASE_:
-          case SQLiteParser.RENAME_:
-          case SQLiteParser.REPLACE_:
-          case SQLiteParser.RESTRICT_:
-          case SQLiteParser.RIGHT_:
-          case SQLiteParser.ROLLBACK_:
-          case SQLiteParser.ROW_:
-          case SQLiteParser.ROWS_:
-          case SQLiteParser.SAVEPOINT_:
-          case SQLiteParser.SELECT_:
-          case SQLiteParser.SET_:
-          case SQLiteParser.TABLE_:
-          case SQLiteParser.TEMP_:
-          case SQLiteParser.TEMPORARY_:
-          case SQLiteParser.THEN_:
-          case SQLiteParser.TO_:
-          case SQLiteParser.TRANSACTION_:
-          case SQLiteParser.TRIGGER_:
-          case SQLiteParser.UNION_:
-          case SQLiteParser.UNIQUE_:
-          case SQLiteParser.UPDATE_:
-          case SQLiteParser.USING_:
-          case SQLiteParser.VACUUM_:
-          case SQLiteParser.VALUES_:
-          case SQLiteParser.VIEW_:
-          case SQLiteParser.VIRTUAL_:
-          case SQLiteParser.WHEN_:
-          case SQLiteParser.WHERE_:
-          case SQLiteParser.WITH_:
-          case SQLiteParser.WITHOUT_:
-          case SQLiteParser.FIRST_VALUE_:
-          case SQLiteParser.OVER_:
-          case SQLiteParser.PARTITION_:
-          case SQLiteParser.RANGE_:
-          case SQLiteParser.PRECEDING_:
-          case SQLiteParser.UNBOUNDED_:
-          case SQLiteParser.CURRENT_:
-          case SQLiteParser.FOLLOWING_:
-          case SQLiteParser.CUME_DIST_:
-          case SQLiteParser.DENSE_RANK_:
-          case SQLiteParser.LAG_:
-          case SQLiteParser.LAST_VALUE_:
-          case SQLiteParser.LEAD_:
-          case SQLiteParser.NTH_VALUE_:
-          case SQLiteParser.NTILE_:
-          case SQLiteParser.PERCENT_RANK_:
-          case SQLiteParser.RANK_:
-          case SQLiteParser.ROW_NUMBER_:
-          case SQLiteParser.GENERATED_:
-          case SQLiteParser.ALWAYS_:
-          case SQLiteParser.STORED_:
-          case SQLiteParser.TRUE_:
-          case SQLiteParser.FALSE_:
-          case SQLiteParser.WINDOW_:
-          case SQLiteParser.NULLS_:
-          case SQLiteParser.FIRST_:
-          case SQLiteParser.LAST_:
-          case SQLiteParser.FILTER_:
-          case SQLiteParser.GROUPS_:
-          case SQLiteParser.EXCLUDE_:
-          case SQLiteParser.IDENTIFIER:
-          case SQLiteParser.NUMERIC_LITERAL:
-          case SQLiteParser.BIND_PARAMETER:
-          case SQLiteParser.STRING_LITERAL:
-          case SQLiteParser.BLOB_LITERAL:
+          case 3:
+          case 8:
+          case 9:
+          case 10:
+          case 25:
+          case 26:
+          case 27:
+          case 28:
+          case 29:
+          case 30:
+          case 31:
+          case 32:
+          case 33:
+          case 34:
+          case 35:
+          case 36:
+          case 37:
+          case 38:
+          case 39:
+          case 40:
+          case 41:
+          case 42:
+          case 43:
+          case 44:
+          case 45:
+          case 46:
+          case 47:
+          case 48:
+          case 49:
+          case 50:
+          case 51:
+          case 52:
+          case 53:
+          case 54:
+          case 55:
+          case 56:
+          case 57:
+          case 58:
+          case 59:
+          case 60:
+          case 61:
+          case 62:
+          case 63:
+          case 64:
+          case 65:
+          case 66:
+          case 67:
+          case 68:
+          case 69:
+          case 70:
+          case 71:
+          case 72:
+          case 73:
+          case 74:
+          case 75:
+          case 76:
+          case 77:
+          case 78:
+          case 79:
+          case 80:
+          case 81:
+          case 82:
+          case 83:
+          case 84:
+          case 85:
+          case 86:
+          case 87:
+          case 88:
+          case 89:
+          case 90:
+          case 91:
+          case 92:
+          case 93:
+          case 94:
+          case 95:
+          case 96:
+          case 97:
+          case 98:
+          case 99:
+          case 100:
+          case 101:
+          case 102:
+          case 103:
+          case 104:
+          case 105:
+          case 106:
+          case 107:
+          case 108:
+          case 109:
+          case 110:
+          case 111:
+          case 112:
+          case 113:
+          case 114:
+          case 115:
+          case 116:
+          case 117:
+          case 118:
+          case 119:
+          case 120:
+          case 121:
+          case 122:
+          case 123:
+          case 125:
+          case 126:
+          case 127:
+          case 128:
+          case 129:
+          case 130:
+          case 131:
+          case 132:
+          case 133:
+          case 134:
+          case 135:
+          case 136:
+          case 137:
+          case 138:
+          case 139:
+          case 140:
+          case 141:
+          case 142:
+          case 143:
+          case 144:
+          case 145:
+          case 146:
+          case 147:
+          case 148:
+          case 149:
+          case 150:
+          case 151:
+          case 152:
+          case 153:
+          case 154:
+          case 155:
+          case 156:
+          case 157:
+          case 158:
+          case 159:
+          case 160:
+          case 161:
+          case 162:
+          case 163:
+          case 164:
+          case 165:
+          case 166:
+          case 167:
+          case 168:
+          case 169:
+          case 170:
+          case 171:
+          case 172:
+          case 173:
+          case 174:
+          case 175:
+          case 176:
+          case 177:
+          case 178:
+          case 179:
+          case 180:
+          case 185:
+          case 186:
+          case 187:
+          case 188:
+          case 189:
             {
               this.state = 1729
               this.expr(0)
               this.state = 1734
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              while (_la === SQLiteParser.COMMA) {
+              while (_la === 5) {
                 {
                   {
                     this.state = 1730
@@ -7896,7 +7367,7 @@ export class SQLiteParser extends Parser {
               }
             }
             break
-          case SQLiteParser.STAR:
+          case 7:
             {
               this.state = 1737
               this.match(SQLiteParser.STAR)
@@ -7910,7 +7381,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -7919,18 +7390,19 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public aggregate_function_invocation(): Aggregate_function_invocationContext {
-    let _localctx: Aggregate_function_invocationContext = new Aggregate_function_invocationContext(
+    let localctx: Aggregate_function_invocationContext = new Aggregate_function_invocationContext(
+      this,
       this._ctx,
       this.state
     )
-    this.enterRule(_localctx, 130, SQLiteParser.RULE_aggregate_function_invocation)
+    this.enterRule(localctx, 130, SQLiteParser.RULE_aggregate_function_invocation)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1742
         this.aggregate_func()
@@ -7939,174 +7411,174 @@ export class SQLiteParser extends Parser {
         this.state = 1756
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.OPEN_PAR:
-          case SQLiteParser.PLUS:
-          case SQLiteParser.MINUS:
-          case SQLiteParser.TILDE:
-          case SQLiteParser.ABORT_:
-          case SQLiteParser.ACTION_:
-          case SQLiteParser.ADD_:
-          case SQLiteParser.AFTER_:
-          case SQLiteParser.ALL_:
-          case SQLiteParser.ALTER_:
-          case SQLiteParser.ANALYZE_:
-          case SQLiteParser.AND_:
-          case SQLiteParser.AS_:
-          case SQLiteParser.ASC_:
-          case SQLiteParser.ATTACH_:
-          case SQLiteParser.AUTOINCREMENT_:
-          case SQLiteParser.BEFORE_:
-          case SQLiteParser.BEGIN_:
-          case SQLiteParser.BETWEEN_:
-          case SQLiteParser.BY_:
-          case SQLiteParser.CASCADE_:
-          case SQLiteParser.CASE_:
-          case SQLiteParser.CAST_:
-          case SQLiteParser.CHECK_:
-          case SQLiteParser.COLLATE_:
-          case SQLiteParser.COLUMN_:
-          case SQLiteParser.COMMIT_:
-          case SQLiteParser.CONFLICT_:
-          case SQLiteParser.CONSTRAINT_:
-          case SQLiteParser.CREATE_:
-          case SQLiteParser.CROSS_:
-          case SQLiteParser.CURRENT_DATE_:
-          case SQLiteParser.CURRENT_TIME_:
-          case SQLiteParser.CURRENT_TIMESTAMP_:
-          case SQLiteParser.DATABASE_:
-          case SQLiteParser.DEFAULT_:
-          case SQLiteParser.DEFERRABLE_:
-          case SQLiteParser.DEFERRED_:
-          case SQLiteParser.DELETE_:
-          case SQLiteParser.DESC_:
-          case SQLiteParser.DETACH_:
-          case SQLiteParser.DISTINCT_:
-          case SQLiteParser.DROP_:
-          case SQLiteParser.EACH_:
-          case SQLiteParser.ELSE_:
-          case SQLiteParser.END_:
-          case SQLiteParser.ESCAPE_:
-          case SQLiteParser.EXCEPT_:
-          case SQLiteParser.EXCLUSIVE_:
-          case SQLiteParser.EXISTS_:
-          case SQLiteParser.EXPLAIN_:
-          case SQLiteParser.FAIL_:
-          case SQLiteParser.FOR_:
-          case SQLiteParser.FOREIGN_:
-          case SQLiteParser.FROM_:
-          case SQLiteParser.FULL_:
-          case SQLiteParser.GLOB_:
-          case SQLiteParser.GROUP_:
-          case SQLiteParser.HAVING_:
-          case SQLiteParser.IF_:
-          case SQLiteParser.IGNORE_:
-          case SQLiteParser.IMMEDIATE_:
-          case SQLiteParser.IN_:
-          case SQLiteParser.INDEX_:
-          case SQLiteParser.INDEXED_:
-          case SQLiteParser.INITIALLY_:
-          case SQLiteParser.INNER_:
-          case SQLiteParser.INSERT_:
-          case SQLiteParser.INSTEAD_:
-          case SQLiteParser.INTERSECT_:
-          case SQLiteParser.INTO_:
-          case SQLiteParser.IS_:
-          case SQLiteParser.ISNULL_:
-          case SQLiteParser.JOIN_:
-          case SQLiteParser.KEY_:
-          case SQLiteParser.LEFT_:
-          case SQLiteParser.LIKE_:
-          case SQLiteParser.LIMIT_:
-          case SQLiteParser.MATCH_:
-          case SQLiteParser.NATURAL_:
-          case SQLiteParser.NO_:
-          case SQLiteParser.NOT_:
-          case SQLiteParser.NOTNULL_:
-          case SQLiteParser.NULL_:
-          case SQLiteParser.OF_:
-          case SQLiteParser.OFFSET_:
-          case SQLiteParser.ON_:
-          case SQLiteParser.OR_:
-          case SQLiteParser.ORDER_:
-          case SQLiteParser.OUTER_:
-          case SQLiteParser.PLAN_:
-          case SQLiteParser.PRAGMA_:
-          case SQLiteParser.PRIMARY_:
-          case SQLiteParser.QUERY_:
-          case SQLiteParser.RAISE_:
-          case SQLiteParser.RECURSIVE_:
-          case SQLiteParser.REFERENCES_:
-          case SQLiteParser.REGEXP_:
-          case SQLiteParser.REINDEX_:
-          case SQLiteParser.RELEASE_:
-          case SQLiteParser.RENAME_:
-          case SQLiteParser.REPLACE_:
-          case SQLiteParser.RESTRICT_:
-          case SQLiteParser.RIGHT_:
-          case SQLiteParser.ROLLBACK_:
-          case SQLiteParser.ROW_:
-          case SQLiteParser.ROWS_:
-          case SQLiteParser.SAVEPOINT_:
-          case SQLiteParser.SELECT_:
-          case SQLiteParser.SET_:
-          case SQLiteParser.TABLE_:
-          case SQLiteParser.TEMP_:
-          case SQLiteParser.TEMPORARY_:
-          case SQLiteParser.THEN_:
-          case SQLiteParser.TO_:
-          case SQLiteParser.TRANSACTION_:
-          case SQLiteParser.TRIGGER_:
-          case SQLiteParser.UNION_:
-          case SQLiteParser.UNIQUE_:
-          case SQLiteParser.UPDATE_:
-          case SQLiteParser.USING_:
-          case SQLiteParser.VACUUM_:
-          case SQLiteParser.VALUES_:
-          case SQLiteParser.VIEW_:
-          case SQLiteParser.VIRTUAL_:
-          case SQLiteParser.WHEN_:
-          case SQLiteParser.WHERE_:
-          case SQLiteParser.WITH_:
-          case SQLiteParser.WITHOUT_:
-          case SQLiteParser.FIRST_VALUE_:
-          case SQLiteParser.OVER_:
-          case SQLiteParser.PARTITION_:
-          case SQLiteParser.RANGE_:
-          case SQLiteParser.PRECEDING_:
-          case SQLiteParser.UNBOUNDED_:
-          case SQLiteParser.CURRENT_:
-          case SQLiteParser.FOLLOWING_:
-          case SQLiteParser.CUME_DIST_:
-          case SQLiteParser.DENSE_RANK_:
-          case SQLiteParser.LAG_:
-          case SQLiteParser.LAST_VALUE_:
-          case SQLiteParser.LEAD_:
-          case SQLiteParser.NTH_VALUE_:
-          case SQLiteParser.NTILE_:
-          case SQLiteParser.PERCENT_RANK_:
-          case SQLiteParser.RANK_:
-          case SQLiteParser.ROW_NUMBER_:
-          case SQLiteParser.GENERATED_:
-          case SQLiteParser.ALWAYS_:
-          case SQLiteParser.STORED_:
-          case SQLiteParser.TRUE_:
-          case SQLiteParser.FALSE_:
-          case SQLiteParser.WINDOW_:
-          case SQLiteParser.NULLS_:
-          case SQLiteParser.FIRST_:
-          case SQLiteParser.LAST_:
-          case SQLiteParser.FILTER_:
-          case SQLiteParser.GROUPS_:
-          case SQLiteParser.EXCLUDE_:
-          case SQLiteParser.IDENTIFIER:
-          case SQLiteParser.NUMERIC_LITERAL:
-          case SQLiteParser.BIND_PARAMETER:
-          case SQLiteParser.STRING_LITERAL:
-          case SQLiteParser.BLOB_LITERAL:
+          case 3:
+          case 8:
+          case 9:
+          case 10:
+          case 25:
+          case 26:
+          case 27:
+          case 28:
+          case 29:
+          case 30:
+          case 31:
+          case 32:
+          case 33:
+          case 34:
+          case 35:
+          case 36:
+          case 37:
+          case 38:
+          case 39:
+          case 40:
+          case 41:
+          case 42:
+          case 43:
+          case 44:
+          case 45:
+          case 46:
+          case 47:
+          case 48:
+          case 49:
+          case 50:
+          case 51:
+          case 52:
+          case 53:
+          case 54:
+          case 55:
+          case 56:
+          case 57:
+          case 58:
+          case 59:
+          case 60:
+          case 61:
+          case 62:
+          case 63:
+          case 64:
+          case 65:
+          case 66:
+          case 67:
+          case 68:
+          case 69:
+          case 70:
+          case 71:
+          case 72:
+          case 73:
+          case 74:
+          case 75:
+          case 76:
+          case 77:
+          case 78:
+          case 79:
+          case 80:
+          case 81:
+          case 82:
+          case 83:
+          case 84:
+          case 85:
+          case 86:
+          case 87:
+          case 88:
+          case 89:
+          case 90:
+          case 91:
+          case 92:
+          case 93:
+          case 94:
+          case 95:
+          case 96:
+          case 97:
+          case 98:
+          case 99:
+          case 100:
+          case 101:
+          case 102:
+          case 103:
+          case 104:
+          case 105:
+          case 106:
+          case 107:
+          case 108:
+          case 109:
+          case 110:
+          case 111:
+          case 112:
+          case 113:
+          case 114:
+          case 115:
+          case 116:
+          case 117:
+          case 118:
+          case 119:
+          case 120:
+          case 121:
+          case 122:
+          case 123:
+          case 125:
+          case 126:
+          case 127:
+          case 128:
+          case 129:
+          case 130:
+          case 131:
+          case 132:
+          case 133:
+          case 134:
+          case 135:
+          case 136:
+          case 137:
+          case 138:
+          case 139:
+          case 140:
+          case 141:
+          case 142:
+          case 143:
+          case 144:
+          case 145:
+          case 146:
+          case 147:
+          case 148:
+          case 149:
+          case 150:
+          case 151:
+          case 152:
+          case 153:
+          case 154:
+          case 155:
+          case 156:
+          case 157:
+          case 158:
+          case 159:
+          case 160:
+          case 161:
+          case 162:
+          case 163:
+          case 164:
+          case 165:
+          case 166:
+          case 167:
+          case 168:
+          case 169:
+          case 170:
+          case 171:
+          case 172:
+          case 173:
+          case 174:
+          case 175:
+          case 176:
+          case 177:
+          case 178:
+          case 179:
+          case 180:
+          case 185:
+          case 186:
+          case 187:
+          case 188:
+          case 189:
             {
               this.state = 1745
               this._errHandler.sync(this)
-              switch (this.interpreter.adaptivePredict(this._input, 259, this._ctx)) {
+              switch (this._interp.adaptivePredict(this._input, 259, this._ctx)) {
                 case 1:
                   {
                     this.state = 1744
@@ -8119,7 +7591,7 @@ export class SQLiteParser extends Parser {
               this.state = 1752
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              while (_la === SQLiteParser.COMMA) {
+              while (_la === 5) {
                 {
                   {
                     this.state = 1748
@@ -8134,13 +7606,13 @@ export class SQLiteParser extends Parser {
               }
             }
             break
-          case SQLiteParser.STAR:
+          case 7:
             {
               this.state = 1755
               this.match(SQLiteParser.STAR)
             }
             break
-          case SQLiteParser.CLOSE_PAR:
+          case 4:
             break
           default:
             break
@@ -8150,7 +7622,7 @@ export class SQLiteParser extends Parser {
         this.state = 1760
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.FILTER_) {
+        if (_la === 178) {
           {
             this.state = 1759
             this.filter_clause()
@@ -8159,7 +7631,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -8168,15 +7640,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public window_function_invocation(): Window_function_invocationContext {
-    let _localctx: Window_function_invocationContext = new Window_function_invocationContext(this._ctx, this.state)
-    this.enterRule(_localctx, 132, SQLiteParser.RULE_window_function_invocation)
+    let localctx: Window_function_invocationContext = new Window_function_invocationContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 132, SQLiteParser.RULE_window_function_invocation)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1762
         this.window_function()
@@ -8185,177 +7657,177 @@ export class SQLiteParser extends Parser {
         this.state = 1773
         this._errHandler.sync(this)
         switch (this._input.LA(1)) {
-          case SQLiteParser.OPEN_PAR:
-          case SQLiteParser.PLUS:
-          case SQLiteParser.MINUS:
-          case SQLiteParser.TILDE:
-          case SQLiteParser.ABORT_:
-          case SQLiteParser.ACTION_:
-          case SQLiteParser.ADD_:
-          case SQLiteParser.AFTER_:
-          case SQLiteParser.ALL_:
-          case SQLiteParser.ALTER_:
-          case SQLiteParser.ANALYZE_:
-          case SQLiteParser.AND_:
-          case SQLiteParser.AS_:
-          case SQLiteParser.ASC_:
-          case SQLiteParser.ATTACH_:
-          case SQLiteParser.AUTOINCREMENT_:
-          case SQLiteParser.BEFORE_:
-          case SQLiteParser.BEGIN_:
-          case SQLiteParser.BETWEEN_:
-          case SQLiteParser.BY_:
-          case SQLiteParser.CASCADE_:
-          case SQLiteParser.CASE_:
-          case SQLiteParser.CAST_:
-          case SQLiteParser.CHECK_:
-          case SQLiteParser.COLLATE_:
-          case SQLiteParser.COLUMN_:
-          case SQLiteParser.COMMIT_:
-          case SQLiteParser.CONFLICT_:
-          case SQLiteParser.CONSTRAINT_:
-          case SQLiteParser.CREATE_:
-          case SQLiteParser.CROSS_:
-          case SQLiteParser.CURRENT_DATE_:
-          case SQLiteParser.CURRENT_TIME_:
-          case SQLiteParser.CURRENT_TIMESTAMP_:
-          case SQLiteParser.DATABASE_:
-          case SQLiteParser.DEFAULT_:
-          case SQLiteParser.DEFERRABLE_:
-          case SQLiteParser.DEFERRED_:
-          case SQLiteParser.DELETE_:
-          case SQLiteParser.DESC_:
-          case SQLiteParser.DETACH_:
-          case SQLiteParser.DISTINCT_:
-          case SQLiteParser.DROP_:
-          case SQLiteParser.EACH_:
-          case SQLiteParser.ELSE_:
-          case SQLiteParser.END_:
-          case SQLiteParser.ESCAPE_:
-          case SQLiteParser.EXCEPT_:
-          case SQLiteParser.EXCLUSIVE_:
-          case SQLiteParser.EXISTS_:
-          case SQLiteParser.EXPLAIN_:
-          case SQLiteParser.FAIL_:
-          case SQLiteParser.FOR_:
-          case SQLiteParser.FOREIGN_:
-          case SQLiteParser.FROM_:
-          case SQLiteParser.FULL_:
-          case SQLiteParser.GLOB_:
-          case SQLiteParser.GROUP_:
-          case SQLiteParser.HAVING_:
-          case SQLiteParser.IF_:
-          case SQLiteParser.IGNORE_:
-          case SQLiteParser.IMMEDIATE_:
-          case SQLiteParser.IN_:
-          case SQLiteParser.INDEX_:
-          case SQLiteParser.INDEXED_:
-          case SQLiteParser.INITIALLY_:
-          case SQLiteParser.INNER_:
-          case SQLiteParser.INSERT_:
-          case SQLiteParser.INSTEAD_:
-          case SQLiteParser.INTERSECT_:
-          case SQLiteParser.INTO_:
-          case SQLiteParser.IS_:
-          case SQLiteParser.ISNULL_:
-          case SQLiteParser.JOIN_:
-          case SQLiteParser.KEY_:
-          case SQLiteParser.LEFT_:
-          case SQLiteParser.LIKE_:
-          case SQLiteParser.LIMIT_:
-          case SQLiteParser.MATCH_:
-          case SQLiteParser.NATURAL_:
-          case SQLiteParser.NO_:
-          case SQLiteParser.NOT_:
-          case SQLiteParser.NOTNULL_:
-          case SQLiteParser.NULL_:
-          case SQLiteParser.OF_:
-          case SQLiteParser.OFFSET_:
-          case SQLiteParser.ON_:
-          case SQLiteParser.OR_:
-          case SQLiteParser.ORDER_:
-          case SQLiteParser.OUTER_:
-          case SQLiteParser.PLAN_:
-          case SQLiteParser.PRAGMA_:
-          case SQLiteParser.PRIMARY_:
-          case SQLiteParser.QUERY_:
-          case SQLiteParser.RAISE_:
-          case SQLiteParser.RECURSIVE_:
-          case SQLiteParser.REFERENCES_:
-          case SQLiteParser.REGEXP_:
-          case SQLiteParser.REINDEX_:
-          case SQLiteParser.RELEASE_:
-          case SQLiteParser.RENAME_:
-          case SQLiteParser.REPLACE_:
-          case SQLiteParser.RESTRICT_:
-          case SQLiteParser.RIGHT_:
-          case SQLiteParser.ROLLBACK_:
-          case SQLiteParser.ROW_:
-          case SQLiteParser.ROWS_:
-          case SQLiteParser.SAVEPOINT_:
-          case SQLiteParser.SELECT_:
-          case SQLiteParser.SET_:
-          case SQLiteParser.TABLE_:
-          case SQLiteParser.TEMP_:
-          case SQLiteParser.TEMPORARY_:
-          case SQLiteParser.THEN_:
-          case SQLiteParser.TO_:
-          case SQLiteParser.TRANSACTION_:
-          case SQLiteParser.TRIGGER_:
-          case SQLiteParser.UNION_:
-          case SQLiteParser.UNIQUE_:
-          case SQLiteParser.UPDATE_:
-          case SQLiteParser.USING_:
-          case SQLiteParser.VACUUM_:
-          case SQLiteParser.VALUES_:
-          case SQLiteParser.VIEW_:
-          case SQLiteParser.VIRTUAL_:
-          case SQLiteParser.WHEN_:
-          case SQLiteParser.WHERE_:
-          case SQLiteParser.WITH_:
-          case SQLiteParser.WITHOUT_:
-          case SQLiteParser.FIRST_VALUE_:
-          case SQLiteParser.OVER_:
-          case SQLiteParser.PARTITION_:
-          case SQLiteParser.RANGE_:
-          case SQLiteParser.PRECEDING_:
-          case SQLiteParser.UNBOUNDED_:
-          case SQLiteParser.CURRENT_:
-          case SQLiteParser.FOLLOWING_:
-          case SQLiteParser.CUME_DIST_:
-          case SQLiteParser.DENSE_RANK_:
-          case SQLiteParser.LAG_:
-          case SQLiteParser.LAST_VALUE_:
-          case SQLiteParser.LEAD_:
-          case SQLiteParser.NTH_VALUE_:
-          case SQLiteParser.NTILE_:
-          case SQLiteParser.PERCENT_RANK_:
-          case SQLiteParser.RANK_:
-          case SQLiteParser.ROW_NUMBER_:
-          case SQLiteParser.GENERATED_:
-          case SQLiteParser.ALWAYS_:
-          case SQLiteParser.STORED_:
-          case SQLiteParser.TRUE_:
-          case SQLiteParser.FALSE_:
-          case SQLiteParser.WINDOW_:
-          case SQLiteParser.NULLS_:
-          case SQLiteParser.FIRST_:
-          case SQLiteParser.LAST_:
-          case SQLiteParser.FILTER_:
-          case SQLiteParser.GROUPS_:
-          case SQLiteParser.EXCLUDE_:
-          case SQLiteParser.IDENTIFIER:
-          case SQLiteParser.NUMERIC_LITERAL:
-          case SQLiteParser.BIND_PARAMETER:
-          case SQLiteParser.STRING_LITERAL:
-          case SQLiteParser.BLOB_LITERAL:
+          case 3:
+          case 8:
+          case 9:
+          case 10:
+          case 25:
+          case 26:
+          case 27:
+          case 28:
+          case 29:
+          case 30:
+          case 31:
+          case 32:
+          case 33:
+          case 34:
+          case 35:
+          case 36:
+          case 37:
+          case 38:
+          case 39:
+          case 40:
+          case 41:
+          case 42:
+          case 43:
+          case 44:
+          case 45:
+          case 46:
+          case 47:
+          case 48:
+          case 49:
+          case 50:
+          case 51:
+          case 52:
+          case 53:
+          case 54:
+          case 55:
+          case 56:
+          case 57:
+          case 58:
+          case 59:
+          case 60:
+          case 61:
+          case 62:
+          case 63:
+          case 64:
+          case 65:
+          case 66:
+          case 67:
+          case 68:
+          case 69:
+          case 70:
+          case 71:
+          case 72:
+          case 73:
+          case 74:
+          case 75:
+          case 76:
+          case 77:
+          case 78:
+          case 79:
+          case 80:
+          case 81:
+          case 82:
+          case 83:
+          case 84:
+          case 85:
+          case 86:
+          case 87:
+          case 88:
+          case 89:
+          case 90:
+          case 91:
+          case 92:
+          case 93:
+          case 94:
+          case 95:
+          case 96:
+          case 97:
+          case 98:
+          case 99:
+          case 100:
+          case 101:
+          case 102:
+          case 103:
+          case 104:
+          case 105:
+          case 106:
+          case 107:
+          case 108:
+          case 109:
+          case 110:
+          case 111:
+          case 112:
+          case 113:
+          case 114:
+          case 115:
+          case 116:
+          case 117:
+          case 118:
+          case 119:
+          case 120:
+          case 121:
+          case 122:
+          case 123:
+          case 125:
+          case 126:
+          case 127:
+          case 128:
+          case 129:
+          case 130:
+          case 131:
+          case 132:
+          case 133:
+          case 134:
+          case 135:
+          case 136:
+          case 137:
+          case 138:
+          case 139:
+          case 140:
+          case 141:
+          case 142:
+          case 143:
+          case 144:
+          case 145:
+          case 146:
+          case 147:
+          case 148:
+          case 149:
+          case 150:
+          case 151:
+          case 152:
+          case 153:
+          case 154:
+          case 155:
+          case 156:
+          case 157:
+          case 158:
+          case 159:
+          case 160:
+          case 161:
+          case 162:
+          case 163:
+          case 164:
+          case 165:
+          case 166:
+          case 167:
+          case 168:
+          case 169:
+          case 170:
+          case 171:
+          case 172:
+          case 173:
+          case 174:
+          case 175:
+          case 176:
+          case 177:
+          case 178:
+          case 179:
+          case 180:
+          case 185:
+          case 186:
+          case 187:
+          case 188:
+          case 189:
             {
               this.state = 1764
               this.expr(0)
               this.state = 1769
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              while (_la === SQLiteParser.COMMA) {
+              while (_la === 5) {
                 {
                   {
                     this.state = 1765
@@ -8370,13 +7842,13 @@ export class SQLiteParser extends Parser {
               }
             }
             break
-          case SQLiteParser.STAR:
+          case 7:
             {
               this.state = 1772
               this.match(SQLiteParser.STAR)
             }
             break
-          case SQLiteParser.CLOSE_PAR:
+          case 4:
             break
           default:
             break
@@ -8386,7 +7858,7 @@ export class SQLiteParser extends Parser {
         this.state = 1777
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.FILTER_) {
+        if (_la === 178) {
           {
             this.state = 1776
             this.filter_clause()
@@ -8397,14 +7869,13 @@ export class SQLiteParser extends Parser {
         this.match(SQLiteParser.OVER_)
         this.state = 1782
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 266, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 266, this._ctx)) {
           case 1:
             {
               this.state = 1780
               this.window_defn()
             }
             break
-
           case 2:
             {
               this.state = 1781
@@ -8415,7 +7886,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -8424,21 +7895,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public common_table_stmt(): Common_table_stmtContext {
-    let _localctx: Common_table_stmtContext = new Common_table_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 134, SQLiteParser.RULE_common_table_stmt)
+    let localctx: Common_table_stmtContext = new Common_table_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 134, SQLiteParser.RULE_common_table_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1784
         this.match(SQLiteParser.WITH_)
         this.state = 1786
         this._errHandler.sync(this)
-        switch (this.interpreter.adaptivePredict(this._input, 267, this._ctx)) {
+        switch (this._interp.adaptivePredict(this._input, 267, this._ctx)) {
           case 1:
             {
               this.state = 1785
@@ -8451,7 +7922,7 @@ export class SQLiteParser extends Parser {
         this.state = 1793
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 1789
@@ -8467,7 +7938,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -8476,15 +7947,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public order_by_stmt(): Order_by_stmtContext {
-    let _localctx: Order_by_stmtContext = new Order_by_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 136, SQLiteParser.RULE_order_by_stmt)
+    let localctx: Order_by_stmtContext = new Order_by_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 136, SQLiteParser.RULE_order_by_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1796
         this.match(SQLiteParser.ORDER_)
@@ -8495,7 +7966,7 @@ export class SQLiteParser extends Parser {
         this.state = 1803
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 1799
@@ -8511,7 +7982,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -8520,15 +7991,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public limit_stmt(): Limit_stmtContext {
-    let _localctx: Limit_stmtContext = new Limit_stmtContext(this._ctx, this.state)
-    this.enterRule(_localctx, 138, SQLiteParser.RULE_limit_stmt)
+    let localctx: Limit_stmtContext = new Limit_stmtContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 138, SQLiteParser.RULE_limit_stmt)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1806
         this.match(SQLiteParser.LIMIT_)
@@ -8537,17 +8008,13 @@ export class SQLiteParser extends Parser {
         this.state = 1810
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.COMMA || _la === SQLiteParser.OFFSET_) {
+        if (_la === 5 || _la === 106) {
           {
             this.state = 1808
             _la = this._input.LA(1)
-            if (!(_la === SQLiteParser.COMMA || _la === SQLiteParser.OFFSET_)) {
+            if (!(_la === 5 || _la === 106)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -8558,7 +8025,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -8567,22 +8034,22 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public ordering_term(): Ordering_termContext {
-    let _localctx: Ordering_termContext = new Ordering_termContext(this._ctx, this.state)
-    this.enterRule(_localctx, 140, SQLiteParser.RULE_ordering_term)
+    let localctx: Ordering_termContext = new Ordering_termContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 140, SQLiteParser.RULE_ordering_term)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1812
         this.expr(0)
         this.state = 1815
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.COLLATE_) {
+        if (_la === 45) {
           {
             this.state = 1813
             this.match(SQLiteParser.COLLATE_)
@@ -8594,7 +8061,7 @@ export class SQLiteParser extends Parser {
         this.state = 1818
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.ASC_ || _la === SQLiteParser.DESC_) {
+        if (_la === 34 || _la === 60) {
           {
             this.state = 1817
             this.asc_desc()
@@ -8604,19 +8071,15 @@ export class SQLiteParser extends Parser {
         this.state = 1822
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.NULLS_) {
+        if (_la === 175) {
           {
             this.state = 1820
             this.match(SQLiteParser.NULLS_)
             this.state = 1821
             _la = this._input.LA(1)
-            if (!(_la === SQLiteParser.FIRST_ || _la === SQLiteParser.LAST_)) {
+            if (!(_la === 176 || _la === 177)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -8625,7 +8088,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -8634,32 +8097,28 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public asc_desc(): Asc_descContext {
-    let _localctx: Asc_descContext = new Asc_descContext(this._ctx, this.state)
-    this.enterRule(_localctx, 142, SQLiteParser.RULE_asc_desc)
+    let localctx: Asc_descContext = new Asc_descContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 142, SQLiteParser.RULE_asc_desc)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1824
         _la = this._input.LA(1)
-        if (!(_la === SQLiteParser.ASC_ || _la === SQLiteParser.DESC_)) {
+        if (!(_la === 34 || _la === 60)) {
           this._errHandler.recoverInline(this)
         } else {
-          if (this._input.LA(1) === Token.EOF) {
-            this.matchedEOF = true
-          }
-
           this._errHandler.reportMatch(this)
           this.consume()
         }
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -8668,18 +8127,18 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public frame_left(): Frame_leftContext {
-    let _localctx: Frame_leftContext = new Frame_leftContext(this._ctx, this.state)
-    this.enterRule(_localctx, 144, SQLiteParser.RULE_frame_left)
+    let localctx: Frame_leftContext = new Frame_leftContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 144, SQLiteParser.RULE_frame_left)
     try {
       this.state = 1836
       this._errHandler.sync(this)
-      switch (this.interpreter.adaptivePredict(this._input, 274, this._ctx)) {
+      switch (this._interp.adaptivePredict(this._input, 274, this._ctx)) {
         case 1:
-          this.enterOuterAlt(_localctx, 1)
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 1826
             this.expr(0)
@@ -8687,9 +8146,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.PRECEDING_)
           }
           break
-
         case 2:
-          this.enterOuterAlt(_localctx, 2)
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1829
             this.expr(0)
@@ -8697,9 +8155,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.FOLLOWING_)
           }
           break
-
         case 3:
-          this.enterOuterAlt(_localctx, 3)
+          this.enterOuterAlt(localctx, 3)
           {
             this.state = 1832
             this.match(SQLiteParser.CURRENT_)
@@ -8707,9 +8164,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.ROW_)
           }
           break
-
         case 4:
-          this.enterOuterAlt(_localctx, 4)
+          this.enterOuterAlt(localctx, 4)
           {
             this.state = 1834
             this.match(SQLiteParser.UNBOUNDED_)
@@ -8720,7 +8176,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -8729,18 +8185,18 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public frame_right(): Frame_rightContext {
-    let _localctx: Frame_rightContext = new Frame_rightContext(this._ctx, this.state)
-    this.enterRule(_localctx, 146, SQLiteParser.RULE_frame_right)
+    let localctx: Frame_rightContext = new Frame_rightContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 146, SQLiteParser.RULE_frame_right)
     try {
       this.state = 1848
       this._errHandler.sync(this)
-      switch (this.interpreter.adaptivePredict(this._input, 275, this._ctx)) {
+      switch (this._interp.adaptivePredict(this._input, 275, this._ctx)) {
         case 1:
-          this.enterOuterAlt(_localctx, 1)
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 1838
             this.expr(0)
@@ -8748,9 +8204,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.PRECEDING_)
           }
           break
-
         case 2:
-          this.enterOuterAlt(_localctx, 2)
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1841
             this.expr(0)
@@ -8758,9 +8213,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.FOLLOWING_)
           }
           break
-
         case 3:
-          this.enterOuterAlt(_localctx, 3)
+          this.enterOuterAlt(localctx, 3)
           {
             this.state = 1844
             this.match(SQLiteParser.CURRENT_)
@@ -8768,9 +8222,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.ROW_)
           }
           break
-
         case 4:
-          this.enterOuterAlt(_localctx, 4)
+          this.enterOuterAlt(localctx, 4)
           {
             this.state = 1846
             this.match(SQLiteParser.UNBOUNDED_)
@@ -8781,7 +8234,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -8790,18 +8243,18 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public frame_single(): Frame_singleContext {
-    let _localctx: Frame_singleContext = new Frame_singleContext(this._ctx, this.state)
-    this.enterRule(_localctx, 148, SQLiteParser.RULE_frame_single)
+    let localctx: Frame_singleContext = new Frame_singleContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 148, SQLiteParser.RULE_frame_single)
     try {
       this.state = 1857
       this._errHandler.sync(this)
-      switch (this.interpreter.adaptivePredict(this._input, 276, this._ctx)) {
+      switch (this._interp.adaptivePredict(this._input, 276, this._ctx)) {
         case 1:
-          this.enterOuterAlt(_localctx, 1)
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 1850
             this.expr(0)
@@ -8809,9 +8262,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.PRECEDING_)
           }
           break
-
         case 2:
-          this.enterOuterAlt(_localctx, 2)
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1853
             this.match(SQLiteParser.UNBOUNDED_)
@@ -8819,9 +8271,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.PRECEDING_)
           }
           break
-
         case 3:
-          this.enterOuterAlt(_localctx, 3)
+          this.enterOuterAlt(localctx, 3)
           {
             this.state = 1855
             this.match(SQLiteParser.CURRENT_)
@@ -8832,7 +8283,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -8841,30 +8292,26 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public window_function(): Window_functionContext {
-    let _localctx: Window_functionContext = new Window_functionContext(this._ctx, this.state)
-    this.enterRule(_localctx, 150, SQLiteParser.RULE_window_function)
+    let localctx: Window_functionContext = new Window_functionContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 150, SQLiteParser.RULE_window_function)
     let _la: number
     try {
       this.state = 1944
       this._errHandler.sync(this)
       switch (this._input.LA(1)) {
-        case SQLiteParser.FIRST_VALUE_:
-        case SQLiteParser.LAST_VALUE_:
-          this.enterOuterAlt(_localctx, 1)
+        case 151:
+        case 162:
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 1859
             _la = this._input.LA(1)
-            if (!(_la === SQLiteParser.FIRST_VALUE_ || _la === SQLiteParser.LAST_VALUE_)) {
+            if (!(_la === 151 || _la === 162)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -8881,7 +8328,7 @@ export class SQLiteParser extends Parser {
             this.state = 1866
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.PARTITION_) {
+            if (_la === 153) {
               {
                 this.state = 1865
                 this.partition_by()
@@ -8893,7 +8340,7 @@ export class SQLiteParser extends Parser {
             this.state = 1870
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.ROWS_ || _la === SQLiteParser.RANGE_ || _la === SQLiteParser.GROUPS_) {
+            if (_la === 128 || _la === 154 || _la === 179) {
               {
                 this.state = 1869
                 this.frame_clause()
@@ -8904,19 +8351,15 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.CLOSE_PAR)
           }
           break
-        case SQLiteParser.CUME_DIST_:
-        case SQLiteParser.PERCENT_RANK_:
-          this.enterOuterAlt(_localctx, 2)
+        case 159:
+        case 166:
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1874
             _la = this._input.LA(1)
-            if (!(_la === SQLiteParser.CUME_DIST_ || _la === SQLiteParser.PERCENT_RANK_)) {
+            if (!(_la === 159 || _la === 166)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -8931,7 +8374,7 @@ export class SQLiteParser extends Parser {
             this.state = 1880
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.PARTITION_) {
+            if (_la === 153) {
               {
                 this.state = 1879
                 this.partition_by()
@@ -8941,7 +8384,7 @@ export class SQLiteParser extends Parser {
             this.state = 1883
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.ORDER_) {
+            if (_la === 109) {
               {
                 this.state = 1882
                 this.order_by_expr()
@@ -8952,29 +8395,16 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.CLOSE_PAR)
           }
           break
-        case SQLiteParser.DENSE_RANK_:
-        case SQLiteParser.RANK_:
-        case SQLiteParser.ROW_NUMBER_:
-          this.enterOuterAlt(_localctx, 3)
+        case 160:
+        case 167:
+        case 168:
+          this.enterOuterAlt(localctx, 3)
           {
             this.state = 1886
             _la = this._input.LA(1)
-            if (
-              !(
-                ((_la - 160) & ~0x1f) === 0 &&
-                ((1 << (_la - 160)) &
-                  ((1 << (SQLiteParser.DENSE_RANK_ - 160)) |
-                    (1 << (SQLiteParser.RANK_ - 160)) |
-                    (1 << (SQLiteParser.ROW_NUMBER_ - 160)))) !==
-                  0
-              )
-            ) {
+            if (!(((_la - 160) & ~0x1f) === 0 && ((1 << (_la - 160)) & 385) !== 0)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -8989,7 +8419,7 @@ export class SQLiteParser extends Parser {
             this.state = 1892
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.PARTITION_) {
+            if (_la === 153) {
               {
                 this.state = 1891
                 this.partition_by()
@@ -9002,19 +8432,15 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.CLOSE_PAR)
           }
           break
-        case SQLiteParser.LAG_:
-        case SQLiteParser.LEAD_:
-          this.enterOuterAlt(_localctx, 4)
+        case 161:
+        case 163:
+          this.enterOuterAlt(localctx, 4)
           {
             this.state = 1897
             _la = this._input.LA(1)
-            if (!(_la === SQLiteParser.LAG_ || _la === SQLiteParser.LEAD_)) {
+            if (!(_la === 161 || _la === 163)) {
               this._errHandler.recoverInline(this)
             } else {
-              if (this._input.LA(1) === Token.EOF) {
-                this.matchedEOF = true
-              }
-
               this._errHandler.reportMatch(this)
               this.consume()
             }
@@ -9024,7 +8450,7 @@ export class SQLiteParser extends Parser {
             this.expr(0)
             this.state = 1901
             this._errHandler.sync(this)
-            switch (this.interpreter.adaptivePredict(this._input, 282, this._ctx)) {
+            switch (this._interp.adaptivePredict(this._input, 282, this._ctx)) {
               case 1:
                 {
                   this.state = 1900
@@ -9035,7 +8461,7 @@ export class SQLiteParser extends Parser {
             this.state = 1904
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.COMMA) {
+            if (_la === 5) {
               {
                 this.state = 1903
                 this.default_value()
@@ -9051,7 +8477,7 @@ export class SQLiteParser extends Parser {
             this.state = 1910
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.PARTITION_) {
+            if (_la === 153) {
               {
                 this.state = 1909
                 this.partition_by()
@@ -9064,8 +8490,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.CLOSE_PAR)
           }
           break
-        case SQLiteParser.NTH_VALUE_:
-          this.enterOuterAlt(_localctx, 5)
+        case 164:
+          this.enterOuterAlt(localctx, 5)
           {
             this.state = 1915
             this.match(SQLiteParser.NTH_VALUE_)
@@ -9086,7 +8512,7 @@ export class SQLiteParser extends Parser {
             this.state = 1924
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.PARTITION_) {
+            if (_la === 153) {
               {
                 this.state = 1923
                 this.partition_by()
@@ -9098,7 +8524,7 @@ export class SQLiteParser extends Parser {
             this.state = 1928
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.ROWS_ || _la === SQLiteParser.RANGE_ || _la === SQLiteParser.GROUPS_) {
+            if (_la === 128 || _la === 154 || _la === 179) {
               {
                 this.state = 1927
                 this.frame_clause()
@@ -9109,8 +8535,8 @@ export class SQLiteParser extends Parser {
             this.match(SQLiteParser.CLOSE_PAR)
           }
           break
-        case SQLiteParser.NTILE_:
-          this.enterOuterAlt(_localctx, 6)
+        case 165:
+          this.enterOuterAlt(localctx, 6)
           {
             this.state = 1932
             this.match(SQLiteParser.NTILE_)
@@ -9127,7 +8553,7 @@ export class SQLiteParser extends Parser {
             this.state = 1939
             this._errHandler.sync(this)
             _la = this._input.LA(1)
-            if (_la === SQLiteParser.PARTITION_) {
+            if (_la === 153) {
               {
                 this.state = 1938
                 this.partition_by()
@@ -9145,7 +8571,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9154,14 +8580,14 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public offset(): OffsetContext {
-    let _localctx: OffsetContext = new OffsetContext(this._ctx, this.state)
-    this.enterRule(_localctx, 152, SQLiteParser.RULE_offset)
+    let localctx: OffsetContext = new OffsetContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 152, SQLiteParser.RULE_offset)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1946
         this.match(SQLiteParser.COMMA)
@@ -9170,7 +8596,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9179,14 +8605,14 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public default_value(): Default_valueContext {
-    let _localctx: Default_valueContext = new Default_valueContext(this._ctx, this.state)
-    this.enterRule(_localctx, 154, SQLiteParser.RULE_default_value)
+    let localctx: Default_valueContext = new Default_valueContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 154, SQLiteParser.RULE_default_value)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1949
         this.match(SQLiteParser.COMMA)
@@ -9195,7 +8621,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9204,15 +8630,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public partition_by(): Partition_byContext {
-    let _localctx: Partition_byContext = new Partition_byContext(this._ctx, this.state)
-    this.enterRule(_localctx, 156, SQLiteParser.RULE_partition_by)
+    let localctx: Partition_byContext = new Partition_byContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 156, SQLiteParser.RULE_partition_by)
     try {
       let _alt: number
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1952
         this.match(SQLiteParser.PARTITION_)
@@ -9236,12 +8662,12 @@ export class SQLiteParser extends Parser {
           }
           this.state = 1957
           this._errHandler.sync(this)
-          _alt = this.interpreter.adaptivePredict(this._input, 289, this._ctx)
+          _alt = this._interp.adaptivePredict(this._input, 289, this._ctx)
         } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER)
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9250,15 +8676,15 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public order_by_expr(): Order_by_exprContext {
-    let _localctx: Order_by_exprContext = new Order_by_exprContext(this._ctx, this.state)
-    this.enterRule(_localctx, 158, SQLiteParser.RULE_order_by_expr)
+    let localctx: Order_by_exprContext = new Order_by_exprContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 158, SQLiteParser.RULE_order_by_expr)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1959
         this.match(SQLiteParser.ORDER_)
@@ -9278,193 +8704,17 @@ export class SQLiteParser extends Parser {
           this._errHandler.sync(this)
           _la = this._input.LA(1)
         } while (
-          ((_la & ~0x1f) === 0 &&
-            ((1 << _la) &
-              ((1 << SQLiteParser.OPEN_PAR) |
-                (1 << SQLiteParser.PLUS) |
-                (1 << SQLiteParser.MINUS) |
-                (1 << SQLiteParser.TILDE) |
-                (1 << SQLiteParser.ABORT_) |
-                (1 << SQLiteParser.ACTION_) |
-                (1 << SQLiteParser.ADD_) |
-                (1 << SQLiteParser.AFTER_) |
-                (1 << SQLiteParser.ALL_) |
-                (1 << SQLiteParser.ALTER_) |
-                (1 << SQLiteParser.ANALYZE_))) !==
-              0) ||
-          (((_la - 32) & ~0x1f) === 0 &&
-            ((1 << (_la - 32)) &
-              ((1 << (SQLiteParser.AND_ - 32)) |
-                (1 << (SQLiteParser.AS_ - 32)) |
-                (1 << (SQLiteParser.ASC_ - 32)) |
-                (1 << (SQLiteParser.ATTACH_ - 32)) |
-                (1 << (SQLiteParser.AUTOINCREMENT_ - 32)) |
-                (1 << (SQLiteParser.BEFORE_ - 32)) |
-                (1 << (SQLiteParser.BEGIN_ - 32)) |
-                (1 << (SQLiteParser.BETWEEN_ - 32)) |
-                (1 << (SQLiteParser.BY_ - 32)) |
-                (1 << (SQLiteParser.CASCADE_ - 32)) |
-                (1 << (SQLiteParser.CASE_ - 32)) |
-                (1 << (SQLiteParser.CAST_ - 32)) |
-                (1 << (SQLiteParser.CHECK_ - 32)) |
-                (1 << (SQLiteParser.COLLATE_ - 32)) |
-                (1 << (SQLiteParser.COLUMN_ - 32)) |
-                (1 << (SQLiteParser.COMMIT_ - 32)) |
-                (1 << (SQLiteParser.CONFLICT_ - 32)) |
-                (1 << (SQLiteParser.CONSTRAINT_ - 32)) |
-                (1 << (SQLiteParser.CREATE_ - 32)) |
-                (1 << (SQLiteParser.CROSS_ - 32)) |
-                (1 << (SQLiteParser.CURRENT_DATE_ - 32)) |
-                (1 << (SQLiteParser.CURRENT_TIME_ - 32)) |
-                (1 << (SQLiteParser.CURRENT_TIMESTAMP_ - 32)) |
-                (1 << (SQLiteParser.DATABASE_ - 32)) |
-                (1 << (SQLiteParser.DEFAULT_ - 32)) |
-                (1 << (SQLiteParser.DEFERRABLE_ - 32)) |
-                (1 << (SQLiteParser.DEFERRED_ - 32)) |
-                (1 << (SQLiteParser.DELETE_ - 32)) |
-                (1 << (SQLiteParser.DESC_ - 32)) |
-                (1 << (SQLiteParser.DETACH_ - 32)) |
-                (1 << (SQLiteParser.DISTINCT_ - 32)) |
-                (1 << (SQLiteParser.DROP_ - 32)))) !==
-              0) ||
-          (((_la - 64) & ~0x1f) === 0 &&
-            ((1 << (_la - 64)) &
-              ((1 << (SQLiteParser.EACH_ - 64)) |
-                (1 << (SQLiteParser.ELSE_ - 64)) |
-                (1 << (SQLiteParser.END_ - 64)) |
-                (1 << (SQLiteParser.ESCAPE_ - 64)) |
-                (1 << (SQLiteParser.EXCEPT_ - 64)) |
-                (1 << (SQLiteParser.EXCLUSIVE_ - 64)) |
-                (1 << (SQLiteParser.EXISTS_ - 64)) |
-                (1 << (SQLiteParser.EXPLAIN_ - 64)) |
-                (1 << (SQLiteParser.FAIL_ - 64)) |
-                (1 << (SQLiteParser.FOR_ - 64)) |
-                (1 << (SQLiteParser.FOREIGN_ - 64)) |
-                (1 << (SQLiteParser.FROM_ - 64)) |
-                (1 << (SQLiteParser.FULL_ - 64)) |
-                (1 << (SQLiteParser.GLOB_ - 64)) |
-                (1 << (SQLiteParser.GROUP_ - 64)) |
-                (1 << (SQLiteParser.HAVING_ - 64)) |
-                (1 << (SQLiteParser.IF_ - 64)) |
-                (1 << (SQLiteParser.IGNORE_ - 64)) |
-                (1 << (SQLiteParser.IMMEDIATE_ - 64)) |
-                (1 << (SQLiteParser.IN_ - 64)) |
-                (1 << (SQLiteParser.INDEX_ - 64)) |
-                (1 << (SQLiteParser.INDEXED_ - 64)) |
-                (1 << (SQLiteParser.INITIALLY_ - 64)) |
-                (1 << (SQLiteParser.INNER_ - 64)) |
-                (1 << (SQLiteParser.INSERT_ - 64)) |
-                (1 << (SQLiteParser.INSTEAD_ - 64)) |
-                (1 << (SQLiteParser.INTERSECT_ - 64)) |
-                (1 << (SQLiteParser.INTO_ - 64)) |
-                (1 << (SQLiteParser.IS_ - 64)) |
-                (1 << (SQLiteParser.ISNULL_ - 64)) |
-                (1 << (SQLiteParser.JOIN_ - 64)) |
-                (1 << (SQLiteParser.KEY_ - 64)))) !==
-              0) ||
-          (((_la - 96) & ~0x1f) === 0 &&
-            ((1 << (_la - 96)) &
-              ((1 << (SQLiteParser.LEFT_ - 96)) |
-                (1 << (SQLiteParser.LIKE_ - 96)) |
-                (1 << (SQLiteParser.LIMIT_ - 96)) |
-                (1 << (SQLiteParser.MATCH_ - 96)) |
-                (1 << (SQLiteParser.NATURAL_ - 96)) |
-                (1 << (SQLiteParser.NO_ - 96)) |
-                (1 << (SQLiteParser.NOT_ - 96)) |
-                (1 << (SQLiteParser.NOTNULL_ - 96)) |
-                (1 << (SQLiteParser.NULL_ - 96)) |
-                (1 << (SQLiteParser.OF_ - 96)) |
-                (1 << (SQLiteParser.OFFSET_ - 96)) |
-                (1 << (SQLiteParser.ON_ - 96)) |
-                (1 << (SQLiteParser.OR_ - 96)) |
-                (1 << (SQLiteParser.ORDER_ - 96)) |
-                (1 << (SQLiteParser.OUTER_ - 96)) |
-                (1 << (SQLiteParser.PLAN_ - 96)) |
-                (1 << (SQLiteParser.PRAGMA_ - 96)) |
-                (1 << (SQLiteParser.PRIMARY_ - 96)) |
-                (1 << (SQLiteParser.QUERY_ - 96)) |
-                (1 << (SQLiteParser.RAISE_ - 96)) |
-                (1 << (SQLiteParser.RECURSIVE_ - 96)) |
-                (1 << (SQLiteParser.REFERENCES_ - 96)) |
-                (1 << (SQLiteParser.REGEXP_ - 96)) |
-                (1 << (SQLiteParser.REINDEX_ - 96)) |
-                (1 << (SQLiteParser.RELEASE_ - 96)) |
-                (1 << (SQLiteParser.RENAME_ - 96)) |
-                (1 << (SQLiteParser.REPLACE_ - 96)) |
-                (1 << (SQLiteParser.RESTRICT_ - 96)) |
-                (1 << (SQLiteParser.RIGHT_ - 96)) |
-                (1 << (SQLiteParser.ROLLBACK_ - 96)) |
-                (1 << (SQLiteParser.ROW_ - 96)))) !==
-              0) ||
-          (((_la - 128) & ~0x1f) === 0 &&
-            ((1 << (_la - 128)) &
-              ((1 << (SQLiteParser.ROWS_ - 128)) |
-                (1 << (SQLiteParser.SAVEPOINT_ - 128)) |
-                (1 << (SQLiteParser.SELECT_ - 128)) |
-                (1 << (SQLiteParser.SET_ - 128)) |
-                (1 << (SQLiteParser.TABLE_ - 128)) |
-                (1 << (SQLiteParser.TEMP_ - 128)) |
-                (1 << (SQLiteParser.TEMPORARY_ - 128)) |
-                (1 << (SQLiteParser.THEN_ - 128)) |
-                (1 << (SQLiteParser.TO_ - 128)) |
-                (1 << (SQLiteParser.TRANSACTION_ - 128)) |
-                (1 << (SQLiteParser.TRIGGER_ - 128)) |
-                (1 << (SQLiteParser.UNION_ - 128)) |
-                (1 << (SQLiteParser.UNIQUE_ - 128)) |
-                (1 << (SQLiteParser.UPDATE_ - 128)) |
-                (1 << (SQLiteParser.USING_ - 128)) |
-                (1 << (SQLiteParser.VACUUM_ - 128)) |
-                (1 << (SQLiteParser.VALUES_ - 128)) |
-                (1 << (SQLiteParser.VIEW_ - 128)) |
-                (1 << (SQLiteParser.VIRTUAL_ - 128)) |
-                (1 << (SQLiteParser.WHEN_ - 128)) |
-                (1 << (SQLiteParser.WHERE_ - 128)) |
-                (1 << (SQLiteParser.WITH_ - 128)) |
-                (1 << (SQLiteParser.WITHOUT_ - 128)) |
-                (1 << (SQLiteParser.FIRST_VALUE_ - 128)) |
-                (1 << (SQLiteParser.OVER_ - 128)) |
-                (1 << (SQLiteParser.PARTITION_ - 128)) |
-                (1 << (SQLiteParser.RANGE_ - 128)) |
-                (1 << (SQLiteParser.PRECEDING_ - 128)) |
-                (1 << (SQLiteParser.UNBOUNDED_ - 128)) |
-                (1 << (SQLiteParser.CURRENT_ - 128)) |
-                (1 << (SQLiteParser.FOLLOWING_ - 128)) |
-                (1 << (SQLiteParser.CUME_DIST_ - 128)))) !==
-              0) ||
-          (((_la - 160) & ~0x1f) === 0 &&
-            ((1 << (_la - 160)) &
-              ((1 << (SQLiteParser.DENSE_RANK_ - 160)) |
-                (1 << (SQLiteParser.LAG_ - 160)) |
-                (1 << (SQLiteParser.LAST_VALUE_ - 160)) |
-                (1 << (SQLiteParser.LEAD_ - 160)) |
-                (1 << (SQLiteParser.NTH_VALUE_ - 160)) |
-                (1 << (SQLiteParser.NTILE_ - 160)) |
-                (1 << (SQLiteParser.PERCENT_RANK_ - 160)) |
-                (1 << (SQLiteParser.RANK_ - 160)) |
-                (1 << (SQLiteParser.ROW_NUMBER_ - 160)) |
-                (1 << (SQLiteParser.GENERATED_ - 160)) |
-                (1 << (SQLiteParser.ALWAYS_ - 160)) |
-                (1 << (SQLiteParser.STORED_ - 160)) |
-                (1 << (SQLiteParser.TRUE_ - 160)) |
-                (1 << (SQLiteParser.FALSE_ - 160)) |
-                (1 << (SQLiteParser.WINDOW_ - 160)) |
-                (1 << (SQLiteParser.NULLS_ - 160)) |
-                (1 << (SQLiteParser.FIRST_ - 160)) |
-                (1 << (SQLiteParser.LAST_ - 160)) |
-                (1 << (SQLiteParser.FILTER_ - 160)) |
-                (1 << (SQLiteParser.GROUPS_ - 160)) |
-                (1 << (SQLiteParser.EXCLUDE_ - 160)) |
-                (1 << (SQLiteParser.IDENTIFIER - 160)) |
-                (1 << (SQLiteParser.NUMERIC_LITERAL - 160)) |
-                (1 << (SQLiteParser.BIND_PARAMETER - 160)) |
-                (1 << (SQLiteParser.STRING_LITERAL - 160)) |
-                (1 << (SQLiteParser.BLOB_LITERAL - 160)))) !==
-              0)
+          ((_la & ~0x1f) === 0 && ((1 << _la) & 4261414664) !== 0) ||
+          (((_la - 32) & ~0x1f) === 0 && ((1 << (_la - 32)) & 4294967295) !== 0) ||
+          (((_la - 64) & ~0x1f) === 0 && ((1 << (_la - 64)) & 4294967295) !== 0) ||
+          (((_la - 96) & ~0x1f) === 0 && ((1 << (_la - 96)) & 4026531839) !== 0) ||
+          (((_la - 128) & ~0x1f) === 0 && ((1 << (_la - 128)) & 4294967295) !== 0) ||
+          (((_la - 160) & ~0x1f) === 0 && ((1 << (_la - 160)) & 1042284543) !== 0)
         )
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9473,14 +8723,14 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public order_by_expr_asc_desc(): Order_by_expr_asc_descContext {
-    let _localctx: Order_by_expr_asc_descContext = new Order_by_expr_asc_descContext(this._ctx, this.state)
-    this.enterRule(_localctx, 160, SQLiteParser.RULE_order_by_expr_asc_desc)
+    let localctx: Order_by_expr_asc_descContext = new Order_by_expr_asc_descContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 160, SQLiteParser.RULE_order_by_expr_asc_desc)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1966
         this.match(SQLiteParser.ORDER_)
@@ -9491,7 +8741,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9500,22 +8750,22 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public expr_asc_desc(): Expr_asc_descContext {
-    let _localctx: Expr_asc_descContext = new Expr_asc_descContext(this._ctx, this.state)
-    this.enterRule(_localctx, 162, SQLiteParser.RULE_expr_asc_desc)
+    let localctx: Expr_asc_descContext = new Expr_asc_descContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 162, SQLiteParser.RULE_expr_asc_desc)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1970
         this.expr(0)
         this.state = 1972
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        if (_la === SQLiteParser.ASC_ || _la === SQLiteParser.DESC_) {
+        if (_la === 34 || _la === 60) {
           {
             this.state = 1971
             this.asc_desc()
@@ -9525,7 +8775,7 @@ export class SQLiteParser extends Parser {
         this.state = 1981
         this._errHandler.sync(this)
         _la = this._input.LA(1)
-        while (_la === SQLiteParser.COMMA) {
+        while (_la === 5) {
           {
             {
               this.state = 1974
@@ -9535,7 +8785,7 @@ export class SQLiteParser extends Parser {
               this.state = 1977
               this._errHandler.sync(this)
               _la = this._input.LA(1)
-              if (_la === SQLiteParser.ASC_ || _la === SQLiteParser.DESC_) {
+              if (_la === 34 || _la === 60) {
                 {
                   this.state = 1976
                   this.asc_desc()
@@ -9550,7 +8800,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9559,21 +8809,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public initial_select(): Initial_selectContext {
-    let _localctx: Initial_selectContext = new Initial_selectContext(this._ctx, this.state)
-    this.enterRule(_localctx, 164, SQLiteParser.RULE_initial_select)
+    let localctx: Initial_selectContext = new Initial_selectContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 164, SQLiteParser.RULE_initial_select)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1984
         this.select_stmt()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9582,21 +8832,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public recursive_select(): Recursive_selectContext {
-    let _localctx: Recursive_selectContext = new Recursive_selectContext(this._ctx, this.state)
-    this.enterRule(_localctx, 166, SQLiteParser.RULE_recursive_select)
+    let localctx: Recursive_selectContext = new Recursive_selectContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 166, SQLiteParser.RULE_recursive_select)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1986
         this.select_stmt()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9605,39 +8855,28 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public unary_operator(): Unary_operatorContext {
-    let _localctx: Unary_operatorContext = new Unary_operatorContext(this._ctx, this.state)
-    this.enterRule(_localctx, 168, SQLiteParser.RULE_unary_operator)
+    let localctx: Unary_operatorContext = new Unary_operatorContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 168, SQLiteParser.RULE_unary_operator)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1988
         _la = this._input.LA(1)
-        if (
-          !(
-            ((_la & ~0x1f) === 0 &&
-              ((1 << _la) & ((1 << SQLiteParser.PLUS) | (1 << SQLiteParser.MINUS) | (1 << SQLiteParser.TILDE))) !==
-                0) ||
-            _la === SQLiteParser.NOT_
-          )
-        ) {
+        if (!(((_la & ~0x1f) === 0 && ((1 << _la) & 1792) !== 0) || _la === 102)) {
           this._errHandler.recoverInline(this)
         } else {
-          if (this._input.LA(1) === Token.EOF) {
-            this.matchedEOF = true
-          }
-
           this._errHandler.reportMatch(this)
           this.consume()
         }
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9646,21 +8885,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public error_message(): Error_messageContext {
-    let _localctx: Error_messageContext = new Error_messageContext(this._ctx, this.state)
-    this.enterRule(_localctx, 170, SQLiteParser.RULE_error_message)
+    let localctx: Error_messageContext = new Error_messageContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 170, SQLiteParser.RULE_error_message)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1990
         this.match(SQLiteParser.STRING_LITERAL)
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9669,26 +8908,25 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public module_argument(): Module_argumentContext {
-    let _localctx: Module_argumentContext = new Module_argumentContext(this._ctx, this.state)
-    this.enterRule(_localctx, 172, SQLiteParser.RULE_module_argument)
+    let localctx: Module_argumentContext = new Module_argumentContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 172, SQLiteParser.RULE_module_argument)
     try {
       this.state = 1994
       this._errHandler.sync(this)
-      switch (this.interpreter.adaptivePredict(this._input, 294, this._ctx)) {
+      switch (this._interp.adaptivePredict(this._input, 294, this._ctx)) {
         case 1:
-          this.enterOuterAlt(_localctx, 1)
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 1992
             this.expr(0)
           }
           break
-
         case 2:
-          this.enterOuterAlt(_localctx, 2)
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 1993
             this.column_def()
@@ -9697,7 +8935,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9706,32 +8944,28 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public column_alias(): Column_aliasContext {
-    let _localctx: Column_aliasContext = new Column_aliasContext(this._ctx, this.state)
-    this.enterRule(_localctx, 174, SQLiteParser.RULE_column_alias)
+    let localctx: Column_aliasContext = new Column_aliasContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 174, SQLiteParser.RULE_column_alias)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1996
         _la = this._input.LA(1)
-        if (!(_la === SQLiteParser.IDENTIFIER || _la === SQLiteParser.STRING_LITERAL)) {
+        if (!(_la === 185 || _la === 188)) {
           this._errHandler.recoverInline(this)
         } else {
-          if (this._input.LA(1) === Token.EOF) {
-            this.matchedEOF = true
-          }
-
           this._errHandler.reportMatch(this)
           this.consume()
         }
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9740,205 +8974,36 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public keyword(): KeywordContext {
-    let _localctx: KeywordContext = new KeywordContext(this._ctx, this.state)
-    this.enterRule(_localctx, 176, SQLiteParser.RULE_keyword)
+    let localctx: KeywordContext = new KeywordContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 176, SQLiteParser.RULE_keyword)
     let _la: number
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 1998
         _la = this._input.LA(1)
         if (
           !(
-            (((_la - 25) & ~0x1f) === 0 &&
-              ((1 << (_la - 25)) &
-                ((1 << (SQLiteParser.ABORT_ - 25)) |
-                  (1 << (SQLiteParser.ACTION_ - 25)) |
-                  (1 << (SQLiteParser.ADD_ - 25)) |
-                  (1 << (SQLiteParser.AFTER_ - 25)) |
-                  (1 << (SQLiteParser.ALL_ - 25)) |
-                  (1 << (SQLiteParser.ALTER_ - 25)) |
-                  (1 << (SQLiteParser.ANALYZE_ - 25)) |
-                  (1 << (SQLiteParser.AND_ - 25)) |
-                  (1 << (SQLiteParser.AS_ - 25)) |
-                  (1 << (SQLiteParser.ASC_ - 25)) |
-                  (1 << (SQLiteParser.ATTACH_ - 25)) |
-                  (1 << (SQLiteParser.AUTOINCREMENT_ - 25)) |
-                  (1 << (SQLiteParser.BEFORE_ - 25)) |
-                  (1 << (SQLiteParser.BEGIN_ - 25)) |
-                  (1 << (SQLiteParser.BETWEEN_ - 25)) |
-                  (1 << (SQLiteParser.BY_ - 25)) |
-                  (1 << (SQLiteParser.CASCADE_ - 25)) |
-                  (1 << (SQLiteParser.CASE_ - 25)) |
-                  (1 << (SQLiteParser.CAST_ - 25)) |
-                  (1 << (SQLiteParser.CHECK_ - 25)) |
-                  (1 << (SQLiteParser.COLLATE_ - 25)) |
-                  (1 << (SQLiteParser.COLUMN_ - 25)) |
-                  (1 << (SQLiteParser.COMMIT_ - 25)) |
-                  (1 << (SQLiteParser.CONFLICT_ - 25)) |
-                  (1 << (SQLiteParser.CONSTRAINT_ - 25)) |
-                  (1 << (SQLiteParser.CREATE_ - 25)) |
-                  (1 << (SQLiteParser.CROSS_ - 25)) |
-                  (1 << (SQLiteParser.CURRENT_DATE_ - 25)) |
-                  (1 << (SQLiteParser.CURRENT_TIME_ - 25)) |
-                  (1 << (SQLiteParser.CURRENT_TIMESTAMP_ - 25)) |
-                  (1 << (SQLiteParser.DATABASE_ - 25)) |
-                  (1 << (SQLiteParser.DEFAULT_ - 25)))) !==
-                0) ||
-            (((_la - 57) & ~0x1f) === 0 &&
-              ((1 << (_la - 57)) &
-                ((1 << (SQLiteParser.DEFERRABLE_ - 57)) |
-                  (1 << (SQLiteParser.DEFERRED_ - 57)) |
-                  (1 << (SQLiteParser.DELETE_ - 57)) |
-                  (1 << (SQLiteParser.DESC_ - 57)) |
-                  (1 << (SQLiteParser.DETACH_ - 57)) |
-                  (1 << (SQLiteParser.DISTINCT_ - 57)) |
-                  (1 << (SQLiteParser.DROP_ - 57)) |
-                  (1 << (SQLiteParser.EACH_ - 57)) |
-                  (1 << (SQLiteParser.ELSE_ - 57)) |
-                  (1 << (SQLiteParser.END_ - 57)) |
-                  (1 << (SQLiteParser.ESCAPE_ - 57)) |
-                  (1 << (SQLiteParser.EXCEPT_ - 57)) |
-                  (1 << (SQLiteParser.EXCLUSIVE_ - 57)) |
-                  (1 << (SQLiteParser.EXISTS_ - 57)) |
-                  (1 << (SQLiteParser.EXPLAIN_ - 57)) |
-                  (1 << (SQLiteParser.FAIL_ - 57)) |
-                  (1 << (SQLiteParser.FOR_ - 57)) |
-                  (1 << (SQLiteParser.FOREIGN_ - 57)) |
-                  (1 << (SQLiteParser.FROM_ - 57)) |
-                  (1 << (SQLiteParser.FULL_ - 57)) |
-                  (1 << (SQLiteParser.GLOB_ - 57)) |
-                  (1 << (SQLiteParser.GROUP_ - 57)) |
-                  (1 << (SQLiteParser.HAVING_ - 57)) |
-                  (1 << (SQLiteParser.IF_ - 57)) |
-                  (1 << (SQLiteParser.IGNORE_ - 57)) |
-                  (1 << (SQLiteParser.IMMEDIATE_ - 57)) |
-                  (1 << (SQLiteParser.IN_ - 57)) |
-                  (1 << (SQLiteParser.INDEX_ - 57)) |
-                  (1 << (SQLiteParser.INDEXED_ - 57)) |
-                  (1 << (SQLiteParser.INITIALLY_ - 57)) |
-                  (1 << (SQLiteParser.INNER_ - 57)) |
-                  (1 << (SQLiteParser.INSERT_ - 57)))) !==
-                0) ||
-            (((_la - 89) & ~0x1f) === 0 &&
-              ((1 << (_la - 89)) &
-                ((1 << (SQLiteParser.INSTEAD_ - 89)) |
-                  (1 << (SQLiteParser.INTERSECT_ - 89)) |
-                  (1 << (SQLiteParser.INTO_ - 89)) |
-                  (1 << (SQLiteParser.IS_ - 89)) |
-                  (1 << (SQLiteParser.ISNULL_ - 89)) |
-                  (1 << (SQLiteParser.JOIN_ - 89)) |
-                  (1 << (SQLiteParser.KEY_ - 89)) |
-                  (1 << (SQLiteParser.LEFT_ - 89)) |
-                  (1 << (SQLiteParser.LIKE_ - 89)) |
-                  (1 << (SQLiteParser.LIMIT_ - 89)) |
-                  (1 << (SQLiteParser.MATCH_ - 89)) |
-                  (1 << (SQLiteParser.NATURAL_ - 89)) |
-                  (1 << (SQLiteParser.NO_ - 89)) |
-                  (1 << (SQLiteParser.NOT_ - 89)) |
-                  (1 << (SQLiteParser.NOTNULL_ - 89)) |
-                  (1 << (SQLiteParser.NULL_ - 89)) |
-                  (1 << (SQLiteParser.OF_ - 89)) |
-                  (1 << (SQLiteParser.OFFSET_ - 89)) |
-                  (1 << (SQLiteParser.ON_ - 89)) |
-                  (1 << (SQLiteParser.OR_ - 89)) |
-                  (1 << (SQLiteParser.ORDER_ - 89)) |
-                  (1 << (SQLiteParser.OUTER_ - 89)) |
-                  (1 << (SQLiteParser.PLAN_ - 89)) |
-                  (1 << (SQLiteParser.PRAGMA_ - 89)) |
-                  (1 << (SQLiteParser.PRIMARY_ - 89)) |
-                  (1 << (SQLiteParser.QUERY_ - 89)) |
-                  (1 << (SQLiteParser.RAISE_ - 89)) |
-                  (1 << (SQLiteParser.RECURSIVE_ - 89)) |
-                  (1 << (SQLiteParser.REFERENCES_ - 89)) |
-                  (1 << (SQLiteParser.REGEXP_ - 89)) |
-                  (1 << (SQLiteParser.REINDEX_ - 89)) |
-                  (1 << (SQLiteParser.RELEASE_ - 89)))) !==
-                0) ||
-            (((_la - 121) & ~0x1f) === 0 &&
-              ((1 << (_la - 121)) &
-                ((1 << (SQLiteParser.RENAME_ - 121)) |
-                  (1 << (SQLiteParser.REPLACE_ - 121)) |
-                  (1 << (SQLiteParser.RESTRICT_ - 121)) |
-                  (1 << (SQLiteParser.RIGHT_ - 121)) |
-                  (1 << (SQLiteParser.ROLLBACK_ - 121)) |
-                  (1 << (SQLiteParser.ROW_ - 121)) |
-                  (1 << (SQLiteParser.ROWS_ - 121)) |
-                  (1 << (SQLiteParser.SAVEPOINT_ - 121)) |
-                  (1 << (SQLiteParser.SELECT_ - 121)) |
-                  (1 << (SQLiteParser.SET_ - 121)) |
-                  (1 << (SQLiteParser.TABLE_ - 121)) |
-                  (1 << (SQLiteParser.TEMP_ - 121)) |
-                  (1 << (SQLiteParser.TEMPORARY_ - 121)) |
-                  (1 << (SQLiteParser.THEN_ - 121)) |
-                  (1 << (SQLiteParser.TO_ - 121)) |
-                  (1 << (SQLiteParser.TRANSACTION_ - 121)) |
-                  (1 << (SQLiteParser.TRIGGER_ - 121)) |
-                  (1 << (SQLiteParser.UNION_ - 121)) |
-                  (1 << (SQLiteParser.UNIQUE_ - 121)) |
-                  (1 << (SQLiteParser.UPDATE_ - 121)) |
-                  (1 << (SQLiteParser.USING_ - 121)) |
-                  (1 << (SQLiteParser.VACUUM_ - 121)) |
-                  (1 << (SQLiteParser.VALUES_ - 121)) |
-                  (1 << (SQLiteParser.VIEW_ - 121)) |
-                  (1 << (SQLiteParser.VIRTUAL_ - 121)) |
-                  (1 << (SQLiteParser.WHEN_ - 121)) |
-                  (1 << (SQLiteParser.WHERE_ - 121)) |
-                  (1 << (SQLiteParser.WITH_ - 121)) |
-                  (1 << (SQLiteParser.WITHOUT_ - 121)) |
-                  (1 << (SQLiteParser.FIRST_VALUE_ - 121)) |
-                  (1 << (SQLiteParser.OVER_ - 121)))) !==
-                0) ||
-            (((_la - 153) & ~0x1f) === 0 &&
-              ((1 << (_la - 153)) &
-                ((1 << (SQLiteParser.PARTITION_ - 153)) |
-                  (1 << (SQLiteParser.RANGE_ - 153)) |
-                  (1 << (SQLiteParser.PRECEDING_ - 153)) |
-                  (1 << (SQLiteParser.UNBOUNDED_ - 153)) |
-                  (1 << (SQLiteParser.CURRENT_ - 153)) |
-                  (1 << (SQLiteParser.FOLLOWING_ - 153)) |
-                  (1 << (SQLiteParser.CUME_DIST_ - 153)) |
-                  (1 << (SQLiteParser.DENSE_RANK_ - 153)) |
-                  (1 << (SQLiteParser.LAG_ - 153)) |
-                  (1 << (SQLiteParser.LAST_VALUE_ - 153)) |
-                  (1 << (SQLiteParser.LEAD_ - 153)) |
-                  (1 << (SQLiteParser.NTH_VALUE_ - 153)) |
-                  (1 << (SQLiteParser.NTILE_ - 153)) |
-                  (1 << (SQLiteParser.PERCENT_RANK_ - 153)) |
-                  (1 << (SQLiteParser.RANK_ - 153)) |
-                  (1 << (SQLiteParser.ROW_NUMBER_ - 153)) |
-                  (1 << (SQLiteParser.GENERATED_ - 153)) |
-                  (1 << (SQLiteParser.ALWAYS_ - 153)) |
-                  (1 << (SQLiteParser.STORED_ - 153)) |
-                  (1 << (SQLiteParser.TRUE_ - 153)) |
-                  (1 << (SQLiteParser.FALSE_ - 153)) |
-                  (1 << (SQLiteParser.WINDOW_ - 153)) |
-                  (1 << (SQLiteParser.NULLS_ - 153)) |
-                  (1 << (SQLiteParser.FIRST_ - 153)) |
-                  (1 << (SQLiteParser.LAST_ - 153)) |
-                  (1 << (SQLiteParser.FILTER_ - 153)) |
-                  (1 << (SQLiteParser.GROUPS_ - 153)) |
-                  (1 << (SQLiteParser.EXCLUDE_ - 153)))) !==
-                0)
+            (((_la - 25) & ~0x1f) === 0 && ((1 << (_la - 25)) & 4294967295) !== 0) ||
+            (((_la - 57) & ~0x1f) === 0 && ((1 << (_la - 57)) & 4294967295) !== 0) ||
+            (((_la - 89) & ~0x1f) === 0 && ((1 << (_la - 89)) & 4294967295) !== 0) ||
+            (((_la - 121) & ~0x1f) === 0 && ((1 << (_la - 121)) & 4294967287) !== 0) ||
+            (((_la - 153) & ~0x1f) === 0 && ((1 << (_la - 153)) & 268435455) !== 0)
           )
         ) {
           this._errHandler.recoverInline(this)
         } else {
-          if (this._input.LA(1) === Token.EOF) {
-            this.matchedEOF = true
-          }
-
           this._errHandler.reportMatch(this)
           this.consume()
         }
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9947,21 +9012,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public name(): NameContext {
-    let _localctx: NameContext = new NameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 178, SQLiteParser.RULE_name)
+    let localctx: NameContext = new NameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 178, SQLiteParser.RULE_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2000
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9970,21 +9035,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public function_name(): Function_nameContext {
-    let _localctx: Function_nameContext = new Function_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 180, SQLiteParser.RULE_function_name)
+    let localctx: Function_nameContext = new Function_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 180, SQLiteParser.RULE_function_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2002
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -9993,21 +9058,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public schema_name(): Schema_nameContext {
-    let _localctx: Schema_nameContext = new Schema_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 182, SQLiteParser.RULE_schema_name)
+    let localctx: Schema_nameContext = new Schema_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 182, SQLiteParser.RULE_schema_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2004
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10016,21 +9081,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public table_name(): Table_nameContext {
-    let _localctx: Table_nameContext = new Table_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 184, SQLiteParser.RULE_table_name)
+    let localctx: Table_nameContext = new Table_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 184, SQLiteParser.RULE_table_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2006
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10039,21 +9104,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public table_or_index_name(): Table_or_index_nameContext {
-    let _localctx: Table_or_index_nameContext = new Table_or_index_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 186, SQLiteParser.RULE_table_or_index_name)
+    let localctx: Table_or_index_nameContext = new Table_or_index_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 186, SQLiteParser.RULE_table_or_index_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2008
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10062,21 +9127,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public column_name(): Column_nameContext {
-    let _localctx: Column_nameContext = new Column_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 188, SQLiteParser.RULE_column_name)
+    let localctx: Column_nameContext = new Column_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 188, SQLiteParser.RULE_column_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2010
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10085,21 +9150,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public collation_name(): Collation_nameContext {
-    let _localctx: Collation_nameContext = new Collation_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 190, SQLiteParser.RULE_collation_name)
+    let localctx: Collation_nameContext = new Collation_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 190, SQLiteParser.RULE_collation_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2012
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10108,21 +9173,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public foreign_table(): Foreign_tableContext {
-    let _localctx: Foreign_tableContext = new Foreign_tableContext(this._ctx, this.state)
-    this.enterRule(_localctx, 192, SQLiteParser.RULE_foreign_table)
+    let localctx: Foreign_tableContext = new Foreign_tableContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 192, SQLiteParser.RULE_foreign_table)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2014
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10131,21 +9196,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public index_name(): Index_nameContext {
-    let _localctx: Index_nameContext = new Index_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 194, SQLiteParser.RULE_index_name)
+    let localctx: Index_nameContext = new Index_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 194, SQLiteParser.RULE_index_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2016
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10154,21 +9219,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public trigger_name(): Trigger_nameContext {
-    let _localctx: Trigger_nameContext = new Trigger_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 196, SQLiteParser.RULE_trigger_name)
+    let localctx: Trigger_nameContext = new Trigger_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 196, SQLiteParser.RULE_trigger_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2018
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10177,21 +9242,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public view_name(): View_nameContext {
-    let _localctx: View_nameContext = new View_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 198, SQLiteParser.RULE_view_name)
+    let localctx: View_nameContext = new View_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 198, SQLiteParser.RULE_view_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2020
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10200,21 +9265,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public module_name(): Module_nameContext {
-    let _localctx: Module_nameContext = new Module_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 200, SQLiteParser.RULE_module_name)
+    let localctx: Module_nameContext = new Module_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 200, SQLiteParser.RULE_module_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2022
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10223,21 +9288,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public pragma_name(): Pragma_nameContext {
-    let _localctx: Pragma_nameContext = new Pragma_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 202, SQLiteParser.RULE_pragma_name)
+    let localctx: Pragma_nameContext = new Pragma_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 202, SQLiteParser.RULE_pragma_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2024
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10246,21 +9311,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public savepoint_name(): Savepoint_nameContext {
-    let _localctx: Savepoint_nameContext = new Savepoint_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 204, SQLiteParser.RULE_savepoint_name)
+    let localctx: Savepoint_nameContext = new Savepoint_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 204, SQLiteParser.RULE_savepoint_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2026
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10269,21 +9334,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public table_alias(): Table_aliasContext {
-    let _localctx: Table_aliasContext = new Table_aliasContext(this._ctx, this.state)
-    this.enterRule(_localctx, 206, SQLiteParser.RULE_table_alias)
+    let localctx: Table_aliasContext = new Table_aliasContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 206, SQLiteParser.RULE_table_alias)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2028
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10292,21 +9357,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public transaction_name(): Transaction_nameContext {
-    let _localctx: Transaction_nameContext = new Transaction_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 208, SQLiteParser.RULE_transaction_name)
+    let localctx: Transaction_nameContext = new Transaction_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 208, SQLiteParser.RULE_transaction_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2030
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10315,21 +9380,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public window_name(): Window_nameContext {
-    let _localctx: Window_nameContext = new Window_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 210, SQLiteParser.RULE_window_name)
+    let localctx: Window_nameContext = new Window_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 210, SQLiteParser.RULE_window_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2032
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10338,21 +9403,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public alias(): AliasContext {
-    let _localctx: AliasContext = new AliasContext(this._ctx, this.state)
-    this.enterRule(_localctx, 212, SQLiteParser.RULE_alias)
+    let localctx: AliasContext = new AliasContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 212, SQLiteParser.RULE_alias)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2034
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10361,21 +9426,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public filename(): FilenameContext {
-    let _localctx: FilenameContext = new FilenameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 214, SQLiteParser.RULE_filename)
+    let localctx: FilenameContext = new FilenameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 214, SQLiteParser.RULE_filename)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2036
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10384,21 +9449,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public base_window_name(): Base_window_nameContext {
-    let _localctx: Base_window_nameContext = new Base_window_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 216, SQLiteParser.RULE_base_window_name)
+    let localctx: Base_window_nameContext = new Base_window_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 216, SQLiteParser.RULE_base_window_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2038
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10407,21 +9472,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public simple_func(): Simple_funcContext {
-    let _localctx: Simple_funcContext = new Simple_funcContext(this._ctx, this.state)
-    this.enterRule(_localctx, 218, SQLiteParser.RULE_simple_func)
+    let localctx: Simple_funcContext = new Simple_funcContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 218, SQLiteParser.RULE_simple_func)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2040
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10430,21 +9495,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public aggregate_func(): Aggregate_funcContext {
-    let _localctx: Aggregate_funcContext = new Aggregate_funcContext(this._ctx, this.state)
-    this.enterRule(_localctx, 220, SQLiteParser.RULE_aggregate_func)
+    let localctx: Aggregate_funcContext = new Aggregate_funcContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 220, SQLiteParser.RULE_aggregate_func)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2042
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10453,21 +9518,21 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public table_function_name(): Table_function_nameContext {
-    let _localctx: Table_function_nameContext = new Table_function_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 222, SQLiteParser.RULE_table_function_name)
+    let localctx: Table_function_nameContext = new Table_function_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 222, SQLiteParser.RULE_table_function_name)
     try {
-      this.enterOuterAlt(_localctx, 1)
+      this.enterOuterAlt(localctx, 1)
       {
         this.state = 2044
         this.any_name()
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10476,193 +9541,193 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
   // @RuleVersion(0)
   public any_name(): Any_nameContext {
-    let _localctx: Any_nameContext = new Any_nameContext(this._ctx, this.state)
-    this.enterRule(_localctx, 224, SQLiteParser.RULE_any_name)
+    let localctx: Any_nameContext = new Any_nameContext(this, this._ctx, this.state)
+    this.enterRule(localctx, 224, SQLiteParser.RULE_any_name)
     try {
       this.state = 2053
       this._errHandler.sync(this)
       switch (this._input.LA(1)) {
-        case SQLiteParser.IDENTIFIER:
-          this.enterOuterAlt(_localctx, 1)
+        case 185:
+          this.enterOuterAlt(localctx, 1)
           {
             this.state = 2046
             this.match(SQLiteParser.IDENTIFIER)
           }
           break
-        case SQLiteParser.ABORT_:
-        case SQLiteParser.ACTION_:
-        case SQLiteParser.ADD_:
-        case SQLiteParser.AFTER_:
-        case SQLiteParser.ALL_:
-        case SQLiteParser.ALTER_:
-        case SQLiteParser.ANALYZE_:
-        case SQLiteParser.AND_:
-        case SQLiteParser.AS_:
-        case SQLiteParser.ASC_:
-        case SQLiteParser.ATTACH_:
-        case SQLiteParser.AUTOINCREMENT_:
-        case SQLiteParser.BEFORE_:
-        case SQLiteParser.BEGIN_:
-        case SQLiteParser.BETWEEN_:
-        case SQLiteParser.BY_:
-        case SQLiteParser.CASCADE_:
-        case SQLiteParser.CASE_:
-        case SQLiteParser.CAST_:
-        case SQLiteParser.CHECK_:
-        case SQLiteParser.COLLATE_:
-        case SQLiteParser.COLUMN_:
-        case SQLiteParser.COMMIT_:
-        case SQLiteParser.CONFLICT_:
-        case SQLiteParser.CONSTRAINT_:
-        case SQLiteParser.CREATE_:
-        case SQLiteParser.CROSS_:
-        case SQLiteParser.CURRENT_DATE_:
-        case SQLiteParser.CURRENT_TIME_:
-        case SQLiteParser.CURRENT_TIMESTAMP_:
-        case SQLiteParser.DATABASE_:
-        case SQLiteParser.DEFAULT_:
-        case SQLiteParser.DEFERRABLE_:
-        case SQLiteParser.DEFERRED_:
-        case SQLiteParser.DELETE_:
-        case SQLiteParser.DESC_:
-        case SQLiteParser.DETACH_:
-        case SQLiteParser.DISTINCT_:
-        case SQLiteParser.DROP_:
-        case SQLiteParser.EACH_:
-        case SQLiteParser.ELSE_:
-        case SQLiteParser.END_:
-        case SQLiteParser.ESCAPE_:
-        case SQLiteParser.EXCEPT_:
-        case SQLiteParser.EXCLUSIVE_:
-        case SQLiteParser.EXISTS_:
-        case SQLiteParser.EXPLAIN_:
-        case SQLiteParser.FAIL_:
-        case SQLiteParser.FOR_:
-        case SQLiteParser.FOREIGN_:
-        case SQLiteParser.FROM_:
-        case SQLiteParser.FULL_:
-        case SQLiteParser.GLOB_:
-        case SQLiteParser.GROUP_:
-        case SQLiteParser.HAVING_:
-        case SQLiteParser.IF_:
-        case SQLiteParser.IGNORE_:
-        case SQLiteParser.IMMEDIATE_:
-        case SQLiteParser.IN_:
-        case SQLiteParser.INDEX_:
-        case SQLiteParser.INDEXED_:
-        case SQLiteParser.INITIALLY_:
-        case SQLiteParser.INNER_:
-        case SQLiteParser.INSERT_:
-        case SQLiteParser.INSTEAD_:
-        case SQLiteParser.INTERSECT_:
-        case SQLiteParser.INTO_:
-        case SQLiteParser.IS_:
-        case SQLiteParser.ISNULL_:
-        case SQLiteParser.JOIN_:
-        case SQLiteParser.KEY_:
-        case SQLiteParser.LEFT_:
-        case SQLiteParser.LIKE_:
-        case SQLiteParser.LIMIT_:
-        case SQLiteParser.MATCH_:
-        case SQLiteParser.NATURAL_:
-        case SQLiteParser.NO_:
-        case SQLiteParser.NOT_:
-        case SQLiteParser.NOTNULL_:
-        case SQLiteParser.NULL_:
-        case SQLiteParser.OF_:
-        case SQLiteParser.OFFSET_:
-        case SQLiteParser.ON_:
-        case SQLiteParser.OR_:
-        case SQLiteParser.ORDER_:
-        case SQLiteParser.OUTER_:
-        case SQLiteParser.PLAN_:
-        case SQLiteParser.PRAGMA_:
-        case SQLiteParser.PRIMARY_:
-        case SQLiteParser.QUERY_:
-        case SQLiteParser.RAISE_:
-        case SQLiteParser.RECURSIVE_:
-        case SQLiteParser.REFERENCES_:
-        case SQLiteParser.REGEXP_:
-        case SQLiteParser.REINDEX_:
-        case SQLiteParser.RELEASE_:
-        case SQLiteParser.RENAME_:
-        case SQLiteParser.REPLACE_:
-        case SQLiteParser.RESTRICT_:
-        case SQLiteParser.RIGHT_:
-        case SQLiteParser.ROLLBACK_:
-        case SQLiteParser.ROW_:
-        case SQLiteParser.ROWS_:
-        case SQLiteParser.SAVEPOINT_:
-        case SQLiteParser.SELECT_:
-        case SQLiteParser.SET_:
-        case SQLiteParser.TABLE_:
-        case SQLiteParser.TEMP_:
-        case SQLiteParser.TEMPORARY_:
-        case SQLiteParser.THEN_:
-        case SQLiteParser.TO_:
-        case SQLiteParser.TRANSACTION_:
-        case SQLiteParser.TRIGGER_:
-        case SQLiteParser.UNION_:
-        case SQLiteParser.UNIQUE_:
-        case SQLiteParser.UPDATE_:
-        case SQLiteParser.USING_:
-        case SQLiteParser.VACUUM_:
-        case SQLiteParser.VALUES_:
-        case SQLiteParser.VIEW_:
-        case SQLiteParser.VIRTUAL_:
-        case SQLiteParser.WHEN_:
-        case SQLiteParser.WHERE_:
-        case SQLiteParser.WITH_:
-        case SQLiteParser.WITHOUT_:
-        case SQLiteParser.FIRST_VALUE_:
-        case SQLiteParser.OVER_:
-        case SQLiteParser.PARTITION_:
-        case SQLiteParser.RANGE_:
-        case SQLiteParser.PRECEDING_:
-        case SQLiteParser.UNBOUNDED_:
-        case SQLiteParser.CURRENT_:
-        case SQLiteParser.FOLLOWING_:
-        case SQLiteParser.CUME_DIST_:
-        case SQLiteParser.DENSE_RANK_:
-        case SQLiteParser.LAG_:
-        case SQLiteParser.LAST_VALUE_:
-        case SQLiteParser.LEAD_:
-        case SQLiteParser.NTH_VALUE_:
-        case SQLiteParser.NTILE_:
-        case SQLiteParser.PERCENT_RANK_:
-        case SQLiteParser.RANK_:
-        case SQLiteParser.ROW_NUMBER_:
-        case SQLiteParser.GENERATED_:
-        case SQLiteParser.ALWAYS_:
-        case SQLiteParser.STORED_:
-        case SQLiteParser.TRUE_:
-        case SQLiteParser.FALSE_:
-        case SQLiteParser.WINDOW_:
-        case SQLiteParser.NULLS_:
-        case SQLiteParser.FIRST_:
-        case SQLiteParser.LAST_:
-        case SQLiteParser.FILTER_:
-        case SQLiteParser.GROUPS_:
-        case SQLiteParser.EXCLUDE_:
-          this.enterOuterAlt(_localctx, 2)
+        case 25:
+        case 26:
+        case 27:
+        case 28:
+        case 29:
+        case 30:
+        case 31:
+        case 32:
+        case 33:
+        case 34:
+        case 35:
+        case 36:
+        case 37:
+        case 38:
+        case 39:
+        case 40:
+        case 41:
+        case 42:
+        case 43:
+        case 44:
+        case 45:
+        case 46:
+        case 47:
+        case 48:
+        case 49:
+        case 50:
+        case 51:
+        case 52:
+        case 53:
+        case 54:
+        case 55:
+        case 56:
+        case 57:
+        case 58:
+        case 59:
+        case 60:
+        case 61:
+        case 62:
+        case 63:
+        case 64:
+        case 65:
+        case 66:
+        case 67:
+        case 68:
+        case 69:
+        case 70:
+        case 71:
+        case 72:
+        case 73:
+        case 74:
+        case 75:
+        case 76:
+        case 77:
+        case 78:
+        case 79:
+        case 80:
+        case 81:
+        case 82:
+        case 83:
+        case 84:
+        case 85:
+        case 86:
+        case 87:
+        case 88:
+        case 89:
+        case 90:
+        case 91:
+        case 92:
+        case 93:
+        case 94:
+        case 95:
+        case 96:
+        case 97:
+        case 98:
+        case 99:
+        case 100:
+        case 101:
+        case 102:
+        case 103:
+        case 104:
+        case 105:
+        case 106:
+        case 107:
+        case 108:
+        case 109:
+        case 110:
+        case 111:
+        case 112:
+        case 113:
+        case 114:
+        case 115:
+        case 116:
+        case 117:
+        case 118:
+        case 119:
+        case 120:
+        case 121:
+        case 122:
+        case 123:
+        case 125:
+        case 126:
+        case 127:
+        case 128:
+        case 129:
+        case 130:
+        case 131:
+        case 132:
+        case 133:
+        case 134:
+        case 135:
+        case 136:
+        case 137:
+        case 138:
+        case 139:
+        case 140:
+        case 141:
+        case 142:
+        case 143:
+        case 144:
+        case 145:
+        case 146:
+        case 147:
+        case 148:
+        case 149:
+        case 150:
+        case 151:
+        case 152:
+        case 153:
+        case 154:
+        case 155:
+        case 156:
+        case 157:
+        case 158:
+        case 159:
+        case 160:
+        case 161:
+        case 162:
+        case 163:
+        case 164:
+        case 165:
+        case 166:
+        case 167:
+        case 168:
+        case 169:
+        case 170:
+        case 171:
+        case 172:
+        case 173:
+        case 174:
+        case 175:
+        case 176:
+        case 177:
+        case 178:
+        case 179:
+        case 180:
+          this.enterOuterAlt(localctx, 2)
           {
             this.state = 2047
             this.keyword()
           }
           break
-        case SQLiteParser.STRING_LITERAL:
-          this.enterOuterAlt(_localctx, 3)
+        case 188:
+          this.enterOuterAlt(localctx, 3)
           {
             this.state = 2048
             this.match(SQLiteParser.STRING_LITERAL)
           }
           break
-        case SQLiteParser.OPEN_PAR:
-          this.enterOuterAlt(_localctx, 4)
+        case 3:
+          this.enterOuterAlt(localctx, 4)
           {
             this.state = 2049
             this.match(SQLiteParser.OPEN_PAR)
@@ -10677,7 +9742,7 @@ export class SQLiteParser extends Parser {
       }
     } catch (re) {
       if (re instanceof RecognitionException) {
-        _localctx.exception = re
+        localctx.exception = re
         this._errHandler.reportError(this, re)
         this._errHandler.recover(this, re)
       } else {
@@ -10686,1230 +9751,19189 @@ export class SQLiteParser extends Parser {
     } finally {
       this.exitRule()
     }
-    return _localctx
+    return localctx
   }
 
-  public sempred(_localctx: RuleContext, ruleIndex: number, predIndex: number): boolean {
+  public sempred(localctx: RuleContext, ruleIndex: number, predIndex: number): boolean {
     switch (ruleIndex) {
       case 32:
-        return this.expr_sempred(_localctx as ExprContext, predIndex)
+        return this.expr_sempred(localctx as ExprContext, predIndex)
     }
     return true
   }
-  private expr_sempred(_localctx: ExprContext, predIndex: number): boolean {
+  private expr_sempred(localctx: ExprContext, predIndex: number): boolean {
     switch (predIndex) {
       case 0:
         return this.precpred(this._ctx, 20)
-
       case 1:
         return this.precpred(this._ctx, 19)
-
       case 2:
         return this.precpred(this._ctx, 18)
-
       case 3:
         return this.precpred(this._ctx, 17)
-
       case 4:
         return this.precpred(this._ctx, 16)
-
       case 5:
         return this.precpred(this._ctx, 15)
-
       case 6:
         return this.precpred(this._ctx, 14)
-
       case 7:
         return this.precpred(this._ctx, 13)
-
       case 8:
         return this.precpred(this._ctx, 6)
-
       case 9:
         return this.precpred(this._ctx, 5)
-
       case 10:
         return this.precpred(this._ctx, 9)
-
       case 11:
         return this.precpred(this._ctx, 8)
-
       case 12:
         return this.precpred(this._ctx, 7)
-
       case 13:
         return this.precpred(this._ctx, 4)
     }
     return true
   }
 
-  private static readonly _serializedATNSegments: number = 4
-  private static readonly _serializedATNSegment0: string =
-    '\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03\xC3\u080A\x04' +
-    '\x02\t\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04' +
-    '\x07\t\x07\x04\b\t\b\x04\t\t\t\x04\n\t\n\x04\v\t\v\x04\f\t\f\x04\r\t\r' +
-    '\x04\x0E\t\x0E\x04\x0F\t\x0F\x04\x10\t\x10\x04\x11\t\x11\x04\x12\t\x12' +
-    '\x04\x13\t\x13\x04\x14\t\x14\x04\x15\t\x15\x04\x16\t\x16\x04\x17\t\x17' +
-    '\x04\x18\t\x18\x04\x19\t\x19\x04\x1A\t\x1A\x04\x1B\t\x1B\x04\x1C\t\x1C' +
-    '\x04\x1D\t\x1D\x04\x1E\t\x1E\x04\x1F\t\x1F\x04 \t \x04!\t!\x04"\t"\x04' +
-    "#\t#\x04$\t$\x04%\t%\x04&\t&\x04'\t'\x04(\t(\x04)\t)\x04*\t*\x04+\t" +
-    '+\x04,\t,\x04-\t-\x04.\t.\x04/\t/\x040\t0\x041\t1\x042\t2\x043\t3\x04' +
-    '4\t4\x045\t5\x046\t6\x047\t7\x048\t8\x049\t9\x04:\t:\x04;\t;\x04<\t<\x04' +
-    '=\t=\x04>\t>\x04?\t?\x04@\t@\x04A\tA\x04B\tB\x04C\tC\x04D\tD\x04E\tE\x04' +
-    'F\tF\x04G\tG\x04H\tH\x04I\tI\x04J\tJ\x04K\tK\x04L\tL\x04M\tM\x04N\tN\x04' +
-    'O\tO\x04P\tP\x04Q\tQ\x04R\tR\x04S\tS\x04T\tT\x04U\tU\x04V\tV\x04W\tW\x04' +
-    'X\tX\x04Y\tY\x04Z\tZ\x04[\t[\x04\\\t\\\x04]\t]\x04^\t^\x04_\t_\x04`\t' +
-    '`\x04a\ta\x04b\tb\x04c\tc\x04d\td\x04e\te\x04f\tf\x04g\tg\x04h\th\x04' +
-    'i\ti\x04j\tj\x04k\tk\x04l\tl\x04m\tm\x04n\tn\x04o\to\x04p\tp\x04q\tq\x04' +
-    'r\tr\x03\x02\x07\x02\xE6\n\x02\f\x02\x0E\x02\xE9\v\x02\x03\x02\x03\x02' +
-    '\x03\x03\x07\x03\xEE\n\x03\f\x03\x0E\x03\xF1\v\x03\x03\x03\x03\x03\x06' +
-    '\x03\xF5\n\x03\r\x03\x0E\x03\xF6\x03\x03\x07\x03\xFA\n\x03\f\x03\x0E\x03' +
-    '\xFD\v\x03\x03\x03\x07\x03\u0100\n\x03\f\x03\x0E\x03\u0103\v\x03\x03\x04' +
-    '\x03\x04\x03\x04\x05\x04\u0108\n\x04\x05\x04\u010A\n\x04\x03\x04\x03\x04' +
-    '\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04' +
-    '\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04' +
-    '\x03\x04\x03\x04\x03\x04\x03\x04\x05\x04\u0124\n\x04\x03\x05\x03\x05\x03' +
-    '\x05\x03\x05\x03\x05\x05\x05\u012B\n\x05\x03\x05\x03\x05\x03\x05\x03\x05' +
-    '\x03\x05\x05\x05\u0132\n\x05\x03\x05\x03\x05\x03\x05\x03\x05\x05\x05\u0138' +
-    '\n\x05\x03\x05\x03\x05\x05\x05\u013C\n\x05\x03\x05\x03\x05\x03\x05\x05' +
-    '\x05\u0141\n\x05\x03\x05\x05\x05\u0144\n\x05\x03\x06\x03\x06\x03\x06\x03' +
-    '\x06\x03\x06\x05\x06\u014B\n\x06\x03\x06\x05\x06\u014E\n\x06\x03\x07\x03' +
-    '\x07\x05\x07\u0152\n\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\b\x03\b\x05' +
-    '\b\u015A\n\b\x03\b\x03\b\x05\b\u015E\n\b\x05\b\u0160\n\b\x03\t\x03\t\x05' +
-    '\t\u0164\n\t\x03\n\x03\n\x05\n\u0168\n\n\x03\n\x03\n\x05\n\u016C\n\n\x03' +
-    '\n\x05\n\u016F\n\n\x03\v\x03\v\x03\v\x03\f\x03\f\x05\f\u0176\n\f\x03\f' +
-    '\x03\f\x03\r\x03\r\x05\r\u017C\n\r\x03\r\x03\r\x03\r\x03\r\x05\r\u0182' +
-    '\n\r\x03\r\x03\r\x03\r\x05\r\u0187\n\r\x03\r\x03\r\x03\r\x03\r\x03\r\x03' +
-    '\r\x03\r\x07\r\u0190\n\r\f\r\x0E\r\u0193\v\r\x03\r\x03\r\x03\r\x05\r\u0198' +
-    '\n\r\x03\x0E\x03\x0E\x05\x0E\u019C\n\x0E\x03\x0E\x03\x0E\x05\x0E\u01A0' +
-    '\n\x0E\x03\x0E\x05\x0E\u01A3\n\x0E\x03\x0F\x03\x0F\x05\x0F\u01A7\n\x0F' +
-    '\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x05\x0F\u01AD\n\x0F\x03\x0F\x03\x0F\x03' +
-    '\x0F\x05\x0F\u01B2\n\x0F\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x07\x0F' +
-    '\u01B9\n\x0F\f\x0F\x0E\x0F\u01BC\v\x0F\x03\x0F\x03\x0F\x07\x0F\u01C0\n' +
-    '\x0F\f\x0F\x0E\x0F\u01C3\v\x0F\x03\x0F\x03\x0F\x03\x0F\x05\x0F\u01C8\n' +
-    '\x0F\x03\x0F\x03\x0F\x05\x0F\u01CC\n\x0F\x03\x10\x03\x10\x05\x10\u01D0' +
-    '\n\x10\x03\x10\x07\x10\u01D3\n\x10\f\x10\x0E\x10\u01D6\v\x10\x03\x11\x06' +
-    '\x11\u01D9\n\x11\r\x11\x0E\x11\u01DA\x03\x11\x03\x11\x03\x11\x03\x11\x03' +
-    '\x11\x03\x11\x03\x11\x03\x11\x03\x11\x03\x11\x05\x11\u01E7\n\x11\x03\x12' +
-    '\x03\x12\x05\x12\u01EB\n\x12\x03\x12\x03\x12\x03\x12\x05\x12\u01F0\n\x12' +
-    '\x03\x12\x05\x12\u01F3\n\x12\x03\x12\x05\x12\u01F6\n\x12\x03\x12\x05\x12' +
-    '\u01F9\n\x12\x03\x12\x03\x12\x05\x12\u01FD\n\x12\x03\x12\x05\x12\u0200' +
-    '\n\x12\x03\x12\x03\x12\x03\x12\x03\x12\x03\x12\x03\x12\x03\x12\x03\x12' +
-    '\x03\x12\x03\x12\x03\x12\x03\x12\x05\x12\u020E\n\x12\x03\x12\x03\x12\x03' +
-    '\x12\x03\x12\x03\x12\x05\x12\u0215\n\x12\x03\x12\x03\x12\x03\x12\x03\x12' +
-    '\x03\x12\x05\x12\u021C\n\x12\x05\x12\u021E\n\x12\x03\x13\x05\x13\u0221' +
-    '\n\x13\x03\x13\x03\x13\x03\x14\x03\x14\x05\x14\u0227\n\x14\x03\x14\x03' +
-    '\x14\x03\x14\x05\x14\u022C\n\x14\x03\x14\x03\x14\x03\x14\x03\x14\x07\x14' +
-    '\u0232\n\x14\f\x14\x0E\x14\u0235\v\x14\x03\x14\x03\x14\x05\x14\u0239\n' +
-    '\x14\x03\x14\x03\x14\x03\x14\x03\x14\x03\x14\x03\x14\x03\x14\x03\x14\x03' +
-    '\x14\x03\x14\x03\x14\x07\x14\u0246\n\x14\f\x14\x0E\x14\u0249\v\x14\x03' +
-    '\x14\x03\x14\x03\x14\x05\x14\u024E\n\x14\x03\x15\x03\x15\x03\x15\x03\x15' +
-    '\x03\x15\x03\x15\x07\x15\u0256\n\x15\f\x15\x0E\x15\u0259\v\x15\x03\x15' +
-    '\x03\x15\x05\x15\u025D\n\x15\x03\x15\x03\x15\x03\x15\x03\x15\x03\x15\x03' +
-    '\x15\x03\x15\x03\x15\x05\x15\u0267\n\x15\x03\x15\x03\x15\x07\x15\u026B' +
-    '\n\x15\f\x15\x0E\x15\u026E\v\x15\x03\x15\x05\x15\u0271\n\x15\x03\x15\x03' +
-    '\x15\x03\x15\x05\x15\u0276\n\x15\x05\x15\u0278\n\x15\x03\x16\x03\x16\x03' +
-    '\x16\x03\x16\x03\x17\x03\x17\x05\x17\u0280\n\x17\x03\x17\x03\x17\x03\x17' +
-    '\x03\x17\x05\x17\u0286\n\x17\x03\x17\x03\x17\x03\x17\x05\x17\u028B\n\x17' +
-    '\x03\x17\x03\x17\x03\x17\x03\x17\x03\x17\x05\x17\u0292\n\x17\x03\x17\x03' +
-    '\x17\x03\x17\x03\x17\x03\x17\x03\x17\x03\x17\x07\x17\u029B\n\x17\f\x17' +
-    '\x0E\x17\u029E\v\x17\x05\x17\u02A0\n\x17\x05\x17\u02A2\n\x17\x03\x17\x03' +
-    '\x17\x03\x17\x03\x17\x03\x17\x05\x17\u02A9\n\x17\x03\x17\x03\x17\x05\x17' +
-    '\u02AD\n\x17\x03\x17\x03\x17\x03\x17\x03\x17\x03\x17\x05\x17\u02B4\n\x17' +
-    '\x03\x17\x03\x17\x06\x17\u02B8\n\x17\r\x17\x0E\x17\u02B9\x03\x17\x03\x17' +
-    '\x03\x18\x03\x18\x05\x18\u02C0\n\x18\x03\x18\x03\x18\x03\x18\x03\x18\x05' +
-    '\x18\u02C6\n\x18\x03\x18\x03\x18\x03\x18\x05\x18\u02CB\n\x18\x03\x18\x03' +
-    '\x18\x03\x18\x03\x18\x03\x18\x07\x18\u02D2\n\x18\f\x18\x0E\x18\u02D5\v' +
-    '\x18\x03\x18\x03\x18\x05\x18\u02D9\n\x18\x03\x18\x03\x18\x03\x18\x03\x19' +
-    '\x03\x19\x03\x19\x03\x19\x03\x19\x03\x19\x05\x19\u02E4\n\x19\x03\x19\x03' +
-    '\x19\x03\x19\x05\x19\u02E9\n\x19\x03\x19\x03\x19\x03\x19\x03\x19\x03\x19' +
-    '\x03\x19\x03\x19\x07\x19\u02F2\n\x19\f\x19\x0E\x19\u02F5\v\x19\x03\x19' +
-    '\x03\x19\x05\x19\u02F9\n\x19\x03\x1A\x03\x1A\x05\x1A\u02FD\n\x1A\x03\x1A' +
-    '\x03\x1A\x03\x1A\x03\x1A\x03\x1A\x03\x1A\x03\x1A\x03\x1A\x03\x1A\x03\x1A' +
-    '\x03\x1A\x03\x1A\x07\x1A\u030B\n\x1A\f\x1A\x0E\x1A\u030E\v\x1A\x03\x1B' +
-    '\x03\x1B\x03\x1B\x03\x1B\x03\x1B\x07\x1B\u0315\n\x1B\f\x1B\x0E\x1B\u0318' +
-    '\v\x1B\x03\x1B\x03\x1B\x05\x1B\u031C\n\x1B\x03\x1C\x03\x1C\x03\x1C\x03' +
-    '\x1C\x03\x1C\x03\x1C\x05\x1C\u0324\n\x1C\x03\x1C\x03\x1C\x03\x1C\x03\x1D' +
-    '\x03\x1D\x03\x1D\x03\x1D\x03\x1D\x07\x1D\u032E\n\x1D\f\x1D\x0E\x1D\u0331' +
-    '\v\x1D\x03\x1D\x03\x1D\x05\x1D\u0335\n\x1D\x03\x1D\x03\x1D\x03\x1D\x03' +
-    '\x1D\x03\x1D\x03\x1E\x05\x1E\u033D\n\x1E\x03\x1E\x03\x1E\x03\x1E\x03\x1E' +
-    '\x03\x1E\x05\x1E\u0344\n\x1E\x03\x1E\x05\x1E\u0347\n\x1E\x03\x1F\x05\x1F' +
-    '\u034A\n\x1F\x03\x1F\x03\x1F\x03\x1F\x03\x1F\x03\x1F\x05\x1F\u0351\n\x1F' +
-    '\x03\x1F\x05\x1F\u0354\n\x1F\x03\x1F\x05\x1F\u0357\n\x1F\x03\x1F\x05\x1F' +
-    '\u035A\n\x1F\x03 \x03 \x05 \u035E\n \x03 \x03 \x03!\x03!\x03!\x03!\x05' +
-    '!\u0366\n!\x03!\x03!\x03!\x05!\u036B\n!\x03!\x03!\x03"\x03"\x03"\x03' +
-    '"\x03"\x03"\x05"\u0375\n"\x03"\x03"\x03"\x05"\u037A\n"\x03"' +
-    '\x03"\x03"\x03"\x03"\x03"\x03"\x05"\u0383\n"\x03"\x03"\x03"' +
-    '\x07"\u0388\n"\f"\x0E"\u038B\v"\x03"\x05"\u038E\n"\x03"\x03"' +
-    '\x05"\u0392\n"\x03"\x05"\u0395\n"\x03"\x03"\x03"\x03"\x07"\u039B' +
-    '\n"\f"\x0E"\u039E\v"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x03' +
-    '"\x03"\x03"\x05"\u03AA\n"\x03"\x05"\u03AD\n"\x03"\x03"\x03"' +
-    '\x03"\x03"\x03"\x05"\u03B5\n"\x03"\x03"\x03"\x03"\x03"\x06"' +
-    '\u03BC\n"\r"\x0E"\u03BD\x03"\x03"\x05"\u03C2\n"\x03"\x03"\x03' +
-    '"\x05"\u03C7\n"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x03' +
-    '"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x03' +
-    '"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x05"\u03E5\n"\x03"\x03' +
-    '"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x03"\x05"\u03F1\n"\x03' +
-    '"\x03"\x03"\x05"\u03F6\n"\x03"\x03"\x03"\x03"\x03"\x03"\x03' +
-    '"\x03"\x03"\x03"\x05"\u0402\n"\x03"\x03"\x03"\x03"\x05"\u0408' +
-    '\n"\x03"\x03"\x03"\x03"\x03"\x05"\u040F\n"\x03"\x03"\x05"\u0413' +
-    '\n"\x03"\x03"\x03"\x03"\x03"\x03"\x07"\u041B\n"\f"\x0E"\u041E' +
-    '\v"\x05"\u0420\n"\x03"\x03"\x03"\x03"\x05"\u0426\n"\x03"\x03' +
-    '"\x03"\x03"\x05"\u042C\n"\x03"\x03"\x03"\x03"\x03"\x07"\u0433' +
-    '\n"\f"\x0E"\u0436\v"\x05"\u0438\n"\x03"\x03"\x05"\u043C\n"\x07' +
-    '"\u043E\n"\f"\x0E"\u0441\v"\x03#\x03#\x03#\x03#\x03#\x03#\x05#\u0449' +
-    '\n#\x03#\x03#\x03$\x03$\x03%\x03%\x03%\x03%\x07%\u0453\n%\f%\x0E%\u0456' +
-    "\v%\x03%\x03%\x03&\x03&\x03&\x03&\x07&\u045E\n&\f&\x0E&\u0461\v&\x03'" +
-    "\x05'\u0464\n'\x03'\x03'\x03'\x03'\x03'\x05'\u046B\n'\x03'\x03" +
-    "'\x03'\x03'\x05'\u0471\n'\x03'\x03'\x03'\x05'\u0476\n'\x03'" +
-    "\x03'\x03'\x03'\x07'\u047C\n'\f'\x0E'\u047F\v'\x03'\x03'\x05" +
-    "'\u0483\n'\x03'\x03'\x05'\u0487\n'\x03'\x05'\u048A\n'\x03'\x03" +
-    "'\x05'\u048E\n'\x03'\x05'\u0491\n'\x03(\x03(\x03(\x03(\x07(\u0497" +
-    '\n(\f(\x0E(\u049A\v(\x03)\x03)\x03)\x03)\x03)\x03)\x07)\u04A2\n)\f)\x0E' +
-    ')\u04A5\v)\x03)\x03)\x03)\x05)\u04AA\n)\x05)\u04AC\n)\x03)\x03)\x03)\x03' +
-    ')\x03)\x03)\x05)\u04B4\n)\x03)\x03)\x03)\x03)\x03)\x05)\u04BB\n)\x03)' +
-    '\x03)\x03)\x07)\u04C0\n)\f)\x0E)\u04C3\v)\x03)\x03)\x05)\u04C7\n)\x05' +
-    ')\u04C9\n)\x03*\x03*\x03*\x03*\x05*\u04CF\n*\x03*\x03*\x03*\x03*\x03*' +
-    '\x03*\x03*\x05*\u04D8\n*\x03+\x03+\x03+\x05+\u04DD\n+\x03,\x03,\x03,\x03' +
-    ',\x03,\x05,\u04E4\n,\x03,\x03,\x05,\u04E8\n,\x05,\u04EA\n,\x03-\x05-\u04ED' +
-    '\n-\x03-\x03-\x03-\x03-\x07-\u04F3\n-\f-\x0E-\u04F6\v-\x03-\x05-\u04F9' +
-    '\n-\x03-\x05-\u04FC\n-\x03.\x03.\x03.\x03.\x05.\u0502\n.\x07.\u0504\n' +
-    '.\f.\x0E.\u0507\v.\x03/\x03/\x05/\u050B\n/\x03/\x03/\x03/\x07/\u0510\n' +
-    '/\f/\x0E/\u0513\v/\x03/\x03/\x03/\x03/\x07/\u0519\n/\f/\x0E/\u051C\v/' +
-    '\x03/\x05/\u051F\n/\x05/\u0521\n/\x03/\x03/\x05/\u0525\n/\x03/\x03/\x03' +
-    '/\x03/\x03/\x07/\u052C\n/\f/\x0E/\u052F\v/\x03/\x03/\x05/\u0533\n/\x05' +
-    '/\u0535\n/\x03/\x03/\x03/\x03/\x03/\x03/\x03/\x03/\x03/\x07/\u0540\n/' +
-    '\f/\x0E/\u0543\v/\x05/\u0545\n/\x03/\x05/\u0548\n/\x030\x030\x031\x05' +
-    '1\u054D\n1\x031\x031\x051\u0551\n1\x031\x051\u0554\n1\x032\x052\u0557' +
-    '\n2\x032\x032\x032\x052\u055C\n2\x032\x032\x052\u0560\n2\x032\x062\u0563' +
-    '\n2\r2\x0E2\u0564\x032\x052\u0568\n2\x032\x052\u056B\n2\x033\x033\x03' +
-    '3\x053\u0570\n3\x033\x033\x053\u0574\n3\x033\x053\u0577\n3\x033\x033\x03' +
-    '3\x033\x033\x053\u057E\n3\x033\x033\x033\x053\u0583\n3\x033\x033\x033' +
-    '\x033\x033\x073\u058A\n3\f3\x0E3\u058D\v3\x033\x033\x053\u0591\n3\x03' +
-    '3\x053\u0594\n3\x033\x033\x033\x033\x073\u059A\n3\f3\x0E3\u059D\v3\x03' +
-    '3\x053\u05A0\n3\x033\x033\x033\x033\x033\x033\x053\u05A8\n3\x033\x053' +
-    '\u05AB\n3\x053\u05AD\n3\x034\x034\x034\x034\x034\x034\x034\x054\u05B6' +
-    '\n4\x034\x054\u05B9\n4\x054\u05BB\n4\x035\x035\x055\u05BF\n5\x035\x03' +
-    '5\x055\u05C3\n5\x035\x035\x055\u05C7\n5\x035\x055\u05CA\n5\x036\x036\x03' +
-    '6\x036\x036\x036\x036\x076\u05D3\n6\f6\x0E6\u05D6\v6\x036\x036\x056\u05DA' +
-    '\n6\x037\x037\x057\u05DE\n7\x037\x037\x057\u05E2\n7\x038\x058\u05E5\n' +
-    '8\x038\x038\x038\x058\u05EA\n8\x038\x038\x038\x038\x058\u05F0\n8\x038' +
-    '\x038\x038\x038\x038\x058\u05F7\n8\x038\x038\x038\x078\u05FC\n8\f8\x0E' +
-    '8\u05FF\v8\x038\x038\x038\x038\x078\u0605\n8\f8\x0E8\u0608\v8\x038\x05' +
-    '8\u060B\n8\x058\u060D\n8\x038\x038\x058\u0611\n8\x038\x058\u0614\n8\x03' +
-    '9\x039\x039\x039\x079\u061A\n9\f9\x0E9\u061D\v9\x039\x039\x03:\x05:\u0622' +
-    '\n:\x03:\x03:\x03:\x05:\u0627\n:\x03:\x03:\x03:\x03:\x05:\u062D\n:\x03' +
-    ':\x03:\x03:\x03:\x03:\x05:\u0634\n:\x03:\x03:\x03:\x07:\u0639\n:\f:\x0E' +
-    ':\u063C\v:\x03:\x03:\x05:\u0640\n:\x03:\x05:\u0643\n:\x03:\x05:\u0646' +
-    '\n:\x03:\x05:\u0649\n:\x03;\x03;\x03;\x05;\u064E\n;\x03;\x03;\x03;\x05' +
-    ';\u0653\n;\x03;\x03;\x03;\x03;\x03;\x05;\u065A\n;\x03<\x03<\x05<\u065E' +
-    '\n<\x03<\x03<\x05<\u0662\n<\x03=\x03=\x03=\x03=\x03=\x03=\x03>\x03>\x05' +
-    '>\u066C\n>\x03>\x03>\x03>\x03>\x03>\x07>\u0673\n>\f>\x0E>\u0676\v>\x05' +
-    '>\u0678\n>\x03>\x03>\x03>\x03>\x03>\x07>\u067F\n>\f>\x0E>\u0682\v>\x03' +
-    '>\x05>\u0685\n>\x03>\x03>\x03?\x03?\x03?\x03?\x05?\u068D\n?\x03?\x03?' +
-    '\x03?\x03?\x03?\x07?\u0694\n?\f?\x0E?\u0697\v?\x05?\u0699\n?\x03?\x03' +
-    '?\x03?\x03?\x03?\x07?\u06A0\n?\f?\x0E?\u06A3\v?\x05?\u06A5\n?\x03?\x05' +
-    '?\u06A8\n?\x03?\x05?\u06AB\n?\x03@\x03@\x03@\x03@\x03@\x03@\x03@\x03@' +
-    '\x05@\u06B5\n@\x05@\u06B7\n@\x03A\x03A\x03A\x03A\x03A\x03A\x03A\x05A\u06C0' +
-    '\nA\x03B\x03B\x03B\x03B\x03B\x07B\u06C7\nB\fB\x0EB\u06CA\vB\x03B\x05B' +
-    '\u06CD\nB\x03B\x03B\x03C\x03C\x03C\x05C\u06D4\nC\x03C\x03C\x03C\x07C\u06D9' +
-    '\nC\fC\x0EC\u06DC\vC\x03C\x05C\u06DF\nC\x03C\x03C\x05C\u06E3\nC\x03D\x03' +
-    'D\x03D\x03D\x03D\x07D\u06EA\nD\fD\x0ED\u06ED\vD\x03D\x05D\u06F0\nD\x03' +
-    'D\x03D\x05D\u06F4\nD\x03D\x03D\x03D\x05D\u06F9\nD\x03E\x03E\x05E\u06FD' +
-    '\nE\x03E\x03E\x03E\x07E\u0702\nE\fE\x0EE\u0705\vE\x03F\x03F\x03F\x03F' +
-    '\x03F\x07F\u070C\nF\fF\x0EF\u070F\vF\x03G\x03G\x03G\x03G\x05G\u0715\n' +
-    'G\x03H\x03H\x03H\x05H\u071A\nH\x03H\x05H\u071D\nH\x03H\x03H\x05H\u0721' +
-    '\nH\x03I\x03I\x03J\x03J\x03J\x03J\x03J\x03J\x03J\x03J\x03J\x03J\x05J\u072F' +
-    '\nJ\x03K\x03K\x03K\x03K\x03K\x03K\x03K\x03K\x03K\x03K\x05K\u073B\nK\x03' +
-    'L\x03L\x03L\x03L\x03L\x03L\x03L\x05L\u0744\nL\x03M\x03M\x03M\x03M\x03' +
-    'M\x03M\x03M\x05M\u074D\nM\x03M\x03M\x05M\u0751\nM\x03M\x03M\x03M\x03M' +
-    '\x03M\x03M\x03M\x03M\x05M\u075B\nM\x03M\x05M\u075E\nM\x03M\x03M\x03M\x03' +
-    'M\x03M\x03M\x03M\x05M\u0767\nM\x03M\x03M\x03M\x03M\x03M\x03M\x03M\x05' +
-    'M\u0770\nM\x03M\x05M\u0773\nM\x03M\x03M\x03M\x03M\x05M\u0779\nM\x03M\x03' +
-    'M\x03M\x03M\x03M\x03M\x03M\x03M\x03M\x03M\x03M\x03M\x05M\u0787\nM\x03' +
-    'M\x03M\x05M\u078B\nM\x03M\x03M\x03M\x03M\x03M\x03M\x03M\x03M\x03M\x05' +
-    'M\u0796\nM\x03M\x03M\x03M\x05M\u079B\nM\x03N\x03N\x03N\x03O\x03O\x03O' +
-    '\x03P\x03P\x03P\x06P\u07A6\nP\rP\x0EP\u07A7\x03Q\x03Q\x03Q\x06Q\u07AD' +
-    '\nQ\rQ\x0EQ\u07AE\x03R\x03R\x03R\x03R\x03S\x03S\x05S\u07B7\nS\x03S\x03' +
-    'S\x03S\x05S\u07BC\nS\x07S\u07BE\nS\fS\x0ES\u07C1\vS\x03T\x03T\x03U\x03' +
-    'U\x03V\x03V\x03W\x03W\x03X\x03X\x05X\u07CD\nX\x03Y\x03Y\x03Z\x03Z\x03' +
-    '[\x03[\x03\\\x03\\\x03]\x03]\x03^\x03^\x03_\x03_\x03`\x03`\x03a\x03a\x03' +
-    'b\x03b\x03c\x03c\x03d\x03d\x03e\x03e\x03f\x03f\x03g\x03g\x03h\x03h\x03' +
-    'i\x03i\x03j\x03j\x03k\x03k\x03l\x03l\x03m\x03m\x03n\x03n\x03o\x03o\x03' +
-    'p\x03p\x03q\x03q\x03r\x03r\x03r\x03r\x03r\x03r\x03r\x05r\u0808\nr\x03' +
-    'r\x04\u01BA\u01DA\x02\x03Bs\x02\x02\x04\x02\x06\x02\b\x02\n\x02\f\x02' +
-    '\x0E\x02\x10\x02\x12\x02\x14\x02\x16\x02\x18\x02\x1A\x02\x1C\x02\x1E\x02' +
-    ' \x02"\x02$\x02&\x02(\x02*\x02,\x02.\x020\x022\x024\x026\x028\x02:\x02' +
-    '<\x02>\x02@\x02B\x02D\x02F\x02H\x02J\x02L\x02N\x02P\x02R\x02T\x02V\x02' +
-    'X\x02Z\x02\\\x02^\x02`\x02b\x02d\x02f\x02h\x02j\x02l\x02n\x02p\x02r\x02' +
-    't\x02v\x02x\x02z\x02|\x02~\x02\x80\x02\x82\x02\x84\x02\x86\x02\x88\x02' +
-    '\x8A\x02\x8C\x02\x8E\x02\x90\x02\x92\x02\x94\x02\x96\x02\x98\x02\x9A\x02' +
-    '\x9C\x02\x9E\x02\xA0\x02\xA2\x02\xA4\x02\xA6\x02\xA8\x02\xAA\x02\xAC\x02' +
-    '\xAE\x02\xB0\x02\xB2\x02\xB4\x02\xB6\x02\xB8\x02\xBA\x02\xBC\x02\xBE\x02' +
-    '\xC0\x02\xC2\x02\xC4\x02\xC6\x02\xC8\x02\xCA\x02\xCC\x02\xCE\x02\xD0\x02' +
-    '\xD2\x02\xD4\x02\xD6\x02\xD8\x02\xDA\x02\xDC\x02\xDE\x02\xE0\x02\xE2\x02' +
-    '\x02\x1E\x05\x02<<GGTT\x04\x0211DD\x03\x02\x87\x88\x04\x02\x94\x94\xAD' +
-    '\xAD\x03\x02\n\v\x04\x02==\x8F\x8F\x04\x02::jj\x04\x02<<TT\x07\x02\x1B' +
-    '\x1BJJSS||\x80\x80\x06\x02VV\x86\x86\x8C\x8C\x93\x93\x04\x02\t\t\x0E\x0F' +
-    '\x03\x02\x10\x13\x03\x02\x14\x17\x06\x02OOcceexx\x05\x02\x1B\x1BJJ\x80' +
-    '\x80\x07\x0268jj\xAE\xAF\xBC\xBC\xBE\xBF\x04\x02\x1F\x1F@@\x05\x02\x82' +
-    '\x82\x9C\x9C\xB5\xB5\x04\x02\x07\x07ll\x03\x02\xB2\xB3\x04\x02$$>>\x04' +
-    '\x02\x99\x99\xA4\xA4\x04\x02\xA1\xA1\xA8\xA8\x04\x02\xA2\xA2\xA9\xAA\x04' +
-    '\x02\xA3\xA3\xA5\xA5\x04\x02\n\fhh\x04\x02\xBB\xBB\xBE\xBE\x04\x02\x1B' +
-    '}\x7F\xB6\x02\u0924\x02\xE7\x03\x02\x02\x02\x04\xEF\x03\x02\x02\x02\x06' +
-    '\u0109\x03\x02\x02\x02\b\u0125\x03\x02\x02\x02\n\u0145\x03\x02\x02\x02' +
-    '\f\u014F\x03\x02\x02\x02\x0E\u0157\x03\x02\x02\x02\x10\u0161\x03\x02\x02' +
-    '\x02\x12\u0165\x03\x02\x02\x02\x14\u0170\x03\x02\x02\x02\x16\u0173\x03' +
-    '\x02\x02\x02\x18\u0179\x03\x02\x02\x02\x1A\u019B\x03\x02\x02\x02\x1C\u01A4' +
-    '\x03\x02\x02\x02\x1E\u01CD\x03\x02\x02\x02 \u01D8\x03\x02\x02\x02"\u01EA' +
-    '\x03\x02\x02\x02'
-  private static readonly _serializedATNSegment1: string =
-    '$\u0220\x03\x02\x02\x02&\u0226\x03\x02\x02\x02(\u024F\x03\x02\x02\x02' +
-    '*\u0279\x03\x02\x02\x02,\u027D\x03\x02\x02\x02.\u02BD\x03\x02\x02\x02' +
-    '0\u02DD\x03\x02\x02\x022\u02FA\x03\x02\x02\x024\u030F\x03\x02\x02\x02' +
-    '6\u031D\x03\x02\x02\x028\u0328\x03\x02\x02\x02:\u033C\x03\x02\x02\x02' +
-    '<\u0349\x03\x02\x02\x02>\u035B\x03\x02\x02\x02@\u0361\x03\x02\x02\x02' +
-    'B\u03C6\x03\x02\x02\x02D\u0442\x03\x02\x02\x02F\u044C\x03\x02\x02\x02' +
-    'H\u044E\x03\x02\x02\x02J\u0459\x03\x02\x02\x02L\u0463\x03\x02\x02\x02' +
-    'N\u0492\x03\x02\x02\x02P\u049B\x03\x02\x02\x02R\u04CA\x03\x02\x02\x02' +
-    'T\u04DC\x03\x02\x02\x02V\u04DE\x03\x02\x02\x02X\u04EC\x03\x02\x02\x02' +
-    'Z\u04FD\x03\x02\x02\x02\\\u0547\x03\x02\x02\x02^\u0549\x03\x02\x02\x02' +
-    '`\u054C\x03\x02\x02\x02b\u0556\x03\x02\x02\x02d\u05AC\x03\x02\x02\x02' +
-    'f\u05BA\x03\x02\x02\x02h\u05C9\x03\x02\x02\x02j\u05D9\x03\x02\x02\x02' +
-    'l\u05E1\x03\x02\x02\x02n\u05E4\x03\x02\x02\x02p\u0615\x03\x02\x02\x02' +
-    'r\u0621\x03\x02\x02\x02t\u064D\x03\x02\x02\x02v\u065B\x03\x02\x02\x02' +
-    'x\u0663\x03\x02\x02\x02z\u0669\x03\x02\x02\x02|\u0688\x03\x02\x02\x02' +
-    '~\u06AC\x03\x02\x02\x02\x80\u06B8\x03\x02\x02\x02\x82\u06C1\x03\x02\x02' +
-    '\x02\x84\u06D0\x03\x02\x02\x02\x86\u06E4\x03\x02\x02\x02\x88\u06FA\x03' +
-    '\x02\x02\x02\x8A\u0706\x03\x02\x02\x02\x8C\u0710\x03\x02\x02\x02\x8E\u0716' +
-    '\x03\x02\x02\x02\x90\u0722\x03\x02\x02\x02\x92\u072E\x03\x02\x02\x02\x94' +
-    '\u073A\x03\x02\x02\x02\x96\u0743\x03\x02\x02\x02\x98\u079A\x03\x02\x02' +
-    '\x02\x9A\u079C\x03\x02\x02\x02\x9C\u079F\x03\x02\x02\x02\x9E\u07A2\x03' +
-    '\x02\x02\x02\xA0\u07A9\x03\x02\x02\x02\xA2\u07B0\x03\x02\x02\x02\xA4\u07B4' +
-    '\x03\x02\x02\x02\xA6\u07C2\x03\x02\x02\x02\xA8\u07C4\x03\x02\x02\x02\xAA' +
-    '\u07C6\x03\x02\x02\x02\xAC\u07C8\x03\x02\x02\x02\xAE\u07CC\x03\x02\x02' +
-    '\x02\xB0\u07CE\x03\x02\x02\x02\xB2\u07D0\x03\x02\x02\x02\xB4\u07D2\x03' +
-    '\x02\x02\x02\xB6\u07D4\x03\x02\x02\x02\xB8\u07D6\x03\x02\x02\x02\xBA\u07D8' +
-    '\x03\x02\x02\x02\xBC\u07DA\x03\x02\x02\x02\xBE\u07DC\x03\x02\x02\x02\xC0' +
-    '\u07DE\x03\x02\x02\x02\xC2\u07E0\x03\x02\x02\x02\xC4\u07E2\x03\x02\x02' +
-    '\x02\xC6\u07E4\x03\x02\x02\x02\xC8\u07E6\x03\x02\x02\x02\xCA\u07E8\x03' +
-    '\x02\x02\x02\xCC\u07EA\x03\x02\x02\x02\xCE\u07EC\x03\x02\x02\x02\xD0\u07EE' +
-    '\x03\x02\x02\x02\xD2\u07F0\x03\x02\x02\x02\xD4\u07F2\x03\x02\x02\x02\xD6' +
-    '\u07F4\x03\x02\x02\x02\xD8\u07F6\x03\x02\x02\x02\xDA\u07F8\x03\x02\x02' +
-    '\x02\xDC\u07FA\x03\x02\x02\x02\xDE\u07FC\x03\x02\x02\x02\xE0\u07FE\x03' +
-    '\x02\x02\x02\xE2\u0807\x03\x02\x02\x02\xE4\xE6\x05\x04\x03\x02\xE5\xE4' +
-    '\x03\x02\x02\x02\xE6\xE9\x03\x02\x02\x02\xE7\xE5\x03\x02\x02\x02\xE7\xE8' +
-    '\x03\x02\x02\x02\xE8\xEA\x03\x02\x02\x02\xE9\xE7\x03\x02\x02\x02\xEA\xEB' +
-    '\x07\x02\x02\x03\xEB\x03\x03\x02\x02\x02\xEC\xEE\x07\x03\x02\x02\xED\xEC' +
-    '\x03\x02\x02\x02\xEE\xF1\x03\x02\x02\x02\xEF\xED\x03\x02\x02\x02\xEF\xF0' +
-    '\x03\x02\x02\x02\xF0\xF2\x03\x02\x02\x02\xF1\xEF\x03\x02\x02\x02\xF2\xFB' +
-    '\x05\x06\x04\x02\xF3\xF5\x07\x03\x02\x02\xF4\xF3\x03\x02\x02\x02\xF5\xF6' +
-    '\x03\x02\x02\x02\xF6\xF4\x03\x02\x02\x02\xF6\xF7\x03\x02\x02\x02\xF7\xF8' +
-    '\x03\x02\x02\x02\xF8\xFA\x05\x06\x04\x02\xF9\xF4\x03\x02\x02\x02\xFA\xFD' +
-    '\x03\x02\x02\x02\xFB\xF9\x03\x02\x02\x02\xFB\xFC\x03\x02\x02\x02\xFC\u0101' +
-    '\x03\x02\x02\x02\xFD\xFB\x03\x02\x02\x02\xFE\u0100\x07\x03\x02\x02\xFF' +
-    '\xFE\x03\x02\x02\x02\u0100\u0103\x03\x02\x02\x02\u0101\xFF\x03\x02\x02' +
-    '\x02\u0101\u0102\x03\x02\x02\x02\u0102\x05\x03\x02\x02\x02\u0103\u0101' +
-    '\x03\x02\x02\x02\u0104\u0107\x07I\x02\x02\u0105\u0106\x07t\x02\x02\u0106' +
-    '\u0108\x07q\x02\x02\u0107\u0105\x03\x02\x02\x02\u0107\u0108\x03\x02\x02' +
-    '\x02\u0108\u010A\x03\x02\x02\x02\u0109\u0104\x03\x02\x02\x02\u0109\u010A' +
-    '\x03\x02\x02\x02\u010A\u0123\x03\x02\x02\x02\u010B\u0124\x05\b\x05\x02' +
-    '\u010C\u0124\x05\n\x06\x02\u010D\u0124\x05\f\x07\x02\u010E\u0124\x05\x0E' +
-    '\b\x02\u010F\u0124\x05\x10\t\x02\u0110\u0124\x05\x18\r\x02\u0111\u0124' +
-    '\x05\x1C\x0F\x02\u0112\u0124\x05,\x17\x02\u0113\u0124\x05.\x18\x02\u0114' +
-    '\u0124\x050\x19\x02\u0115\u0124\x05:\x1E\x02\u0116\u0124\x05<\x1F\x02' +
-    "\u0117\u0124\x05> \x02\u0118\u0124\x05@!\x02\u0119\u0124\x05L'\x02\u011A" +
-    '\u0124\x05R*\x02\u011B\u0124\x05V,\x02\u011C\u0124\x05\x16\f\x02\u011D' +
-    '\u0124\x05\x12\n\x02\u011E\u0124\x05\x14\v\x02\u011F\u0124\x05X-\x02\u0120' +
-    '\u0124\x05n8\x02\u0121\u0124\x05r:\x02\u0122\u0124\x05v<\x02\u0123\u010B' +
-    '\x03\x02\x02\x02\u0123\u010C\x03\x02\x02\x02\u0123\u010D\x03\x02\x02\x02' +
-    '\u0123\u010E\x03\x02\x02\x02\u0123\u010F\x03\x02\x02\x02\u0123\u0110\x03' +
-    '\x02\x02\x02\u0123\u0111\x03\x02\x02\x02\u0123\u0112\x03\x02\x02\x02\u0123' +
-    '\u0113\x03\x02\x02\x02\u0123\u0114\x03\x02\x02\x02\u0123\u0115\x03\x02' +
-    '\x02\x02\u0123\u0116\x03\x02\x02\x02\u0123\u0117\x03\x02\x02\x02\u0123' +
-    '\u0118\x03\x02\x02\x02\u0123\u0119\x03\x02\x02\x02\u0123\u011A\x03\x02' +
-    '\x02\x02\u0123\u011B\x03\x02\x02\x02\u0123\u011C\x03\x02\x02\x02\u0123' +
-    '\u011D\x03\x02\x02\x02\u0123\u011E\x03\x02\x02\x02\u0123\u011F\x03\x02' +
-    '\x02\x02\u0123\u0120\x03\x02\x02\x02\u0123\u0121\x03\x02\x02\x02\u0123' +
-    '\u0122\x03\x02\x02\x02\u0124\x07\x03\x02\x02\x02\u0125\u0126\x07 \x02' +
-    '\x02\u0126\u012A\x07\x86\x02\x02\u0127\u0128\x05\xB8]\x02\u0128\u0129' +
-    '\x07\x04\x02\x02\u0129\u012B\x03\x02\x02\x02\u012A\u0127\x03\x02\x02\x02' +
-    '\u012A\u012B\x03\x02\x02\x02\u012B\u012C\x03\x02\x02\x02\u012C\u0143\x05' +
-    '\xBA^\x02\u012D\u0137\x07{\x02\x02\u012E\u012F\x07\x8A\x02\x02\u012F\u0138' +
-    '\x05\xBA^\x02\u0130\u0132\x070\x02\x02\u0131\u0130\x03\x02\x02\x02\u0131' +
-    '\u0132\x03\x02\x02\x02\u0132\u0133\x03\x02\x02\x02\u0133\u0134\x05\xBE' +
-    '`\x02\u0134\u0135\x07\x8A\x02\x02\u0135\u0136\x05\xBE`\x02\u0136\u0138' +
-    '\x03\x02\x02\x02\u0137\u012E\x03\x02\x02\x02\u0137\u0131\x03\x02\x02\x02' +
-    '\u0138\u0144\x03\x02\x02\x02\u0139\u013B\x07\x1D\x02\x02\u013A\u013C\x07' +
-    '0\x02\x02\u013B\u013A\x03\x02\x02\x02\u013B\u013C\x03\x02\x02\x02\u013C' +
-    '\u013D\x03\x02\x02\x02\u013D\u0144\x05\x1E\x10\x02\u013E\u0140\x07A\x02' +
-    '\x02\u013F\u0141\x070\x02\x02\u0140\u013F\x03\x02\x02\x02\u0140\u0141' +
-    '\x03\x02\x02\x02\u0141\u0142\x03\x02\x02\x02\u0142\u0144\x05\xBE`\x02' +
-    '\u0143\u012D\x03\x02\x02\x02\u0143\u0139\x03\x02\x02\x02\u0143\u013E\x03' +
-    '\x02\x02\x02\u0144\t\x03\x02\x02\x02\u0145\u014D\x07!\x02\x02\u0146\u014E' +
-    '\x05\xB8]\x02\u0147\u0148\x05\xB8]\x02\u0148\u0149\x07\x04\x02\x02\u0149' +
-    '\u014B\x03\x02\x02\x02\u014A\u0147\x03\x02\x02\x02\u014A\u014B\x03\x02' +
-    '\x02\x02\u014B\u014C\x03\x02\x02\x02\u014C\u014E\x05\xBC_\x02\u014D\u0146' +
-    '\x03\x02\x02\x02\u014D\u014A\x03\x02\x02\x02\u014D\u014E\x03\x02\x02\x02' +
-    '\u014E\v\x03\x02\x02\x02\u014F\u0151\x07%\x02\x02\u0150\u0152\x079\x02' +
-    '\x02\u0151\u0150\x03\x02\x02\x02\u0151\u0152\x03\x02\x02\x02\u0152\u0153' +
-    '\x03\x02\x02\x02\u0153\u0154\x05B"\x02\u0154\u0155\x07#\x02\x02\u0155' +
-    '\u0156\x05\xB8]\x02\u0156\r\x03\x02\x02\x02\u0157\u0159\x07(\x02\x02\u0158' +
-    '\u015A\t\x02\x02\x02\u0159\u0158\x03\x02\x02\x02\u0159\u015A\x03\x02\x02' +
-    '\x02\u015A\u015F\x03\x02\x02\x02\u015B\u015D\x07\x8B\x02\x02\u015C\u015E' +
-    '\x05\xD2j\x02\u015D\u015C\x03\x02\x02\x02\u015D\u015E\x03\x02\x02\x02' +
-    '\u015E\u0160\x03\x02\x02\x02\u015F\u015B\x03\x02\x02\x02\u015F\u0160\x03' +
-    '\x02\x02\x02\u0160\x0F\x03\x02\x02\x02\u0161\u0163\t\x03\x02\x02\u0162' +
-    '\u0164\x07\x8B\x02\x02\u0163\u0162\x03\x02\x02\x02\u0163\u0164\x03\x02' +
-    '\x02\x02\u0164\x11\x03\x02\x02\x02\u0165\u0167\x07\x80\x02\x02\u0166\u0168' +
-    '\x07\x8B\x02\x02\u0167\u0166\x03\x02\x02\x02\u0167\u0168\x03\x02\x02\x02' +
-    '\u0168\u016E\x03\x02\x02\x02\u0169\u016B\x07\x8A\x02\x02\u016A\u016C\x07' +
-    '\x83\x02\x02\u016B\u016A\x03\x02\x02\x02\u016B\u016C\x03\x02\x02\x02\u016C' +
-    '\u016D\x03\x02\x02\x02\u016D\u016F\x05\xCEh\x02\u016E\u0169\x03\x02\x02' +
-    '\x02\u016E\u016F\x03\x02\x02\x02\u016F\x13\x03\x02\x02\x02\u0170\u0171' +
-    '\x07\x83\x02\x02\u0171\u0172\x05\xCEh\x02\u0172\x15\x03\x02\x02\x02\u0173' +
-    '\u0175\x07z\x02\x02\u0174\u0176\x07\x83\x02\x02\u0175\u0174\x03\x02\x02' +
-    '\x02\u0175\u0176\x03\x02\x02\x02\u0176\u0177\x03\x02\x02\x02\u0177\u0178' +
-    '\x05\xCEh\x02\u0178\x17\x03\x02\x02\x02\u0179\u017B\x074\x02\x02\u017A' +
-    '\u017C\x07\x8E\x02\x02\u017B\u017A\x03\x02\x02\x02\u017B\u017C\x03\x02' +
-    '\x02\x02\u017C\u017D\x03\x02\x02\x02\u017D\u0181\x07V\x02\x02\u017E\u017F' +
-    '\x07R\x02\x02\u017F\u0180\x07h\x02\x02\u0180\u0182\x07H\x02\x02\u0181' +
-    '\u017E\x03\x02\x02\x02\u0181\u0182\x03\x02\x02\x02\u0182\u0186\x03\x02' +
-    '\x02\x02\u0183\u0184\x05\xB8]\x02\u0184\u0185\x07\x04\x02\x02\u0185\u0187' +
-    '\x03\x02\x02\x02\u0186\u0183\x03\x02\x02\x02\u0186\u0187\x03\x02\x02\x02' +
-    '\u0187\u0188\x03\x02\x02\x02\u0188\u0189\x05\xC4c\x02\u0189\u018A\x07' +
-    'm\x02\x02\u018A\u018B\x05\xBA^\x02\u018B\u018C\x07\x05\x02\x02\u018C\u0191' +
-    '\x05\x1A\x0E\x02\u018D\u018E\x07\x07\x02\x02\u018E\u0190\x05\x1A\x0E\x02' +
-    '\u018F\u018D\x03\x02\x02\x02\u0190\u0193\x03\x02\x02\x02\u0191\u018F\x03' +
-    '\x02\x02\x02\u0191\u0192\x03\x02\x02\x02\u0192\u0194\x03\x02\x02\x02\u0193' +
-    '\u0191\x03\x02\x02\x02\u0194\u0197\x07\x06\x02\x02\u0195\u0196\x07\x96' +
-    '\x02\x02\u0196\u0198\x05B"\x02\u0197\u0195\x03\x02\x02\x02\u0197\u0198' +
-    '\x03\x02\x02\x02\u0198\x19\x03\x02\x02\x02\u0199\u019C\x05\xBE`\x02\u019A' +
-    '\u019C\x05B"\x02\u019B\u0199\x03\x02\x02\x02\u019B\u019A\x03\x02\x02' +
-    '\x02\u019C\u019F\x03\x02\x02\x02\u019D\u019E\x07/\x02\x02\u019E\u01A0' +
-    '\x05\xC0a\x02\u019F\u019D\x03\x02\x02\x02\u019F\u01A0\x03\x02\x02\x02' +
-    '\u01A0\u01A2\x03\x02\x02\x02\u01A1\u01A3\x05\x90I\x02\u01A2\u01A1\x03' +
-    '\x02\x02\x02\u01A2\u01A3\x03\x02\x02\x02\u01A3\x1B\x03\x02\x02\x02\u01A4' +
-    '\u01A6\x074\x02\x02\u01A5\u01A7\t\x04\x02\x02\u01A6\u01A5\x03\x02\x02' +
-    '\x02\u01A6\u01A7\x03\x02\x02\x02\u01A7\u01A8\x03\x02\x02\x02\u01A8\u01AC' +
-    '\x07\x86\x02\x02\u01A9\u01AA\x07R\x02\x02\u01AA\u01AB\x07h\x02\x02\u01AB' +
-    '\u01AD\x07H\x02\x02\u01AC\u01A9\x03\x02\x02\x02\u01AC\u01AD\x03\x02\x02' +
-    '\x02\u01AD\u01B1\x03\x02\x02\x02\u01AE\u01AF\x05\xB8]\x02\u01AF\u01B0' +
-    '\x07\x04\x02\x02\u01B0\u01B2\x03\x02\x02\x02\u01B1\u01AE\x03\x02\x02\x02' +
-    '\u01B1\u01B2\x03\x02\x02\x02\u01B2\u01B3\x03\x02\x02\x02\u01B3\u01CB\x05' +
-    '\xBA^\x02\u01B4\u01B5\x07\x05\x02\x02\u01B5\u01BA\x05\x1E\x10\x02\u01B6' +
-    '\u01B7\x07\x07\x02\x02\u01B7\u01B9\x05\x1E\x10\x02\u01B8\u01B6\x03\x02' +
-    '\x02\x02\u01B9\u01BC\x03\x02\x02\x02\u01BA\u01BB\x03\x02\x02\x02\u01BA' +
-    '\u01B8\x03\x02\x02\x02\u01BB\u01C1\x03\x02\x02\x02\u01BC\u01BA\x03\x02' +
-    '\x02\x02\u01BD\u01BE\x07\x07\x02\x02\u01BE\u01C0\x05&\x14\x02\u01BF\u01BD' +
-    '\x03\x02\x02\x02\u01C0\u01C3\x03\x02\x02\x02\u01C1\u01BF\x03\x02\x02\x02' +
-    '\u01C1\u01C2\x03\x02\x02\x02\u01C2\u01C4\x03\x02\x02\x02\u01C3\u01C1\x03' +
-    '\x02\x02\x02\u01C4\u01C7\x07\x06\x02\x02\u01C5\u01C6\x07\x98\x02\x02\u01C6' +
-    '\u01C8\x07\xBB\x02\x02\u01C7\u01C5\x03\x02\x02\x02\u01C7\u01C8\x03\x02' +
-    '\x02\x02\u01C8\u01CC\x03\x02\x02\x02\u01C9\u01CA\x07#\x02\x02\u01CA\u01CC' +
-    '\x05X-\x02\u01CB\u01B4\x03\x02\x02\x02\u01CB\u01C9\x03\x02\x02\x02\u01CC' +
-    '\x1D\x03\x02\x02\x02\u01CD\u01CF\x05\xBE`\x02\u01CE\u01D0\x05 \x11\x02' +
-    '\u01CF\u01CE\x03\x02\x02\x02\u01CF\u01D0\x03\x02\x02\x02\u01D0\u01D4\x03' +
-    '\x02\x02\x02\u01D1\u01D3\x05"\x12\x02\u01D2\u01D1\x03\x02\x02\x02\u01D3' +
-    '\u01D6\x03\x02\x02\x02\u01D4\u01D2\x03\x02\x02\x02\u01D4\u01D5\x03\x02' +
-    '\x02\x02\u01D5\x1F\x03\x02\x02\x02\u01D6\u01D4\x03\x02\x02\x02\u01D7\u01D9' +
-    '\x05\xB4[\x02\u01D8\u01D7\x03\x02\x02\x02\u01D9\u01DA\x03\x02\x02\x02' +
-    '\u01DA\u01DB\x03\x02\x02\x02\u01DA\u01D8\x03\x02\x02\x02\u01DB\u01E6\x03' +
-    '\x02\x02\x02\u01DC\u01DD\x07\x05\x02\x02\u01DD\u01DE\x05$\x13\x02\u01DE' +
-    '\u01DF\x07\x06\x02\x02\u01DF\u01E7\x03\x02\x02\x02\u01E0\u01E1\x07\x05' +
-    '\x02\x02\u01E1\u01E2\x05$\x13\x02\u01E2\u01E3\x07\x07\x02\x02\u01E3\u01E4' +
-    '\x05$\x13\x02\u01E4\u01E5\x07\x06\x02\x02\u01E5\u01E7\x03\x02\x02\x02' +
-    '\u01E6\u01DC\x03\x02\x02\x02\u01E6\u01E0\x03\x02\x02\x02\u01E6\u01E7\x03' +
-    '\x02\x02\x02\u01E7!\x03\x02\x02\x02\u01E8\u01E9\x073\x02\x02\u01E9\u01EB' +
-    '\x05\xB4[\x02\u01EA\u01E8\x03\x02\x02\x02\u01EA\u01EB\x03\x02\x02\x02' +
-    '\u01EB\u021D\x03\x02\x02\x02\u01EC\u01ED\x07s\x02\x02\u01ED\u01EF\x07' +
-    'a\x02\x02\u01EE\u01F0\x05\x90I\x02\u01EF\u01EE\x03\x02\x02\x02\u01EF\u01F0' +
-    '\x03\x02\x02\x02\u01F0\u01F2\x03\x02\x02\x02\u01F1\u01F3\x05*\x16\x02' +
-    '\u01F2\u01F1\x03\x02\x02\x02\u01F2\u01F3\x03\x02\x02\x02\u01F3\u01F5\x03' +
-    '\x02\x02\x02\u01F4\u01F6\x07&\x02\x02\u01F5\u01F4\x03\x02\x02\x02\u01F5' +
-    '\u01F6\x03\x02\x02\x02\u01F6\u021E\x03\x02\x02\x02\u01F7\u01F9\x07h\x02' +
-    '\x02\u01F8\u01F7\x03\x02\x02\x02\u01F8\u01F9\x03\x02\x02\x02\u01F9\u01FA' +
-    '\x03\x02\x02\x02\u01FA\u01FD\x07j\x02\x02\u01FB\u01FD\x07\x8E\x02\x02' +
-    '\u01FC\u01F8\x03\x02\x02\x02\u01FC\u01FB\x03\x02\x02\x02\u01FD\u01FF\x03' +
-    '\x02\x02\x02\u01FE\u0200\x05*\x16\x02\u01FF\u01FE\x03\x02\x02\x02\u01FF' +
-    '\u0200\x03\x02\x02\x02\u0200\u021E\x03\x02\x02\x02\u0201\u0202\x07.\x02' +
-    '\x02\u0202\u0203\x07\x05\x02\x02\u0203\u0204\x05B"\x02\u0204\u0205\x07' +
-    '\x06\x02\x02\u0205\u021E\x03\x02\x02\x02\u0206\u020D\x07:\x02\x02\u0207' +
-    '\u020E\x05$\x13\x02\u0208\u020E\x05F$\x02\u0209\u020A\x07\x05\x02\x02' +
-    '\u020A\u020B\x05B"\x02\u020B\u020C\x07\x06\x02\x02\u020C\u020E\x03\x02' +
-    '\x02\x02\u020D\u0207\x03\x02\x02\x02\u020D\u0208\x03\x02\x02\x02\u020D' +
-    '\u0209\x03\x02\x02\x02\u020E\u021E\x03\x02\x02\x02\u020F\u0210\x07/\x02' +
-    '\x02\u0210\u021E\x05\xC0a\x02\u0211\u021E\x05(\x15\x02\u0212\u0213\x07' +
-    '\xAB\x02\x02\u0213\u0215\x07\xAC\x02\x02\u0214\u0212\x03\x02\x02\x02\u0214' +
-    '\u0215\x03\x02\x02\x02\u0215\u0216\x03\x02\x02\x02\u0216\u0217\x07#\x02' +
-    '\x02\u0217\u0218\x07\x05\x02\x02\u0218\u0219\x05B"\x02\u0219\u021B\x07' +
-    '\x06\x02\x02\u021A\u021C\t\x05\x02\x02\u021B\u021A\x03\x02\x02\x02\u021B' +
-    '\u021C\x03\x02\x02\x02\u021C\u021E\x03\x02\x02\x02\u021D\u01EC\x03\x02' +
-    '\x02\x02\u021D\u01FC\x03\x02\x02\x02\u021D\u0201\x03\x02\x02\x02\u021D' +
-    '\u0206\x03\x02\x02\x02\u021D\u020F\x03\x02\x02\x02\u021D\u0211\x03\x02' +
-    '\x02\x02\u021D\u0214\x03\x02\x02\x02\u021E#\x03\x02\x02\x02\u021F\u0221' +
-    '\t\x06\x02\x02\u0220\u021F\x03\x02\x02\x02\u0220\u0221\x03\x02\x02\x02' +
-    '\u0221\u0222\x03\x02\x02\x02\u0222\u0223\x07\xBC\x02\x02\u0223%\x03\x02' +
-    '\x02\x02\u0224\u0225\x073\x02\x02\u0225\u0227\x05\xB4[\x02\u0226\u0224' +
-    '\x03\x02\x02\x02\u0226\u0227\x03\x02\x02\x02\u0227\u024D\x03\x02\x02\x02' +
-    '\u0228\u0229\x07s\x02\x02\u0229\u022C\x07a\x02\x02\u022A\u022C\x07\x8E' +
-    '\x02\x02\u022B\u0228\x03\x02\x02\x02\u022B\u022A\x03\x02\x02\x02\u022C' +
-    '\u022D\x03\x02\x02\x02\u022D\u022E\x07\x05\x02\x02\u022E\u0233\x05\x1A' +
-    '\x0E\x02\u022F\u0230\x07\x07\x02\x02\u0230\u0232\x05\x1A\x0E\x02\u0231' +
-    '\u022F\x03\x02\x02\x02\u0232\u0235\x03\x02\x02\x02\u0233\u0231\x03\x02' +
-    '\x02\x02\u0233\u0234\x03\x02\x02\x02\u0234\u0236\x03\x02\x02\x02\u0235' +
-    '\u0233\x03\x02\x02\x02\u0236\u0238\x07\x06\x02\x02\u0237\u0239\x05*\x16' +
-    '\x02\u0238\u0237\x03\x02\x02\x02\u0238\u0239\x03\x02\x02\x02\u0239\u024E' +
-    '\x03\x02\x02\x02\u023A\u023B\x07.\x02\x02\u023B\u023C\x07\x05\x02\x02' +
-    '\u023C\u023D\x05B"\x02\u023D\u023E\x07\x06\x02\x02\u023E\u024E\x03\x02' +
-    '\x02\x02\u023F\u0240\x07L\x02\x02\u0240\u0241\x07a\x02\x02\u0241\u0242' +
-    '\x07\x05\x02\x02\u0242\u0247\x05\xBE`\x02\u0243\u0244\x07\x07\x02\x02' +
-    '\u0244\u0246\x05\xBE`\x02\u0245\u0243\x03\x02\x02\x02\u0246\u0249\x03' +
-    '\x02\x02\x02\u0247\u0245\x03\x02\x02\x02\u0247\u0248\x03\x02\x02\x02\u0248' +
-    '\u024A\x03\x02\x02\x02\u0249\u0247\x03\x02\x02\x02\u024A\u024B\x07\x06' +
-    '\x02\x02\u024B\u024C\x05(\x15\x02\u024C\u024E\x03\x02\x02\x02\u024D\u022B' +
-    '\x03\x02\x02\x02\u024D\u023A\x03\x02\x02\x02\u024D\u023F\x03\x02\x02\x02' +
-    "\u024E'\x03\x02\x02\x02\u024F\u0250\x07w\x02\x02\u0250\u025C\x05\xC2" +
-    'b\x02\u0251\u0252\x07\x05\x02\x02\u0252\u0257\x05\xBE`\x02\u0253\u0254' +
-    '\x07\x07\x02\x02\u0254\u0256\x05\xBE`\x02\u0255\u0253\x03\x02\x02\x02' +
-    '\u0256\u0259\x03\x02\x02\x02\u0257\u0255\x03\x02\x02\x02\u0257\u0258\x03' +
-    '\x02\x02\x02\u0258\u025A\x03\x02\x02\x02\u0259\u0257\x03\x02\x02\x02\u025A' +
-    '\u025B\x07\x06\x02\x02\u025B\u025D\x03\x02\x02\x02\u025C\u0251\x03\x02' +
-    '\x02\x02\u025C\u025D\x03\x02\x02\x02\u025D\u026C\x03\x02\x02\x02\u025E' +
-    '\u025F\x07m\x02\x02\u025F\u0266\t\x07\x02\x02\u0260\u0261\x07\x85\x02' +
-    '\x02\u0261\u0267\t\b\x02\x02\u0262\u0267\x07+\x02\x02\u0263\u0267\x07' +
-    '}\x02\x02\u0264\u0265\x07g\x02\x02\u0265\u0267\x07\x1C\x02\x02\u0266\u0260' +
-    '\x03\x02\x02\x02\u0266\u0262\x03\x02\x02\x02\u0266\u0263\x03\x02\x02\x02' +
-    '\u0266\u0264\x03\x02\x02\x02\u0267\u026B\x03\x02\x02\x02\u0268\u0269\x07' +
-    'e\x02\x02\u0269\u026B\x05\xB4[\x02\u026A\u025E\x03\x02\x02\x02\u026A\u0268' +
-    '\x03\x02\x02\x02\u026B\u026E\x03\x02\x02\x02\u026C\u026A\x03\x02\x02\x02' +
-    '\u026C\u026D\x03\x02\x02\x02\u026D\u0277\x03\x02\x02\x02\u026E\u026C\x03' +
-    '\x02\x02\x02\u026F\u0271\x07h\x02\x02\u0270\u026F\x03\x02\x02\x02\u0270' +
-    '\u0271\x03\x02\x02\x02\u0271\u0272\x03\x02\x02\x02\u0272\u0275\x07;\x02' +
-    '\x02\u0273\u0274\x07X\x02\x02\u0274\u0276\t\t\x02\x02\u0275\u0273\x03' +
-    '\x02\x02\x02\u0275\u0276\x03\x02\x02\x02\u0276\u0278\x03\x02\x02\x02\u0277' +
-    '\u0270\x03\x02\x02\x02\u0277\u0278\x03\x02\x02\x02\u0278)\x03\x02\x02' +
-    '\x02\u0279\u027A\x07m\x02\x02\u027A\u027B\x072\x02\x02\u027B\u027C\t\n' +
-    '\x02\x02\u027C+\x03\x02\x02\x02\u027D\u027F\x074\x02\x02\u027E\u0280\t' +
-    '\x04\x02\x02\u027F\u027E\x03\x02\x02\x02\u027F\u0280\x03\x02\x02\x02\u0280' +
-    '\u0281\x03\x02\x02\x02\u0281\u0285\x07\x8C\x02\x02\u0282\u0283\x07R\x02' +
-    '\x02\u0283\u0284\x07h\x02\x02\u0284\u0286\x07H\x02\x02\u0285\u0282\x03' +
-    '\x02\x02\x02\u0285\u0286\x03\x02\x02\x02\u0286\u028A\x03\x02\x02\x02\u0287' +
-    '\u0288\x05\xB8]\x02\u0288\u0289\x07\x04\x02\x02\u0289\u028B\x03\x02\x02' +
-    '\x02\u028A\u0287\x03\x02\x02\x02\u028A\u028B\x03\x02\x02\x02\u028B\u028C' +
-    "\x03\x02\x02\x02\u028C\u0291\x05\xC6d\x02\u028D\u0292\x07'\x02\x02\u028E" +
-    '\u0292\x07\x1E\x02\x02\u028F\u0290\x07[\x02\x02\u0290\u0292\x07k\x02\x02' +
-    '\u0291\u028D\x03\x02\x02\x02\u0291\u028E\x03\x02\x02\x02\u0291\u028F\x03' +
-    '\x02\x02\x02\u0291\u0292\x03\x02\x02\x02\u0292\u02A1\x03\x02\x02\x02\u0293' +
-    '\u02A2\x07=\x02\x02\u0294\u02A2\x07Z\x02\x02\u0295\u029F\x07\x8F\x02\x02' +
-    '\u0296\u0297\x07k\x02\x02\u0297\u029C\x05\xBE`\x02\u0298\u0299\x07\x07' +
-    '\x02\x02\u0299\u029B\x05\xBE`\x02\u029A\u0298\x03\x02\x02\x02\u029B\u029E' +
-    '\x03\x02\x02\x02\u029C\u029A\x03\x02\x02\x02\u029C\u029D\x03\x02\x02\x02' +
-    '\u029D\u02A0\x03\x02\x02\x02\u029E\u029C\x03\x02\x02\x02\u029F\u0296\x03' +
-    '\x02\x02\x02\u029F\u02A0\x03\x02\x02\x02\u02A0\u02A2\x03\x02\x02\x02\u02A1' +
-    '\u0293\x03\x02\x02\x02\u02A1\u0294\x03\x02\x02\x02\u02A1\u0295\x03\x02' +
-    '\x02\x02\u02A2\u02A3\x03\x02\x02\x02\u02A3\u02A4\x07m\x02\x02\u02A4\u02A8' +
-    '\x05\xBA^\x02\u02A5\u02A6\x07K\x02\x02\u02A6\u02A7\x07B\x02\x02\u02A7' +
-    '\u02A9\x07\x81\x02\x02\u02A8\u02A5\x03\x02\x02\x02\u02A8\u02A9\x03\x02' +
-    '\x02\x02\u02A9\u02AC\x03\x02\x02\x02\u02AA\u02AB\x07\x95\x02\x02\u02AB' +
-    '\u02AD\x05B"\x02\u02AC\u02AA\x03\x02\x02\x02\u02AC\u02AD\x03\x02\x02' +
-    '\x02\u02AD\u02AE\x03\x02\x02\x02\u02AE\u02B7\x07(\x02\x02\u02AF\u02B4' +
-    "\x05n8\x02\u02B0\u02B4\x05L'\x02\u02B1\u02B4\x05:\x1E\x02\u02B2\u02B4" +
-    '\x05X-\x02\u02B3\u02AF\x03\x02\x02\x02\u02B3\u02B0\x03\x02\x02\x02\u02B3' +
-    '\u02B1\x03\x02\x02\x02\u02B3\u02B2\x03\x02\x02\x02\u02B4\u02B5\x03\x02' +
-    '\x02\x02\u02B5\u02B6\x07\x03\x02\x02\u02B6\u02B8\x03\x02\x02\x02\u02B7' +
-    '\u02B3\x03\x02\x02\x02\u02B8\u02B9\x03\x02\x02\x02\u02B9\u02B7\x03\x02' +
-    '\x02\x02\u02B9\u02BA\x03\x02\x02\x02\u02BA\u02BB\x03\x02\x02\x02\u02BB' +
-    '\u02BC\x07D\x02\x02\u02BC-\x03\x02\x02\x02\u02BD\u02BF\x074\x02\x02\u02BE' +
-    '\u02C0\t\x04\x02\x02\u02BF\u02BE\x03\x02\x02\x02\u02BF\u02C0\x03\x02\x02' +
-    '\x02\u02C0\u02C1\x03\x02\x02\x02\u02C1\u02C5\x07\x93\x02\x02\u02C2\u02C3' +
-    '\x07R\x02\x02\u02C3\u02C4\x07h\x02\x02\u02C4\u02C6\x07H\x02\x02\u02C5' +
-    '\u02C2\x03\x02\x02\x02\u02C5\u02C6\x03\x02\x02\x02\u02C6\u02CA\x03\x02' +
-    '\x02\x02\u02C7\u02C8\x05\xB8]\x02\u02C8\u02C9\x07\x04\x02\x02\u02C9\u02CB' +
-    '\x03\x02\x02\x02\u02CA\u02C7\x03\x02\x02\x02\u02CA\u02CB\x03\x02\x02\x02' +
-    '\u02CB\u02CC\x03\x02\x02\x02\u02CC\u02D8\x05\xC8e\x02\u02CD\u02CE\x07' +
-    '\x05\x02\x02\u02CE\u02D3\x05\xBE`\x02\u02CF\u02D0\x07\x07\x02\x02\u02D0' +
-    '\u02D2\x05\xBE`\x02\u02D1\u02CF\x03\x02\x02\x02\u02D2\u02D5\x03\x02\x02' +
-    '\x02\u02D3\u02D1\x03\x02\x02\x02\u02D3\u02D4\x03\x02\x02\x02\u02D4\u02D6' +
-    '\x03\x02\x02\x02\u02D5\u02D3\x03\x02\x02\x02\u02D6\u02D7\x07\x06\x02\x02' +
-    '\u02D7\u02D9\x03\x02\x02\x02\u02D8\u02CD\x03\x02\x02\x02\u02D8\u02D9\x03' +
-    '\x02\x02\x02\u02D9\u02DA\x03\x02\x02\x02\u02DA\u02DB\x07#\x02\x02\u02DB' +
-    '\u02DC\x05X-\x02\u02DC/\x03\x02\x02\x02\u02DD\u02DE\x074\x02\x02\u02DE' +
-    '\u02DF\x07\x94\x02\x02\u02DF\u02E3\x07\x86\x02\x02\u02E0\u02E1\x07R\x02' +
-    '\x02\u02E1\u02E2\x07h\x02\x02\u02E2\u02E4\x07H\x02\x02\u02E3\u02E0\x03' +
-    '\x02\x02\x02\u02E3\u02E4\x03\x02\x02\x02\u02E4\u02E8\x03\x02\x02\x02\u02E5' +
-    '\u02E6\x05\xB8]\x02\u02E6\u02E7\x07\x04\x02\x02\u02E7\u02E9\x03\x02\x02' +
-    '\x02\u02E8\u02E5\x03\x02\x02\x02\u02E8\u02E9\x03\x02\x02\x02\u02E9\u02EA' +
-    '\x03\x02\x02\x02\u02EA\u02EB\x05\xBA^\x02\u02EB\u02EC\x07\x90\x02\x02' +
-    '\u02EC\u02F8\x05\xCAf\x02\u02ED\u02EE\x07\x05\x02\x02\u02EE\u02F3\x05' +
-    '\xAEX\x02\u02EF\u02F0\x07\x07\x02\x02\u02F0\u02F2\x05\xAEX\x02\u02F1\u02EF' +
-    '\x03\x02\x02\x02\u02F2\u02F5\x03\x02\x02\x02\u02F3\u02F1\x03\x02\x02\x02' +
-    '\u02F3\u02F4\x03\x02\x02\x02\u02F4\u02F6\x03\x02\x02\x02\u02F5\u02F3\x03' +
-    '\x02\x02\x02\u02F6\u02F7\x07\x06\x02\x02\u02F7\u02F9\x03\x02\x02\x02\u02F8' +
-    '\u02ED\x03\x02\x02\x02\u02F8\u02F9\x03\x02\x02\x02\u02F91\x03\x02\x02' +
-    '\x02\u02FA\u02FC\x07\x97\x02\x02\u02FB\u02FD\x07v\x02\x02\u02FC\u02FB' +
-    '\x03\x02\x02\x02\u02FC\u02FD\x03\x02\x02\x02\u02FD\u02FE\x03\x02\x02\x02' +
-    '\u02FE\u02FF\x054\x1B\x02\u02FF\u0300\x07#\x02\x02\u0300\u0301\x07\x05' +
-    '\x02\x02\u0301\u0302\x05X-\x02\u0302\u030C\x07\x06\x02\x02\u0303\u0304' +
-    '\x07\x07\x02\x02\u0304\u0305\x054\x1B\x02\u0305\u0306\x07#\x02\x02\u0306' +
-    '\u0307\x07\x05\x02\x02\u0307\u0308\x05X-\x02\u0308\u0309\x07\x06\x02\x02' +
-    '\u0309\u030B\x03\x02\x02\x02\u030A\u0303\x03\x02\x02\x02\u030B\u030E\x03' +
-    '\x02\x02\x02\u030C\u030A\x03\x02\x02\x02\u030C\u030D\x03\x02\x02\x02\u030D' +
-    '3\x03\x02\x02\x02\u030E\u030C\x03\x02\x02\x02\u030F\u031B\x05\xBA^\x02' +
-    '\u0310\u0311\x07\x05\x02\x02\u0311\u0316\x05\xBE`\x02\u0312\u0313\x07' +
-    '\x07\x02\x02\u0313\u0315\x05\xBE`\x02\u0314\u0312\x03\x02\x02\x02\u0315' +
-    '\u0318\x03\x02\x02\x02\u0316\u0314\x03\x02\x02\x02\u0316\u0317\x03\x02' +
-    '\x02\x02\u0317\u0319\x03\x02\x02\x02\u0318\u0316\x03\x02\x02\x02\u0319' +
-    '\u031A\x07\x06\x02\x02\u031A\u031C\x03\x02\x02\x02\u031B\u0310\x03\x02' +
-    '\x02\x02\u031B\u031C\x03\x02\x02\x02\u031C5\x03\x02\x02\x02\u031D\u031E' +
-    '\x054\x1B\x02\u031E\u031F\x07#\x02\x02\u031F\u0320\x07\x05\x02\x02\u0320' +
-    '\u0321\x05\xA6T\x02\u0321\u0323\x07\x8D\x02\x02\u0322\u0324\x07\x1F\x02' +
-    '\x02\u0323\u0322\x03\x02\x02\x02\u0323\u0324\x03\x02\x02\x02\u0324\u0325' +
-    '\x03\x02\x02\x02\u0325\u0326\x05\xA8U\x02\u0326\u0327\x07\x06\x02\x02' +
-    '\u03277\x03\x02\x02\x02\u0328\u0334\x05\xBA^\x02\u0329\u032A\x07\x05\x02' +
-    '\x02\u032A\u032F\x05\xBE`\x02\u032B\u032C\x07\x07\x02\x02\u032C\u032E' +
-    '\x05\xBE`\x02\u032D\u032B\x03\x02\x02\x02\u032E\u0331\x03\x02\x02\x02' +
-    '\u032F\u032D\x03\x02\x02\x02\u032F\u0330\x03\x02\x02\x02\u0330\u0332\x03' +
-    '\x02\x02\x02\u0331\u032F\x03\x02\x02\x02\u0332\u0333\x07\x06\x02\x02\u0333' +
-    '\u0335\x03\x02\x02\x02\u0334\u0329\x03\x02\x02\x02\u0334\u0335\x03\x02' +
-    '\x02\x02\u0335\u0336\x03\x02\x02\x02\u0336\u0337\x07#\x02\x02\u0337\u0338' +
-    '\x07\x05\x02\x02\u0338\u0339\x05X-\x02\u0339\u033A\x07\x06\x02\x02\u033A' +
-    '9\x03\x02\x02\x02\u033B\u033D\x052\x1A\x02\u033C\u033B\x03\x02\x02\x02' +
-    '\u033C\u033D'
-  private static readonly _serializedATNSegment2: string =
-    '\x03\x02\x02\x02\u033D\u033E\x03\x02\x02\x02\u033E\u033F\x07=\x02\x02' +
-    '\u033F\u0340\x07M\x02\x02\u0340\u0343\x05t;\x02\u0341\u0342\x07\x96\x02' +
-    '\x02\u0342\u0344\x05B"\x02\u0343\u0341\x03\x02\x02\x02\u0343\u0344\x03' +
-    '\x02\x02\x02\u0344\u0346\x03\x02\x02\x02\u0345\u0347\x05N(\x02\u0346\u0345' +
-    '\x03\x02\x02\x02\u0346\u0347\x03\x02\x02\x02\u0347;\x03\x02\x02\x02\u0348' +
-    '\u034A\x052\x1A\x02\u0349\u0348\x03\x02\x02\x02\u0349\u034A\x03\x02\x02' +
-    '\x02\u034A\u034B\x03\x02\x02\x02\u034B\u034C\x07=\x02\x02\u034C\u034D' +
-    '\x07M\x02\x02\u034D\u0350\x05t;\x02\u034E\u034F\x07\x96\x02\x02\u034F' +
-    '\u0351\x05B"\x02\u0350\u034E\x03\x02\x02\x02\u0350\u0351\x03\x02\x02' +
-    '\x02\u0351\u0353\x03\x02\x02\x02\u0352\u0354\x05N(\x02\u0353\u0352\x03' +
-    '\x02\x02\x02\u0353\u0354\x03\x02\x02\x02\u0354\u0359\x03\x02\x02\x02\u0355' +
-    '\u0357\x05\x8AF\x02\u0356\u0355\x03\x02\x02\x02\u0356\u0357\x03\x02\x02' +
-    '\x02\u0357\u0358\x03\x02\x02\x02\u0358\u035A\x05\x8CG\x02\u0359\u0356' +
-    '\x03\x02\x02\x02\u0359\u035A\x03\x02\x02\x02\u035A=\x03\x02\x02\x02\u035B' +
-    '\u035D\x07?\x02\x02\u035C\u035E\x079\x02\x02\u035D\u035C\x03\x02\x02\x02' +
-    '\u035D\u035E\x03\x02\x02\x02\u035E\u035F\x03\x02\x02\x02\u035F\u0360\x05' +
-    '\xB8]\x02\u0360?\x03\x02\x02\x02\u0361\u0362\x07A\x02\x02\u0362\u0365' +
-    '\t\v\x02\x02\u0363\u0364\x07R\x02\x02\u0364\u0366\x07H\x02\x02\u0365\u0363' +
-    '\x03\x02\x02\x02\u0365\u0366\x03\x02\x02\x02\u0366\u036A\x03\x02\x02\x02' +
-    '\u0367\u0368\x05\xB8]\x02\u0368\u0369\x07\x04\x02\x02\u0369\u036B\x03' +
-    '\x02\x02\x02\u036A\u0367\x03\x02\x02\x02\u036A\u036B\x03\x02\x02\x02\u036B' +
-    '\u036C\x03\x02\x02\x02\u036C\u036D\x05\xE2r\x02\u036DA\x03\x02\x02\x02' +
-    '\u036E\u036F\b"\x01\x02\u036F\u03C7\x05F$\x02\u0370\u03C7\x07\xBD\x02' +
-    '\x02\u0371\u0372\x05\xB8]\x02\u0372\u0373\x07\x04\x02\x02\u0373\u0375' +
-    '\x03\x02\x02\x02\u0374\u0371\x03\x02\x02\x02\u0374\u0375\x03\x02\x02\x02' +
-    '\u0375\u0376\x03\x02\x02\x02\u0376\u0377\x05\xBA^\x02\u0377\u0378\x07' +
-    '\x04\x02\x02\u0378\u037A\x03\x02\x02\x02\u0379\u0374\x03\x02\x02\x02\u0379' +
-    '\u037A\x03\x02\x02\x02\u037A\u037B\x03\x02\x02\x02\u037B\u03C7\x05\xBE' +
-    '`\x02\u037C\u037D\x05\xAAV\x02\u037D\u037E\x05B"\x17\u037E\u03C7\x03' +
-    '\x02\x02\x02\u037F\u0380\x05\xB6\\\x02\u0380\u038D\x07\x05\x02\x02\u0381' +
-    '\u0383\x07@\x02\x02\u0382\u0381\x03\x02\x02\x02\u0382\u0383\x03\x02\x02' +
-    '\x02\u0383\u0384\x03\x02\x02\x02\u0384\u0389\x05B"\x02\u0385\u0386\x07' +
-    '\x07\x02\x02\u0386\u0388\x05B"\x02\u0387\u0385\x03\x02\x02\x02\u0388' +
-    '\u038B\x03\x02\x02\x02\u0389\u0387\x03\x02\x02\x02\u0389\u038A\x03\x02' +
-    '\x02\x02\u038A\u038E\x03\x02\x02\x02\u038B\u0389\x03\x02\x02\x02\u038C' +
-    '\u038E\x07\t\x02\x02\u038D\u0382\x03\x02\x02\x02\u038D\u038C\x03\x02\x02' +
-    '\x02\u038D\u038E\x03\x02\x02\x02\u038E\u038F\x03\x02\x02\x02\u038F\u0391' +
-    '\x07\x06\x02\x02\u0390\u0392\x05x=\x02\u0391\u0390\x03\x02\x02\x02\u0391' +
-    '\u0392\x03\x02\x02\x02\u0392\u0394\x03\x02\x02\x02\u0393\u0395\x05|?\x02' +
-    '\u0394\u0393\x03\x02\x02\x02\u0394\u0395\x03\x02\x02\x02\u0395\u03C7\x03' +
-    '\x02\x02\x02\u0396\u0397\x07\x05\x02\x02\u0397\u039C\x05B"\x02\u0398' +
-    '\u0399\x07\x07\x02\x02\u0399\u039B\x05B"\x02\u039A\u0398\x03\x02\x02' +
-    '\x02\u039B\u039E\x03\x02\x02\x02\u039C\u039A\x03\x02\x02\x02\u039C\u039D' +
-    '\x03\x02\x02\x02\u039D\u039F\x03\x02\x02\x02\u039E\u039C\x03\x02\x02\x02' +
-    '\u039F\u03A0\x07\x06\x02\x02\u03A0\u03C7\x03\x02\x02\x02\u03A1\u03A2\x07' +
-    '-\x02\x02\u03A2\u03A3\x07\x05\x02\x02\u03A3\u03A4\x05B"\x02\u03A4\u03A5' +
-    '\x07#\x02\x02\u03A5\u03A6\x05 \x11\x02\u03A6\u03A7\x07\x06\x02\x02\u03A7' +
-    '\u03C7\x03\x02\x02\x02\u03A8\u03AA\x07h\x02\x02\u03A9\u03A8\x03\x02\x02' +
-    '\x02\u03A9\u03AA\x03\x02\x02\x02\u03AA\u03AB\x03\x02\x02\x02\u03AB\u03AD' +
-    '\x07H\x02\x02\u03AC\u03A9\x03\x02\x02\x02\u03AC\u03AD\x03\x02\x02\x02' +
-    '\u03AD\u03AE\x03\x02\x02\x02\u03AE\u03AF\x07\x05\x02\x02\u03AF\u03B0\x05' +
-    'X-\x02\u03B0\u03B1\x07\x06\x02\x02\u03B1\u03C7\x03\x02\x02\x02\u03B2\u03B4' +
-    '\x07,\x02\x02\u03B3\u03B5\x05B"\x02\u03B4\u03B3\x03\x02\x02\x02\u03B4' +
-    '\u03B5\x03\x02\x02\x02\u03B5\u03BB\x03\x02\x02\x02\u03B6\u03B7\x07\x95' +
-    '\x02\x02\u03B7\u03B8\x05B"\x02\u03B8\u03B9\x07\x89\x02\x02\u03B9\u03BA' +
-    '\x05B"\x02\u03BA\u03BC\x03\x02\x02\x02\u03BB\u03B6\x03\x02\x02\x02\u03BC' +
-    '\u03BD\x03\x02\x02\x02\u03BD\u03BB\x03\x02\x02\x02\u03BD\u03BE\x03\x02' +
-    '\x02\x02\u03BE\u03C1\x03\x02\x02\x02\u03BF\u03C0\x07C\x02\x02\u03C0\u03C2' +
-    '\x05B"\x02\u03C1\u03BF\x03\x02\x02\x02\u03C1\u03C2\x03\x02\x02\x02\u03C2' +
-    '\u03C3\x03\x02\x02\x02\u03C3\u03C4\x07D\x02\x02\u03C4\u03C7\x03\x02\x02' +
-    '\x02\u03C5\u03C7\x05D#\x02\u03C6\u036E\x03\x02\x02\x02\u03C6\u0370\x03' +
-    '\x02\x02\x02\u03C6\u0379\x03\x02\x02\x02\u03C6\u037C\x03\x02\x02\x02\u03C6' +
-    '\u037F\x03\x02\x02\x02\u03C6\u0396\x03\x02\x02\x02\u03C6\u03A1\x03\x02' +
-    '\x02\x02\u03C6\u03AC\x03\x02\x02\x02\u03C6\u03B2\x03\x02\x02\x02\u03C6' +
-    '\u03C5\x03\x02\x02\x02\u03C7\u043F\x03\x02\x02\x02\u03C8\u03C9\f\x16\x02' +
-    '\x02\u03C9\u03CA\x07\r\x02\x02\u03CA\u043E\x05B"\x17\u03CB\u03CC\f\x15' +
-    '\x02\x02\u03CC\u03CD\t\f\x02\x02\u03CD\u043E\x05B"\x16\u03CE\u03CF\f' +
-    '\x14\x02\x02\u03CF\u03D0\t\x06\x02\x02\u03D0\u043E\x05B"\x15\u03D1\u03D2' +
-    '\f\x13\x02\x02\u03D2\u03D3\t\r\x02\x02\u03D3\u043E\x05B"\x14\u03D4\u03D5' +
-    '\f\x12\x02\x02\u03D5\u03D6\t\x0E\x02\x02\u03D6\u043E\x05B"\x13\u03D7' +
-    '\u03E4\f\x11\x02\x02\u03D8\u03E5\x07\b\x02\x02\u03D9\u03E5\x07\x18\x02' +
-    '\x02\u03DA\u03E5\x07\x19\x02\x02\u03DB\u03E5\x07\x1A\x02\x02\u03DC\u03E5' +
-    '\x07^\x02\x02\u03DD\u03DE\x07^\x02\x02\u03DE\u03E5\x07h\x02\x02\u03DF' +
-    '\u03E5\x07U\x02\x02\u03E0\u03E5\x07c\x02\x02\u03E1\u03E5\x07O\x02\x02' +
-    '\u03E2\u03E5\x07e\x02\x02\u03E3\u03E5\x07x\x02\x02\u03E4\u03D8\x03\x02' +
-    '\x02\x02\u03E4\u03D9\x03\x02\x02\x02\u03E4\u03DA\x03\x02\x02\x02\u03E4' +
-    '\u03DB\x03\x02\x02\x02\u03E4\u03DC\x03\x02\x02\x02\u03E4\u03DD\x03\x02' +
-    '\x02\x02\u03E4\u03DF\x03\x02\x02\x02\u03E4\u03E0\x03\x02\x02\x02\u03E4' +
-    '\u03E1\x03\x02\x02\x02\u03E4\u03E2\x03\x02\x02\x02\u03E4\u03E3\x03\x02' +
-    '\x02\x02\u03E5\u03E6\x03\x02\x02\x02\u03E6\u043E\x05B"\x12\u03E7\u03E8' +
-    '\f\x10\x02\x02\u03E8\u03E9\x07"\x02\x02\u03E9\u043E\x05B"\x11\u03EA' +
-    '\u03EB\f\x0F\x02\x02\u03EB\u03EC\x07n\x02\x02\u03EC\u043E\x05B"\x10\u03ED' +
-    '\u03EE\f\b\x02\x02\u03EE\u03F0\x07^\x02\x02\u03EF\u03F1\x07h\x02\x02\u03F0' +
-    '\u03EF\x03\x02\x02\x02\u03F0\u03F1\x03\x02\x02\x02\u03F1\u03F2\x03\x02' +
-    '\x02\x02\u03F2\u043E\x05B"\t\u03F3\u03F5\f\x07\x02\x02\u03F4\u03F6\x07' +
-    'h\x02\x02\u03F5\u03F4\x03\x02\x02\x02\u03F5\u03F6\x03\x02\x02\x02\u03F6' +
-    '\u03F7\x03\x02\x02\x02\u03F7\u03F8\x07)\x02\x02\u03F8\u03F9\x05B"\x02' +
-    '\u03F9\u03FA\x07"\x02\x02\u03FA\u03FB\x05B"\b\u03FB\u043E\x03\x02\x02' +
-    '\x02\u03FC\u03FD\f\v\x02\x02\u03FD\u03FE\x07/\x02\x02\u03FE\u043E\x05' +
-    '\xC0a\x02\u03FF\u0401\f\n\x02\x02\u0400\u0402\x07h\x02\x02\u0401\u0400' +
-    '\x03\x02\x02\x02\u0401\u0402\x03\x02\x02\x02\u0402\u0403\x03\x02\x02\x02' +
-    '\u0403\u0404\t\x0F\x02\x02\u0404\u0407\x05B"\x02\u0405\u0406\x07E\x02' +
-    '\x02\u0406\u0408\x05B"\x02\u0407\u0405\x03\x02\x02\x02\u0407\u0408\x03' +
-    '\x02\x02\x02\u0408\u043E\x03\x02\x02\x02\u0409\u040E\f\t\x02\x02\u040A' +
-    '\u040F\x07_\x02\x02\u040B\u040F\x07i\x02\x02\u040C\u040D\x07h\x02\x02' +
-    '\u040D\u040F\x07j\x02\x02\u040E\u040A\x03\x02\x02\x02\u040E\u040B\x03' +
-    '\x02\x02\x02\u040E\u040C\x03\x02\x02\x02\u040F\u043E\x03\x02\x02\x02\u0410' +
-    '\u0412\f\x06\x02\x02\u0411\u0413\x07h\x02\x02\u0412\u0411\x03\x02\x02' +
-    '\x02\u0412\u0413\x03\x02\x02\x02\u0413\u0414\x03\x02\x02\x02\u0414\u043B' +
-    '\x07U\x02\x02\u0415\u041F\x07\x05\x02\x02\u0416\u0420\x05X-\x02\u0417' +
-    '\u041C\x05B"\x02\u0418\u0419\x07\x07\x02\x02\u0419\u041B\x05B"\x02\u041A' +
-    '\u0418\x03\x02\x02\x02\u041B\u041E\x03\x02\x02\x02\u041C\u041A\x03\x02' +
-    '\x02\x02\u041C\u041D\x03\x02\x02\x02\u041D\u0420\x03\x02\x02\x02\u041E' +
-    '\u041C\x03\x02\x02\x02\u041F\u0416\x03\x02\x02\x02\u041F\u0417\x03\x02' +
-    '\x02\x02\u041F\u0420\x03\x02\x02\x02\u0420\u0421\x03\x02\x02\x02\u0421' +
-    '\u043C\x07\x06\x02\x02\u0422\u0423\x05\xB8]\x02\u0423\u0424\x07\x04\x02' +
-    '\x02\u0424\u0426\x03\x02\x02\x02\u0425\u0422\x03\x02\x02\x02\u0425\u0426' +
-    '\x03\x02\x02\x02\u0426\u0427\x03\x02\x02\x02\u0427\u043C\x05\xBA^\x02' +
-    '\u0428\u0429\x05\xB8]\x02\u0429\u042A\x07\x04\x02\x02\u042A\u042C\x03' +
-    '\x02\x02\x02\u042B\u0428\x03\x02\x02\x02\u042B\u042C\x03\x02\x02\x02\u042C' +
-    '\u042D\x03\x02\x02\x02\u042D\u042E\x05\xE0q\x02\u042E\u0437\x07\x05\x02' +
-    '\x02\u042F\u0434\x05B"\x02\u0430\u0431\x07\x07\x02\x02\u0431\u0433\x05' +
-    'B"\x02\u0432\u0430\x03\x02\x02\x02\u0433\u0436\x03\x02\x02\x02\u0434' +
-    '\u0432\x03\x02\x02\x02\u0434\u0435\x03\x02\x02\x02\u0435\u0438\x03\x02' +
-    '\x02\x02\u0436\u0434\x03\x02\x02\x02\u0437\u042F\x03\x02\x02\x02\u0437' +
-    '\u0438\x03\x02\x02\x02\u0438\u0439\x03\x02\x02\x02\u0439\u043A\x07\x06' +
-    '\x02\x02\u043A\u043C\x03\x02\x02\x02\u043B\u0415\x03\x02\x02\x02\u043B' +
-    '\u0425\x03\x02\x02\x02\u043B\u042B\x03\x02\x02\x02\u043C\u043E\x03\x02' +
-    '\x02\x02\u043D\u03C8\x03\x02\x02\x02\u043D\u03CB\x03\x02\x02\x02\u043D' +
-    '\u03CE\x03\x02\x02\x02\u043D\u03D1\x03\x02\x02\x02\u043D\u03D4\x03\x02' +
-    '\x02\x02\u043D\u03D7\x03\x02\x02\x02\u043D\u03E7\x03\x02\x02\x02\u043D' +
-    '\u03EA\x03\x02\x02\x02\u043D\u03ED\x03\x02\x02\x02\u043D\u03F3\x03\x02' +
-    '\x02\x02\u043D\u03FC\x03\x02\x02\x02\u043D\u03FF\x03\x02\x02\x02\u043D' +
-    '\u0409\x03\x02\x02\x02\u043D\u0410\x03\x02\x02\x02\u043E\u0441\x03\x02' +
-    '\x02\x02\u043F\u043D\x03\x02\x02\x02\u043F\u0440\x03\x02\x02\x02\u0440' +
-    'C\x03\x02\x02\x02\u0441\u043F\x03\x02\x02\x02\u0442\u0443\x07u\x02\x02' +
-    '\u0443\u0448\x07\x05\x02\x02\u0444\u0449\x07S\x02\x02\u0445\u0446\t\x10' +
-    '\x02\x02\u0446\u0447\x07\x07\x02\x02\u0447\u0449\x05\xACW\x02\u0448\u0444' +
-    '\x03\x02\x02\x02\u0448\u0445\x03\x02\x02\x02\u0449\u044A\x03\x02\x02\x02' +
-    '\u044A\u044B\x07\x06\x02\x02\u044BE\x03\x02\x02\x02\u044C\u044D\t\x11' +
-    '\x02\x02\u044DG\x03\x02\x02\x02\u044E\u044F\x07\x05\x02\x02\u044F\u0454' +
-    '\x05B"\x02\u0450\u0451\x07\x07\x02\x02\u0451\u0453\x05B"\x02\u0452\u0450' +
-    '\x03\x02\x02\x02\u0453\u0456\x03\x02\x02\x02\u0454\u0452\x03\x02\x02\x02' +
-    '\u0454\u0455\x03\x02\x02\x02\u0455\u0457\x03\x02\x02\x02\u0456\u0454\x03' +
-    '\x02\x02\x02\u0457\u0458\x07\x06\x02\x02\u0458I\x03\x02\x02\x02\u0459' +
-    '\u045A\x07\x92\x02\x02\u045A\u045F\x05H%\x02\u045B\u045C\x07\x07\x02\x02' +
-    '\u045C\u045E\x05H%\x02\u045D\u045B\x03\x02\x02\x02\u045E\u0461\x03\x02' +
-    '\x02\x02\u045F\u045D\x03\x02\x02\x02\u045F\u0460\x03\x02\x02\x02\u0460' +
-    'K\x03\x02\x02\x02\u0461\u045F\x03\x02\x02\x02\u0462\u0464\x052\x1A\x02' +
-    '\u0463\u0462\x03\x02\x02\x02\u0463\u0464\x03\x02\x02\x02\u0464\u046A\x03' +
-    '\x02\x02\x02\u0465\u046B\x07Z\x02\x02\u0466\u046B\x07|\x02\x02\u0467\u0468' +
-    '\x07Z\x02\x02\u0468\u0469\x07n\x02\x02\u0469\u046B\t\n\x02\x02\u046A\u0465' +
-    '\x03\x02\x02\x02\u046A\u0466\x03\x02\x02\x02\u046A\u0467\x03\x02\x02\x02' +
-    '\u046B\u046C\x03\x02\x02\x02\u046C\u0470\x07]\x02\x02\u046D\u046E\x05' +
-    '\xB8]\x02\u046E\u046F\x07\x04\x02\x02\u046F\u0471\x03\x02\x02\x02\u0470' +
-    '\u046D\x03\x02\x02\x02\u0470\u0471\x03\x02\x02\x02\u0471\u0472\x03\x02' +
-    '\x02\x02\u0472\u0475\x05\xBA^\x02\u0473\u0474\x07#\x02\x02\u0474\u0476' +
-    '\x05\xD0i\x02\u0475\u0473\x03\x02\x02\x02\u0475\u0476\x03\x02\x02\x02' +
-    '\u0476\u0482\x03\x02\x02\x02\u0477\u0478\x07\x05\x02\x02\u0478\u047D\x05' +
-    '\xBE`\x02\u0479\u047A\x07\x07\x02\x02\u047A\u047C\x05\xBE`\x02\u047B\u0479' +
-    '\x03\x02\x02\x02\u047C\u047F\x03\x02\x02\x02\u047D\u047B\x03\x02\x02\x02' +
-    '\u047D\u047E\x03\x02\x02\x02\u047E\u0480\x03\x02\x02\x02\u047F\u047D\x03' +
-    '\x02\x02\x02\u0480\u0481\x07\x06\x02\x02\u0481\u0483\x03\x02\x02\x02\u0482' +
-    '\u0477\x03\x02\x02\x02\u0482\u0483\x03\x02\x02\x02\u0483\u048D\x03\x02' +
-    '\x02\x02\u0484\u0487\x05J&\x02\u0485\u0487\x05X-\x02\u0486\u0484\x03\x02' +
-    '\x02\x02\u0486\u0485\x03\x02\x02\x02\u0487\u0489\x03\x02\x02\x02\u0488' +
-    '\u048A\x05P)\x02\u0489\u0488\x03\x02\x02\x02\u0489\u048A\x03\x02\x02\x02' +
-    '\u048A\u048E\x03\x02\x02\x02\u048B\u048C\x07:\x02\x02\u048C\u048E\x07' +
-    '\x92\x02\x02\u048D\u0486\x03\x02\x02\x02\u048D\u048B\x03\x02\x02\x02\u048E' +
-    '\u0490\x03\x02\x02\x02\u048F\u0491\x05N(\x02\u0490\u048F\x03\x02\x02\x02' +
-    '\u0490\u0491\x03\x02\x02\x02\u0491M\x03\x02\x02\x02\u0492\u0493\x07~\x02' +
-    '\x02\u0493\u0498\x05f4\x02\u0494\u0495\x07\x07\x02\x02\u0495\u0497\x05' +
-    'f4\x02\u0496\u0494\x03\x02\x02\x02\u0497\u049A\x03\x02\x02\x02\u0498\u0496' +
-    '\x03\x02\x02\x02\u0498\u0499\x03\x02\x02\x02\u0499O\x03\x02\x02\x02\u049A' +
-    '\u0498\x03\x02\x02\x02\u049B\u049C\x07m\x02\x02\u049C\u04AB\x072\x02\x02' +
-    '\u049D\u049E\x07\x05\x02\x02\u049E\u04A3\x05\x1A\x0E\x02\u049F\u04A0\x07' +
-    '\x07\x02\x02\u04A0\u04A2\x05\x1A\x0E\x02\u04A1\u049F\x03\x02\x02\x02\u04A2' +
-    '\u04A5\x03\x02\x02\x02\u04A3\u04A1\x03\x02\x02\x02\u04A3\u04A4\x03\x02' +
-    '\x02\x02\u04A4\u04A6\x03\x02\x02\x02\u04A5\u04A3\x03\x02\x02\x02\u04A6' +
-    '\u04A9\x07\x06\x02\x02\u04A7\u04A8\x07\x96\x02\x02\u04A8\u04AA\x05B"' +
-    '\x02\u04A9\u04A7\x03\x02\x02\x02\u04A9\u04AA\x03\x02\x02\x02\u04AA\u04AC' +
-    '\x03\x02\x02\x02\u04AB\u049D\x03\x02\x02\x02\u04AB\u04AC\x03\x02\x02\x02' +
-    '\u04AC\u04AD\x03\x02\x02\x02\u04AD\u04C8\x07\xB9\x02\x02\u04AE\u04C9\x07' +
-    '\xBA\x02\x02\u04AF\u04B0\x07\x8F\x02\x02\u04B0\u04B3\x07\x85\x02\x02\u04B1' +
-    '\u04B4\x05\xBE`\x02\u04B2\u04B4\x05p9\x02\u04B3\u04B1\x03\x02\x02\x02' +
-    '\u04B3\u04B2\x03\x02\x02\x02\u04B4\u04B5\x03\x02\x02\x02\u04B5\u04B6\x07' +
-    '\b\x02\x02\u04B6\u04C1\x05B"\x02\u04B7\u04BA\x07\x07\x02\x02\u04B8\u04BB' +
-    '\x05\xBE`\x02\u04B9\u04BB\x05p9\x02\u04BA\u04B8\x03\x02\x02\x02\u04BA' +
-    '\u04B9\x03\x02\x02\x02\u04BB\u04BC\x03\x02\x02\x02\u04BC\u04BD\x07\b\x02' +
-    '\x02\u04BD\u04BE\x05B"\x02\u04BE\u04C0\x03\x02\x02\x02\u04BF\u04B7\x03' +
-    '\x02\x02\x02\u04C0\u04C3\x03\x02\x02\x02\u04C1\u04BF\x03\x02\x02\x02\u04C1' +
-    '\u04C2\x03\x02\x02\x02\u04C2\u04C6\x03\x02\x02\x02\u04C3\u04C1\x03\x02' +
-    '\x02\x02\u04C4\u04C5\x07\x96\x02\x02\u04C5\u04C7\x05B"\x02\u04C6\u04C4' +
-    '\x03\x02\x02\x02\u04C6\u04C7\x03\x02\x02\x02\u04C7\u04C9\x03\x02\x02\x02' +
-    '\u04C8\u04AE\x03\x02\x02\x02\u04C8\u04AF\x03\x02\x02\x02\u04C9Q\x03\x02' +
-    '\x02\x02\u04CA\u04CE\x07r\x02\x02\u04CB\u04CC\x05\xB8]\x02\u04CC\u04CD' +
-    '\x07\x04\x02\x02\u04CD\u04CF\x03\x02\x02\x02\u04CE\u04CB\x03\x02\x02\x02' +
-    '\u04CE\u04CF\x03\x02\x02\x02\u04CF\u04D0\x03\x02\x02\x02\u04D0\u04D7\x05' +
-    '\xCCg\x02\u04D1\u04D2\x07\b\x02\x02\u04D2\u04D8\x05T+\x02\u04D3\u04D4' +
-    '\x07\x05\x02\x02\u04D4\u04D5\x05T+\x02\u04D5\u04D6\x07\x06\x02\x02\u04D6' +
-    '\u04D8\x03\x02\x02\x02\u04D7\u04D1\x03\x02\x02\x02\u04D7\u04D3\x03\x02' +
-    '\x02\x02\u04D7\u04D8\x03\x02\x02\x02\u04D8S\x03\x02\x02\x02\u04D9\u04DD' +
-    '\x05$\x13\x02\u04DA\u04DD\x05\xB4[\x02\u04DB\u04DD\x07\xBE\x02\x02\u04DC' +
-    '\u04D9\x03\x02\x02\x02\u04DC\u04DA\x03\x02\x02\x02\u04DC\u04DB\x03\x02' +
-    '\x02\x02\u04DDU\x03\x02\x02\x02\u04DE\u04E9\x07y\x02\x02\u04DF\u04EA\x05' +
-    '\xC0a\x02\u04E0\u04E1\x05\xB8]\x02\u04E1\u04E2\x07\x04\x02\x02\u04E2\u04E4' +
-    '\x03\x02\x02\x02\u04E3\u04E0\x03\x02\x02\x02\u04E3\u04E4\x03\x02\x02\x02' +
-    '\u04E4\u04E7\x03\x02\x02\x02\u04E5\u04E8\x05\xBA^\x02\u04E6\u04E8\x05' +
-    '\xC4c\x02\u04E7\u04E5\x03\x02\x02\x02\u04E7\u04E6\x03\x02\x02\x02\u04E8' +
-    '\u04EA\x03\x02\x02\x02\u04E9\u04DF\x03\x02\x02\x02\u04E9\u04E3\x03\x02' +
-    '\x02\x02\u04E9\u04EA\x03\x02\x02\x02\u04EAW\x03\x02\x02\x02\u04EB\u04ED' +
-    '\x05\x88E\x02\u04EC\u04EB\x03\x02\x02\x02\u04EC\u04ED\x03\x02\x02\x02' +
-    '\u04ED\u04EE\x03\x02\x02\x02\u04EE\u04F4\x05\\/\x02\u04EF\u04F0\x05l7' +
-    '\x02\u04F0\u04F1\x05\\/\x02\u04F1\u04F3\x03\x02\x02\x02\u04F2\u04EF\x03' +
-    '\x02\x02\x02\u04F3\u04F6\x03\x02\x02\x02\u04F4\u04F2\x03\x02\x02\x02\u04F4' +
-    '\u04F5\x03\x02\x02\x02\u04F5\u04F8\x03\x02\x02\x02\u04F6\u04F4\x03\x02' +
-    '\x02\x02\u04F7\u04F9\x05\x8AF\x02\u04F8\u04F7\x03\x02\x02\x02\u04F8\u04F9' +
-    '\x03\x02\x02\x02\u04F9\u04FB\x03\x02\x02\x02\u04FA\u04FC\x05\x8CG\x02' +
-    '\u04FB\u04FA\x03\x02\x02\x02\u04FB\u04FC\x03\x02\x02\x02\u04FCY\x03\x02' +
-    '\x02\x02\u04FD\u0505\x05d3\x02\u04FE\u04FF\x05h5\x02\u04FF\u0501\x05d' +
-    '3\x02\u0500\u0502\x05j6\x02\u0501\u0500\x03\x02\x02\x02\u0501\u0502\x03' +
-    '\x02\x02\x02\u0502\u0504\x03\x02\x02\x02\u0503\u04FE\x03\x02\x02\x02\u0504' +
-    '\u0507\x03\x02\x02\x02\u0505\u0503\x03\x02\x02\x02\u0505\u0506\x03\x02' +
-    '\x02\x02\u0506[\x03\x02\x02\x02\u0507\u0505\x03\x02\x02\x02\u0508\u050A' +
-    '\x07\x84\x02\x02\u0509\u050B\t\x12\x02\x02\u050A\u0509\x03\x02\x02\x02' +
-    '\u050A\u050B\x03\x02\x02\x02\u050B\u050C\x03\x02\x02\x02\u050C\u0511\x05' +
-    'f4\x02\u050D\u050E\x07\x07\x02\x02\u050E\u0510\x05f4\x02\u050F\u050D\x03' +
-    '\x02\x02\x02\u0510\u0513\x03\x02\x02\x02\u0511\u050F\x03\x02\x02\x02\u0511' +
-    '\u0512\x03\x02\x02\x02\u0512\u0520\x03\x02\x02\x02\u0513\u0511\x03\x02' +
-    '\x02\x02\u0514\u051E\x07M\x02\x02\u0515\u051A\x05d3\x02\u0516\u0517\x07' +
-    '\x07\x02\x02\u0517\u0519\x05d3\x02\u0518\u0516\x03\x02\x02\x02\u0519\u051C' +
-    '\x03\x02\x02\x02\u051A\u0518\x03\x02\x02\x02\u051A\u051B\x03\x02\x02\x02' +
-    '\u051B\u051F\x03\x02\x02\x02\u051C\u051A\x03\x02\x02\x02\u051D\u051F\x05' +
-    'Z.\x02\u051E\u0515\x03\x02\x02\x02\u051E\u051D\x03\x02\x02\x02\u051F\u0521' +
-    '\x03\x02\x02\x02\u0520\u0514\x03\x02\x02\x02\u0520\u0521\x03\x02\x02\x02' +
-    '\u0521\u0524\x03\x02\x02\x02\u0522\u0523\x07\x96\x02\x02\u0523\u0525\x05' +
-    'B"\x02\u0524\u0522\x03\x02\x02\x02\u0524\u0525\x03\x02\x02\x02\u0525' +
-    '\u0534\x03\x02\x02\x02\u0526\u0527\x07P\x02\x02\u0527\u0528\x07*\x02\x02' +
-    '\u0528\u052D\x05B"\x02\u0529\u052A\x07\x07\x02\x02\u052A\u052C\x05B"' +
-    '\x02\u052B\u0529\x03\x02\x02\x02\u052C\u052F\x03\x02\x02\x02\u052D\u052B' +
-    '\x03\x02\x02\x02\u052D\u052E\x03\x02\x02\x02\u052E\u0532\x03\x02\x02\x02' +
-    '\u052F\u052D\x03\x02\x02\x02\u0530\u0531\x07Q\x02\x02\u0531\u0533\x05' +
-    'B"\x02\u0532\u0530\x03\x02\x02\x02\u0532\u0533\x03\x02\x02\x02\u0533' +
-    '\u0535\x03\x02\x02\x02\u0534\u0526\x03\x02\x02\x02\u0534\u0535\x03\x02' +
-    '\x02\x02\u0535\u0544\x03\x02\x02\x02\u0536\u0537\x07\xB0\x02\x02\u0537' +
-    '\u0538\x05\xD4k\x02\u0538\u0539\x07#\x02\x02\u0539\u0541\x05z>\x02\u053A' +
-    '\u053B\x07\x07\x02\x02\u053B\u053C\x05\xD4k\x02\u053C\u053D\x07#\x02\x02' +
-    '\u053D\u053E\x05z>\x02\u053E\u0540\x03\x02\x02\x02\u053F\u053A\x03\x02' +
-    '\x02\x02\u0540\u0543\x03\x02\x02\x02\u0541\u053F\x03\x02\x02\x02\u0541' +
-    '\u0542\x03\x02\x02\x02\u0542\u0545\x03\x02\x02\x02\u0543\u0541\x03\x02' +
-    '\x02\x02\u0544\u0536\x03\x02\x02\x02\u0544\u0545\x03\x02\x02\x02\u0545' +
-    '\u0548\x03\x02\x02\x02\u0546\u0548\x05J&\x02\u0547\u0508\x03\x02\x02\x02' +
-    '\u0547\u0546\x03\x02\x02\x02\u0548]\x03\x02\x02\x02\u0549\u054A\x05X-' +
-    '\x02\u054A_\x03\x02\x02\x02\u054B\u054D\x05\x88E\x02\u054C\u054B\x03\x02' +
-    '\x02\x02\u054C\u054D\x03\x02\x02\x02\u054D\u054E\x03\x02\x02\x02\u054E' +
-    '\u0550\x05\\/\x02\u054F\u0551\x05\x8AF\x02\u0550\u054F\x03\x02\x02\x02' +
-    '\u0550\u0551\x03\x02\x02\x02\u0551\u0553\x03\x02\x02\x02\u0552\u0554\x05' +
-    '\x8CG\x02\u0553\u0552\x03\x02\x02\x02\u0553\u0554\x03\x02\x02\x02\u0554' +
-    'a\x03\x02\x02\x02\u0555\u0557\x05\x88E\x02\u0556\u0555\x03\x02\x02\x02' +
-    '\u0556\u0557\x03\x02\x02\x02\u0557\u0558\x03\x02\x02\x02\u0558\u0562\x05' +
-    '\\/\x02\u0559\u055B\x07\x8D\x02\x02\u055A\u055C\x07\x1F\x02\x02\u055B' +
-    '\u055A\x03\x02\x02\x02\u055B\u055C\x03\x02\x02\x02\u055C\u0560\x03\x02' +
-    '\x02\x02\u055D\u0560\x07\\\x02\x02\u055E\u0560\x07F\x02\x02\u055F\u0559' +
-    '\x03\x02\x02\x02\u055F\u055D\x03\x02\x02\x02\u055F\u055E\x03\x02\x02\x02' +
-    '\u0560\u0561\x03\x02\x02\x02\u0561\u0563\x05\\/\x02\u0562\u055F\x03\x02' +
-    '\x02\x02\u0563\u0564\x03\x02\x02\x02\u0564\u0562\x03\x02\x02\x02\u0564' +
-    '\u0565\x03\x02\x02\x02\u0565\u0567\x03\x02\x02\x02\u0566\u0568\x05\x8A' +
-    'F\x02\u0567\u0566\x03\x02\x02\x02\u0567\u0568\x03\x02\x02\x02\u0568\u056A' +
-    '\x03\x02\x02\x02\u0569\u056B\x05\x8CG\x02\u056A\u0569\x03\x02\x02\x02' +
-    '\u056A\u056B\x03\x02\x02\x02\u056Bc\x03\x02\x02\x02\u056C\u056D\x05\xB8' +
-    ']\x02\u056D\u056E\x07\x04\x02\x02\u056E\u0570\x03\x02\x02\x02\u056F\u056C' +
-    '\x03\x02\x02\x02\u056F\u0570\x03\x02\x02\x02\u0570\u0571\x03\x02\x02\x02' +
-    '\u0571\u0576\x05\xBA^\x02\u0572\u0574\x07#\x02\x02\u0573\u0572\x03\x02' +
-    '\x02\x02\u0573\u0574\x03\x02\x02\x02\u0574\u0575\x03\x02\x02\x02\u0575' +
-    '\u0577\x05\xD0i\x02\u0576\u0573\x03\x02\x02\x02\u0576\u0577\x03\x02\x02' +
-    '\x02\u0577\u057D\x03\x02\x02\x02\u0578\u0579\x07W\x02\x02\u0579\u057A' +
-    '\x07*\x02\x02\u057A\u057E\x05\xC4c\x02\u057B\u057C\x07h\x02\x02\u057C' +
-    '\u057E\x07W\x02\x02\u057D\u0578\x03\x02\x02\x02\u057D\u057B\x03\x02\x02' +
-    '\x02\u057D\u057E\x03\x02\x02\x02\u057E\u05AD\x03\x02\x02\x02\u057F\u0580' +
-    '\x05\xB8]\x02\u0580\u0581\x07\x04\x02\x02\u0581\u0583\x03\x02\x02\x02' +
-    '\u0582\u057F\x03\x02\x02\x02\u0582\u0583\x03\x02\x02\x02\u0583\u0584\x03' +
-    '\x02\x02\x02\u0584\u0585\x05\xE0q\x02\u0585\u0586\x07\x05\x02\x02\u0586' +
-    '\u058B\x05B"\x02\u0587\u0588\x07\x07\x02\x02\u0588\u058A\x05B"\x02\u0589' +
-    '\u0587\x03\x02\x02\x02\u058A\u058D\x03\x02\x02\x02\u058B\u0589\x03\x02' +
-    '\x02\x02\u058B\u058C\x03\x02\x02\x02\u058C\u058E\x03\x02\x02\x02\u058D' +
-    '\u058B\x03\x02\x02\x02\u058E\u0593\x07\x06\x02\x02\u058F\u0591\x07#\x02' +
-    '\x02\u0590\u058F\x03\x02\x02\x02\u0590\u0591\x03\x02\x02\x02\u0591\u0592' +
-    '\x03\x02\x02\x02\u0592\u0594\x05\xD0i\x02\u0593\u0590\x03\x02\x02\x02' +
-    '\u0593\u0594\x03\x02\x02\x02\u0594\u05AD\x03\x02\x02\x02\u0595\u059F\x07' +
-    '\x05\x02\x02\u0596\u059B\x05d3\x02\u0597\u0598\x07\x07\x02\x02\u0598\u059A' +
-    '\x05d3\x02\u0599\u0597\x03\x02\x02\x02\u059A\u059D\x03\x02\x02\x02\u059B' +
-    '\u0599\x03\x02\x02\x02\u059B\u059C\x03\x02\x02\x02\u059C\u05A0\x03\x02' +
-    '\x02\x02\u059D\u059B\x03\x02\x02\x02\u059E\u05A0\x05Z.\x02\u059F\u0596' +
-    '\x03\x02\x02\x02\u059F\u059E\x03\x02\x02\x02\u05A0\u05A1\x03\x02\x02\x02' +
-    '\u05A1\u05A2\x07\x06\x02\x02\u05A2\u05AD\x03\x02\x02\x02\u05A3\u05A4\x07' +
-    '\x05\x02\x02\u05A4\u05A5\x05X-\x02\u05A5\u05AA\x07\x06\x02\x02\u05A6\u05A8' +
-    '\x07#\x02\x02\u05A7\u05A6\x03\x02\x02\x02\u05A7\u05A8\x03\x02\x02\x02' +
-    '\u05A8\u05A9\x03\x02\x02\x02\u05A9\u05AB\x05\xD0i\x02\u05AA\u05A7\x03' +
-    '\x02\x02\x02\u05AA\u05AB\x03\x02\x02\x02\u05AB\u05AD\x03\x02\x02\x02\u05AC' +
-    '\u056F\x03\x02\x02\x02\u05AC\u0582\x03\x02\x02\x02\u05AC\u0595\x03\x02' +
-    '\x02\x02\u05AC\u05A3\x03\x02\x02\x02\u05ADe\x03\x02\x02\x02\u05AE\u05BB' +
-    '\x07\t\x02\x02\u05AF\u05B0\x05\xBA^\x02\u05B0\u05B1\x07\x04\x02\x02\u05B1' +
-    '\u05B2\x07\t\x02\x02\u05B2\u05BB\x03\x02\x02\x02\u05B3\u05B8\x05B"\x02' +
-    '\u05B4\u05B6\x07#\x02\x02\u05B5\u05B4\x03\x02\x02\x02\u05B5\u05B6\x03' +
-    '\x02\x02\x02\u05B6\u05B7\x03\x02\x02\x02\u05B7\u05B9\x05\xB0Y\x02\u05B8' +
-    '\u05B5\x03\x02\x02\x02\u05B8\u05B9\x03\x02\x02\x02\u05B9\u05BB\x03\x02' +
-    '\x02\x02\u05BA\u05AE\x03\x02\x02\x02\u05BA\u05AF\x03\x02\x02\x02\u05BA' +
-    '\u05B3\x03\x02\x02\x02\u05BBg\x03\x02\x02\x02\u05BC\u05CA\x07\x07\x02' +
-    '\x02\u05BD\u05BF\x07f\x02\x02\u05BE\u05BD\x03\x02\x02\x02\u05BE\u05BF' +
-    '\x03\x02\x02\x02\u05BF\u05C6\x03\x02\x02\x02\u05C0\u05C2\x07b\x02\x02' +
-    '\u05C1\u05C3\x07p\x02\x02\u05C2\u05C1\x03\x02\x02\x02\u05C2\u05C3\x03' +
-    '\x02\x02\x02\u05C3\u05C7\x03\x02\x02\x02\u05C4\u05C7\x07Y\x02\x02\u05C5' +
-    '\u05C7\x075\x02\x02\u05C6\u05C0\x03\x02\x02\x02\u05C6\u05C4\x03\x02\x02' +
-    '\x02\u05C6\u05C5\x03\x02\x02\x02\u05C6\u05C7\x03\x02\x02\x02\u05C7\u05C8' +
-    '\x03\x02\x02\x02\u05C8\u05CA\x07`\x02\x02\u05C9\u05BC\x03\x02\x02\x02' +
-    '\u05C9\u05BE\x03\x02\x02\x02\u05CAi\x03\x02\x02\x02\u05CB\u05CC\x07m\x02' +
-    '\x02\u05CC\u05DA\x05B"\x02\u05CD\u05CE\x07\x90\x02\x02\u05CE\u05CF\x07' +
-    '\x05\x02\x02\u05CF\u05D4\x05\xBE`\x02\u05D0\u05D1\x07\x07\x02\x02\u05D1' +
-    '\u05D3\x05\xBE`\x02\u05D2\u05D0\x03\x02\x02\x02\u05D3\u05D6\x03\x02\x02' +
-    '\x02\u05D4\u05D2\x03\x02\x02\x02\u05D4\u05D5\x03\x02\x02\x02\u05D5\u05D7' +
-    '\x03\x02\x02\x02\u05D6\u05D4\x03\x02\x02\x02\u05D7\u05D8\x07\x06\x02\x02' +
-    '\u05D8\u05DA\x03\x02\x02\x02\u05D9\u05CB\x03\x02\x02\x02\u05D9\u05CD\x03' +
-    '\x02\x02\x02\u05DAk\x03\x02\x02\x02\u05DB\u05DD\x07\x8D\x02\x02\u05DC' +
-    '\u05DE\x07\x1F'
-  private static readonly _serializedATNSegment3: string =
-    '\x02\x02\u05DD\u05DC\x03\x02\x02\x02\u05DD\u05DE\x03\x02\x02\x02\u05DE' +
-    '\u05E2\x03\x02\x02\x02\u05DF\u05E2\x07\\\x02\x02\u05E0\u05E2\x07F\x02' +
-    '\x02\u05E1\u05DB\x03\x02\x02\x02\u05E1\u05DF\x03\x02\x02\x02\u05E1\u05E0' +
-    '\x03\x02\x02\x02\u05E2m\x03\x02\x02\x02\u05E3\u05E5\x052\x1A\x02\u05E4' +
-    '\u05E3\x03\x02\x02\x02\u05E4\u05E5\x03\x02\x02\x02\u05E5\u05E6\x03\x02' +
-    '\x02\x02\u05E6\u05E9\x07\x8F\x02\x02\u05E7\u05E8\x07n\x02\x02\u05E8\u05EA' +
-    '\t\n\x02\x02\u05E9\u05E7\x03\x02\x02\x02\u05E9\u05EA\x03\x02\x02\x02\u05EA' +
-    '\u05EB\x03\x02\x02\x02\u05EB\u05EC\x05t;\x02\u05EC\u05EF\x07\x85\x02\x02' +
-    '\u05ED\u05F0\x05\xBE`\x02\u05EE\u05F0\x05p9\x02\u05EF\u05ED\x03\x02\x02' +
-    '\x02\u05EF\u05EE\x03\x02\x02\x02\u05F0\u05F1\x03\x02\x02\x02\u05F1\u05F2' +
-    '\x07\b\x02\x02\u05F2\u05FD\x05B"\x02\u05F3\u05F6\x07\x07\x02\x02\u05F4' +
-    '\u05F7\x05\xBE`\x02\u05F5\u05F7\x05p9\x02\u05F6\u05F4\x03\x02\x02\x02' +
-    '\u05F6\u05F5\x03\x02\x02\x02\u05F7\u05F8\x03\x02\x02\x02\u05F8\u05F9\x07' +
-    '\b\x02\x02\u05F9\u05FA\x05B"\x02\u05FA\u05FC\x03\x02\x02\x02\u05FB\u05F3' +
-    '\x03\x02\x02\x02\u05FC\u05FF\x03\x02\x02\x02\u05FD\u05FB\x03\x02\x02\x02' +
-    '\u05FD\u05FE\x03\x02\x02\x02\u05FE\u060C\x03\x02\x02\x02\u05FF\u05FD\x03' +
-    '\x02\x02\x02\u0600\u060A\x07M\x02\x02\u0601\u0606\x05d3\x02\u0602\u0603' +
-    '\x07\x07\x02\x02\u0603\u0605\x05d3\x02\u0604\u0602\x03\x02\x02\x02\u0605' +
-    '\u0608\x03\x02\x02\x02\u0606\u0604\x03\x02\x02\x02\u0606\u0607\x03\x02' +
-    '\x02\x02\u0607\u060B\x03\x02\x02\x02\u0608\u0606\x03\x02\x02\x02\u0609' +
-    '\u060B\x05Z.\x02\u060A\u0601\x03\x02\x02\x02\u060A\u0609\x03\x02\x02\x02' +
-    '\u060B\u060D\x03\x02\x02\x02\u060C\u0600\x03\x02\x02\x02\u060C\u060D\x03' +
-    '\x02\x02\x02\u060D\u0610\x03\x02\x02\x02\u060E\u060F\x07\x96\x02\x02\u060F' +
-    '\u0611\x05B"\x02\u0610\u060E\x03\x02\x02\x02\u0610\u0611\x03\x02\x02' +
-    '\x02\u0611\u0613\x03\x02\x02\x02\u0612\u0614\x05N(\x02\u0613\u0612\x03' +
-    '\x02\x02\x02\u0613\u0614\x03\x02\x02\x02\u0614o\x03\x02\x02\x02\u0615' +
-    '\u0616\x07\x05\x02\x02\u0616\u061B\x05\xBE`\x02\u0617\u0618\x07\x07\x02' +
-    '\x02\u0618\u061A\x05\xBE`\x02\u0619\u0617\x03\x02\x02\x02\u061A\u061D' +
-    '\x03\x02\x02\x02\u061B\u0619\x03\x02\x02\x02\u061B\u061C\x03\x02\x02\x02' +
-    '\u061C\u061E\x03\x02\x02\x02\u061D\u061B\x03\x02\x02\x02\u061E\u061F\x07' +
-    '\x06\x02\x02\u061Fq\x03\x02\x02\x02\u0620\u0622\x052\x1A\x02\u0621\u0620' +
-    '\x03\x02\x02\x02\u0621\u0622\x03\x02\x02\x02\u0622\u0623\x03\x02\x02\x02' +
-    '\u0623\u0626\x07\x8F\x02\x02\u0624\u0625\x07n\x02\x02\u0625\u0627\t\n' +
-    '\x02\x02\u0626\u0624\x03\x02\x02\x02\u0626\u0627\x03\x02\x02\x02\u0627' +
-    '\u0628\x03\x02\x02\x02\u0628\u0629\x05t;\x02\u0629\u062C\x07\x85\x02\x02' +
-    '\u062A\u062D\x05\xBE`\x02\u062B\u062D\x05p9\x02\u062C\u062A\x03\x02\x02' +
-    '\x02\u062C\u062B\x03\x02\x02\x02\u062D\u062E\x03\x02\x02\x02\u062E\u062F' +
-    '\x07\b\x02\x02\u062F\u063A\x05B"\x02\u0630\u0633\x07\x07\x02\x02\u0631' +
-    '\u0634\x05\xBE`\x02\u0632\u0634\x05p9\x02\u0633\u0631\x03\x02\x02\x02' +
-    '\u0633\u0632\x03\x02\x02\x02\u0634\u0635\x03\x02\x02\x02\u0635\u0636\x07' +
-    '\b\x02\x02\u0636\u0637\x05B"\x02\u0637\u0639\x03\x02\x02\x02\u0638\u0630' +
-    '\x03\x02\x02\x02\u0639\u063C\x03\x02\x02\x02\u063A\u0638\x03\x02\x02\x02' +
-    '\u063A\u063B\x03\x02\x02\x02\u063B\u063F\x03\x02\x02\x02\u063C\u063A\x03' +
-    '\x02\x02\x02\u063D\u063E\x07\x96\x02\x02\u063E\u0640\x05B"\x02\u063F' +
-    '\u063D\x03\x02\x02\x02\u063F\u0640\x03\x02\x02\x02\u0640\u0642\x03\x02' +
-    '\x02\x02\u0641\u0643\x05N(\x02\u0642\u0641\x03\x02\x02\x02\u0642\u0643' +
-    '\x03\x02\x02\x02\u0643\u0648\x03\x02\x02\x02\u0644\u0646\x05\x8AF\x02' +
-    '\u0645\u0644\x03\x02\x02\x02\u0645\u0646\x03\x02\x02\x02\u0646\u0647\x03' +
-    '\x02\x02\x02\u0647\u0649\x05\x8CG\x02\u0648\u0645\x03\x02\x02\x02\u0648' +
-    '\u0649\x03\x02\x02\x02\u0649s\x03\x02\x02\x02\u064A\u064B\x05\xB8]\x02' +
-    '\u064B\u064C\x07\x04\x02\x02\u064C\u064E\x03\x02\x02\x02\u064D\u064A\x03' +
-    '\x02\x02\x02\u064D\u064E\x03\x02\x02\x02\u064E\u064F\x03\x02\x02\x02\u064F' +
-    '\u0652\x05\xBA^\x02\u0650\u0651\x07#\x02\x02\u0651\u0653\x05\xD6l\x02' +
-    '\u0652\u0650\x03\x02\x02\x02\u0652\u0653\x03\x02\x02\x02\u0653\u0659\x03' +
-    '\x02\x02\x02\u0654\u0655\x07W\x02\x02\u0655\u0656\x07*\x02\x02\u0656\u065A' +
-    '\x05\xC4c\x02\u0657\u0658\x07h\x02\x02\u0658\u065A\x07W\x02\x02\u0659' +
-    '\u0654\x03\x02\x02\x02\u0659\u0657\x03\x02\x02\x02\u0659\u065A\x03\x02' +
-    '\x02\x02\u065Au\x03\x02\x02\x02\u065B\u065D\x07\x91\x02\x02\u065C\u065E' +
-    '\x05\xB8]\x02\u065D\u065C\x03\x02\x02\x02\u065D\u065E\x03\x02\x02\x02' +
-    '\u065E\u0661\x03\x02\x02\x02\u065F\u0660\x07]\x02\x02\u0660\u0662\x05' +
-    '\xD8m\x02\u0661\u065F\x03\x02\x02\x02\u0661\u0662\x03\x02\x02\x02\u0662' +
-    'w\x03\x02\x02\x02\u0663\u0664\x07\xB4\x02\x02\u0664\u0665\x07\x05\x02' +
-    '\x02\u0665\u0666\x07\x96\x02\x02\u0666\u0667\x05B"\x02\u0667\u0668\x07' +
-    '\x06\x02\x02\u0668y\x03\x02\x02\x02\u0669\u066B\x07\x05\x02\x02\u066A' +
-    '\u066C\x05\xDAn\x02\u066B\u066A\x03\x02\x02\x02\u066B\u066C\x03\x02\x02' +
-    '\x02\u066C\u0677\x03\x02\x02\x02\u066D\u066E\x07\x9B\x02\x02\u066E\u066F' +
-    '\x07*\x02\x02\u066F\u0674\x05B"\x02\u0670\u0671\x07\x07\x02\x02\u0671' +
-    '\u0673\x05B"\x02\u0672\u0670\x03\x02\x02\x02\u0673\u0676\x03\x02\x02' +
-    '\x02\u0674\u0672\x03\x02\x02\x02\u0674\u0675\x03\x02\x02\x02\u0675\u0678' +
-    '\x03\x02\x02\x02\u0676\u0674\x03\x02\x02\x02\u0677\u066D\x03\x02\x02\x02' +
-    '\u0677\u0678\x03\x02\x02\x02\u0678\u0679\x03\x02\x02\x02\u0679\u067A\x07' +
-    'o\x02\x02\u067A\u067B\x07*\x02\x02\u067B\u0680\x05\x8EH\x02\u067C\u067D' +
-    '\x07\x07\x02\x02\u067D\u067F\x05\x8EH\x02\u067E\u067C\x03\x02\x02\x02' +
-    '\u067F\u0682\x03\x02\x02\x02\u0680\u067E\x03\x02\x02\x02\u0680\u0681\x03' +
-    '\x02\x02\x02\u0681\u0684\x03\x02\x02\x02\u0682\u0680\x03\x02\x02\x02\u0683' +
-    '\u0685\x05~@\x02\u0684\u0683\x03\x02\x02\x02\u0684\u0685\x03\x02\x02\x02' +
-    '\u0685\u0686\x03\x02\x02\x02\u0686\u0687\x07\x06\x02\x02\u0687{\x03\x02' +
-    '\x02\x02\u0688\u06AA\x07\x9A\x02\x02\u0689\u06AB\x05\xD4k\x02\u068A\u068C' +
-    '\x07\x05\x02\x02\u068B\u068D\x05\xDAn\x02\u068C\u068B\x03\x02\x02\x02' +
-    '\u068C\u068D\x03\x02\x02\x02\u068D\u0698\x03\x02\x02\x02\u068E\u068F\x07' +
-    '\x9B\x02\x02\u068F\u0690\x07*\x02\x02\u0690\u0695\x05B"\x02\u0691\u0692' +
-    '\x07\x07\x02\x02\u0692\u0694\x05B"\x02\u0693\u0691\x03\x02\x02\x02\u0694' +
-    '\u0697\x03\x02\x02\x02\u0695\u0693\x03\x02\x02\x02\u0695\u0696\x03\x02' +
-    '\x02\x02\u0696\u0699\x03\x02\x02\x02\u0697\u0695\x03\x02\x02\x02\u0698' +
-    '\u068E\x03\x02\x02\x02\u0698\u0699\x03\x02\x02\x02\u0699\u06A4\x03\x02' +
-    '\x02\x02\u069A\u069B\x07o\x02\x02\u069B\u069C\x07*\x02\x02\u069C\u06A1' +
-    '\x05\x8EH\x02\u069D\u069E\x07\x07\x02\x02\u069E\u06A0\x05\x8EH\x02\u069F' +
-    '\u069D\x03\x02\x02\x02\u06A0\u06A3\x03\x02\x02\x02\u06A1\u069F\x03\x02' +
-    '\x02\x02\u06A1\u06A2\x03\x02\x02\x02\u06A2\u06A5\x03\x02\x02\x02\u06A3' +
-    '\u06A1\x03\x02\x02\x02\u06A4\u069A\x03\x02\x02\x02\u06A4\u06A5\x03\x02' +
-    '\x02\x02\u06A5\u06A7\x03\x02\x02\x02\u06A6\u06A8\x05~@\x02\u06A7\u06A6' +
-    '\x03\x02\x02\x02\u06A7\u06A8\x03\x02\x02\x02\u06A8\u06A9\x03\x02\x02\x02' +
-    '\u06A9\u06AB\x07\x06\x02\x02\u06AA\u0689\x03\x02\x02\x02\u06AA\u068A\x03' +
-    '\x02\x02\x02\u06AB}\x03\x02\x02\x02\u06AC\u06B6\x05\x80A\x02\u06AD\u06B4' +
-    '\x07\xB6\x02\x02\u06AE\u06AF\x07g\x02\x02\u06AF\u06B5\x07\xB8\x02\x02' +
-    '\u06B0\u06B1\x07\x9F\x02\x02\u06B1\u06B5\x07\x81\x02\x02\u06B2\u06B5\x07' +
-    'P\x02\x02\u06B3\u06B5\x07\xB7\x02\x02\u06B4\u06AE\x03\x02\x02\x02\u06B4' +
-    '\u06B0\x03\x02\x02\x02\u06B4\u06B2\x03\x02\x02\x02\u06B4\u06B3\x03\x02' +
-    '\x02\x02\u06B5\u06B7\x03\x02\x02\x02\u06B6\u06AD\x03\x02\x02\x02\u06B6' +
-    '\u06B7\x03\x02\x02\x02\u06B7\x7F\x03\x02\x02\x02\u06B8\u06BF\t\x13\x02' +
-    '\x02\u06B9\u06C0\x05\x96L\x02\u06BA\u06BB\x07)\x02\x02\u06BB\u06BC\x05' +
-    '\x92J\x02\u06BC\u06BD\x07"\x02\x02\u06BD\u06BE\x05\x94K\x02\u06BE\u06C0' +
-    '\x03\x02\x02\x02\u06BF\u06B9\x03\x02\x02\x02\u06BF\u06BA\x03\x02\x02\x02' +
-    '\u06C0\x81\x03\x02\x02\x02\u06C1\u06C2\x05\xDCo\x02\u06C2\u06CC\x07\x05' +
-    '\x02\x02\u06C3\u06C8\x05B"\x02\u06C4\u06C5\x07\x07\x02\x02\u06C5\u06C7' +
-    '\x05B"\x02\u06C6\u06C4\x03\x02\x02\x02\u06C7\u06CA\x03\x02\x02\x02\u06C8' +
-    '\u06C6\x03\x02\x02\x02\u06C8\u06C9\x03\x02\x02\x02\u06C9\u06CD\x03\x02' +
-    '\x02\x02\u06CA\u06C8\x03\x02\x02\x02\u06CB\u06CD\x07\t\x02\x02\u06CC\u06C3' +
-    '\x03\x02\x02\x02\u06CC\u06CB\x03\x02\x02\x02\u06CD\u06CE\x03\x02\x02\x02' +
-    '\u06CE\u06CF\x07\x06\x02\x02\u06CF\x83\x03\x02\x02\x02\u06D0\u06D1\x05' +
-    '\xDEp\x02\u06D1\u06DE\x07\x05\x02\x02\u06D2\u06D4\x07@\x02\x02\u06D3\u06D2' +
-    '\x03\x02\x02\x02\u06D3\u06D4\x03\x02\x02\x02\u06D4\u06D5\x03\x02\x02\x02' +
-    '\u06D5\u06DA\x05B"\x02\u06D6\u06D7\x07\x07\x02\x02\u06D7\u06D9\x05B"' +
-    '\x02\u06D8\u06D6\x03\x02\x02\x02\u06D9\u06DC\x03\x02\x02\x02\u06DA\u06D8' +
-    '\x03\x02\x02\x02\u06DA\u06DB\x03\x02\x02\x02\u06DB\u06DF\x03\x02\x02\x02' +
-    '\u06DC\u06DA\x03\x02\x02\x02\u06DD\u06DF\x07\t\x02\x02\u06DE\u06D3\x03' +
-    '\x02\x02\x02\u06DE\u06DD\x03\x02\x02\x02\u06DE\u06DF\x03\x02\x02\x02\u06DF' +
-    '\u06E0\x03\x02\x02\x02\u06E0\u06E2\x07\x06\x02\x02\u06E1\u06E3\x05x=\x02' +
-    '\u06E2\u06E1\x03\x02\x02\x02\u06E2\u06E3\x03\x02\x02\x02\u06E3\x85\x03' +
-    '\x02\x02\x02\u06E4\u06E5\x05\x98M\x02\u06E5\u06EF\x07\x05\x02\x02\u06E6' +
-    '\u06EB\x05B"\x02\u06E7\u06E8\x07\x07\x02\x02\u06E8\u06EA\x05B"\x02\u06E9' +
-    '\u06E7\x03\x02\x02\x02\u06EA\u06ED\x03\x02\x02\x02\u06EB\u06E9\x03\x02' +
-    '\x02\x02\u06EB\u06EC\x03\x02\x02\x02\u06EC\u06F0\x03\x02\x02\x02\u06ED' +
-    '\u06EB\x03\x02\x02\x02\u06EE\u06F0\x07\t\x02\x02\u06EF\u06E6\x03\x02\x02' +
-    '\x02\u06EF\u06EE\x03\x02\x02\x02\u06EF\u06F0\x03\x02\x02\x02\u06F0\u06F1' +
-    '\x03\x02\x02\x02\u06F1\u06F3\x07\x06\x02\x02\u06F2\u06F4\x05x=\x02\u06F3' +
-    '\u06F2\x03\x02\x02\x02\u06F3\u06F4\x03\x02\x02\x02\u06F4\u06F5\x03\x02' +
-    '\x02\x02\u06F5\u06F8\x07\x9A\x02\x02\u06F6\u06F9\x05z>\x02\u06F7\u06F9' +
-    '\x05\xD4k\x02\u06F8\u06F6\x03\x02\x02\x02\u06F8\u06F7\x03\x02\x02\x02' +
-    '\u06F9\x87\x03\x02\x02\x02\u06FA\u06FC\x07\x97\x02\x02\u06FB\u06FD\x07' +
-    'v\x02\x02\u06FC\u06FB\x03\x02\x02\x02\u06FC\u06FD\x03\x02\x02\x02\u06FD' +
-    '\u06FE\x03\x02\x02\x02\u06FE\u0703\x058\x1D\x02\u06FF\u0700\x07\x07\x02' +
-    '\x02\u0700\u0702\x058\x1D\x02\u0701\u06FF\x03\x02\x02\x02\u0702\u0705' +
-    '\x03\x02\x02\x02\u0703\u0701\x03\x02\x02\x02\u0703\u0704\x03\x02\x02\x02' +
-    '\u0704\x89\x03\x02\x02\x02\u0705\u0703\x03\x02\x02\x02\u0706\u0707\x07' +
-    'o\x02\x02\u0707\u0708\x07*\x02\x02\u0708\u070D\x05\x8EH\x02\u0709\u070A' +
-    '\x07\x07\x02\x02\u070A\u070C\x05\x8EH\x02\u070B\u0709\x03\x02\x02\x02' +
-    '\u070C\u070F\x03\x02\x02\x02\u070D\u070B\x03\x02\x02\x02\u070D\u070E\x03' +
-    '\x02\x02\x02\u070E\x8B\x03\x02\x02\x02\u070F\u070D\x03\x02\x02\x02\u0710' +
-    '\u0711\x07d\x02\x02\u0711\u0714\x05B"\x02\u0712\u0713\t\x14\x02\x02\u0713' +
-    '\u0715\x05B"\x02\u0714\u0712\x03\x02\x02\x02\u0714\u0715\x03\x02\x02' +
-    '\x02\u0715\x8D\x03\x02\x02\x02\u0716\u0719\x05B"\x02\u0717\u0718\x07' +
-    '/\x02\x02\u0718\u071A\x05\xC0a\x02\u0719\u0717\x03\x02\x02\x02\u0719\u071A' +
-    '\x03\x02\x02\x02\u071A\u071C\x03\x02\x02\x02\u071B\u071D\x05\x90I\x02' +
-    '\u071C\u071B\x03\x02\x02\x02\u071C\u071D\x03\x02\x02\x02\u071D\u0720\x03' +
-    '\x02\x02\x02\u071E\u071F\x07\xB1\x02\x02\u071F\u0721\t\x15\x02\x02\u0720' +
-    '\u071E\x03\x02\x02\x02\u0720\u0721\x03\x02\x02\x02\u0721\x8F\x03\x02\x02' +
-    '\x02\u0722\u0723\t\x16\x02\x02\u0723\x91\x03\x02\x02\x02\u0724\u0725\x05' +
-    'B"\x02\u0725\u0726\x07\x9D\x02\x02\u0726\u072F\x03\x02\x02\x02\u0727' +
-    '\u0728\x05B"\x02\u0728\u0729\x07\xA0\x02\x02\u0729\u072F\x03\x02\x02' +
-    '\x02\u072A\u072B\x07\x9F\x02\x02\u072B\u072F\x07\x81\x02\x02\u072C\u072D' +
-    '\x07\x9E\x02\x02\u072D\u072F\x07\x9D\x02\x02\u072E\u0724\x03\x02\x02\x02' +
-    '\u072E\u0727\x03\x02\x02\x02\u072E\u072A\x03\x02\x02\x02\u072E\u072C\x03' +
-    '\x02\x02\x02\u072F\x93\x03\x02\x02\x02\u0730\u0731\x05B"\x02\u0731\u0732' +
-    '\x07\x9D\x02\x02\u0732\u073B\x03\x02\x02\x02\u0733\u0734\x05B"\x02\u0734' +
-    '\u0735\x07\xA0\x02\x02\u0735\u073B\x03\x02\x02\x02\u0736\u0737\x07\x9F' +
-    '\x02\x02\u0737\u073B\x07\x81\x02\x02\u0738\u0739\x07\x9E\x02\x02\u0739' +
-    '\u073B\x07\xA0\x02\x02\u073A\u0730\x03\x02\x02\x02\u073A\u0733\x03\x02' +
-    '\x02\x02\u073A\u0736\x03\x02\x02\x02\u073A\u0738\x03\x02\x02\x02\u073B' +
-    '\x95\x03\x02\x02\x02\u073C\u073D\x05B"\x02\u073D\u073E\x07\x9D\x02\x02' +
-    '\u073E\u0744\x03\x02\x02\x02\u073F\u0740\x07\x9E\x02\x02\u0740\u0744\x07' +
-    '\x9D\x02\x02\u0741\u0742\x07\x9F\x02\x02\u0742\u0744\x07\x81\x02\x02\u0743' +
-    '\u073C\x03\x02\x02\x02\u0743\u073F\x03\x02\x02\x02\u0743\u0741\x03\x02' +
-    '\x02\x02\u0744\x97\x03\x02\x02\x02\u0745\u0746\t\x17\x02\x02\u0746\u0747' +
-    '\x07\x05\x02\x02\u0747\u0748\x05B"\x02\u0748\u0749\x07\x06\x02\x02\u0749' +
-    '\u074A\x07\x9A\x02\x02\u074A\u074C\x07\x05\x02\x02\u074B\u074D\x05\x9E' +
-    'P\x02\u074C\u074B\x03\x02\x02\x02\u074C\u074D\x03\x02\x02\x02\u074D\u074E' +
-    '\x03\x02\x02\x02\u074E\u0750\x05\xA2R\x02\u074F\u0751\x05\x80A\x02\u0750' +
-    '\u074F\x03\x02\x02\x02\u0750\u0751\x03\x02\x02\x02\u0751\u0752\x03\x02' +
-    '\x02\x02\u0752\u0753\x07\x06\x02\x02\u0753\u079B\x03\x02\x02\x02\u0754' +
-    '\u0755\t\x18\x02\x02\u0755\u0756\x07\x05\x02\x02\u0756\u0757\x07\x06\x02' +
-    '\x02\u0757\u0758\x07\x9A\x02\x02\u0758\u075A\x07\x05\x02\x02\u0759\u075B' +
-    '\x05\x9EP\x02\u075A\u0759\x03\x02\x02\x02\u075A\u075B\x03\x02\x02\x02' +
-    '\u075B\u075D\x03\x02\x02\x02\u075C\u075E\x05\xA0Q\x02\u075D\u075C\x03' +
-    '\x02\x02\x02\u075D\u075E\x03\x02\x02\x02\u075E\u075F\x03\x02\x02\x02\u075F' +
-    '\u079B\x07\x06\x02\x02\u0760\u0761\t\x19\x02\x02\u0761\u0762\x07\x05\x02' +
-    '\x02\u0762\u0763\x07\x06\x02\x02\u0763\u0764\x07\x9A\x02\x02\u0764\u0766' +
-    '\x07\x05\x02\x02\u0765\u0767\x05\x9EP\x02\u0766\u0765\x03\x02\x02\x02' +
-    '\u0766\u0767\x03\x02\x02\x02\u0767\u0768\x03\x02\x02\x02\u0768\u0769\x05' +
-    '\xA2R\x02\u0769\u076A\x07\x06\x02\x02\u076A\u079B\x03\x02\x02\x02\u076B' +
-    '\u076C\t\x1A\x02\x02\u076C\u076D\x07\x05\x02\x02\u076D\u076F\x05B"\x02' +
-    '\u076E\u0770\x05\x9AN\x02\u076F\u076E\x03\x02\x02\x02\u076F\u0770\x03' +
-    '\x02\x02\x02\u0770\u0772\x03\x02\x02\x02\u0771\u0773\x05\x9CO\x02\u0772' +
-    '\u0771\x03\x02\x02\x02\u0772\u0773\x03\x02\x02\x02\u0773\u0774\x03\x02' +
-    '\x02\x02\u0774\u0775\x07\x06\x02\x02\u0775\u0776\x07\x9A\x02\x02\u0776' +
-    '\u0778\x07\x05\x02\x02\u0777\u0779\x05\x9EP\x02\u0778\u0777\x03\x02\x02' +
-    '\x02\u0778\u0779\x03\x02\x02\x02\u0779\u077A\x03\x02\x02\x02\u077A\u077B' +
-    '\x05\xA2R\x02\u077B\u077C\x07\x06\x02\x02\u077C\u079B\x03\x02\x02\x02' +
-    '\u077D\u077E\x07\xA6\x02\x02\u077E\u077F\x07\x05\x02\x02\u077F\u0780\x05' +
-    'B"\x02\u0780\u0781\x07\x07\x02\x02\u0781\u0782\x05$\x13\x02\u0782\u0783' +
-    '\x07\x06\x02\x02\u0783\u0784\x07\x9A\x02\x02\u0784\u0786\x07\x05\x02\x02' +
-    '\u0785\u0787\x05\x9EP\x02\u0786\u0785\x03\x02\x02\x02\u0786\u0787\x03' +
-    '\x02\x02\x02\u0787\u0788\x03\x02\x02\x02\u0788\u078A\x05\xA2R\x02\u0789' +
-    '\u078B\x05\x80A\x02\u078A\u0789\x03\x02\x02\x02\u078A\u078B\x03\x02\x02' +
-    '\x02\u078B\u078C\x03\x02\x02\x02\u078C\u078D\x07\x06\x02\x02\u078D\u079B' +
-    '\x03\x02\x02\x02\u078E\u078F\x07\xA7\x02\x02\u078F\u0790\x07\x05\x02\x02' +
-    '\u0790\u0791\x05B"\x02\u0791\u0792\x07\x06\x02\x02\u0792\u0793\x07\x9A' +
-    '\x02\x02\u0793\u0795\x07\x05\x02\x02\u0794\u0796\x05\x9EP\x02\u0795\u0794' +
-    '\x03\x02\x02\x02\u0795\u0796\x03\x02\x02\x02\u0796\u0797\x03\x02\x02\x02' +
-    '\u0797\u0798\x05\xA2R\x02\u0798\u0799\x07\x06\x02\x02\u0799\u079B\x03' +
-    '\x02\x02\x02\u079A\u0745\x03\x02\x02\x02\u079A\u0754\x03\x02\x02\x02\u079A' +
-    '\u0760\x03\x02\x02\x02\u079A\u076B\x03\x02\x02\x02\u079A\u077D\x03\x02' +
-    '\x02\x02\u079A\u078E\x03\x02\x02\x02\u079B\x99\x03\x02\x02\x02\u079C\u079D' +
-    '\x07\x07\x02\x02\u079D\u079E\x05$\x13\x02\u079E\x9B\x03\x02\x02\x02\u079F' +
-    '\u07A0\x07\x07\x02\x02\u07A0\u07A1\x05$\x13\x02\u07A1\x9D\x03\x02\x02' +
-    '\x02\u07A2\u07A3\x07\x9B\x02\x02\u07A3\u07A5\x07*\x02\x02\u07A4\u07A6' +
-    '\x05B"\x02\u07A5\u07A4\x03\x02\x02\x02\u07A6\u07A7\x03\x02\x02\x02\u07A7' +
-    '\u07A5\x03\x02\x02\x02\u07A7\u07A8\x03\x02\x02\x02\u07A8\x9F\x03\x02\x02' +
-    '\x02\u07A9\u07AA\x07o\x02\x02\u07AA\u07AC\x07*\x02\x02\u07AB\u07AD\x05' +
-    'B"\x02\u07AC\u07AB\x03\x02\x02\x02\u07AD\u07AE\x03\x02\x02\x02\u07AE' +
-    '\u07AC\x03\x02\x02\x02\u07AE\u07AF\x03\x02\x02\x02\u07AF\xA1\x03\x02\x02' +
-    '\x02\u07B0\u07B1\x07o\x02\x02\u07B1\u07B2\x07*\x02\x02\u07B2\u07B3\x05' +
-    '\xA4S\x02\u07B3\xA3\x03\x02\x02\x02\u07B4\u07B6\x05B"\x02\u07B5\u07B7' +
-    '\x05\x90I\x02\u07B6\u07B5\x03\x02\x02\x02\u07B6\u07B7\x03\x02\x02\x02' +
-    '\u07B7\u07BF\x03\x02\x02\x02\u07B8\u07B9\x07\x07\x02\x02\u07B9\u07BB\x05' +
-    'B"\x02\u07BA\u07BC\x05\x90I\x02\u07BB\u07BA\x03\x02\x02\x02\u07BB\u07BC' +
-    '\x03\x02\x02\x02\u07BC\u07BE\x03\x02\x02\x02\u07BD\u07B8\x03\x02\x02\x02' +
-    '\u07BE\u07C1\x03\x02\x02\x02\u07BF\u07BD\x03\x02\x02\x02\u07BF\u07C0\x03' +
-    '\x02\x02\x02\u07C0\xA5\x03\x02\x02\x02\u07C1\u07BF\x03\x02\x02\x02\u07C2' +
-    '\u07C3\x05X-\x02\u07C3\xA7\x03\x02\x02\x02\u07C4\u07C5\x05X-\x02\u07C5' +
-    '\xA9\x03\x02\x02\x02\u07C6\u07C7\t\x1B\x02\x02\u07C7\xAB\x03\x02\x02\x02' +
-    '\u07C8\u07C9\x07\xBE\x02\x02\u07C9\xAD\x03\x02\x02\x02\u07CA\u07CD\x05' +
-    'B"\x02\u07CB\u07CD\x05\x1E\x10\x02\u07CC\u07CA\x03\x02\x02\x02\u07CC' +
-    '\u07CB\x03\x02\x02\x02\u07CD\xAF\x03\x02\x02\x02\u07CE\u07CF\t\x1C\x02' +
-    '\x02\u07CF\xB1\x03\x02\x02\x02\u07D0\u07D1\t\x1D\x02\x02\u07D1\xB3\x03' +
-    '\x02\x02\x02\u07D2\u07D3\x05\xE2r\x02\u07D3\xB5\x03\x02\x02\x02\u07D4' +
-    '\u07D5\x05\xE2r\x02\u07D5\xB7\x03\x02\x02\x02\u07D6\u07D7\x05\xE2r\x02' +
-    '\u07D7\xB9\x03\x02\x02\x02\u07D8\u07D9\x05\xE2r\x02\u07D9\xBB\x03\x02' +
-    '\x02\x02\u07DA\u07DB\x05\xE2r\x02\u07DB\xBD\x03\x02\x02\x02\u07DC\u07DD' +
-    '\x05\xE2r\x02\u07DD\xBF\x03\x02\x02\x02\u07DE\u07DF\x05\xE2r\x02\u07DF' +
-    '\xC1\x03\x02\x02\x02\u07E0\u07E1\x05\xE2r\x02\u07E1\xC3\x03\x02\x02\x02' +
-    '\u07E2\u07E3\x05\xE2r\x02\u07E3\xC5\x03\x02\x02\x02\u07E4\u07E5\x05\xE2' +
-    'r\x02\u07E5\xC7\x03\x02\x02\x02\u07E6\u07E7\x05\xE2r\x02\u07E7\xC9\x03' +
-    '\x02\x02\x02\u07E8\u07E9\x05\xE2r\x02\u07E9\xCB\x03\x02\x02\x02\u07EA' +
-    '\u07EB\x05\xE2r\x02\u07EB\xCD\x03\x02\x02\x02\u07EC\u07ED\x05\xE2r\x02' +
-    '\u07ED\xCF\x03\x02\x02\x02\u07EE\u07EF\x05\xE2r\x02\u07EF\xD1\x03\x02' +
-    '\x02\x02\u07F0\u07F1\x05\xE2r\x02\u07F1\xD3\x03\x02\x02\x02\u07F2\u07F3' +
-    '\x05\xE2r\x02\u07F3\xD5\x03\x02\x02\x02\u07F4\u07F5\x05\xE2r\x02\u07F5' +
-    '\xD7\x03\x02\x02\x02\u07F6\u07F7\x05\xE2r\x02\u07F7\xD9\x03\x02\x02\x02' +
-    '\u07F8\u07F9\x05\xE2r\x02\u07F9\xDB\x03\x02\x02\x02\u07FA\u07FB\x05\xE2' +
-    'r\x02\u07FB\xDD\x03\x02\x02\x02\u07FC\u07FD\x05\xE2r\x02\u07FD\xDF\x03' +
-    '\x02\x02\x02\u07FE\u07FF\x05\xE2r\x02\u07FF\xE1\x03\x02\x02\x02\u0800' +
-    '\u0808\x07\xBB\x02\x02\u0801\u0808\x05\xB2Z\x02\u0802\u0808\x07\xBE\x02' +
-    '\x02\u0803\u0804\x07\x05\x02\x02\u0804\u0805\x05\xE2r\x02\u0805\u0806' +
-    '\x07\x06\x02\x02\u0806\u0808\x03\x02\x02\x02\u0807\u0800\x03\x02\x02\x02' +
-    '\u0807\u0801\x03\x02\x02\x02\u0807\u0802\x03\x02\x02\x02\u0807\u0803\x03' +
-    '\x02\x02\x02\u0808\xE3\x03\x02\x02\x02\u012A\xE7\xEF\xF6\xFB\u0101\u0107' +
-    '\u0109\u0123\u012A\u0131\u0137\u013B\u0140\u0143\u014A\u014D\u0151\u0159' +
-    '\u015D\u015F\u0163\u0167\u016B\u016E\u0175\u017B\u0181\u0186\u0191\u0197' +
-    '\u019B\u019F\u01A2\u01A6\u01AC\u01B1\u01BA\u01C1\u01C7\u01CB\u01CF\u01D4' +
-    '\u01DA\u01E6\u01EA\u01EF\u01F2\u01F5\u01F8\u01FC\u01FF\u020D\u0214\u021B' +
-    '\u021D\u0220\u0226\u022B\u0233\u0238\u0247\u024D\u0257\u025C\u0266\u026A' +
-    '\u026C\u0270\u0275\u0277\u027F\u0285\u028A\u0291\u029C\u029F\u02A1\u02A8' +
-    '\u02AC\u02B3\u02B9\u02BF\u02C5\u02CA\u02D3\u02D8\u02E3\u02E8\u02F3\u02F8' +
-    '\u02FC\u030C\u0316\u031B\u0323\u032F\u0334\u033C\u0343\u0346\u0349\u0350' +
-    '\u0353\u0356\u0359\u035D\u0365\u036A\u0374\u0379\u0382\u0389\u038D\u0391' +
-    '\u0394\u039C\u03A9\u03AC\u03B4\u03BD\u03C1\u03C6\u03E4\u03F0\u03F5\u0401' +
-    '\u0407\u040E\u0412\u041C\u041F\u0425\u042B\u0434\u0437\u043B\u043D\u043F' +
-    '\u0448\u0454\u045F\u0463\u046A\u0470\u0475\u047D\u0482\u0486\u0489\u048D' +
-    '\u0490\u0498\u04A3\u04A9\u04AB\u04B3\u04BA\u04C1\u04C6\u04C8\u04CE\u04D7' +
-    '\u04DC\u04E3\u04E7\u04E9\u04EC\u04F4\u04F8\u04FB\u0501\u0505\u050A\u0511' +
-    '\u051A\u051E\u0520\u0524\u052D\u0532\u0534\u0541\u0544\u0547\u054C\u0550' +
-    '\u0553\u0556\u055B\u055F\u0564\u0567\u056A\u056F\u0573\u0576\u057D\u0582' +
-    '\u058B\u0590\u0593\u059B\u059F\u05A7\u05AA\u05AC\u05B5\u05B8\u05BA\u05BE' +
-    '\u05C2\u05C6\u05C9\u05D4\u05D9\u05DD\u05E1\u05E4\u05E9\u05EF\u05F6\u05FD' +
-    '\u0606\u060A\u060C\u0610\u0613\u061B\u0621\u0626\u062C\u0633\u063A\u063F' +
-    '\u0642\u0645\u0648\u064D\u0652\u0659\u065D\u0661\u066B\u0674\u0677\u0680' +
-    '\u0684\u068C\u0695\u0698\u06A1\u06A4\u06A7\u06AA\u06B4\u06B6\u06BF\u06C8' +
-    '\u06CC\u06D3\u06DA\u06DE\u06E2\u06EB\u06EF\u06F3\u06F8\u06FC\u0703\u070D' +
-    '\u0714\u0719\u071C\u0720\u072E\u073A\u0743\u074C\u0750\u075A\u075D\u0766' +
-    '\u076F\u0772\u0778\u0786\u078A\u0795\u079A\u07A7\u07AE\u07B6\u07BB\u07BF' +
-    '\u07CC\u0807'
-  public static readonly _serializedATN: string = Utils.join(
-    [
-      SQLiteParser._serializedATNSegment0,
-      SQLiteParser._serializedATNSegment1,
-      SQLiteParser._serializedATNSegment2,
-      SQLiteParser._serializedATNSegment3
-    ],
-    ''
-  )
-  public static __ATN: ATN
+  public static readonly _serializedATN: number[] = [
+    4,
+    1,
+    193,
+    2056,
+    2,
+    0,
+    7,
+    0,
+    2,
+    1,
+    7,
+    1,
+    2,
+    2,
+    7,
+    2,
+    2,
+    3,
+    7,
+    3,
+    2,
+    4,
+    7,
+    4,
+    2,
+    5,
+    7,
+    5,
+    2,
+    6,
+    7,
+    6,
+    2,
+    7,
+    7,
+    7,
+    2,
+    8,
+    7,
+    8,
+    2,
+    9,
+    7,
+    9,
+    2,
+    10,
+    7,
+    10,
+    2,
+    11,
+    7,
+    11,
+    2,
+    12,
+    7,
+    12,
+    2,
+    13,
+    7,
+    13,
+    2,
+    14,
+    7,
+    14,
+    2,
+    15,
+    7,
+    15,
+    2,
+    16,
+    7,
+    16,
+    2,
+    17,
+    7,
+    17,
+    2,
+    18,
+    7,
+    18,
+    2,
+    19,
+    7,
+    19,
+    2,
+    20,
+    7,
+    20,
+    2,
+    21,
+    7,
+    21,
+    2,
+    22,
+    7,
+    22,
+    2,
+    23,
+    7,
+    23,
+    2,
+    24,
+    7,
+    24,
+    2,
+    25,
+    7,
+    25,
+    2,
+    26,
+    7,
+    26,
+    2,
+    27,
+    7,
+    27,
+    2,
+    28,
+    7,
+    28,
+    2,
+    29,
+    7,
+    29,
+    2,
+    30,
+    7,
+    30,
+    2,
+    31,
+    7,
+    31,
+    2,
+    32,
+    7,
+    32,
+    2,
+    33,
+    7,
+    33,
+    2,
+    34,
+    7,
+    34,
+    2,
+    35,
+    7,
+    35,
+    2,
+    36,
+    7,
+    36,
+    2,
+    37,
+    7,
+    37,
+    2,
+    38,
+    7,
+    38,
+    2,
+    39,
+    7,
+    39,
+    2,
+    40,
+    7,
+    40,
+    2,
+    41,
+    7,
+    41,
+    2,
+    42,
+    7,
+    42,
+    2,
+    43,
+    7,
+    43,
+    2,
+    44,
+    7,
+    44,
+    2,
+    45,
+    7,
+    45,
+    2,
+    46,
+    7,
+    46,
+    2,
+    47,
+    7,
+    47,
+    2,
+    48,
+    7,
+    48,
+    2,
+    49,
+    7,
+    49,
+    2,
+    50,
+    7,
+    50,
+    2,
+    51,
+    7,
+    51,
+    2,
+    52,
+    7,
+    52,
+    2,
+    53,
+    7,
+    53,
+    2,
+    54,
+    7,
+    54,
+    2,
+    55,
+    7,
+    55,
+    2,
+    56,
+    7,
+    56,
+    2,
+    57,
+    7,
+    57,
+    2,
+    58,
+    7,
+    58,
+    2,
+    59,
+    7,
+    59,
+    2,
+    60,
+    7,
+    60,
+    2,
+    61,
+    7,
+    61,
+    2,
+    62,
+    7,
+    62,
+    2,
+    63,
+    7,
+    63,
+    2,
+    64,
+    7,
+    64,
+    2,
+    65,
+    7,
+    65,
+    2,
+    66,
+    7,
+    66,
+    2,
+    67,
+    7,
+    67,
+    2,
+    68,
+    7,
+    68,
+    2,
+    69,
+    7,
+    69,
+    2,
+    70,
+    7,
+    70,
+    2,
+    71,
+    7,
+    71,
+    2,
+    72,
+    7,
+    72,
+    2,
+    73,
+    7,
+    73,
+    2,
+    74,
+    7,
+    74,
+    2,
+    75,
+    7,
+    75,
+    2,
+    76,
+    7,
+    76,
+    2,
+    77,
+    7,
+    77,
+    2,
+    78,
+    7,
+    78,
+    2,
+    79,
+    7,
+    79,
+    2,
+    80,
+    7,
+    80,
+    2,
+    81,
+    7,
+    81,
+    2,
+    82,
+    7,
+    82,
+    2,
+    83,
+    7,
+    83,
+    2,
+    84,
+    7,
+    84,
+    2,
+    85,
+    7,
+    85,
+    2,
+    86,
+    7,
+    86,
+    2,
+    87,
+    7,
+    87,
+    2,
+    88,
+    7,
+    88,
+    2,
+    89,
+    7,
+    89,
+    2,
+    90,
+    7,
+    90,
+    2,
+    91,
+    7,
+    91,
+    2,
+    92,
+    7,
+    92,
+    2,
+    93,
+    7,
+    93,
+    2,
+    94,
+    7,
+    94,
+    2,
+    95,
+    7,
+    95,
+    2,
+    96,
+    7,
+    96,
+    2,
+    97,
+    7,
+    97,
+    2,
+    98,
+    7,
+    98,
+    2,
+    99,
+    7,
+    99,
+    2,
+    100,
+    7,
+    100,
+    2,
+    101,
+    7,
+    101,
+    2,
+    102,
+    7,
+    102,
+    2,
+    103,
+    7,
+    103,
+    2,
+    104,
+    7,
+    104,
+    2,
+    105,
+    7,
+    105,
+    2,
+    106,
+    7,
+    106,
+    2,
+    107,
+    7,
+    107,
+    2,
+    108,
+    7,
+    108,
+    2,
+    109,
+    7,
+    109,
+    2,
+    110,
+    7,
+    110,
+    2,
+    111,
+    7,
+    111,
+    2,
+    112,
+    7,
+    112,
+    1,
+    0,
+    5,
+    0,
+    228,
+    8,
+    0,
+    10,
+    0,
+    12,
+    0,
+    231,
+    9,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    5,
+    1,
+    236,
+    8,
+    1,
+    10,
+    1,
+    12,
+    1,
+    239,
+    9,
+    1,
+    1,
+    1,
+    1,
+    1,
+    4,
+    1,
+    243,
+    8,
+    1,
+    11,
+    1,
+    12,
+    1,
+    244,
+    1,
+    1,
+    5,
+    1,
+    248,
+    8,
+    1,
+    10,
+    1,
+    12,
+    1,
+    251,
+    9,
+    1,
+    1,
+    1,
+    5,
+    1,
+    254,
+    8,
+    1,
+    10,
+    1,
+    12,
+    1,
+    257,
+    9,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    3,
+    2,
+    262,
+    8,
+    2,
+    3,
+    2,
+    264,
+    8,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    3,
+    2,
+    290,
+    8,
+    2,
+    1,
+    3,
+    1,
+    3,
+    1,
+    3,
+    1,
+    3,
+    1,
+    3,
+    3,
+    3,
+    297,
+    8,
+    3,
+    1,
+    3,
+    1,
+    3,
+    1,
+    3,
+    1,
+    3,
+    1,
+    3,
+    3,
+    3,
+    304,
+    8,
+    3,
+    1,
+    3,
+    1,
+    3,
+    1,
+    3,
+    1,
+    3,
+    3,
+    3,
+    310,
+    8,
+    3,
+    1,
+    3,
+    1,
+    3,
+    3,
+    3,
+    314,
+    8,
+    3,
+    1,
+    3,
+    1,
+    3,
+    1,
+    3,
+    3,
+    3,
+    319,
+    8,
+    3,
+    1,
+    3,
+    3,
+    3,
+    322,
+    8,
+    3,
+    1,
+    4,
+    1,
+    4,
+    1,
+    4,
+    1,
+    4,
+    1,
+    4,
+    3,
+    4,
+    329,
+    8,
+    4,
+    1,
+    4,
+    3,
+    4,
+    332,
+    8,
+    4,
+    1,
+    5,
+    1,
+    5,
+    3,
+    5,
+    336,
+    8,
+    5,
+    1,
+    5,
+    1,
+    5,
+    1,
+    5,
+    1,
+    5,
+    1,
+    6,
+    1,
+    6,
+    3,
+    6,
+    344,
+    8,
+    6,
+    1,
+    6,
+    1,
+    6,
+    3,
+    6,
+    348,
+    8,
+    6,
+    3,
+    6,
+    350,
+    8,
+    6,
+    1,
+    7,
+    1,
+    7,
+    3,
+    7,
+    354,
+    8,
+    7,
+    1,
+    8,
+    1,
+    8,
+    3,
+    8,
+    358,
+    8,
+    8,
+    1,
+    8,
+    1,
+    8,
+    3,
+    8,
+    362,
+    8,
+    8,
+    1,
+    8,
+    3,
+    8,
+    365,
+    8,
+    8,
+    1,
+    9,
+    1,
+    9,
+    1,
+    9,
+    1,
+    10,
+    1,
+    10,
+    3,
+    10,
+    372,
+    8,
+    10,
+    1,
+    10,
+    1,
+    10,
+    1,
+    11,
+    1,
+    11,
+    3,
+    11,
+    378,
+    8,
+    11,
+    1,
+    11,
+    1,
+    11,
+    1,
+    11,
+    1,
+    11,
+    3,
+    11,
+    384,
+    8,
+    11,
+    1,
+    11,
+    1,
+    11,
+    1,
+    11,
+    3,
+    11,
+    389,
+    8,
+    11,
+    1,
+    11,
+    1,
+    11,
+    1,
+    11,
+    1,
+    11,
+    1,
+    11,
+    1,
+    11,
+    1,
+    11,
+    5,
+    11,
+    398,
+    8,
+    11,
+    10,
+    11,
+    12,
+    11,
+    401,
+    9,
+    11,
+    1,
+    11,
+    1,
+    11,
+    1,
+    11,
+    3,
+    11,
+    406,
+    8,
+    11,
+    1,
+    12,
+    1,
+    12,
+    3,
+    12,
+    410,
+    8,
+    12,
+    1,
+    12,
+    1,
+    12,
+    3,
+    12,
+    414,
+    8,
+    12,
+    1,
+    12,
+    3,
+    12,
+    417,
+    8,
+    12,
+    1,
+    13,
+    1,
+    13,
+    3,
+    13,
+    421,
+    8,
+    13,
+    1,
+    13,
+    1,
+    13,
+    1,
+    13,
+    1,
+    13,
+    3,
+    13,
+    427,
+    8,
+    13,
+    1,
+    13,
+    1,
+    13,
+    1,
+    13,
+    3,
+    13,
+    432,
+    8,
+    13,
+    1,
+    13,
+    1,
+    13,
+    1,
+    13,
+    1,
+    13,
+    1,
+    13,
+    5,
+    13,
+    439,
+    8,
+    13,
+    10,
+    13,
+    12,
+    13,
+    442,
+    9,
+    13,
+    1,
+    13,
+    1,
+    13,
+    5,
+    13,
+    446,
+    8,
+    13,
+    10,
+    13,
+    12,
+    13,
+    449,
+    9,
+    13,
+    1,
+    13,
+    1,
+    13,
+    1,
+    13,
+    3,
+    13,
+    454,
+    8,
+    13,
+    1,
+    13,
+    1,
+    13,
+    3,
+    13,
+    458,
+    8,
+    13,
+    1,
+    14,
+    1,
+    14,
+    3,
+    14,
+    462,
+    8,
+    14,
+    1,
+    14,
+    5,
+    14,
+    465,
+    8,
+    14,
+    10,
+    14,
+    12,
+    14,
+    468,
+    9,
+    14,
+    1,
+    15,
+    4,
+    15,
+    471,
+    8,
+    15,
+    11,
+    15,
+    12,
+    15,
+    472,
+    1,
+    15,
+    1,
+    15,
+    1,
+    15,
+    1,
+    15,
+    1,
+    15,
+    1,
+    15,
+    1,
+    15,
+    1,
+    15,
+    1,
+    15,
+    1,
+    15,
+    3,
+    15,
+    485,
+    8,
+    15,
+    1,
+    16,
+    1,
+    16,
+    3,
+    16,
+    489,
+    8,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    3,
+    16,
+    494,
+    8,
+    16,
+    1,
+    16,
+    3,
+    16,
+    497,
+    8,
+    16,
+    1,
+    16,
+    3,
+    16,
+    500,
+    8,
+    16,
+    1,
+    16,
+    3,
+    16,
+    503,
+    8,
+    16,
+    1,
+    16,
+    1,
+    16,
+    3,
+    16,
+    507,
+    8,
+    16,
+    1,
+    16,
+    3,
+    16,
+    510,
+    8,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    3,
+    16,
+    524,
+    8,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    3,
+    16,
+    531,
+    8,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    1,
+    16,
+    3,
+    16,
+    538,
+    8,
+    16,
+    3,
+    16,
+    540,
+    8,
+    16,
+    1,
+    17,
+    3,
+    17,
+    543,
+    8,
+    17,
+    1,
+    17,
+    1,
+    17,
+    1,
+    18,
+    1,
+    18,
+    3,
+    18,
+    549,
+    8,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    3,
+    18,
+    554,
+    8,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    5,
+    18,
+    560,
+    8,
+    18,
+    10,
+    18,
+    12,
+    18,
+    563,
+    9,
+    18,
+    1,
+    18,
+    1,
+    18,
+    3,
+    18,
+    567,
+    8,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    5,
+    18,
+    580,
+    8,
+    18,
+    10,
+    18,
+    12,
+    18,
+    583,
+    9,
+    18,
+    1,
+    18,
+    1,
+    18,
+    1,
+    18,
+    3,
+    18,
+    588,
+    8,
+    18,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    5,
+    19,
+    596,
+    8,
+    19,
+    10,
+    19,
+    12,
+    19,
+    599,
+    9,
+    19,
+    1,
+    19,
+    1,
+    19,
+    3,
+    19,
+    603,
+    8,
+    19,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    3,
+    19,
+    613,
+    8,
+    19,
+    1,
+    19,
+    1,
+    19,
+    5,
+    19,
+    617,
+    8,
+    19,
+    10,
+    19,
+    12,
+    19,
+    620,
+    9,
+    19,
+    1,
+    19,
+    3,
+    19,
+    623,
+    8,
+    19,
+    1,
+    19,
+    1,
+    19,
+    1,
+    19,
+    3,
+    19,
+    628,
+    8,
+    19,
+    3,
+    19,
+    630,
+    8,
+    19,
+    1,
+    20,
+    1,
+    20,
+    1,
+    20,
+    1,
+    20,
+    1,
+    21,
+    1,
+    21,
+    3,
+    21,
+    638,
+    8,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    3,
+    21,
+    644,
+    8,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    3,
+    21,
+    649,
+    8,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    3,
+    21,
+    656,
+    8,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    5,
+    21,
+    665,
+    8,
+    21,
+    10,
+    21,
+    12,
+    21,
+    668,
+    9,
+    21,
+    3,
+    21,
+    670,
+    8,
+    21,
+    3,
+    21,
+    672,
+    8,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    3,
+    21,
+    679,
+    8,
+    21,
+    1,
+    21,
+    1,
+    21,
+    3,
+    21,
+    683,
+    8,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    1,
+    21,
+    3,
+    21,
+    690,
+    8,
+    21,
+    1,
+    21,
+    1,
+    21,
+    4,
+    21,
+    694,
+    8,
+    21,
+    11,
+    21,
+    12,
+    21,
+    695,
+    1,
+    21,
+    1,
+    21,
+    1,
+    22,
+    1,
+    22,
+    3,
+    22,
+    702,
+    8,
+    22,
+    1,
+    22,
+    1,
+    22,
+    1,
+    22,
+    1,
+    22,
+    3,
+    22,
+    708,
+    8,
+    22,
+    1,
+    22,
+    1,
+    22,
+    1,
+    22,
+    3,
+    22,
+    713,
+    8,
+    22,
+    1,
+    22,
+    1,
+    22,
+    1,
+    22,
+    1,
+    22,
+    1,
+    22,
+    5,
+    22,
+    720,
+    8,
+    22,
+    10,
+    22,
+    12,
+    22,
+    723,
+    9,
+    22,
+    1,
+    22,
+    1,
+    22,
+    3,
+    22,
+    727,
+    8,
+    22,
+    1,
+    22,
+    1,
+    22,
+    1,
+    22,
+    1,
+    23,
+    1,
+    23,
+    1,
+    23,
+    1,
+    23,
+    1,
+    23,
+    1,
+    23,
+    3,
+    23,
+    738,
+    8,
+    23,
+    1,
+    23,
+    1,
+    23,
+    1,
+    23,
+    3,
+    23,
+    743,
+    8,
+    23,
+    1,
+    23,
+    1,
+    23,
+    1,
+    23,
+    1,
+    23,
+    1,
+    23,
+    1,
+    23,
+    1,
+    23,
+    5,
+    23,
+    752,
+    8,
+    23,
+    10,
+    23,
+    12,
+    23,
+    755,
+    9,
+    23,
+    1,
+    23,
+    1,
+    23,
+    3,
+    23,
+    759,
+    8,
+    23,
+    1,
+    24,
+    1,
+    24,
+    3,
+    24,
+    763,
+    8,
+    24,
+    1,
+    24,
+    1,
+    24,
+    1,
+    24,
+    1,
+    24,
+    1,
+    24,
+    1,
+    24,
+    1,
+    24,
+    1,
+    24,
+    1,
+    24,
+    1,
+    24,
+    1,
+    24,
+    1,
+    24,
+    5,
+    24,
+    777,
+    8,
+    24,
+    10,
+    24,
+    12,
+    24,
+    780,
+    9,
+    24,
+    1,
+    25,
+    1,
+    25,
+    1,
+    25,
+    1,
+    25,
+    1,
+    25,
+    5,
+    25,
+    787,
+    8,
+    25,
+    10,
+    25,
+    12,
+    25,
+    790,
+    9,
+    25,
+    1,
+    25,
+    1,
+    25,
+    3,
+    25,
+    794,
+    8,
+    25,
+    1,
+    26,
+    1,
+    26,
+    1,
+    26,
+    1,
+    26,
+    1,
+    26,
+    1,
+    26,
+    3,
+    26,
+    802,
+    8,
+    26,
+    1,
+    26,
+    1,
+    26,
+    1,
+    26,
+    1,
+    27,
+    1,
+    27,
+    1,
+    27,
+    1,
+    27,
+    1,
+    27,
+    5,
+    27,
+    812,
+    8,
+    27,
+    10,
+    27,
+    12,
+    27,
+    815,
+    9,
+    27,
+    1,
+    27,
+    1,
+    27,
+    3,
+    27,
+    819,
+    8,
+    27,
+    1,
+    27,
+    1,
+    27,
+    1,
+    27,
+    1,
+    27,
+    1,
+    27,
+    1,
+    28,
+    3,
+    28,
+    827,
+    8,
+    28,
+    1,
+    28,
+    1,
+    28,
+    1,
+    28,
+    1,
+    28,
+    1,
+    28,
+    3,
+    28,
+    834,
+    8,
+    28,
+    1,
+    28,
+    3,
+    28,
+    837,
+    8,
+    28,
+    1,
+    29,
+    3,
+    29,
+    840,
+    8,
+    29,
+    1,
+    29,
+    1,
+    29,
+    1,
+    29,
+    1,
+    29,
+    1,
+    29,
+    3,
+    29,
+    847,
+    8,
+    29,
+    1,
+    29,
+    3,
+    29,
+    850,
+    8,
+    29,
+    1,
+    29,
+    3,
+    29,
+    853,
+    8,
+    29,
+    1,
+    29,
+    3,
+    29,
+    856,
+    8,
+    29,
+    1,
+    30,
+    1,
+    30,
+    3,
+    30,
+    860,
+    8,
+    30,
+    1,
+    30,
+    1,
+    30,
+    1,
+    31,
+    1,
+    31,
+    1,
+    31,
+    1,
+    31,
+    3,
+    31,
+    868,
+    8,
+    31,
+    1,
+    31,
+    1,
+    31,
+    1,
+    31,
+    3,
+    31,
+    873,
+    8,
+    31,
+    1,
+    31,
+    1,
+    31,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    883,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    888,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    897,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    5,
+    32,
+    902,
+    8,
+    32,
+    10,
+    32,
+    12,
+    32,
+    905,
+    9,
+    32,
+    1,
+    32,
+    3,
+    32,
+    908,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    912,
+    8,
+    32,
+    1,
+    32,
+    3,
+    32,
+    915,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    5,
+    32,
+    921,
+    8,
+    32,
+    10,
+    32,
+    12,
+    32,
+    924,
+    9,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    936,
+    8,
+    32,
+    1,
+    32,
+    3,
+    32,
+    939,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    947,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    4,
+    32,
+    954,
+    8,
+    32,
+    11,
+    32,
+    12,
+    32,
+    955,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    960,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    965,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    995,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    1007,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    1012,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    1024,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    1030,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    1037,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    1041,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    5,
+    32,
+    1049,
+    8,
+    32,
+    10,
+    32,
+    12,
+    32,
+    1052,
+    9,
+    32,
+    3,
+    32,
+    1054,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    1060,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    1066,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    1,
+    32,
+    5,
+    32,
+    1073,
+    8,
+    32,
+    10,
+    32,
+    12,
+    32,
+    1076,
+    9,
+    32,
+    3,
+    32,
+    1078,
+    8,
+    32,
+    1,
+    32,
+    1,
+    32,
+    3,
+    32,
+    1082,
+    8,
+    32,
+    5,
+    32,
+    1084,
+    8,
+    32,
+    10,
+    32,
+    12,
+    32,
+    1087,
+    9,
+    32,
+    1,
+    33,
+    1,
+    33,
+    1,
+    33,
+    1,
+    33,
+    1,
+    33,
+    1,
+    33,
+    3,
+    33,
+    1095,
+    8,
+    33,
+    1,
+    33,
+    1,
+    33,
+    1,
+    34,
+    1,
+    34,
+    1,
+    35,
+    1,
+    35,
+    1,
+    35,
+    1,
+    35,
+    5,
+    35,
+    1105,
+    8,
+    35,
+    10,
+    35,
+    12,
+    35,
+    1108,
+    9,
+    35,
+    1,
+    35,
+    1,
+    35,
+    1,
+    36,
+    1,
+    36,
+    1,
+    36,
+    1,
+    36,
+    5,
+    36,
+    1116,
+    8,
+    36,
+    10,
+    36,
+    12,
+    36,
+    1119,
+    9,
+    36,
+    1,
+    37,
+    3,
+    37,
+    1122,
+    8,
+    37,
+    1,
+    37,
+    1,
+    37,
+    1,
+    37,
+    1,
+    37,
+    1,
+    37,
+    3,
+    37,
+    1129,
+    8,
+    37,
+    1,
+    37,
+    1,
+    37,
+    1,
+    37,
+    1,
+    37,
+    3,
+    37,
+    1135,
+    8,
+    37,
+    1,
+    37,
+    1,
+    37,
+    1,
+    37,
+    3,
+    37,
+    1140,
+    8,
+    37,
+    1,
+    37,
+    1,
+    37,
+    1,
+    37,
+    1,
+    37,
+    5,
+    37,
+    1146,
+    8,
+    37,
+    10,
+    37,
+    12,
+    37,
+    1149,
+    9,
+    37,
+    1,
+    37,
+    1,
+    37,
+    3,
+    37,
+    1153,
+    8,
+    37,
+    1,
+    37,
+    1,
+    37,
+    3,
+    37,
+    1157,
+    8,
+    37,
+    1,
+    37,
+    3,
+    37,
+    1160,
+    8,
+    37,
+    1,
+    37,
+    1,
+    37,
+    3,
+    37,
+    1164,
+    8,
+    37,
+    1,
+    37,
+    3,
+    37,
+    1167,
+    8,
+    37,
+    1,
+    38,
+    1,
+    38,
+    1,
+    38,
+    1,
+    38,
+    5,
+    38,
+    1173,
+    8,
+    38,
+    10,
+    38,
+    12,
+    38,
+    1176,
+    9,
+    38,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    5,
+    39,
+    1184,
+    8,
+    39,
+    10,
+    39,
+    12,
+    39,
+    1187,
+    9,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    3,
+    39,
+    1192,
+    8,
+    39,
+    3,
+    39,
+    1194,
+    8,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    3,
+    39,
+    1202,
+    8,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    3,
+    39,
+    1209,
+    8,
+    39,
+    1,
+    39,
+    1,
+    39,
+    1,
+    39,
+    5,
+    39,
+    1214,
+    8,
+    39,
+    10,
+    39,
+    12,
+    39,
+    1217,
+    9,
+    39,
+    1,
+    39,
+    1,
+    39,
+    3,
+    39,
+    1221,
+    8,
+    39,
+    3,
+    39,
+    1223,
+    8,
+    39,
+    1,
+    40,
+    1,
+    40,
+    1,
+    40,
+    1,
+    40,
+    3,
+    40,
+    1229,
+    8,
+    40,
+    1,
+    40,
+    1,
+    40,
+    1,
+    40,
+    1,
+    40,
+    1,
+    40,
+    1,
+    40,
+    1,
+    40,
+    3,
+    40,
+    1238,
+    8,
+    40,
+    1,
+    41,
+    1,
+    41,
+    1,
+    41,
+    3,
+    41,
+    1243,
+    8,
+    41,
+    1,
+    42,
+    1,
+    42,
+    1,
+    42,
+    1,
+    42,
+    1,
+    42,
+    3,
+    42,
+    1250,
+    8,
+    42,
+    1,
+    42,
+    1,
+    42,
+    3,
+    42,
+    1254,
+    8,
+    42,
+    3,
+    42,
+    1256,
+    8,
+    42,
+    1,
+    43,
+    3,
+    43,
+    1259,
+    8,
+    43,
+    1,
+    43,
+    1,
+    43,
+    1,
+    43,
+    1,
+    43,
+    5,
+    43,
+    1265,
+    8,
+    43,
+    10,
+    43,
+    12,
+    43,
+    1268,
+    9,
+    43,
+    1,
+    43,
+    3,
+    43,
+    1271,
+    8,
+    43,
+    1,
+    43,
+    3,
+    43,
+    1274,
+    8,
+    43,
+    1,
+    44,
+    1,
+    44,
+    1,
+    44,
+    1,
+    44,
+    3,
+    44,
+    1280,
+    8,
+    44,
+    5,
+    44,
+    1282,
+    8,
+    44,
+    10,
+    44,
+    12,
+    44,
+    1285,
+    9,
+    44,
+    1,
+    45,
+    1,
+    45,
+    3,
+    45,
+    1289,
+    8,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    5,
+    45,
+    1294,
+    8,
+    45,
+    10,
+    45,
+    12,
+    45,
+    1297,
+    9,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    5,
+    45,
+    1303,
+    8,
+    45,
+    10,
+    45,
+    12,
+    45,
+    1306,
+    9,
+    45,
+    1,
+    45,
+    3,
+    45,
+    1309,
+    8,
+    45,
+    3,
+    45,
+    1311,
+    8,
+    45,
+    1,
+    45,
+    1,
+    45,
+    3,
+    45,
+    1315,
+    8,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    5,
+    45,
+    1322,
+    8,
+    45,
+    10,
+    45,
+    12,
+    45,
+    1325,
+    9,
+    45,
+    1,
+    45,
+    1,
+    45,
+    3,
+    45,
+    1329,
+    8,
+    45,
+    3,
+    45,
+    1331,
+    8,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    1,
+    45,
+    5,
+    45,
+    1342,
+    8,
+    45,
+    10,
+    45,
+    12,
+    45,
+    1345,
+    9,
+    45,
+    3,
+    45,
+    1347,
+    8,
+    45,
+    1,
+    45,
+    3,
+    45,
+    1350,
+    8,
+    45,
+    1,
+    46,
+    1,
+    46,
+    1,
+    47,
+    3,
+    47,
+    1355,
+    8,
+    47,
+    1,
+    47,
+    1,
+    47,
+    3,
+    47,
+    1359,
+    8,
+    47,
+    1,
+    47,
+    3,
+    47,
+    1362,
+    8,
+    47,
+    1,
+    48,
+    3,
+    48,
+    1365,
+    8,
+    48,
+    1,
+    48,
+    1,
+    48,
+    1,
+    48,
+    3,
+    48,
+    1370,
+    8,
+    48,
+    1,
+    48,
+    1,
+    48,
+    3,
+    48,
+    1374,
+    8,
+    48,
+    1,
+    48,
+    4,
+    48,
+    1377,
+    8,
+    48,
+    11,
+    48,
+    12,
+    48,
+    1378,
+    1,
+    48,
+    3,
+    48,
+    1382,
+    8,
+    48,
+    1,
+    48,
+    3,
+    48,
+    1385,
+    8,
+    48,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    3,
+    49,
+    1390,
+    8,
+    49,
+    1,
+    49,
+    1,
+    49,
+    3,
+    49,
+    1394,
+    8,
+    49,
+    1,
+    49,
+    3,
+    49,
+    1397,
+    8,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    3,
+    49,
+    1404,
+    8,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    3,
+    49,
+    1409,
+    8,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    5,
+    49,
+    1416,
+    8,
+    49,
+    10,
+    49,
+    12,
+    49,
+    1419,
+    9,
+    49,
+    1,
+    49,
+    1,
+    49,
+    3,
+    49,
+    1423,
+    8,
+    49,
+    1,
+    49,
+    3,
+    49,
+    1426,
+    8,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    5,
+    49,
+    1432,
+    8,
+    49,
+    10,
+    49,
+    12,
+    49,
+    1435,
+    9,
+    49,
+    1,
+    49,
+    3,
+    49,
+    1438,
+    8,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    1,
+    49,
+    3,
+    49,
+    1446,
+    8,
+    49,
+    1,
+    49,
+    3,
+    49,
+    1449,
+    8,
+    49,
+    3,
+    49,
+    1451,
+    8,
+    49,
+    1,
+    50,
+    1,
+    50,
+    1,
+    50,
+    1,
+    50,
+    1,
+    50,
+    1,
+    50,
+    1,
+    50,
+    3,
+    50,
+    1460,
+    8,
+    50,
+    1,
+    50,
+    3,
+    50,
+    1463,
+    8,
+    50,
+    3,
+    50,
+    1465,
+    8,
+    50,
+    1,
+    51,
+    1,
+    51,
+    3,
+    51,
+    1469,
+    8,
+    51,
+    1,
+    51,
+    1,
+    51,
+    3,
+    51,
+    1473,
+    8,
+    51,
+    1,
+    51,
+    1,
+    51,
+    3,
+    51,
+    1477,
+    8,
+    51,
+    1,
+    51,
+    3,
+    51,
+    1480,
+    8,
+    51,
+    1,
+    52,
+    1,
+    52,
+    1,
+    52,
+    1,
+    52,
+    1,
+    52,
+    1,
+    52,
+    1,
+    52,
+    5,
+    52,
+    1489,
+    8,
+    52,
+    10,
+    52,
+    12,
+    52,
+    1492,
+    9,
+    52,
+    1,
+    52,
+    1,
+    52,
+    3,
+    52,
+    1496,
+    8,
+    52,
+    1,
+    53,
+    1,
+    53,
+    3,
+    53,
+    1500,
+    8,
+    53,
+    1,
+    53,
+    1,
+    53,
+    3,
+    53,
+    1504,
+    8,
+    53,
+    1,
+    54,
+    3,
+    54,
+    1507,
+    8,
+    54,
+    1,
+    54,
+    1,
+    54,
+    1,
+    54,
+    3,
+    54,
+    1512,
+    8,
+    54,
+    1,
+    54,
+    1,
+    54,
+    1,
+    54,
+    1,
+    54,
+    3,
+    54,
+    1518,
+    8,
+    54,
+    1,
+    54,
+    1,
+    54,
+    1,
+    54,
+    1,
+    54,
+    1,
+    54,
+    3,
+    54,
+    1525,
+    8,
+    54,
+    1,
+    54,
+    1,
+    54,
+    1,
+    54,
+    5,
+    54,
+    1530,
+    8,
+    54,
+    10,
+    54,
+    12,
+    54,
+    1533,
+    9,
+    54,
+    1,
+    54,
+    1,
+    54,
+    1,
+    54,
+    1,
+    54,
+    5,
+    54,
+    1539,
+    8,
+    54,
+    10,
+    54,
+    12,
+    54,
+    1542,
+    9,
+    54,
+    1,
+    54,
+    3,
+    54,
+    1545,
+    8,
+    54,
+    3,
+    54,
+    1547,
+    8,
+    54,
+    1,
+    54,
+    1,
+    54,
+    3,
+    54,
+    1551,
+    8,
+    54,
+    1,
+    54,
+    3,
+    54,
+    1554,
+    8,
+    54,
+    1,
+    55,
+    1,
+    55,
+    1,
+    55,
+    1,
+    55,
+    5,
+    55,
+    1560,
+    8,
+    55,
+    10,
+    55,
+    12,
+    55,
+    1563,
+    9,
+    55,
+    1,
+    55,
+    1,
+    55,
+    1,
+    56,
+    3,
+    56,
+    1568,
+    8,
+    56,
+    1,
+    56,
+    1,
+    56,
+    1,
+    56,
+    3,
+    56,
+    1573,
+    8,
+    56,
+    1,
+    56,
+    1,
+    56,
+    1,
+    56,
+    1,
+    56,
+    3,
+    56,
+    1579,
+    8,
+    56,
+    1,
+    56,
+    1,
+    56,
+    1,
+    56,
+    1,
+    56,
+    1,
+    56,
+    3,
+    56,
+    1586,
+    8,
+    56,
+    1,
+    56,
+    1,
+    56,
+    1,
+    56,
+    5,
+    56,
+    1591,
+    8,
+    56,
+    10,
+    56,
+    12,
+    56,
+    1594,
+    9,
+    56,
+    1,
+    56,
+    1,
+    56,
+    3,
+    56,
+    1598,
+    8,
+    56,
+    1,
+    56,
+    3,
+    56,
+    1601,
+    8,
+    56,
+    1,
+    56,
+    3,
+    56,
+    1604,
+    8,
+    56,
+    1,
+    56,
+    3,
+    56,
+    1607,
+    8,
+    56,
+    1,
+    57,
+    1,
+    57,
+    1,
+    57,
+    3,
+    57,
+    1612,
+    8,
+    57,
+    1,
+    57,
+    1,
+    57,
+    1,
+    57,
+    3,
+    57,
+    1617,
+    8,
+    57,
+    1,
+    57,
+    1,
+    57,
+    1,
+    57,
+    1,
+    57,
+    1,
+    57,
+    3,
+    57,
+    1624,
+    8,
+    57,
+    1,
+    58,
+    1,
+    58,
+    3,
+    58,
+    1628,
+    8,
+    58,
+    1,
+    58,
+    1,
+    58,
+    3,
+    58,
+    1632,
+    8,
+    58,
+    1,
+    59,
+    1,
+    59,
+    1,
+    59,
+    1,
+    59,
+    1,
+    59,
+    1,
+    59,
+    1,
+    60,
+    1,
+    60,
+    3,
+    60,
+    1642,
+    8,
+    60,
+    1,
+    60,
+    1,
+    60,
+    1,
+    60,
+    1,
+    60,
+    1,
+    60,
+    5,
+    60,
+    1649,
+    8,
+    60,
+    10,
+    60,
+    12,
+    60,
+    1652,
+    9,
+    60,
+    3,
+    60,
+    1654,
+    8,
+    60,
+    1,
+    60,
+    1,
+    60,
+    1,
+    60,
+    1,
+    60,
+    1,
+    60,
+    5,
+    60,
+    1661,
+    8,
+    60,
+    10,
+    60,
+    12,
+    60,
+    1664,
+    9,
+    60,
+    1,
+    60,
+    3,
+    60,
+    1667,
+    8,
+    60,
+    1,
+    60,
+    1,
+    60,
+    1,
+    61,
+    1,
+    61,
+    1,
+    61,
+    1,
+    61,
+    3,
+    61,
+    1675,
+    8,
+    61,
+    1,
+    61,
+    1,
+    61,
+    1,
+    61,
+    1,
+    61,
+    1,
+    61,
+    5,
+    61,
+    1682,
+    8,
+    61,
+    10,
+    61,
+    12,
+    61,
+    1685,
+    9,
+    61,
+    3,
+    61,
+    1687,
+    8,
+    61,
+    1,
+    61,
+    1,
+    61,
+    1,
+    61,
+    1,
+    61,
+    1,
+    61,
+    5,
+    61,
+    1694,
+    8,
+    61,
+    10,
+    61,
+    12,
+    61,
+    1697,
+    9,
+    61,
+    3,
+    61,
+    1699,
+    8,
+    61,
+    1,
+    61,
+    3,
+    61,
+    1702,
+    8,
+    61,
+    1,
+    61,
+    3,
+    61,
+    1705,
+    8,
+    61,
+    1,
+    62,
+    1,
+    62,
+    1,
+    62,
+    1,
+    62,
+    1,
+    62,
+    1,
+    62,
+    1,
+    62,
+    1,
+    62,
+    3,
+    62,
+    1715,
+    8,
+    62,
+    3,
+    62,
+    1717,
+    8,
+    62,
+    1,
+    63,
+    1,
+    63,
+    1,
+    63,
+    1,
+    63,
+    1,
+    63,
+    1,
+    63,
+    1,
+    63,
+    3,
+    63,
+    1726,
+    8,
+    63,
+    1,
+    64,
+    1,
+    64,
+    1,
+    64,
+    1,
+    64,
+    1,
+    64,
+    5,
+    64,
+    1733,
+    8,
+    64,
+    10,
+    64,
+    12,
+    64,
+    1736,
+    9,
+    64,
+    1,
+    64,
+    3,
+    64,
+    1739,
+    8,
+    64,
+    1,
+    64,
+    1,
+    64,
+    1,
+    65,
+    1,
+    65,
+    1,
+    65,
+    3,
+    65,
+    1746,
+    8,
+    65,
+    1,
+    65,
+    1,
+    65,
+    1,
+    65,
+    5,
+    65,
+    1751,
+    8,
+    65,
+    10,
+    65,
+    12,
+    65,
+    1754,
+    9,
+    65,
+    1,
+    65,
+    3,
+    65,
+    1757,
+    8,
+    65,
+    1,
+    65,
+    1,
+    65,
+    3,
+    65,
+    1761,
+    8,
+    65,
+    1,
+    66,
+    1,
+    66,
+    1,
+    66,
+    1,
+    66,
+    1,
+    66,
+    5,
+    66,
+    1768,
+    8,
+    66,
+    10,
+    66,
+    12,
+    66,
+    1771,
+    9,
+    66,
+    1,
+    66,
+    3,
+    66,
+    1774,
+    8,
+    66,
+    1,
+    66,
+    1,
+    66,
+    3,
+    66,
+    1778,
+    8,
+    66,
+    1,
+    66,
+    1,
+    66,
+    1,
+    66,
+    3,
+    66,
+    1783,
+    8,
+    66,
+    1,
+    67,
+    1,
+    67,
+    3,
+    67,
+    1787,
+    8,
+    67,
+    1,
+    67,
+    1,
+    67,
+    1,
+    67,
+    5,
+    67,
+    1792,
+    8,
+    67,
+    10,
+    67,
+    12,
+    67,
+    1795,
+    9,
+    67,
+    1,
+    68,
+    1,
+    68,
+    1,
+    68,
+    1,
+    68,
+    1,
+    68,
+    5,
+    68,
+    1802,
+    8,
+    68,
+    10,
+    68,
+    12,
+    68,
+    1805,
+    9,
+    68,
+    1,
+    69,
+    1,
+    69,
+    1,
+    69,
+    1,
+    69,
+    3,
+    69,
+    1811,
+    8,
+    69,
+    1,
+    70,
+    1,
+    70,
+    1,
+    70,
+    3,
+    70,
+    1816,
+    8,
+    70,
+    1,
+    70,
+    3,
+    70,
+    1819,
+    8,
+    70,
+    1,
+    70,
+    1,
+    70,
+    3,
+    70,
+    1823,
+    8,
+    70,
+    1,
+    71,
+    1,
+    71,
+    1,
+    72,
+    1,
+    72,
+    1,
+    72,
+    1,
+    72,
+    1,
+    72,
+    1,
+    72,
+    1,
+    72,
+    1,
+    72,
+    1,
+    72,
+    1,
+    72,
+    3,
+    72,
+    1837,
+    8,
+    72,
+    1,
+    73,
+    1,
+    73,
+    1,
+    73,
+    1,
+    73,
+    1,
+    73,
+    1,
+    73,
+    1,
+    73,
+    1,
+    73,
+    1,
+    73,
+    1,
+    73,
+    3,
+    73,
+    1849,
+    8,
+    73,
+    1,
+    74,
+    1,
+    74,
+    1,
+    74,
+    1,
+    74,
+    1,
+    74,
+    1,
+    74,
+    1,
+    74,
+    3,
+    74,
+    1858,
+    8,
+    74,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1867,
+    8,
+    75,
+    1,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1871,
+    8,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1881,
+    8,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1884,
+    8,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1893,
+    8,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1902,
+    8,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1905,
+    8,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1911,
+    8,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1925,
+    8,
+    75,
+    1,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1929,
+    8,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1940,
+    8,
+    75,
+    1,
+    75,
+    1,
+    75,
+    1,
+    75,
+    3,
+    75,
+    1945,
+    8,
+    75,
+    1,
+    76,
+    1,
+    76,
+    1,
+    76,
+    1,
+    77,
+    1,
+    77,
+    1,
+    77,
+    1,
+    78,
+    1,
+    78,
+    1,
+    78,
+    4,
+    78,
+    1956,
+    8,
+    78,
+    11,
+    78,
+    12,
+    78,
+    1957,
+    1,
+    79,
+    1,
+    79,
+    1,
+    79,
+    4,
+    79,
+    1963,
+    8,
+    79,
+    11,
+    79,
+    12,
+    79,
+    1964,
+    1,
+    80,
+    1,
+    80,
+    1,
+    80,
+    1,
+    80,
+    1,
+    81,
+    1,
+    81,
+    3,
+    81,
+    1973,
+    8,
+    81,
+    1,
+    81,
+    1,
+    81,
+    1,
+    81,
+    3,
+    81,
+    1978,
+    8,
+    81,
+    5,
+    81,
+    1980,
+    8,
+    81,
+    10,
+    81,
+    12,
+    81,
+    1983,
+    9,
+    81,
+    1,
+    82,
+    1,
+    82,
+    1,
+    83,
+    1,
+    83,
+    1,
+    84,
+    1,
+    84,
+    1,
+    85,
+    1,
+    85,
+    1,
+    86,
+    1,
+    86,
+    3,
+    86,
+    1995,
+    8,
+    86,
+    1,
+    87,
+    1,
+    87,
+    1,
+    88,
+    1,
+    88,
+    1,
+    89,
+    1,
+    89,
+    1,
+    90,
+    1,
+    90,
+    1,
+    91,
+    1,
+    91,
+    1,
+    92,
+    1,
+    92,
+    1,
+    93,
+    1,
+    93,
+    1,
+    94,
+    1,
+    94,
+    1,
+    95,
+    1,
+    95,
+    1,
+    96,
+    1,
+    96,
+    1,
+    97,
+    1,
+    97,
+    1,
+    98,
+    1,
+    98,
+    1,
+    99,
+    1,
+    99,
+    1,
+    100,
+    1,
+    100,
+    1,
+    101,
+    1,
+    101,
+    1,
+    102,
+    1,
+    102,
+    1,
+    103,
+    1,
+    103,
+    1,
+    104,
+    1,
+    104,
+    1,
+    105,
+    1,
+    105,
+    1,
+    106,
+    1,
+    106,
+    1,
+    107,
+    1,
+    107,
+    1,
+    108,
+    1,
+    108,
+    1,
+    109,
+    1,
+    109,
+    1,
+    110,
+    1,
+    110,
+    1,
+    111,
+    1,
+    111,
+    1,
+    112,
+    1,
+    112,
+    1,
+    112,
+    1,
+    112,
+    1,
+    112,
+    1,
+    112,
+    1,
+    112,
+    3,
+    112,
+    2054,
+    8,
+    112,
+    1,
+    112,
+    2,
+    440,
+    472,
+    1,
+    64,
+    113,
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    32,
+    34,
+    36,
+    38,
+    40,
+    42,
+    44,
+    46,
+    48,
+    50,
+    52,
+    54,
+    56,
+    58,
+    60,
+    62,
+    64,
+    66,
+    68,
+    70,
+    72,
+    74,
+    76,
+    78,
+    80,
+    82,
+    84,
+    86,
+    88,
+    90,
+    92,
+    94,
+    96,
+    98,
+    100,
+    102,
+    104,
+    106,
+    108,
+    110,
+    112,
+    114,
+    116,
+    118,
+    120,
+    122,
+    124,
+    126,
+    128,
+    130,
+    132,
+    134,
+    136,
+    138,
+    140,
+    142,
+    144,
+    146,
+    148,
+    150,
+    152,
+    154,
+    156,
+    158,
+    160,
+    162,
+    164,
+    166,
+    168,
+    170,
+    172,
+    174,
+    176,
+    178,
+    180,
+    182,
+    184,
+    186,
+    188,
+    190,
+    192,
+    194,
+    196,
+    198,
+    200,
+    202,
+    204,
+    206,
+    208,
+    210,
+    212,
+    214,
+    216,
+    218,
+    220,
+    222,
+    224,
+    0,
+    28,
+    3,
+    0,
+    58,
+    58,
+    69,
+    69,
+    82,
+    82,
+    2,
+    0,
+    47,
+    47,
+    66,
+    66,
+    1,
+    0,
+    133,
+    134,
+    2,
+    0,
+    146,
+    146,
+    171,
+    171,
+    1,
+    0,
+    8,
+    9,
+    2,
+    0,
+    59,
+    59,
+    141,
+    141,
+    2,
+    0,
+    56,
+    56,
+    104,
+    104,
+    2,
+    0,
+    58,
+    58,
+    82,
+    82,
+    5,
+    0,
+    25,
+    25,
+    72,
+    72,
+    81,
+    81,
+    122,
+    122,
+    126,
+    126,
+    4,
+    0,
+    84,
+    84,
+    132,
+    132,
+    138,
+    138,
+    145,
+    145,
+    2,
+    0,
+    7,
+    7,
+    12,
+    13,
+    1,
+    0,
+    14,
+    17,
+    1,
+    0,
+    18,
+    21,
+    4,
+    0,
+    77,
+    77,
+    97,
+    97,
+    99,
+    99,
+    118,
+    118,
+    3,
+    0,
+    25,
+    25,
+    72,
+    72,
+    126,
+    126,
+    5,
+    0,
+    52,
+    54,
+    104,
+    104,
+    172,
+    173,
+    186,
+    186,
+    188,
+    189,
+    2,
+    0,
+    29,
+    29,
+    62,
+    62,
+    3,
+    0,
+    128,
+    128,
+    154,
+    154,
+    179,
+    179,
+    2,
+    0,
+    5,
+    5,
+    106,
+    106,
+    1,
+    0,
+    176,
+    177,
+    2,
+    0,
+    34,
+    34,
+    60,
+    60,
+    2,
+    0,
+    151,
+    151,
+    162,
+    162,
+    2,
+    0,
+    159,
+    159,
+    166,
+    166,
+    2,
+    0,
+    160,
+    160,
+    167,
+    168,
+    2,
+    0,
+    161,
+    161,
+    163,
+    163,
+    2,
+    0,
+    8,
+    10,
+    102,
+    102,
+    2,
+    0,
+    185,
+    185,
+    188,
+    188,
+    2,
+    0,
+    25,
+    123,
+    125,
+    180,
+    2338,
+    0,
+    229,
+    1,
+    0,
+    0,
+    0,
+    2,
+    237,
+    1,
+    0,
+    0,
+    0,
+    4,
+    263,
+    1,
+    0,
+    0,
+    0,
+    6,
+    291,
+    1,
+    0,
+    0,
+    0,
+    8,
+    323,
+    1,
+    0,
+    0,
+    0,
+    10,
+    333,
+    1,
+    0,
+    0,
+    0,
+    12,
+    341,
+    1,
+    0,
+    0,
+    0,
+    14,
+    351,
+    1,
+    0,
+    0,
+    0,
+    16,
+    355,
+    1,
+    0,
+    0,
+    0,
+    18,
+    366,
+    1,
+    0,
+    0,
+    0,
+    20,
+    369,
+    1,
+    0,
+    0,
+    0,
+    22,
+    375,
+    1,
+    0,
+    0,
+    0,
+    24,
+    409,
+    1,
+    0,
+    0,
+    0,
+    26,
+    418,
+    1,
+    0,
+    0,
+    0,
+    28,
+    459,
+    1,
+    0,
+    0,
+    0,
+    30,
+    470,
+    1,
+    0,
+    0,
+    0,
+    32,
+    488,
+    1,
+    0,
+    0,
+    0,
+    34,
+    542,
+    1,
+    0,
+    0,
+    0,
+    36,
+    548,
+    1,
+    0,
+    0,
+    0,
+    38,
+    589,
+    1,
+    0,
+    0,
+    0,
+    40,
+    631,
+    1,
+    0,
+    0,
+    0,
+    42,
+    635,
+    1,
+    0,
+    0,
+    0,
+    44,
+    699,
+    1,
+    0,
+    0,
+    0,
+    46,
+    731,
+    1,
+    0,
+    0,
+    0,
+    48,
+    760,
+    1,
+    0,
+    0,
+    0,
+    50,
+    781,
+    1,
+    0,
+    0,
+    0,
+    52,
+    795,
+    1,
+    0,
+    0,
+    0,
+    54,
+    806,
+    1,
+    0,
+    0,
+    0,
+    56,
+    826,
+    1,
+    0,
+    0,
+    0,
+    58,
+    839,
+    1,
+    0,
+    0,
+    0,
+    60,
+    857,
+    1,
+    0,
+    0,
+    0,
+    62,
+    863,
+    1,
+    0,
+    0,
+    0,
+    64,
+    964,
+    1,
+    0,
+    0,
+    0,
+    66,
+    1088,
+    1,
+    0,
+    0,
+    0,
+    68,
+    1098,
+    1,
+    0,
+    0,
+    0,
+    70,
+    1100,
+    1,
+    0,
+    0,
+    0,
+    72,
+    1111,
+    1,
+    0,
+    0,
+    0,
+    74,
+    1121,
+    1,
+    0,
+    0,
+    0,
+    76,
+    1168,
+    1,
+    0,
+    0,
+    0,
+    78,
+    1177,
+    1,
+    0,
+    0,
+    0,
+    80,
+    1224,
+    1,
+    0,
+    0,
+    0,
+    82,
+    1242,
+    1,
+    0,
+    0,
+    0,
+    84,
+    1244,
+    1,
+    0,
+    0,
+    0,
+    86,
+    1258,
+    1,
+    0,
+    0,
+    0,
+    88,
+    1275,
+    1,
+    0,
+    0,
+    0,
+    90,
+    1349,
+    1,
+    0,
+    0,
+    0,
+    92,
+    1351,
+    1,
+    0,
+    0,
+    0,
+    94,
+    1354,
+    1,
+    0,
+    0,
+    0,
+    96,
+    1364,
+    1,
+    0,
+    0,
+    0,
+    98,
+    1450,
+    1,
+    0,
+    0,
+    0,
+    100,
+    1464,
+    1,
+    0,
+    0,
+    0,
+    102,
+    1479,
+    1,
+    0,
+    0,
+    0,
+    104,
+    1495,
+    1,
+    0,
+    0,
+    0,
+    106,
+    1503,
+    1,
+    0,
+    0,
+    0,
+    108,
+    1506,
+    1,
+    0,
+    0,
+    0,
+    110,
+    1555,
+    1,
+    0,
+    0,
+    0,
+    112,
+    1567,
+    1,
+    0,
+    0,
+    0,
+    114,
+    1611,
+    1,
+    0,
+    0,
+    0,
+    116,
+    1625,
+    1,
+    0,
+    0,
+    0,
+    118,
+    1633,
+    1,
+    0,
+    0,
+    0,
+    120,
+    1639,
+    1,
+    0,
+    0,
+    0,
+    122,
+    1670,
+    1,
+    0,
+    0,
+    0,
+    124,
+    1706,
+    1,
+    0,
+    0,
+    0,
+    126,
+    1718,
+    1,
+    0,
+    0,
+    0,
+    128,
+    1727,
+    1,
+    0,
+    0,
+    0,
+    130,
+    1742,
+    1,
+    0,
+    0,
+    0,
+    132,
+    1762,
+    1,
+    0,
+    0,
+    0,
+    134,
+    1784,
+    1,
+    0,
+    0,
+    0,
+    136,
+    1796,
+    1,
+    0,
+    0,
+    0,
+    138,
+    1806,
+    1,
+    0,
+    0,
+    0,
+    140,
+    1812,
+    1,
+    0,
+    0,
+    0,
+    142,
+    1824,
+    1,
+    0,
+    0,
+    0,
+    144,
+    1836,
+    1,
+    0,
+    0,
+    0,
+    146,
+    1848,
+    1,
+    0,
+    0,
+    0,
+    148,
+    1857,
+    1,
+    0,
+    0,
+    0,
+    150,
+    1944,
+    1,
+    0,
+    0,
+    0,
+    152,
+    1946,
+    1,
+    0,
+    0,
+    0,
+    154,
+    1949,
+    1,
+    0,
+    0,
+    0,
+    156,
+    1952,
+    1,
+    0,
+    0,
+    0,
+    158,
+    1959,
+    1,
+    0,
+    0,
+    0,
+    160,
+    1966,
+    1,
+    0,
+    0,
+    0,
+    162,
+    1970,
+    1,
+    0,
+    0,
+    0,
+    164,
+    1984,
+    1,
+    0,
+    0,
+    0,
+    166,
+    1986,
+    1,
+    0,
+    0,
+    0,
+    168,
+    1988,
+    1,
+    0,
+    0,
+    0,
+    170,
+    1990,
+    1,
+    0,
+    0,
+    0,
+    172,
+    1994,
+    1,
+    0,
+    0,
+    0,
+    174,
+    1996,
+    1,
+    0,
+    0,
+    0,
+    176,
+    1998,
+    1,
+    0,
+    0,
+    0,
+    178,
+    2000,
+    1,
+    0,
+    0,
+    0,
+    180,
+    2002,
+    1,
+    0,
+    0,
+    0,
+    182,
+    2004,
+    1,
+    0,
+    0,
+    0,
+    184,
+    2006,
+    1,
+    0,
+    0,
+    0,
+    186,
+    2008,
+    1,
+    0,
+    0,
+    0,
+    188,
+    2010,
+    1,
+    0,
+    0,
+    0,
+    190,
+    2012,
+    1,
+    0,
+    0,
+    0,
+    192,
+    2014,
+    1,
+    0,
+    0,
+    0,
+    194,
+    2016,
+    1,
+    0,
+    0,
+    0,
+    196,
+    2018,
+    1,
+    0,
+    0,
+    0,
+    198,
+    2020,
+    1,
+    0,
+    0,
+    0,
+    200,
+    2022,
+    1,
+    0,
+    0,
+    0,
+    202,
+    2024,
+    1,
+    0,
+    0,
+    0,
+    204,
+    2026,
+    1,
+    0,
+    0,
+    0,
+    206,
+    2028,
+    1,
+    0,
+    0,
+    0,
+    208,
+    2030,
+    1,
+    0,
+    0,
+    0,
+    210,
+    2032,
+    1,
+    0,
+    0,
+    0,
+    212,
+    2034,
+    1,
+    0,
+    0,
+    0,
+    214,
+    2036,
+    1,
+    0,
+    0,
+    0,
+    216,
+    2038,
+    1,
+    0,
+    0,
+    0,
+    218,
+    2040,
+    1,
+    0,
+    0,
+    0,
+    220,
+    2042,
+    1,
+    0,
+    0,
+    0,
+    222,
+    2044,
+    1,
+    0,
+    0,
+    0,
+    224,
+    2053,
+    1,
+    0,
+    0,
+    0,
+    226,
+    228,
+    3,
+    2,
+    1,
+    0,
+    227,
+    226,
+    1,
+    0,
+    0,
+    0,
+    228,
+    231,
+    1,
+    0,
+    0,
+    0,
+    229,
+    227,
+    1,
+    0,
+    0,
+    0,
+    229,
+    230,
+    1,
+    0,
+    0,
+    0,
+    230,
+    232,
+    1,
+    0,
+    0,
+    0,
+    231,
+    229,
+    1,
+    0,
+    0,
+    0,
+    232,
+    233,
+    5,
+    0,
+    0,
+    1,
+    233,
+    1,
+    1,
+    0,
+    0,
+    0,
+    234,
+    236,
+    5,
+    1,
+    0,
+    0,
+    235,
+    234,
+    1,
+    0,
+    0,
+    0,
+    236,
+    239,
+    1,
+    0,
+    0,
+    0,
+    237,
+    235,
+    1,
+    0,
+    0,
+    0,
+    237,
+    238,
+    1,
+    0,
+    0,
+    0,
+    238,
+    240,
+    1,
+    0,
+    0,
+    0,
+    239,
+    237,
+    1,
+    0,
+    0,
+    0,
+    240,
+    249,
+    3,
+    4,
+    2,
+    0,
+    241,
+    243,
+    5,
+    1,
+    0,
+    0,
+    242,
+    241,
+    1,
+    0,
+    0,
+    0,
+    243,
+    244,
+    1,
+    0,
+    0,
+    0,
+    244,
+    242,
+    1,
+    0,
+    0,
+    0,
+    244,
+    245,
+    1,
+    0,
+    0,
+    0,
+    245,
+    246,
+    1,
+    0,
+    0,
+    0,
+    246,
+    248,
+    3,
+    4,
+    2,
+    0,
+    247,
+    242,
+    1,
+    0,
+    0,
+    0,
+    248,
+    251,
+    1,
+    0,
+    0,
+    0,
+    249,
+    247,
+    1,
+    0,
+    0,
+    0,
+    249,
+    250,
+    1,
+    0,
+    0,
+    0,
+    250,
+    255,
+    1,
+    0,
+    0,
+    0,
+    251,
+    249,
+    1,
+    0,
+    0,
+    0,
+    252,
+    254,
+    5,
+    1,
+    0,
+    0,
+    253,
+    252,
+    1,
+    0,
+    0,
+    0,
+    254,
+    257,
+    1,
+    0,
+    0,
+    0,
+    255,
+    253,
+    1,
+    0,
+    0,
+    0,
+    255,
+    256,
+    1,
+    0,
+    0,
+    0,
+    256,
+    3,
+    1,
+    0,
+    0,
+    0,
+    257,
+    255,
+    1,
+    0,
+    0,
+    0,
+    258,
+    261,
+    5,
+    71,
+    0,
+    0,
+    259,
+    260,
+    5,
+    114,
+    0,
+    0,
+    260,
+    262,
+    5,
+    111,
+    0,
+    0,
+    261,
+    259,
+    1,
+    0,
+    0,
+    0,
+    261,
+    262,
+    1,
+    0,
+    0,
+    0,
+    262,
+    264,
+    1,
+    0,
+    0,
+    0,
+    263,
+    258,
+    1,
+    0,
+    0,
+    0,
+    263,
+    264,
+    1,
+    0,
+    0,
+    0,
+    264,
+    289,
+    1,
+    0,
+    0,
+    0,
+    265,
+    290,
+    3,
+    6,
+    3,
+    0,
+    266,
+    290,
+    3,
+    8,
+    4,
+    0,
+    267,
+    290,
+    3,
+    10,
+    5,
+    0,
+    268,
+    290,
+    3,
+    12,
+    6,
+    0,
+    269,
+    290,
+    3,
+    14,
+    7,
+    0,
+    270,
+    290,
+    3,
+    22,
+    11,
+    0,
+    271,
+    290,
+    3,
+    26,
+    13,
+    0,
+    272,
+    290,
+    3,
+    42,
+    21,
+    0,
+    273,
+    290,
+    3,
+    44,
+    22,
+    0,
+    274,
+    290,
+    3,
+    46,
+    23,
+    0,
+    275,
+    290,
+    3,
+    56,
+    28,
+    0,
+    276,
+    290,
+    3,
+    58,
+    29,
+    0,
+    277,
+    290,
+    3,
+    60,
+    30,
+    0,
+    278,
+    290,
+    3,
+    62,
+    31,
+    0,
+    279,
+    290,
+    3,
+    74,
+    37,
+    0,
+    280,
+    290,
+    3,
+    80,
+    40,
+    0,
+    281,
+    290,
+    3,
+    84,
+    42,
+    0,
+    282,
+    290,
+    3,
+    20,
+    10,
+    0,
+    283,
+    290,
+    3,
+    16,
+    8,
+    0,
+    284,
+    290,
+    3,
+    18,
+    9,
+    0,
+    285,
+    290,
+    3,
+    86,
+    43,
+    0,
+    286,
+    290,
+    3,
+    108,
+    54,
+    0,
+    287,
+    290,
+    3,
+    112,
+    56,
+    0,
+    288,
+    290,
+    3,
+    116,
+    58,
+    0,
+    289,
+    265,
+    1,
+    0,
+    0,
+    0,
+    289,
+    266,
+    1,
+    0,
+    0,
+    0,
+    289,
+    267,
+    1,
+    0,
+    0,
+    0,
+    289,
+    268,
+    1,
+    0,
+    0,
+    0,
+    289,
+    269,
+    1,
+    0,
+    0,
+    0,
+    289,
+    270,
+    1,
+    0,
+    0,
+    0,
+    289,
+    271,
+    1,
+    0,
+    0,
+    0,
+    289,
+    272,
+    1,
+    0,
+    0,
+    0,
+    289,
+    273,
+    1,
+    0,
+    0,
+    0,
+    289,
+    274,
+    1,
+    0,
+    0,
+    0,
+    289,
+    275,
+    1,
+    0,
+    0,
+    0,
+    289,
+    276,
+    1,
+    0,
+    0,
+    0,
+    289,
+    277,
+    1,
+    0,
+    0,
+    0,
+    289,
+    278,
+    1,
+    0,
+    0,
+    0,
+    289,
+    279,
+    1,
+    0,
+    0,
+    0,
+    289,
+    280,
+    1,
+    0,
+    0,
+    0,
+    289,
+    281,
+    1,
+    0,
+    0,
+    0,
+    289,
+    282,
+    1,
+    0,
+    0,
+    0,
+    289,
+    283,
+    1,
+    0,
+    0,
+    0,
+    289,
+    284,
+    1,
+    0,
+    0,
+    0,
+    289,
+    285,
+    1,
+    0,
+    0,
+    0,
+    289,
+    286,
+    1,
+    0,
+    0,
+    0,
+    289,
+    287,
+    1,
+    0,
+    0,
+    0,
+    289,
+    288,
+    1,
+    0,
+    0,
+    0,
+    290,
+    5,
+    1,
+    0,
+    0,
+    0,
+    291,
+    292,
+    5,
+    30,
+    0,
+    0,
+    292,
+    296,
+    5,
+    132,
+    0,
+    0,
+    293,
+    294,
+    3,
+    182,
+    91,
+    0,
+    294,
+    295,
+    5,
+    2,
+    0,
+    0,
+    295,
+    297,
+    1,
+    0,
+    0,
+    0,
+    296,
+    293,
+    1,
+    0,
+    0,
+    0,
+    296,
+    297,
+    1,
+    0,
+    0,
+    0,
+    297,
+    298,
+    1,
+    0,
+    0,
+    0,
+    298,
+    321,
+    3,
+    184,
+    92,
+    0,
+    299,
+    309,
+    5,
+    121,
+    0,
+    0,
+    300,
+    301,
+    5,
+    136,
+    0,
+    0,
+    301,
+    310,
+    3,
+    184,
+    92,
+    0,
+    302,
+    304,
+    5,
+    46,
+    0,
+    0,
+    303,
+    302,
+    1,
+    0,
+    0,
+    0,
+    303,
+    304,
+    1,
+    0,
+    0,
+    0,
+    304,
+    305,
+    1,
+    0,
+    0,
+    0,
+    305,
+    306,
+    3,
+    188,
+    94,
+    0,
+    306,
+    307,
+    5,
+    136,
+    0,
+    0,
+    307,
+    308,
+    3,
+    188,
+    94,
+    0,
+    308,
+    310,
+    1,
+    0,
+    0,
+    0,
+    309,
+    300,
+    1,
+    0,
+    0,
+    0,
+    309,
+    303,
+    1,
+    0,
+    0,
+    0,
+    310,
+    322,
+    1,
+    0,
+    0,
+    0,
+    311,
+    313,
+    5,
+    27,
+    0,
+    0,
+    312,
+    314,
+    5,
+    46,
+    0,
+    0,
+    313,
+    312,
+    1,
+    0,
+    0,
+    0,
+    313,
+    314,
+    1,
+    0,
+    0,
+    0,
+    314,
+    315,
+    1,
+    0,
+    0,
+    0,
+    315,
+    322,
+    3,
+    28,
+    14,
+    0,
+    316,
+    318,
+    5,
+    63,
+    0,
+    0,
+    317,
+    319,
+    5,
+    46,
+    0,
+    0,
+    318,
+    317,
+    1,
+    0,
+    0,
+    0,
+    318,
+    319,
+    1,
+    0,
+    0,
+    0,
+    319,
+    320,
+    1,
+    0,
+    0,
+    0,
+    320,
+    322,
+    3,
+    188,
+    94,
+    0,
+    321,
+    299,
+    1,
+    0,
+    0,
+    0,
+    321,
+    311,
+    1,
+    0,
+    0,
+    0,
+    321,
+    316,
+    1,
+    0,
+    0,
+    0,
+    322,
+    7,
+    1,
+    0,
+    0,
+    0,
+    323,
+    331,
+    5,
+    31,
+    0,
+    0,
+    324,
+    332,
+    3,
+    182,
+    91,
+    0,
+    325,
+    326,
+    3,
+    182,
+    91,
+    0,
+    326,
+    327,
+    5,
+    2,
+    0,
+    0,
+    327,
+    329,
+    1,
+    0,
+    0,
+    0,
+    328,
+    325,
+    1,
+    0,
+    0,
+    0,
+    328,
+    329,
+    1,
+    0,
+    0,
+    0,
+    329,
+    330,
+    1,
+    0,
+    0,
+    0,
+    330,
+    332,
+    3,
+    186,
+    93,
+    0,
+    331,
+    324,
+    1,
+    0,
+    0,
+    0,
+    331,
+    328,
+    1,
+    0,
+    0,
+    0,
+    331,
+    332,
+    1,
+    0,
+    0,
+    0,
+    332,
+    9,
+    1,
+    0,
+    0,
+    0,
+    333,
+    335,
+    5,
+    35,
+    0,
+    0,
+    334,
+    336,
+    5,
+    55,
+    0,
+    0,
+    335,
+    334,
+    1,
+    0,
+    0,
+    0,
+    335,
+    336,
+    1,
+    0,
+    0,
+    0,
+    336,
+    337,
+    1,
+    0,
+    0,
+    0,
+    337,
+    338,
+    3,
+    64,
+    32,
+    0,
+    338,
+    339,
+    5,
+    33,
+    0,
+    0,
+    339,
+    340,
+    3,
+    182,
+    91,
+    0,
+    340,
+    11,
+    1,
+    0,
+    0,
+    0,
+    341,
+    343,
+    5,
+    38,
+    0,
+    0,
+    342,
+    344,
+    7,
+    0,
+    0,
+    0,
+    343,
+    342,
+    1,
+    0,
+    0,
+    0,
+    343,
+    344,
+    1,
+    0,
+    0,
+    0,
+    344,
+    349,
+    1,
+    0,
+    0,
+    0,
+    345,
+    347,
+    5,
+    137,
+    0,
+    0,
+    346,
+    348,
+    3,
+    208,
+    104,
+    0,
+    347,
+    346,
+    1,
+    0,
+    0,
+    0,
+    347,
+    348,
+    1,
+    0,
+    0,
+    0,
+    348,
+    350,
+    1,
+    0,
+    0,
+    0,
+    349,
+    345,
+    1,
+    0,
+    0,
+    0,
+    349,
+    350,
+    1,
+    0,
+    0,
+    0,
+    350,
+    13,
+    1,
+    0,
+    0,
+    0,
+    351,
+    353,
+    7,
+    1,
+    0,
+    0,
+    352,
+    354,
+    5,
+    137,
+    0,
+    0,
+    353,
+    352,
+    1,
+    0,
+    0,
+    0,
+    353,
+    354,
+    1,
+    0,
+    0,
+    0,
+    354,
+    15,
+    1,
+    0,
+    0,
+    0,
+    355,
+    357,
+    5,
+    126,
+    0,
+    0,
+    356,
+    358,
+    5,
+    137,
+    0,
+    0,
+    357,
+    356,
+    1,
+    0,
+    0,
+    0,
+    357,
+    358,
+    1,
+    0,
+    0,
+    0,
+    358,
+    364,
+    1,
+    0,
+    0,
+    0,
+    359,
+    361,
+    5,
+    136,
+    0,
+    0,
+    360,
+    362,
+    5,
+    129,
+    0,
+    0,
+    361,
+    360,
+    1,
+    0,
+    0,
+    0,
+    361,
+    362,
+    1,
+    0,
+    0,
+    0,
+    362,
+    363,
+    1,
+    0,
+    0,
+    0,
+    363,
+    365,
+    3,
+    204,
+    102,
+    0,
+    364,
+    359,
+    1,
+    0,
+    0,
+    0,
+    364,
+    365,
+    1,
+    0,
+    0,
+    0,
+    365,
+    17,
+    1,
+    0,
+    0,
+    0,
+    366,
+    367,
+    5,
+    129,
+    0,
+    0,
+    367,
+    368,
+    3,
+    204,
+    102,
+    0,
+    368,
+    19,
+    1,
+    0,
+    0,
+    0,
+    369,
+    371,
+    5,
+    120,
+    0,
+    0,
+    370,
+    372,
+    5,
+    129,
+    0,
+    0,
+    371,
+    370,
+    1,
+    0,
+    0,
+    0,
+    371,
+    372,
+    1,
+    0,
+    0,
+    0,
+    372,
+    373,
+    1,
+    0,
+    0,
+    0,
+    373,
+    374,
+    3,
+    204,
+    102,
+    0,
+    374,
+    21,
+    1,
+    0,
+    0,
+    0,
+    375,
+    377,
+    5,
+    50,
+    0,
+    0,
+    376,
+    378,
+    5,
+    140,
+    0,
+    0,
+    377,
+    376,
+    1,
+    0,
+    0,
+    0,
+    377,
+    378,
+    1,
+    0,
+    0,
+    0,
+    378,
+    379,
+    1,
+    0,
+    0,
+    0,
+    379,
+    383,
+    5,
+    84,
+    0,
+    0,
+    380,
+    381,
+    5,
+    80,
+    0,
+    0,
+    381,
+    382,
+    5,
+    102,
+    0,
+    0,
+    382,
+    384,
+    5,
+    70,
+    0,
+    0,
+    383,
+    380,
+    1,
+    0,
+    0,
+    0,
+    383,
+    384,
+    1,
+    0,
+    0,
+    0,
+    384,
+    388,
+    1,
+    0,
+    0,
+    0,
+    385,
+    386,
+    3,
+    182,
+    91,
+    0,
+    386,
+    387,
+    5,
+    2,
+    0,
+    0,
+    387,
+    389,
+    1,
+    0,
+    0,
+    0,
+    388,
+    385,
+    1,
+    0,
+    0,
+    0,
+    388,
+    389,
+    1,
+    0,
+    0,
+    0,
+    389,
+    390,
+    1,
+    0,
+    0,
+    0,
+    390,
+    391,
+    3,
+    194,
+    97,
+    0,
+    391,
+    392,
+    5,
+    107,
+    0,
+    0,
+    392,
+    393,
+    3,
+    184,
+    92,
+    0,
+    393,
+    394,
+    5,
+    3,
+    0,
+    0,
+    394,
+    399,
+    3,
+    24,
+    12,
+    0,
+    395,
+    396,
+    5,
+    5,
+    0,
+    0,
+    396,
+    398,
+    3,
+    24,
+    12,
+    0,
+    397,
+    395,
+    1,
+    0,
+    0,
+    0,
+    398,
+    401,
+    1,
+    0,
+    0,
+    0,
+    399,
+    397,
+    1,
+    0,
+    0,
+    0,
+    399,
+    400,
+    1,
+    0,
+    0,
+    0,
+    400,
+    402,
+    1,
+    0,
+    0,
+    0,
+    401,
+    399,
+    1,
+    0,
+    0,
+    0,
+    402,
+    405,
+    5,
+    4,
+    0,
+    0,
+    403,
+    404,
+    5,
+    148,
+    0,
+    0,
+    404,
+    406,
+    3,
+    64,
+    32,
+    0,
+    405,
+    403,
+    1,
+    0,
+    0,
+    0,
+    405,
+    406,
+    1,
+    0,
+    0,
+    0,
+    406,
+    23,
+    1,
+    0,
+    0,
+    0,
+    407,
+    410,
+    3,
+    188,
+    94,
+    0,
+    408,
+    410,
+    3,
+    64,
+    32,
+    0,
+    409,
+    407,
+    1,
+    0,
+    0,
+    0,
+    409,
+    408,
+    1,
+    0,
+    0,
+    0,
+    410,
+    413,
+    1,
+    0,
+    0,
+    0,
+    411,
+    412,
+    5,
+    45,
+    0,
+    0,
+    412,
+    414,
+    3,
+    190,
+    95,
+    0,
+    413,
+    411,
+    1,
+    0,
+    0,
+    0,
+    413,
+    414,
+    1,
+    0,
+    0,
+    0,
+    414,
+    416,
+    1,
+    0,
+    0,
+    0,
+    415,
+    417,
+    3,
+    142,
+    71,
+    0,
+    416,
+    415,
+    1,
+    0,
+    0,
+    0,
+    416,
+    417,
+    1,
+    0,
+    0,
+    0,
+    417,
+    25,
+    1,
+    0,
+    0,
+    0,
+    418,
+    420,
+    5,
+    50,
+    0,
+    0,
+    419,
+    421,
+    7,
+    2,
+    0,
+    0,
+    420,
+    419,
+    1,
+    0,
+    0,
+    0,
+    420,
+    421,
+    1,
+    0,
+    0,
+    0,
+    421,
+    422,
+    1,
+    0,
+    0,
+    0,
+    422,
+    426,
+    5,
+    132,
+    0,
+    0,
+    423,
+    424,
+    5,
+    80,
+    0,
+    0,
+    424,
+    425,
+    5,
+    102,
+    0,
+    0,
+    425,
+    427,
+    5,
+    70,
+    0,
+    0,
+    426,
+    423,
+    1,
+    0,
+    0,
+    0,
+    426,
+    427,
+    1,
+    0,
+    0,
+    0,
+    427,
+    431,
+    1,
+    0,
+    0,
+    0,
+    428,
+    429,
+    3,
+    182,
+    91,
+    0,
+    429,
+    430,
+    5,
+    2,
+    0,
+    0,
+    430,
+    432,
+    1,
+    0,
+    0,
+    0,
+    431,
+    428,
+    1,
+    0,
+    0,
+    0,
+    431,
+    432,
+    1,
+    0,
+    0,
+    0,
+    432,
+    433,
+    1,
+    0,
+    0,
+    0,
+    433,
+    457,
+    3,
+    184,
+    92,
+    0,
+    434,
+    435,
+    5,
+    3,
+    0,
+    0,
+    435,
+    440,
+    3,
+    28,
+    14,
+    0,
+    436,
+    437,
+    5,
+    5,
+    0,
+    0,
+    437,
+    439,
+    3,
+    28,
+    14,
+    0,
+    438,
+    436,
+    1,
+    0,
+    0,
+    0,
+    439,
+    442,
+    1,
+    0,
+    0,
+    0,
+    440,
+    441,
+    1,
+    0,
+    0,
+    0,
+    440,
+    438,
+    1,
+    0,
+    0,
+    0,
+    441,
+    447,
+    1,
+    0,
+    0,
+    0,
+    442,
+    440,
+    1,
+    0,
+    0,
+    0,
+    443,
+    444,
+    5,
+    5,
+    0,
+    0,
+    444,
+    446,
+    3,
+    36,
+    18,
+    0,
+    445,
+    443,
+    1,
+    0,
+    0,
+    0,
+    446,
+    449,
+    1,
+    0,
+    0,
+    0,
+    447,
+    445,
+    1,
+    0,
+    0,
+    0,
+    447,
+    448,
+    1,
+    0,
+    0,
+    0,
+    448,
+    450,
+    1,
+    0,
+    0,
+    0,
+    449,
+    447,
+    1,
+    0,
+    0,
+    0,
+    450,
+    453,
+    5,
+    4,
+    0,
+    0,
+    451,
+    452,
+    5,
+    150,
+    0,
+    0,
+    452,
+    454,
+    5,
+    185,
+    0,
+    0,
+    453,
+    451,
+    1,
+    0,
+    0,
+    0,
+    453,
+    454,
+    1,
+    0,
+    0,
+    0,
+    454,
+    458,
+    1,
+    0,
+    0,
+    0,
+    455,
+    456,
+    5,
+    33,
+    0,
+    0,
+    456,
+    458,
+    3,
+    86,
+    43,
+    0,
+    457,
+    434,
+    1,
+    0,
+    0,
+    0,
+    457,
+    455,
+    1,
+    0,
+    0,
+    0,
+    458,
+    27,
+    1,
+    0,
+    0,
+    0,
+    459,
+    461,
+    3,
+    188,
+    94,
+    0,
+    460,
+    462,
+    3,
+    30,
+    15,
+    0,
+    461,
+    460,
+    1,
+    0,
+    0,
+    0,
+    461,
+    462,
+    1,
+    0,
+    0,
+    0,
+    462,
+    466,
+    1,
+    0,
+    0,
+    0,
+    463,
+    465,
+    3,
+    32,
+    16,
+    0,
+    464,
+    463,
+    1,
+    0,
+    0,
+    0,
+    465,
+    468,
+    1,
+    0,
+    0,
+    0,
+    466,
+    464,
+    1,
+    0,
+    0,
+    0,
+    466,
+    467,
+    1,
+    0,
+    0,
+    0,
+    467,
+    29,
+    1,
+    0,
+    0,
+    0,
+    468,
+    466,
+    1,
+    0,
+    0,
+    0,
+    469,
+    471,
+    3,
+    178,
+    89,
+    0,
+    470,
+    469,
+    1,
+    0,
+    0,
+    0,
+    471,
+    472,
+    1,
+    0,
+    0,
+    0,
+    472,
+    473,
+    1,
+    0,
+    0,
+    0,
+    472,
+    470,
+    1,
+    0,
+    0,
+    0,
+    473,
+    484,
+    1,
+    0,
+    0,
+    0,
+    474,
+    475,
+    5,
+    3,
+    0,
+    0,
+    475,
+    476,
+    3,
+    34,
+    17,
+    0,
+    476,
+    477,
+    5,
+    4,
+    0,
+    0,
+    477,
+    485,
+    1,
+    0,
+    0,
+    0,
+    478,
+    479,
+    5,
+    3,
+    0,
+    0,
+    479,
+    480,
+    3,
+    34,
+    17,
+    0,
+    480,
+    481,
+    5,
+    5,
+    0,
+    0,
+    481,
+    482,
+    3,
+    34,
+    17,
+    0,
+    482,
+    483,
+    5,
+    4,
+    0,
+    0,
+    483,
+    485,
+    1,
+    0,
+    0,
+    0,
+    484,
+    474,
+    1,
+    0,
+    0,
+    0,
+    484,
+    478,
+    1,
+    0,
+    0,
+    0,
+    484,
+    485,
+    1,
+    0,
+    0,
+    0,
+    485,
+    31,
+    1,
+    0,
+    0,
+    0,
+    486,
+    487,
+    5,
+    49,
+    0,
+    0,
+    487,
+    489,
+    3,
+    178,
+    89,
+    0,
+    488,
+    486,
+    1,
+    0,
+    0,
+    0,
+    488,
+    489,
+    1,
+    0,
+    0,
+    0,
+    489,
+    539,
+    1,
+    0,
+    0,
+    0,
+    490,
+    491,
+    5,
+    113,
+    0,
+    0,
+    491,
+    493,
+    5,
+    95,
+    0,
+    0,
+    492,
+    494,
+    3,
+    142,
+    71,
+    0,
+    493,
+    492,
+    1,
+    0,
+    0,
+    0,
+    493,
+    494,
+    1,
+    0,
+    0,
+    0,
+    494,
+    496,
+    1,
+    0,
+    0,
+    0,
+    495,
+    497,
+    3,
+    40,
+    20,
+    0,
+    496,
+    495,
+    1,
+    0,
+    0,
+    0,
+    496,
+    497,
+    1,
+    0,
+    0,
+    0,
+    497,
+    499,
+    1,
+    0,
+    0,
+    0,
+    498,
+    500,
+    5,
+    36,
+    0,
+    0,
+    499,
+    498,
+    1,
+    0,
+    0,
+    0,
+    499,
+    500,
+    1,
+    0,
+    0,
+    0,
+    500,
+    540,
+    1,
+    0,
+    0,
+    0,
+    501,
+    503,
+    5,
+    102,
+    0,
+    0,
+    502,
+    501,
+    1,
+    0,
+    0,
+    0,
+    502,
+    503,
+    1,
+    0,
+    0,
+    0,
+    503,
+    504,
+    1,
+    0,
+    0,
+    0,
+    504,
+    507,
+    5,
+    104,
+    0,
+    0,
+    505,
+    507,
+    5,
+    140,
+    0,
+    0,
+    506,
+    502,
+    1,
+    0,
+    0,
+    0,
+    506,
+    505,
+    1,
+    0,
+    0,
+    0,
+    507,
+    509,
+    1,
+    0,
+    0,
+    0,
+    508,
+    510,
+    3,
+    40,
+    20,
+    0,
+    509,
+    508,
+    1,
+    0,
+    0,
+    0,
+    509,
+    510,
+    1,
+    0,
+    0,
+    0,
+    510,
+    540,
+    1,
+    0,
+    0,
+    0,
+    511,
+    512,
+    5,
+    44,
+    0,
+    0,
+    512,
+    513,
+    5,
+    3,
+    0,
+    0,
+    513,
+    514,
+    3,
+    64,
+    32,
+    0,
+    514,
+    515,
+    5,
+    4,
+    0,
+    0,
+    515,
+    540,
+    1,
+    0,
+    0,
+    0,
+    516,
+    523,
+    5,
+    56,
+    0,
+    0,
+    517,
+    524,
+    3,
+    34,
+    17,
+    0,
+    518,
+    524,
+    3,
+    68,
+    34,
+    0,
+    519,
+    520,
+    5,
+    3,
+    0,
+    0,
+    520,
+    521,
+    3,
+    64,
+    32,
+    0,
+    521,
+    522,
+    5,
+    4,
+    0,
+    0,
+    522,
+    524,
+    1,
+    0,
+    0,
+    0,
+    523,
+    517,
+    1,
+    0,
+    0,
+    0,
+    523,
+    518,
+    1,
+    0,
+    0,
+    0,
+    523,
+    519,
+    1,
+    0,
+    0,
+    0,
+    524,
+    540,
+    1,
+    0,
+    0,
+    0,
+    525,
+    526,
+    5,
+    45,
+    0,
+    0,
+    526,
+    540,
+    3,
+    190,
+    95,
+    0,
+    527,
+    540,
+    3,
+    38,
+    19,
+    0,
+    528,
+    529,
+    5,
+    169,
+    0,
+    0,
+    529,
+    531,
+    5,
+    170,
+    0,
+    0,
+    530,
+    528,
+    1,
+    0,
+    0,
+    0,
+    530,
+    531,
+    1,
+    0,
+    0,
+    0,
+    531,
+    532,
+    1,
+    0,
+    0,
+    0,
+    532,
+    533,
+    5,
+    33,
+    0,
+    0,
+    533,
+    534,
+    5,
+    3,
+    0,
+    0,
+    534,
+    535,
+    3,
+    64,
+    32,
+    0,
+    535,
+    537,
+    5,
+    4,
+    0,
+    0,
+    536,
+    538,
+    7,
+    3,
+    0,
+    0,
+    537,
+    536,
+    1,
+    0,
+    0,
+    0,
+    537,
+    538,
+    1,
+    0,
+    0,
+    0,
+    538,
+    540,
+    1,
+    0,
+    0,
+    0,
+    539,
+    490,
+    1,
+    0,
+    0,
+    0,
+    539,
+    506,
+    1,
+    0,
+    0,
+    0,
+    539,
+    511,
+    1,
+    0,
+    0,
+    0,
+    539,
+    516,
+    1,
+    0,
+    0,
+    0,
+    539,
+    525,
+    1,
+    0,
+    0,
+    0,
+    539,
+    527,
+    1,
+    0,
+    0,
+    0,
+    539,
+    530,
+    1,
+    0,
+    0,
+    0,
+    540,
+    33,
+    1,
+    0,
+    0,
+    0,
+    541,
+    543,
+    7,
+    4,
+    0,
+    0,
+    542,
+    541,
+    1,
+    0,
+    0,
+    0,
+    542,
+    543,
+    1,
+    0,
+    0,
+    0,
+    543,
+    544,
+    1,
+    0,
+    0,
+    0,
+    544,
+    545,
+    5,
+    186,
+    0,
+    0,
+    545,
+    35,
+    1,
+    0,
+    0,
+    0,
+    546,
+    547,
+    5,
+    49,
+    0,
+    0,
+    547,
+    549,
+    3,
+    178,
+    89,
+    0,
+    548,
+    546,
+    1,
+    0,
+    0,
+    0,
+    548,
+    549,
+    1,
+    0,
+    0,
+    0,
+    549,
+    587,
+    1,
+    0,
+    0,
+    0,
+    550,
+    551,
+    5,
+    113,
+    0,
+    0,
+    551,
+    554,
+    5,
+    95,
+    0,
+    0,
+    552,
+    554,
+    5,
+    140,
+    0,
+    0,
+    553,
+    550,
+    1,
+    0,
+    0,
+    0,
+    553,
+    552,
+    1,
+    0,
+    0,
+    0,
+    554,
+    555,
+    1,
+    0,
+    0,
+    0,
+    555,
+    556,
+    5,
+    3,
+    0,
+    0,
+    556,
+    561,
+    3,
+    24,
+    12,
+    0,
+    557,
+    558,
+    5,
+    5,
+    0,
+    0,
+    558,
+    560,
+    3,
+    24,
+    12,
+    0,
+    559,
+    557,
+    1,
+    0,
+    0,
+    0,
+    560,
+    563,
+    1,
+    0,
+    0,
+    0,
+    561,
+    559,
+    1,
+    0,
+    0,
+    0,
+    561,
+    562,
+    1,
+    0,
+    0,
+    0,
+    562,
+    564,
+    1,
+    0,
+    0,
+    0,
+    563,
+    561,
+    1,
+    0,
+    0,
+    0,
+    564,
+    566,
+    5,
+    4,
+    0,
+    0,
+    565,
+    567,
+    3,
+    40,
+    20,
+    0,
+    566,
+    565,
+    1,
+    0,
+    0,
+    0,
+    566,
+    567,
+    1,
+    0,
+    0,
+    0,
+    567,
+    588,
+    1,
+    0,
+    0,
+    0,
+    568,
+    569,
+    5,
+    44,
+    0,
+    0,
+    569,
+    570,
+    5,
+    3,
+    0,
+    0,
+    570,
+    571,
+    3,
+    64,
+    32,
+    0,
+    571,
+    572,
+    5,
+    4,
+    0,
+    0,
+    572,
+    588,
+    1,
+    0,
+    0,
+    0,
+    573,
+    574,
+    5,
+    74,
+    0,
+    0,
+    574,
+    575,
+    5,
+    95,
+    0,
+    0,
+    575,
+    576,
+    5,
+    3,
+    0,
+    0,
+    576,
+    581,
+    3,
+    188,
+    94,
+    0,
+    577,
+    578,
+    5,
+    5,
+    0,
+    0,
+    578,
+    580,
+    3,
+    188,
+    94,
+    0,
+    579,
+    577,
+    1,
+    0,
+    0,
+    0,
+    580,
+    583,
+    1,
+    0,
+    0,
+    0,
+    581,
+    579,
+    1,
+    0,
+    0,
+    0,
+    581,
+    582,
+    1,
+    0,
+    0,
+    0,
+    582,
+    584,
+    1,
+    0,
+    0,
+    0,
+    583,
+    581,
+    1,
+    0,
+    0,
+    0,
+    584,
+    585,
+    5,
+    4,
+    0,
+    0,
+    585,
+    586,
+    3,
+    38,
+    19,
+    0,
+    586,
+    588,
+    1,
+    0,
+    0,
+    0,
+    587,
+    553,
+    1,
+    0,
+    0,
+    0,
+    587,
+    568,
+    1,
+    0,
+    0,
+    0,
+    587,
+    573,
+    1,
+    0,
+    0,
+    0,
+    588,
+    37,
+    1,
+    0,
+    0,
+    0,
+    589,
+    590,
+    5,
+    117,
+    0,
+    0,
+    590,
+    602,
+    3,
+    192,
+    96,
+    0,
+    591,
+    592,
+    5,
+    3,
+    0,
+    0,
+    592,
+    597,
+    3,
+    188,
+    94,
+    0,
+    593,
+    594,
+    5,
+    5,
+    0,
+    0,
+    594,
+    596,
+    3,
+    188,
+    94,
+    0,
+    595,
+    593,
+    1,
+    0,
+    0,
+    0,
+    596,
+    599,
+    1,
+    0,
+    0,
+    0,
+    597,
+    595,
+    1,
+    0,
+    0,
+    0,
+    597,
+    598,
+    1,
+    0,
+    0,
+    0,
+    598,
+    600,
+    1,
+    0,
+    0,
+    0,
+    599,
+    597,
+    1,
+    0,
+    0,
+    0,
+    600,
+    601,
+    5,
+    4,
+    0,
+    0,
+    601,
+    603,
+    1,
+    0,
+    0,
+    0,
+    602,
+    591,
+    1,
+    0,
+    0,
+    0,
+    602,
+    603,
+    1,
+    0,
+    0,
+    0,
+    603,
+    618,
+    1,
+    0,
+    0,
+    0,
+    604,
+    605,
+    5,
+    107,
+    0,
+    0,
+    605,
+    612,
+    7,
+    5,
+    0,
+    0,
+    606,
+    607,
+    5,
+    131,
+    0,
+    0,
+    607,
+    613,
+    7,
+    6,
+    0,
+    0,
+    608,
+    613,
+    5,
+    41,
+    0,
+    0,
+    609,
+    613,
+    5,
+    123,
+    0,
+    0,
+    610,
+    611,
+    5,
+    101,
+    0,
+    0,
+    611,
+    613,
+    5,
+    26,
+    0,
+    0,
+    612,
+    606,
+    1,
+    0,
+    0,
+    0,
+    612,
+    608,
+    1,
+    0,
+    0,
+    0,
+    612,
+    609,
+    1,
+    0,
+    0,
+    0,
+    612,
+    610,
+    1,
+    0,
+    0,
+    0,
+    613,
+    617,
+    1,
+    0,
+    0,
+    0,
+    614,
+    615,
+    5,
+    99,
+    0,
+    0,
+    615,
+    617,
+    3,
+    178,
+    89,
+    0,
+    616,
+    604,
+    1,
+    0,
+    0,
+    0,
+    616,
+    614,
+    1,
+    0,
+    0,
+    0,
+    617,
+    620,
+    1,
+    0,
+    0,
+    0,
+    618,
+    616,
+    1,
+    0,
+    0,
+    0,
+    618,
+    619,
+    1,
+    0,
+    0,
+    0,
+    619,
+    629,
+    1,
+    0,
+    0,
+    0,
+    620,
+    618,
+    1,
+    0,
+    0,
+    0,
+    621,
+    623,
+    5,
+    102,
+    0,
+    0,
+    622,
+    621,
+    1,
+    0,
+    0,
+    0,
+    622,
+    623,
+    1,
+    0,
+    0,
+    0,
+    623,
+    624,
+    1,
+    0,
+    0,
+    0,
+    624,
+    627,
+    5,
+    57,
+    0,
+    0,
+    625,
+    626,
+    5,
+    86,
+    0,
+    0,
+    626,
+    628,
+    7,
+    7,
+    0,
+    0,
+    627,
+    625,
+    1,
+    0,
+    0,
+    0,
+    627,
+    628,
+    1,
+    0,
+    0,
+    0,
+    628,
+    630,
+    1,
+    0,
+    0,
+    0,
+    629,
+    622,
+    1,
+    0,
+    0,
+    0,
+    629,
+    630,
+    1,
+    0,
+    0,
+    0,
+    630,
+    39,
+    1,
+    0,
+    0,
+    0,
+    631,
+    632,
+    5,
+    107,
+    0,
+    0,
+    632,
+    633,
+    5,
+    48,
+    0,
+    0,
+    633,
+    634,
+    7,
+    8,
+    0,
+    0,
+    634,
+    41,
+    1,
+    0,
+    0,
+    0,
+    635,
+    637,
+    5,
+    50,
+    0,
+    0,
+    636,
+    638,
+    7,
+    2,
+    0,
+    0,
+    637,
+    636,
+    1,
+    0,
+    0,
+    0,
+    637,
+    638,
+    1,
+    0,
+    0,
+    0,
+    638,
+    639,
+    1,
+    0,
+    0,
+    0,
+    639,
+    643,
+    5,
+    138,
+    0,
+    0,
+    640,
+    641,
+    5,
+    80,
+    0,
+    0,
+    641,
+    642,
+    5,
+    102,
+    0,
+    0,
+    642,
+    644,
+    5,
+    70,
+    0,
+    0,
+    643,
+    640,
+    1,
+    0,
+    0,
+    0,
+    643,
+    644,
+    1,
+    0,
+    0,
+    0,
+    644,
+    648,
+    1,
+    0,
+    0,
+    0,
+    645,
+    646,
+    3,
+    182,
+    91,
+    0,
+    646,
+    647,
+    5,
+    2,
+    0,
+    0,
+    647,
+    649,
+    1,
+    0,
+    0,
+    0,
+    648,
+    645,
+    1,
+    0,
+    0,
+    0,
+    648,
+    649,
+    1,
+    0,
+    0,
+    0,
+    649,
+    650,
+    1,
+    0,
+    0,
+    0,
+    650,
+    655,
+    3,
+    196,
+    98,
+    0,
+    651,
+    656,
+    5,
+    37,
+    0,
+    0,
+    652,
+    656,
+    5,
+    28,
+    0,
+    0,
+    653,
+    654,
+    5,
+    89,
+    0,
+    0,
+    654,
+    656,
+    5,
+    105,
+    0,
+    0,
+    655,
+    651,
+    1,
+    0,
+    0,
+    0,
+    655,
+    652,
+    1,
+    0,
+    0,
+    0,
+    655,
+    653,
+    1,
+    0,
+    0,
+    0,
+    655,
+    656,
+    1,
+    0,
+    0,
+    0,
+    656,
+    671,
+    1,
+    0,
+    0,
+    0,
+    657,
+    672,
+    5,
+    59,
+    0,
+    0,
+    658,
+    672,
+    5,
+    88,
+    0,
+    0,
+    659,
+    669,
+    5,
+    141,
+    0,
+    0,
+    660,
+    661,
+    5,
+    105,
+    0,
+    0,
+    661,
+    666,
+    3,
+    188,
+    94,
+    0,
+    662,
+    663,
+    5,
+    5,
+    0,
+    0,
+    663,
+    665,
+    3,
+    188,
+    94,
+    0,
+    664,
+    662,
+    1,
+    0,
+    0,
+    0,
+    665,
+    668,
+    1,
+    0,
+    0,
+    0,
+    666,
+    664,
+    1,
+    0,
+    0,
+    0,
+    666,
+    667,
+    1,
+    0,
+    0,
+    0,
+    667,
+    670,
+    1,
+    0,
+    0,
+    0,
+    668,
+    666,
+    1,
+    0,
+    0,
+    0,
+    669,
+    660,
+    1,
+    0,
+    0,
+    0,
+    669,
+    670,
+    1,
+    0,
+    0,
+    0,
+    670,
+    672,
+    1,
+    0,
+    0,
+    0,
+    671,
+    657,
+    1,
+    0,
+    0,
+    0,
+    671,
+    658,
+    1,
+    0,
+    0,
+    0,
+    671,
+    659,
+    1,
+    0,
+    0,
+    0,
+    672,
+    673,
+    1,
+    0,
+    0,
+    0,
+    673,
+    674,
+    5,
+    107,
+    0,
+    0,
+    674,
+    678,
+    3,
+    184,
+    92,
+    0,
+    675,
+    676,
+    5,
+    73,
+    0,
+    0,
+    676,
+    677,
+    5,
+    64,
+    0,
+    0,
+    677,
+    679,
+    5,
+    127,
+    0,
+    0,
+    678,
+    675,
+    1,
+    0,
+    0,
+    0,
+    678,
+    679,
+    1,
+    0,
+    0,
+    0,
+    679,
+    682,
+    1,
+    0,
+    0,
+    0,
+    680,
+    681,
+    5,
+    147,
+    0,
+    0,
+    681,
+    683,
+    3,
+    64,
+    32,
+    0,
+    682,
+    680,
+    1,
+    0,
+    0,
+    0,
+    682,
+    683,
+    1,
+    0,
+    0,
+    0,
+    683,
+    684,
+    1,
+    0,
+    0,
+    0,
+    684,
+    693,
+    5,
+    38,
+    0,
+    0,
+    685,
+    690,
+    3,
+    108,
+    54,
+    0,
+    686,
+    690,
+    3,
+    74,
+    37,
+    0,
+    687,
+    690,
+    3,
+    56,
+    28,
+    0,
+    688,
+    690,
+    3,
+    86,
+    43,
+    0,
+    689,
+    685,
+    1,
+    0,
+    0,
+    0,
+    689,
+    686,
+    1,
+    0,
+    0,
+    0,
+    689,
+    687,
+    1,
+    0,
+    0,
+    0,
+    689,
+    688,
+    1,
+    0,
+    0,
+    0,
+    690,
+    691,
+    1,
+    0,
+    0,
+    0,
+    691,
+    692,
+    5,
+    1,
+    0,
+    0,
+    692,
+    694,
+    1,
+    0,
+    0,
+    0,
+    693,
+    689,
+    1,
+    0,
+    0,
+    0,
+    694,
+    695,
+    1,
+    0,
+    0,
+    0,
+    695,
+    693,
+    1,
+    0,
+    0,
+    0,
+    695,
+    696,
+    1,
+    0,
+    0,
+    0,
+    696,
+    697,
+    1,
+    0,
+    0,
+    0,
+    697,
+    698,
+    5,
+    66,
+    0,
+    0,
+    698,
+    43,
+    1,
+    0,
+    0,
+    0,
+    699,
+    701,
+    5,
+    50,
+    0,
+    0,
+    700,
+    702,
+    7,
+    2,
+    0,
+    0,
+    701,
+    700,
+    1,
+    0,
+    0,
+    0,
+    701,
+    702,
+    1,
+    0,
+    0,
+    0,
+    702,
+    703,
+    1,
+    0,
+    0,
+    0,
+    703,
+    707,
+    5,
+    145,
+    0,
+    0,
+    704,
+    705,
+    5,
+    80,
+    0,
+    0,
+    705,
+    706,
+    5,
+    102,
+    0,
+    0,
+    706,
+    708,
+    5,
+    70,
+    0,
+    0,
+    707,
+    704,
+    1,
+    0,
+    0,
+    0,
+    707,
+    708,
+    1,
+    0,
+    0,
+    0,
+    708,
+    712,
+    1,
+    0,
+    0,
+    0,
+    709,
+    710,
+    3,
+    182,
+    91,
+    0,
+    710,
+    711,
+    5,
+    2,
+    0,
+    0,
+    711,
+    713,
+    1,
+    0,
+    0,
+    0,
+    712,
+    709,
+    1,
+    0,
+    0,
+    0,
+    712,
+    713,
+    1,
+    0,
+    0,
+    0,
+    713,
+    714,
+    1,
+    0,
+    0,
+    0,
+    714,
+    726,
+    3,
+    198,
+    99,
+    0,
+    715,
+    716,
+    5,
+    3,
+    0,
+    0,
+    716,
+    721,
+    3,
+    188,
+    94,
+    0,
+    717,
+    718,
+    5,
+    5,
+    0,
+    0,
+    718,
+    720,
+    3,
+    188,
+    94,
+    0,
+    719,
+    717,
+    1,
+    0,
+    0,
+    0,
+    720,
+    723,
+    1,
+    0,
+    0,
+    0,
+    721,
+    719,
+    1,
+    0,
+    0,
+    0,
+    721,
+    722,
+    1,
+    0,
+    0,
+    0,
+    722,
+    724,
+    1,
+    0,
+    0,
+    0,
+    723,
+    721,
+    1,
+    0,
+    0,
+    0,
+    724,
+    725,
+    5,
+    4,
+    0,
+    0,
+    725,
+    727,
+    1,
+    0,
+    0,
+    0,
+    726,
+    715,
+    1,
+    0,
+    0,
+    0,
+    726,
+    727,
+    1,
+    0,
+    0,
+    0,
+    727,
+    728,
+    1,
+    0,
+    0,
+    0,
+    728,
+    729,
+    5,
+    33,
+    0,
+    0,
+    729,
+    730,
+    3,
+    86,
+    43,
+    0,
+    730,
+    45,
+    1,
+    0,
+    0,
+    0,
+    731,
+    732,
+    5,
+    50,
+    0,
+    0,
+    732,
+    733,
+    5,
+    146,
+    0,
+    0,
+    733,
+    737,
+    5,
+    132,
+    0,
+    0,
+    734,
+    735,
+    5,
+    80,
+    0,
+    0,
+    735,
+    736,
+    5,
+    102,
+    0,
+    0,
+    736,
+    738,
+    5,
+    70,
+    0,
+    0,
+    737,
+    734,
+    1,
+    0,
+    0,
+    0,
+    737,
+    738,
+    1,
+    0,
+    0,
+    0,
+    738,
+    742,
+    1,
+    0,
+    0,
+    0,
+    739,
+    740,
+    3,
+    182,
+    91,
+    0,
+    740,
+    741,
+    5,
+    2,
+    0,
+    0,
+    741,
+    743,
+    1,
+    0,
+    0,
+    0,
+    742,
+    739,
+    1,
+    0,
+    0,
+    0,
+    742,
+    743,
+    1,
+    0,
+    0,
+    0,
+    743,
+    744,
+    1,
+    0,
+    0,
+    0,
+    744,
+    745,
+    3,
+    184,
+    92,
+    0,
+    745,
+    746,
+    5,
+    142,
+    0,
+    0,
+    746,
+    758,
+    3,
+    200,
+    100,
+    0,
+    747,
+    748,
+    5,
+    3,
+    0,
+    0,
+    748,
+    753,
+    3,
+    172,
+    86,
+    0,
+    749,
+    750,
+    5,
+    5,
+    0,
+    0,
+    750,
+    752,
+    3,
+    172,
+    86,
+    0,
+    751,
+    749,
+    1,
+    0,
+    0,
+    0,
+    752,
+    755,
+    1,
+    0,
+    0,
+    0,
+    753,
+    751,
+    1,
+    0,
+    0,
+    0,
+    753,
+    754,
+    1,
+    0,
+    0,
+    0,
+    754,
+    756,
+    1,
+    0,
+    0,
+    0,
+    755,
+    753,
+    1,
+    0,
+    0,
+    0,
+    756,
+    757,
+    5,
+    4,
+    0,
+    0,
+    757,
+    759,
+    1,
+    0,
+    0,
+    0,
+    758,
+    747,
+    1,
+    0,
+    0,
+    0,
+    758,
+    759,
+    1,
+    0,
+    0,
+    0,
+    759,
+    47,
+    1,
+    0,
+    0,
+    0,
+    760,
+    762,
+    5,
+    149,
+    0,
+    0,
+    761,
+    763,
+    5,
+    116,
+    0,
+    0,
+    762,
+    761,
+    1,
+    0,
+    0,
+    0,
+    762,
+    763,
+    1,
+    0,
+    0,
+    0,
+    763,
+    764,
+    1,
+    0,
+    0,
+    0,
+    764,
+    765,
+    3,
+    50,
+    25,
+    0,
+    765,
+    766,
+    5,
+    33,
+    0,
+    0,
+    766,
+    767,
+    5,
+    3,
+    0,
+    0,
+    767,
+    768,
+    3,
+    86,
+    43,
+    0,
+    768,
+    778,
+    5,
+    4,
+    0,
+    0,
+    769,
+    770,
+    5,
+    5,
+    0,
+    0,
+    770,
+    771,
+    3,
+    50,
+    25,
+    0,
+    771,
+    772,
+    5,
+    33,
+    0,
+    0,
+    772,
+    773,
+    5,
+    3,
+    0,
+    0,
+    773,
+    774,
+    3,
+    86,
+    43,
+    0,
+    774,
+    775,
+    5,
+    4,
+    0,
+    0,
+    775,
+    777,
+    1,
+    0,
+    0,
+    0,
+    776,
+    769,
+    1,
+    0,
+    0,
+    0,
+    777,
+    780,
+    1,
+    0,
+    0,
+    0,
+    778,
+    776,
+    1,
+    0,
+    0,
+    0,
+    778,
+    779,
+    1,
+    0,
+    0,
+    0,
+    779,
+    49,
+    1,
+    0,
+    0,
+    0,
+    780,
+    778,
+    1,
+    0,
+    0,
+    0,
+    781,
+    793,
+    3,
+    184,
+    92,
+    0,
+    782,
+    783,
+    5,
+    3,
+    0,
+    0,
+    783,
+    788,
+    3,
+    188,
+    94,
+    0,
+    784,
+    785,
+    5,
+    5,
+    0,
+    0,
+    785,
+    787,
+    3,
+    188,
+    94,
+    0,
+    786,
+    784,
+    1,
+    0,
+    0,
+    0,
+    787,
+    790,
+    1,
+    0,
+    0,
+    0,
+    788,
+    786,
+    1,
+    0,
+    0,
+    0,
+    788,
+    789,
+    1,
+    0,
+    0,
+    0,
+    789,
+    791,
+    1,
+    0,
+    0,
+    0,
+    790,
+    788,
+    1,
+    0,
+    0,
+    0,
+    791,
+    792,
+    5,
+    4,
+    0,
+    0,
+    792,
+    794,
+    1,
+    0,
+    0,
+    0,
+    793,
+    782,
+    1,
+    0,
+    0,
+    0,
+    793,
+    794,
+    1,
+    0,
+    0,
+    0,
+    794,
+    51,
+    1,
+    0,
+    0,
+    0,
+    795,
+    796,
+    3,
+    50,
+    25,
+    0,
+    796,
+    797,
+    5,
+    33,
+    0,
+    0,
+    797,
+    798,
+    5,
+    3,
+    0,
+    0,
+    798,
+    799,
+    3,
+    164,
+    82,
+    0,
+    799,
+    801,
+    5,
+    139,
+    0,
+    0,
+    800,
+    802,
+    5,
+    29,
+    0,
+    0,
+    801,
+    800,
+    1,
+    0,
+    0,
+    0,
+    801,
+    802,
+    1,
+    0,
+    0,
+    0,
+    802,
+    803,
+    1,
+    0,
+    0,
+    0,
+    803,
+    804,
+    3,
+    166,
+    83,
+    0,
+    804,
+    805,
+    5,
+    4,
+    0,
+    0,
+    805,
+    53,
+    1,
+    0,
+    0,
+    0,
+    806,
+    818,
+    3,
+    184,
+    92,
+    0,
+    807,
+    808,
+    5,
+    3,
+    0,
+    0,
+    808,
+    813,
+    3,
+    188,
+    94,
+    0,
+    809,
+    810,
+    5,
+    5,
+    0,
+    0,
+    810,
+    812,
+    3,
+    188,
+    94,
+    0,
+    811,
+    809,
+    1,
+    0,
+    0,
+    0,
+    812,
+    815,
+    1,
+    0,
+    0,
+    0,
+    813,
+    811,
+    1,
+    0,
+    0,
+    0,
+    813,
+    814,
+    1,
+    0,
+    0,
+    0,
+    814,
+    816,
+    1,
+    0,
+    0,
+    0,
+    815,
+    813,
+    1,
+    0,
+    0,
+    0,
+    816,
+    817,
+    5,
+    4,
+    0,
+    0,
+    817,
+    819,
+    1,
+    0,
+    0,
+    0,
+    818,
+    807,
+    1,
+    0,
+    0,
+    0,
+    818,
+    819,
+    1,
+    0,
+    0,
+    0,
+    819,
+    820,
+    1,
+    0,
+    0,
+    0,
+    820,
+    821,
+    5,
+    33,
+    0,
+    0,
+    821,
+    822,
+    5,
+    3,
+    0,
+    0,
+    822,
+    823,
+    3,
+    86,
+    43,
+    0,
+    823,
+    824,
+    5,
+    4,
+    0,
+    0,
+    824,
+    55,
+    1,
+    0,
+    0,
+    0,
+    825,
+    827,
+    3,
+    48,
+    24,
+    0,
+    826,
+    825,
+    1,
+    0,
+    0,
+    0,
+    826,
+    827,
+    1,
+    0,
+    0,
+    0,
+    827,
+    828,
+    1,
+    0,
+    0,
+    0,
+    828,
+    829,
+    5,
+    59,
+    0,
+    0,
+    829,
+    830,
+    5,
+    75,
+    0,
+    0,
+    830,
+    833,
+    3,
+    114,
+    57,
+    0,
+    831,
+    832,
+    5,
+    148,
+    0,
+    0,
+    832,
+    834,
+    3,
+    64,
+    32,
+    0,
+    833,
+    831,
+    1,
+    0,
+    0,
+    0,
+    833,
+    834,
+    1,
+    0,
+    0,
+    0,
+    834,
+    836,
+    1,
+    0,
+    0,
+    0,
+    835,
+    837,
+    3,
+    76,
+    38,
+    0,
+    836,
+    835,
+    1,
+    0,
+    0,
+    0,
+    836,
+    837,
+    1,
+    0,
+    0,
+    0,
+    837,
+    57,
+    1,
+    0,
+    0,
+    0,
+    838,
+    840,
+    3,
+    48,
+    24,
+    0,
+    839,
+    838,
+    1,
+    0,
+    0,
+    0,
+    839,
+    840,
+    1,
+    0,
+    0,
+    0,
+    840,
+    841,
+    1,
+    0,
+    0,
+    0,
+    841,
+    842,
+    5,
+    59,
+    0,
+    0,
+    842,
+    843,
+    5,
+    75,
+    0,
+    0,
+    843,
+    846,
+    3,
+    114,
+    57,
+    0,
+    844,
+    845,
+    5,
+    148,
+    0,
+    0,
+    845,
+    847,
+    3,
+    64,
+    32,
+    0,
+    846,
+    844,
+    1,
+    0,
+    0,
+    0,
+    846,
+    847,
+    1,
+    0,
+    0,
+    0,
+    847,
+    849,
+    1,
+    0,
+    0,
+    0,
+    848,
+    850,
+    3,
+    76,
+    38,
+    0,
+    849,
+    848,
+    1,
+    0,
+    0,
+    0,
+    849,
+    850,
+    1,
+    0,
+    0,
+    0,
+    850,
+    855,
+    1,
+    0,
+    0,
+    0,
+    851,
+    853,
+    3,
+    136,
+    68,
+    0,
+    852,
+    851,
+    1,
+    0,
+    0,
+    0,
+    852,
+    853,
+    1,
+    0,
+    0,
+    0,
+    853,
+    854,
+    1,
+    0,
+    0,
+    0,
+    854,
+    856,
+    3,
+    138,
+    69,
+    0,
+    855,
+    852,
+    1,
+    0,
+    0,
+    0,
+    855,
+    856,
+    1,
+    0,
+    0,
+    0,
+    856,
+    59,
+    1,
+    0,
+    0,
+    0,
+    857,
+    859,
+    5,
+    61,
+    0,
+    0,
+    858,
+    860,
+    5,
+    55,
+    0,
+    0,
+    859,
+    858,
+    1,
+    0,
+    0,
+    0,
+    859,
+    860,
+    1,
+    0,
+    0,
+    0,
+    860,
+    861,
+    1,
+    0,
+    0,
+    0,
+    861,
+    862,
+    3,
+    182,
+    91,
+    0,
+    862,
+    61,
+    1,
+    0,
+    0,
+    0,
+    863,
+    864,
+    5,
+    63,
+    0,
+    0,
+    864,
+    867,
+    7,
+    9,
+    0,
+    0,
+    865,
+    866,
+    5,
+    80,
+    0,
+    0,
+    866,
+    868,
+    5,
+    70,
+    0,
+    0,
+    867,
+    865,
+    1,
+    0,
+    0,
+    0,
+    867,
+    868,
+    1,
+    0,
+    0,
+    0,
+    868,
+    872,
+    1,
+    0,
+    0,
+    0,
+    869,
+    870,
+    3,
+    182,
+    91,
+    0,
+    870,
+    871,
+    5,
+    2,
+    0,
+    0,
+    871,
+    873,
+    1,
+    0,
+    0,
+    0,
+    872,
+    869,
+    1,
+    0,
+    0,
+    0,
+    872,
+    873,
+    1,
+    0,
+    0,
+    0,
+    873,
+    874,
+    1,
+    0,
+    0,
+    0,
+    874,
+    875,
+    3,
+    224,
+    112,
+    0,
+    875,
+    63,
+    1,
+    0,
+    0,
+    0,
+    876,
+    877,
+    6,
+    32,
+    -1,
+    0,
+    877,
+    965,
+    3,
+    68,
+    34,
+    0,
+    878,
+    965,
+    5,
+    187,
+    0,
+    0,
+    879,
+    880,
+    3,
+    182,
+    91,
+    0,
+    880,
+    881,
+    5,
+    2,
+    0,
+    0,
+    881,
+    883,
+    1,
+    0,
+    0,
+    0,
+    882,
+    879,
+    1,
+    0,
+    0,
+    0,
+    882,
+    883,
+    1,
+    0,
+    0,
+    0,
+    883,
+    884,
+    1,
+    0,
+    0,
+    0,
+    884,
+    885,
+    3,
+    184,
+    92,
+    0,
+    885,
+    886,
+    5,
+    2,
+    0,
+    0,
+    886,
+    888,
+    1,
+    0,
+    0,
+    0,
+    887,
+    882,
+    1,
+    0,
+    0,
+    0,
+    887,
+    888,
+    1,
+    0,
+    0,
+    0,
+    888,
+    889,
+    1,
+    0,
+    0,
+    0,
+    889,
+    965,
+    3,
+    188,
+    94,
+    0,
+    890,
+    891,
+    3,
+    168,
+    84,
+    0,
+    891,
+    892,
+    3,
+    64,
+    32,
+    21,
+    892,
+    965,
+    1,
+    0,
+    0,
+    0,
+    893,
+    894,
+    3,
+    180,
+    90,
+    0,
+    894,
+    907,
+    5,
+    3,
+    0,
+    0,
+    895,
+    897,
+    5,
+    62,
+    0,
+    0,
+    896,
+    895,
+    1,
+    0,
+    0,
+    0,
+    896,
+    897,
+    1,
+    0,
+    0,
+    0,
+    897,
+    898,
+    1,
+    0,
+    0,
+    0,
+    898,
+    903,
+    3,
+    64,
+    32,
+    0,
+    899,
+    900,
+    5,
+    5,
+    0,
+    0,
+    900,
+    902,
+    3,
+    64,
+    32,
+    0,
+    901,
+    899,
+    1,
+    0,
+    0,
+    0,
+    902,
+    905,
+    1,
+    0,
+    0,
+    0,
+    903,
+    901,
+    1,
+    0,
+    0,
+    0,
+    903,
+    904,
+    1,
+    0,
+    0,
+    0,
+    904,
+    908,
+    1,
+    0,
+    0,
+    0,
+    905,
+    903,
+    1,
+    0,
+    0,
+    0,
+    906,
+    908,
+    5,
+    7,
+    0,
+    0,
+    907,
+    896,
+    1,
+    0,
+    0,
+    0,
+    907,
+    906,
+    1,
+    0,
+    0,
+    0,
+    907,
+    908,
+    1,
+    0,
+    0,
+    0,
+    908,
+    909,
+    1,
+    0,
+    0,
+    0,
+    909,
+    911,
+    5,
+    4,
+    0,
+    0,
+    910,
+    912,
+    3,
+    118,
+    59,
+    0,
+    911,
+    910,
+    1,
+    0,
+    0,
+    0,
+    911,
+    912,
+    1,
+    0,
+    0,
+    0,
+    912,
+    914,
+    1,
+    0,
+    0,
+    0,
+    913,
+    915,
+    3,
+    122,
+    61,
+    0,
+    914,
+    913,
+    1,
+    0,
+    0,
+    0,
+    914,
+    915,
+    1,
+    0,
+    0,
+    0,
+    915,
+    965,
+    1,
+    0,
+    0,
+    0,
+    916,
+    917,
+    5,
+    3,
+    0,
+    0,
+    917,
+    922,
+    3,
+    64,
+    32,
+    0,
+    918,
+    919,
+    5,
+    5,
+    0,
+    0,
+    919,
+    921,
+    3,
+    64,
+    32,
+    0,
+    920,
+    918,
+    1,
+    0,
+    0,
+    0,
+    921,
+    924,
+    1,
+    0,
+    0,
+    0,
+    922,
+    920,
+    1,
+    0,
+    0,
+    0,
+    922,
+    923,
+    1,
+    0,
+    0,
+    0,
+    923,
+    925,
+    1,
+    0,
+    0,
+    0,
+    924,
+    922,
+    1,
+    0,
+    0,
+    0,
+    925,
+    926,
+    5,
+    4,
+    0,
+    0,
+    926,
+    965,
+    1,
+    0,
+    0,
+    0,
+    927,
+    928,
+    5,
+    43,
+    0,
+    0,
+    928,
+    929,
+    5,
+    3,
+    0,
+    0,
+    929,
+    930,
+    3,
+    64,
+    32,
+    0,
+    930,
+    931,
+    5,
+    33,
+    0,
+    0,
+    931,
+    932,
+    3,
+    30,
+    15,
+    0,
+    932,
+    933,
+    5,
+    4,
+    0,
+    0,
+    933,
+    965,
+    1,
+    0,
+    0,
+    0,
+    934,
+    936,
+    5,
+    102,
+    0,
+    0,
+    935,
+    934,
+    1,
+    0,
+    0,
+    0,
+    935,
+    936,
+    1,
+    0,
+    0,
+    0,
+    936,
+    937,
+    1,
+    0,
+    0,
+    0,
+    937,
+    939,
+    5,
+    70,
+    0,
+    0,
+    938,
+    935,
+    1,
+    0,
+    0,
+    0,
+    938,
+    939,
+    1,
+    0,
+    0,
+    0,
+    939,
+    940,
+    1,
+    0,
+    0,
+    0,
+    940,
+    941,
+    5,
+    3,
+    0,
+    0,
+    941,
+    942,
+    3,
+    86,
+    43,
+    0,
+    942,
+    943,
+    5,
+    4,
+    0,
+    0,
+    943,
+    965,
+    1,
+    0,
+    0,
+    0,
+    944,
+    946,
+    5,
+    42,
+    0,
+    0,
+    945,
+    947,
+    3,
+    64,
+    32,
+    0,
+    946,
+    945,
+    1,
+    0,
+    0,
+    0,
+    946,
+    947,
+    1,
+    0,
+    0,
+    0,
+    947,
+    953,
+    1,
+    0,
+    0,
+    0,
+    948,
+    949,
+    5,
+    147,
+    0,
+    0,
+    949,
+    950,
+    3,
+    64,
+    32,
+    0,
+    950,
+    951,
+    5,
+    135,
+    0,
+    0,
+    951,
+    952,
+    3,
+    64,
+    32,
+    0,
+    952,
+    954,
+    1,
+    0,
+    0,
+    0,
+    953,
+    948,
+    1,
+    0,
+    0,
+    0,
+    954,
+    955,
+    1,
+    0,
+    0,
+    0,
+    955,
+    953,
+    1,
+    0,
+    0,
+    0,
+    955,
+    956,
+    1,
+    0,
+    0,
+    0,
+    956,
+    959,
+    1,
+    0,
+    0,
+    0,
+    957,
+    958,
+    5,
+    65,
+    0,
+    0,
+    958,
+    960,
+    3,
+    64,
+    32,
+    0,
+    959,
+    957,
+    1,
+    0,
+    0,
+    0,
+    959,
+    960,
+    1,
+    0,
+    0,
+    0,
+    960,
+    961,
+    1,
+    0,
+    0,
+    0,
+    961,
+    962,
+    5,
+    66,
+    0,
+    0,
+    962,
+    965,
+    1,
+    0,
+    0,
+    0,
+    963,
+    965,
+    3,
+    66,
+    33,
+    0,
+    964,
+    876,
+    1,
+    0,
+    0,
+    0,
+    964,
+    878,
+    1,
+    0,
+    0,
+    0,
+    964,
+    887,
+    1,
+    0,
+    0,
+    0,
+    964,
+    890,
+    1,
+    0,
+    0,
+    0,
+    964,
+    893,
+    1,
+    0,
+    0,
+    0,
+    964,
+    916,
+    1,
+    0,
+    0,
+    0,
+    964,
+    927,
+    1,
+    0,
+    0,
+    0,
+    964,
+    938,
+    1,
+    0,
+    0,
+    0,
+    964,
+    944,
+    1,
+    0,
+    0,
+    0,
+    964,
+    963,
+    1,
+    0,
+    0,
+    0,
+    965,
+    1085,
+    1,
+    0,
+    0,
+    0,
+    966,
+    967,
+    10,
+    20,
+    0,
+    0,
+    967,
+    968,
+    5,
+    11,
+    0,
+    0,
+    968,
+    1084,
+    3,
+    64,
+    32,
+    21,
+    969,
+    970,
+    10,
+    19,
+    0,
+    0,
+    970,
+    971,
+    7,
+    10,
+    0,
+    0,
+    971,
+    1084,
+    3,
+    64,
+    32,
+    20,
+    972,
+    973,
+    10,
+    18,
+    0,
+    0,
+    973,
+    974,
+    7,
+    4,
+    0,
+    0,
+    974,
+    1084,
+    3,
+    64,
+    32,
+    19,
+    975,
+    976,
+    10,
+    17,
+    0,
+    0,
+    976,
+    977,
+    7,
+    11,
+    0,
+    0,
+    977,
+    1084,
+    3,
+    64,
+    32,
+    18,
+    978,
+    979,
+    10,
+    16,
+    0,
+    0,
+    979,
+    980,
+    7,
+    12,
+    0,
+    0,
+    980,
+    1084,
+    3,
+    64,
+    32,
+    17,
+    981,
+    994,
+    10,
+    15,
+    0,
+    0,
+    982,
+    995,
+    5,
+    6,
+    0,
+    0,
+    983,
+    995,
+    5,
+    22,
+    0,
+    0,
+    984,
+    995,
+    5,
+    23,
+    0,
+    0,
+    985,
+    995,
+    5,
+    24,
+    0,
+    0,
+    986,
+    995,
+    5,
+    92,
+    0,
+    0,
+    987,
+    988,
+    5,
+    92,
+    0,
+    0,
+    988,
+    995,
+    5,
+    102,
+    0,
+    0,
+    989,
+    995,
+    5,
+    83,
+    0,
+    0,
+    990,
+    995,
+    5,
+    97,
+    0,
+    0,
+    991,
+    995,
+    5,
+    77,
+    0,
+    0,
+    992,
+    995,
+    5,
+    99,
+    0,
+    0,
+    993,
+    995,
+    5,
+    118,
+    0,
+    0,
+    994,
+    982,
+    1,
+    0,
+    0,
+    0,
+    994,
+    983,
+    1,
+    0,
+    0,
+    0,
+    994,
+    984,
+    1,
+    0,
+    0,
+    0,
+    994,
+    985,
+    1,
+    0,
+    0,
+    0,
+    994,
+    986,
+    1,
+    0,
+    0,
+    0,
+    994,
+    987,
+    1,
+    0,
+    0,
+    0,
+    994,
+    989,
+    1,
+    0,
+    0,
+    0,
+    994,
+    990,
+    1,
+    0,
+    0,
+    0,
+    994,
+    991,
+    1,
+    0,
+    0,
+    0,
+    994,
+    992,
+    1,
+    0,
+    0,
+    0,
+    994,
+    993,
+    1,
+    0,
+    0,
+    0,
+    995,
+    996,
+    1,
+    0,
+    0,
+    0,
+    996,
+    1084,
+    3,
+    64,
+    32,
+    16,
+    997,
+    998,
+    10,
+    14,
+    0,
+    0,
+    998,
+    999,
+    5,
+    32,
+    0,
+    0,
+    999,
+    1084,
+    3,
+    64,
+    32,
+    15,
+    1000,
+    1001,
+    10,
+    13,
+    0,
+    0,
+    1001,
+    1002,
+    5,
+    108,
+    0,
+    0,
+    1002,
+    1084,
+    3,
+    64,
+    32,
+    14,
+    1003,
+    1004,
+    10,
+    6,
+    0,
+    0,
+    1004,
+    1006,
+    5,
+    92,
+    0,
+    0,
+    1005,
+    1007,
+    5,
+    102,
+    0,
+    0,
+    1006,
+    1005,
+    1,
+    0,
+    0,
+    0,
+    1006,
+    1007,
+    1,
+    0,
+    0,
+    0,
+    1007,
+    1008,
+    1,
+    0,
+    0,
+    0,
+    1008,
+    1084,
+    3,
+    64,
+    32,
+    7,
+    1009,
+    1011,
+    10,
+    5,
+    0,
+    0,
+    1010,
+    1012,
+    5,
+    102,
+    0,
+    0,
+    1011,
+    1010,
+    1,
+    0,
+    0,
+    0,
+    1011,
+    1012,
+    1,
+    0,
+    0,
+    0,
+    1012,
+    1013,
+    1,
+    0,
+    0,
+    0,
+    1013,
+    1014,
+    5,
+    39,
+    0,
+    0,
+    1014,
+    1015,
+    3,
+    64,
+    32,
+    0,
+    1015,
+    1016,
+    5,
+    32,
+    0,
+    0,
+    1016,
+    1017,
+    3,
+    64,
+    32,
+    6,
+    1017,
+    1084,
+    1,
+    0,
+    0,
+    0,
+    1018,
+    1019,
+    10,
+    9,
+    0,
+    0,
+    1019,
+    1020,
+    5,
+    45,
+    0,
+    0,
+    1020,
+    1084,
+    3,
+    190,
+    95,
+    0,
+    1021,
+    1023,
+    10,
+    8,
+    0,
+    0,
+    1022,
+    1024,
+    5,
+    102,
+    0,
+    0,
+    1023,
+    1022,
+    1,
+    0,
+    0,
+    0,
+    1023,
+    1024,
+    1,
+    0,
+    0,
+    0,
+    1024,
+    1025,
+    1,
+    0,
+    0,
+    0,
+    1025,
+    1026,
+    7,
+    13,
+    0,
+    0,
+    1026,
+    1029,
+    3,
+    64,
+    32,
+    0,
+    1027,
+    1028,
+    5,
+    67,
+    0,
+    0,
+    1028,
+    1030,
+    3,
+    64,
+    32,
+    0,
+    1029,
+    1027,
+    1,
+    0,
+    0,
+    0,
+    1029,
+    1030,
+    1,
+    0,
+    0,
+    0,
+    1030,
+    1084,
+    1,
+    0,
+    0,
+    0,
+    1031,
+    1036,
+    10,
+    7,
+    0,
+    0,
+    1032,
+    1037,
+    5,
+    93,
+    0,
+    0,
+    1033,
+    1037,
+    5,
+    103,
+    0,
+    0,
+    1034,
+    1035,
+    5,
+    102,
+    0,
+    0,
+    1035,
+    1037,
+    5,
+    104,
+    0,
+    0,
+    1036,
+    1032,
+    1,
+    0,
+    0,
+    0,
+    1036,
+    1033,
+    1,
+    0,
+    0,
+    0,
+    1036,
+    1034,
+    1,
+    0,
+    0,
+    0,
+    1037,
+    1084,
+    1,
+    0,
+    0,
+    0,
+    1038,
+    1040,
+    10,
+    4,
+    0,
+    0,
+    1039,
+    1041,
+    5,
+    102,
+    0,
+    0,
+    1040,
+    1039,
+    1,
+    0,
+    0,
+    0,
+    1040,
+    1041,
+    1,
+    0,
+    0,
+    0,
+    1041,
+    1042,
+    1,
+    0,
+    0,
+    0,
+    1042,
+    1081,
+    5,
+    83,
+    0,
+    0,
+    1043,
+    1053,
+    5,
+    3,
+    0,
+    0,
+    1044,
+    1054,
+    3,
+    86,
+    43,
+    0,
+    1045,
+    1050,
+    3,
+    64,
+    32,
+    0,
+    1046,
+    1047,
+    5,
+    5,
+    0,
+    0,
+    1047,
+    1049,
+    3,
+    64,
+    32,
+    0,
+    1048,
+    1046,
+    1,
+    0,
+    0,
+    0,
+    1049,
+    1052,
+    1,
+    0,
+    0,
+    0,
+    1050,
+    1048,
+    1,
+    0,
+    0,
+    0,
+    1050,
+    1051,
+    1,
+    0,
+    0,
+    0,
+    1051,
+    1054,
+    1,
+    0,
+    0,
+    0,
+    1052,
+    1050,
+    1,
+    0,
+    0,
+    0,
+    1053,
+    1044,
+    1,
+    0,
+    0,
+    0,
+    1053,
+    1045,
+    1,
+    0,
+    0,
+    0,
+    1053,
+    1054,
+    1,
+    0,
+    0,
+    0,
+    1054,
+    1055,
+    1,
+    0,
+    0,
+    0,
+    1055,
+    1082,
+    5,
+    4,
+    0,
+    0,
+    1056,
+    1057,
+    3,
+    182,
+    91,
+    0,
+    1057,
+    1058,
+    5,
+    2,
+    0,
+    0,
+    1058,
+    1060,
+    1,
+    0,
+    0,
+    0,
+    1059,
+    1056,
+    1,
+    0,
+    0,
+    0,
+    1059,
+    1060,
+    1,
+    0,
+    0,
+    0,
+    1060,
+    1061,
+    1,
+    0,
+    0,
+    0,
+    1061,
+    1082,
+    3,
+    184,
+    92,
+    0,
+    1062,
+    1063,
+    3,
+    182,
+    91,
+    0,
+    1063,
+    1064,
+    5,
+    2,
+    0,
+    0,
+    1064,
+    1066,
+    1,
+    0,
+    0,
+    0,
+    1065,
+    1062,
+    1,
+    0,
+    0,
+    0,
+    1065,
+    1066,
+    1,
+    0,
+    0,
+    0,
+    1066,
+    1067,
+    1,
+    0,
+    0,
+    0,
+    1067,
+    1068,
+    3,
+    222,
+    111,
+    0,
+    1068,
+    1077,
+    5,
+    3,
+    0,
+    0,
+    1069,
+    1074,
+    3,
+    64,
+    32,
+    0,
+    1070,
+    1071,
+    5,
+    5,
+    0,
+    0,
+    1071,
+    1073,
+    3,
+    64,
+    32,
+    0,
+    1072,
+    1070,
+    1,
+    0,
+    0,
+    0,
+    1073,
+    1076,
+    1,
+    0,
+    0,
+    0,
+    1074,
+    1072,
+    1,
+    0,
+    0,
+    0,
+    1074,
+    1075,
+    1,
+    0,
+    0,
+    0,
+    1075,
+    1078,
+    1,
+    0,
+    0,
+    0,
+    1076,
+    1074,
+    1,
+    0,
+    0,
+    0,
+    1077,
+    1069,
+    1,
+    0,
+    0,
+    0,
+    1077,
+    1078,
+    1,
+    0,
+    0,
+    0,
+    1078,
+    1079,
+    1,
+    0,
+    0,
+    0,
+    1079,
+    1080,
+    5,
+    4,
+    0,
+    0,
+    1080,
+    1082,
+    1,
+    0,
+    0,
+    0,
+    1081,
+    1043,
+    1,
+    0,
+    0,
+    0,
+    1081,
+    1059,
+    1,
+    0,
+    0,
+    0,
+    1081,
+    1065,
+    1,
+    0,
+    0,
+    0,
+    1082,
+    1084,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    966,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    969,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    972,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    975,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    978,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    981,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    997,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    1000,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    1003,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    1009,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    1018,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    1021,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    1031,
+    1,
+    0,
+    0,
+    0,
+    1083,
+    1038,
+    1,
+    0,
+    0,
+    0,
+    1084,
+    1087,
+    1,
+    0,
+    0,
+    0,
+    1085,
+    1083,
+    1,
+    0,
+    0,
+    0,
+    1085,
+    1086,
+    1,
+    0,
+    0,
+    0,
+    1086,
+    65,
+    1,
+    0,
+    0,
+    0,
+    1087,
+    1085,
+    1,
+    0,
+    0,
+    0,
+    1088,
+    1089,
+    5,
+    115,
+    0,
+    0,
+    1089,
+    1094,
+    5,
+    3,
+    0,
+    0,
+    1090,
+    1095,
+    5,
+    81,
+    0,
+    0,
+    1091,
+    1092,
+    7,
+    14,
+    0,
+    0,
+    1092,
+    1093,
+    5,
+    5,
+    0,
+    0,
+    1093,
+    1095,
+    3,
+    170,
+    85,
+    0,
+    1094,
+    1090,
+    1,
+    0,
+    0,
+    0,
+    1094,
+    1091,
+    1,
+    0,
+    0,
+    0,
+    1095,
+    1096,
+    1,
+    0,
+    0,
+    0,
+    1096,
+    1097,
+    5,
+    4,
+    0,
+    0,
+    1097,
+    67,
+    1,
+    0,
+    0,
+    0,
+    1098,
+    1099,
+    7,
+    15,
+    0,
+    0,
+    1099,
+    69,
+    1,
+    0,
+    0,
+    0,
+    1100,
+    1101,
+    5,
+    3,
+    0,
+    0,
+    1101,
+    1106,
+    3,
+    64,
+    32,
+    0,
+    1102,
+    1103,
+    5,
+    5,
+    0,
+    0,
+    1103,
+    1105,
+    3,
+    64,
+    32,
+    0,
+    1104,
+    1102,
+    1,
+    0,
+    0,
+    0,
+    1105,
+    1108,
+    1,
+    0,
+    0,
+    0,
+    1106,
+    1104,
+    1,
+    0,
+    0,
+    0,
+    1106,
+    1107,
+    1,
+    0,
+    0,
+    0,
+    1107,
+    1109,
+    1,
+    0,
+    0,
+    0,
+    1108,
+    1106,
+    1,
+    0,
+    0,
+    0,
+    1109,
+    1110,
+    5,
+    4,
+    0,
+    0,
+    1110,
+    71,
+    1,
+    0,
+    0,
+    0,
+    1111,
+    1112,
+    5,
+    144,
+    0,
+    0,
+    1112,
+    1117,
+    3,
+    70,
+    35,
+    0,
+    1113,
+    1114,
+    5,
+    5,
+    0,
+    0,
+    1114,
+    1116,
+    3,
+    70,
+    35,
+    0,
+    1115,
+    1113,
+    1,
+    0,
+    0,
+    0,
+    1116,
+    1119,
+    1,
+    0,
+    0,
+    0,
+    1117,
+    1115,
+    1,
+    0,
+    0,
+    0,
+    1117,
+    1118,
+    1,
+    0,
+    0,
+    0,
+    1118,
+    73,
+    1,
+    0,
+    0,
+    0,
+    1119,
+    1117,
+    1,
+    0,
+    0,
+    0,
+    1120,
+    1122,
+    3,
+    48,
+    24,
+    0,
+    1121,
+    1120,
+    1,
+    0,
+    0,
+    0,
+    1121,
+    1122,
+    1,
+    0,
+    0,
+    0,
+    1122,
+    1128,
+    1,
+    0,
+    0,
+    0,
+    1123,
+    1129,
+    5,
+    88,
+    0,
+    0,
+    1124,
+    1129,
+    5,
+    122,
+    0,
+    0,
+    1125,
+    1126,
+    5,
+    88,
+    0,
+    0,
+    1126,
+    1127,
+    5,
+    108,
+    0,
+    0,
+    1127,
+    1129,
+    7,
+    8,
+    0,
+    0,
+    1128,
+    1123,
+    1,
+    0,
+    0,
+    0,
+    1128,
+    1124,
+    1,
+    0,
+    0,
+    0,
+    1128,
+    1125,
+    1,
+    0,
+    0,
+    0,
+    1129,
+    1130,
+    1,
+    0,
+    0,
+    0,
+    1130,
+    1134,
+    5,
+    91,
+    0,
+    0,
+    1131,
+    1132,
+    3,
+    182,
+    91,
+    0,
+    1132,
+    1133,
+    5,
+    2,
+    0,
+    0,
+    1133,
+    1135,
+    1,
+    0,
+    0,
+    0,
+    1134,
+    1131,
+    1,
+    0,
+    0,
+    0,
+    1134,
+    1135,
+    1,
+    0,
+    0,
+    0,
+    1135,
+    1136,
+    1,
+    0,
+    0,
+    0,
+    1136,
+    1139,
+    3,
+    184,
+    92,
+    0,
+    1137,
+    1138,
+    5,
+    33,
+    0,
+    0,
+    1138,
+    1140,
+    3,
+    206,
+    103,
+    0,
+    1139,
+    1137,
+    1,
+    0,
+    0,
+    0,
+    1139,
+    1140,
+    1,
+    0,
+    0,
+    0,
+    1140,
+    1152,
+    1,
+    0,
+    0,
+    0,
+    1141,
+    1142,
+    5,
+    3,
+    0,
+    0,
+    1142,
+    1147,
+    3,
+    188,
+    94,
+    0,
+    1143,
+    1144,
+    5,
+    5,
+    0,
+    0,
+    1144,
+    1146,
+    3,
+    188,
+    94,
+    0,
+    1145,
+    1143,
+    1,
+    0,
+    0,
+    0,
+    1146,
+    1149,
+    1,
+    0,
+    0,
+    0,
+    1147,
+    1145,
+    1,
+    0,
+    0,
+    0,
+    1147,
+    1148,
+    1,
+    0,
+    0,
+    0,
+    1148,
+    1150,
+    1,
+    0,
+    0,
+    0,
+    1149,
+    1147,
+    1,
+    0,
+    0,
+    0,
+    1150,
+    1151,
+    5,
+    4,
+    0,
+    0,
+    1151,
+    1153,
+    1,
+    0,
+    0,
+    0,
+    1152,
+    1141,
+    1,
+    0,
+    0,
+    0,
+    1152,
+    1153,
+    1,
+    0,
+    0,
+    0,
+    1153,
+    1163,
+    1,
+    0,
+    0,
+    0,
+    1154,
+    1157,
+    3,
+    72,
+    36,
+    0,
+    1155,
+    1157,
+    3,
+    86,
+    43,
+    0,
+    1156,
+    1154,
+    1,
+    0,
+    0,
+    0,
+    1156,
+    1155,
+    1,
+    0,
+    0,
+    0,
+    1157,
+    1159,
+    1,
+    0,
+    0,
+    0,
+    1158,
+    1160,
+    3,
+    78,
+    39,
+    0,
+    1159,
+    1158,
+    1,
+    0,
+    0,
+    0,
+    1159,
+    1160,
+    1,
+    0,
+    0,
+    0,
+    1160,
+    1164,
+    1,
+    0,
+    0,
+    0,
+    1161,
+    1162,
+    5,
+    56,
+    0,
+    0,
+    1162,
+    1164,
+    5,
+    144,
+    0,
+    0,
+    1163,
+    1156,
+    1,
+    0,
+    0,
+    0,
+    1163,
+    1161,
+    1,
+    0,
+    0,
+    0,
+    1164,
+    1166,
+    1,
+    0,
+    0,
+    0,
+    1165,
+    1167,
+    3,
+    76,
+    38,
+    0,
+    1166,
+    1165,
+    1,
+    0,
+    0,
+    0,
+    1166,
+    1167,
+    1,
+    0,
+    0,
+    0,
+    1167,
+    75,
+    1,
+    0,
+    0,
+    0,
+    1168,
+    1169,
+    5,
+    124,
+    0,
+    0,
+    1169,
+    1174,
+    3,
+    100,
+    50,
+    0,
+    1170,
+    1171,
+    5,
+    5,
+    0,
+    0,
+    1171,
+    1173,
+    3,
+    100,
+    50,
+    0,
+    1172,
+    1170,
+    1,
+    0,
+    0,
+    0,
+    1173,
+    1176,
+    1,
+    0,
+    0,
+    0,
+    1174,
+    1172,
+    1,
+    0,
+    0,
+    0,
+    1174,
+    1175,
+    1,
+    0,
+    0,
+    0,
+    1175,
+    77,
+    1,
+    0,
+    0,
+    0,
+    1176,
+    1174,
+    1,
+    0,
+    0,
+    0,
+    1177,
+    1178,
+    5,
+    107,
+    0,
+    0,
+    1178,
+    1193,
+    5,
+    48,
+    0,
+    0,
+    1179,
+    1180,
+    5,
+    3,
+    0,
+    0,
+    1180,
+    1185,
+    3,
+    24,
+    12,
+    0,
+    1181,
+    1182,
+    5,
+    5,
+    0,
+    0,
+    1182,
+    1184,
+    3,
+    24,
+    12,
+    0,
+    1183,
+    1181,
+    1,
+    0,
+    0,
+    0,
+    1184,
+    1187,
+    1,
+    0,
+    0,
+    0,
+    1185,
+    1183,
+    1,
+    0,
+    0,
+    0,
+    1185,
+    1186,
+    1,
+    0,
+    0,
+    0,
+    1186,
+    1188,
+    1,
+    0,
+    0,
+    0,
+    1187,
+    1185,
+    1,
+    0,
+    0,
+    0,
+    1188,
+    1191,
+    5,
+    4,
+    0,
+    0,
+    1189,
+    1190,
+    5,
+    148,
+    0,
+    0,
+    1190,
+    1192,
+    3,
+    64,
+    32,
+    0,
+    1191,
+    1189,
+    1,
+    0,
+    0,
+    0,
+    1191,
+    1192,
+    1,
+    0,
+    0,
+    0,
+    1192,
+    1194,
+    1,
+    0,
+    0,
+    0,
+    1193,
+    1179,
+    1,
+    0,
+    0,
+    0,
+    1193,
+    1194,
+    1,
+    0,
+    0,
+    0,
+    1194,
+    1195,
+    1,
+    0,
+    0,
+    0,
+    1195,
+    1222,
+    5,
+    183,
+    0,
+    0,
+    1196,
+    1223,
+    5,
+    184,
+    0,
+    0,
+    1197,
+    1198,
+    5,
+    141,
+    0,
+    0,
+    1198,
+    1201,
+    5,
+    131,
+    0,
+    0,
+    1199,
+    1202,
+    3,
+    188,
+    94,
+    0,
+    1200,
+    1202,
+    3,
+    110,
+    55,
+    0,
+    1201,
+    1199,
+    1,
+    0,
+    0,
+    0,
+    1201,
+    1200,
+    1,
+    0,
+    0,
+    0,
+    1202,
+    1203,
+    1,
+    0,
+    0,
+    0,
+    1203,
+    1204,
+    5,
+    6,
+    0,
+    0,
+    1204,
+    1215,
+    3,
+    64,
+    32,
+    0,
+    1205,
+    1208,
+    5,
+    5,
+    0,
+    0,
+    1206,
+    1209,
+    3,
+    188,
+    94,
+    0,
+    1207,
+    1209,
+    3,
+    110,
+    55,
+    0,
+    1208,
+    1206,
+    1,
+    0,
+    0,
+    0,
+    1208,
+    1207,
+    1,
+    0,
+    0,
+    0,
+    1209,
+    1210,
+    1,
+    0,
+    0,
+    0,
+    1210,
+    1211,
+    5,
+    6,
+    0,
+    0,
+    1211,
+    1212,
+    3,
+    64,
+    32,
+    0,
+    1212,
+    1214,
+    1,
+    0,
+    0,
+    0,
+    1213,
+    1205,
+    1,
+    0,
+    0,
+    0,
+    1214,
+    1217,
+    1,
+    0,
+    0,
+    0,
+    1215,
+    1213,
+    1,
+    0,
+    0,
+    0,
+    1215,
+    1216,
+    1,
+    0,
+    0,
+    0,
+    1216,
+    1220,
+    1,
+    0,
+    0,
+    0,
+    1217,
+    1215,
+    1,
+    0,
+    0,
+    0,
+    1218,
+    1219,
+    5,
+    148,
+    0,
+    0,
+    1219,
+    1221,
+    3,
+    64,
+    32,
+    0,
+    1220,
+    1218,
+    1,
+    0,
+    0,
+    0,
+    1220,
+    1221,
+    1,
+    0,
+    0,
+    0,
+    1221,
+    1223,
+    1,
+    0,
+    0,
+    0,
+    1222,
+    1196,
+    1,
+    0,
+    0,
+    0,
+    1222,
+    1197,
+    1,
+    0,
+    0,
+    0,
+    1223,
+    79,
+    1,
+    0,
+    0,
+    0,
+    1224,
+    1228,
+    5,
+    112,
+    0,
+    0,
+    1225,
+    1226,
+    3,
+    182,
+    91,
+    0,
+    1226,
+    1227,
+    5,
+    2,
+    0,
+    0,
+    1227,
+    1229,
+    1,
+    0,
+    0,
+    0,
+    1228,
+    1225,
+    1,
+    0,
+    0,
+    0,
+    1228,
+    1229,
+    1,
+    0,
+    0,
+    0,
+    1229,
+    1230,
+    1,
+    0,
+    0,
+    0,
+    1230,
+    1237,
+    3,
+    202,
+    101,
+    0,
+    1231,
+    1232,
+    5,
+    6,
+    0,
+    0,
+    1232,
+    1238,
+    3,
+    82,
+    41,
+    0,
+    1233,
+    1234,
+    5,
+    3,
+    0,
+    0,
+    1234,
+    1235,
+    3,
+    82,
+    41,
+    0,
+    1235,
+    1236,
+    5,
+    4,
+    0,
+    0,
+    1236,
+    1238,
+    1,
+    0,
+    0,
+    0,
+    1237,
+    1231,
+    1,
+    0,
+    0,
+    0,
+    1237,
+    1233,
+    1,
+    0,
+    0,
+    0,
+    1237,
+    1238,
+    1,
+    0,
+    0,
+    0,
+    1238,
+    81,
+    1,
+    0,
+    0,
+    0,
+    1239,
+    1243,
+    3,
+    34,
+    17,
+    0,
+    1240,
+    1243,
+    3,
+    178,
+    89,
+    0,
+    1241,
+    1243,
+    5,
+    188,
+    0,
+    0,
+    1242,
+    1239,
+    1,
+    0,
+    0,
+    0,
+    1242,
+    1240,
+    1,
+    0,
+    0,
+    0,
+    1242,
+    1241,
+    1,
+    0,
+    0,
+    0,
+    1243,
+    83,
+    1,
+    0,
+    0,
+    0,
+    1244,
+    1255,
+    5,
+    119,
+    0,
+    0,
+    1245,
+    1256,
+    3,
+    190,
+    95,
+    0,
+    1246,
+    1247,
+    3,
+    182,
+    91,
+    0,
+    1247,
+    1248,
+    5,
+    2,
+    0,
+    0,
+    1248,
+    1250,
+    1,
+    0,
+    0,
+    0,
+    1249,
+    1246,
+    1,
+    0,
+    0,
+    0,
+    1249,
+    1250,
+    1,
+    0,
+    0,
+    0,
+    1250,
+    1253,
+    1,
+    0,
+    0,
+    0,
+    1251,
+    1254,
+    3,
+    184,
+    92,
+    0,
+    1252,
+    1254,
+    3,
+    194,
+    97,
+    0,
+    1253,
+    1251,
+    1,
+    0,
+    0,
+    0,
+    1253,
+    1252,
+    1,
+    0,
+    0,
+    0,
+    1254,
+    1256,
+    1,
+    0,
+    0,
+    0,
+    1255,
+    1245,
+    1,
+    0,
+    0,
+    0,
+    1255,
+    1249,
+    1,
+    0,
+    0,
+    0,
+    1255,
+    1256,
+    1,
+    0,
+    0,
+    0,
+    1256,
+    85,
+    1,
+    0,
+    0,
+    0,
+    1257,
+    1259,
+    3,
+    134,
+    67,
+    0,
+    1258,
+    1257,
+    1,
+    0,
+    0,
+    0,
+    1258,
+    1259,
+    1,
+    0,
+    0,
+    0,
+    1259,
+    1260,
+    1,
+    0,
+    0,
+    0,
+    1260,
+    1266,
+    3,
+    90,
+    45,
+    0,
+    1261,
+    1262,
+    3,
+    106,
+    53,
+    0,
+    1262,
+    1263,
+    3,
+    90,
+    45,
+    0,
+    1263,
+    1265,
+    1,
+    0,
+    0,
+    0,
+    1264,
+    1261,
+    1,
+    0,
+    0,
+    0,
+    1265,
+    1268,
+    1,
+    0,
+    0,
+    0,
+    1266,
+    1264,
+    1,
+    0,
+    0,
+    0,
+    1266,
+    1267,
+    1,
+    0,
+    0,
+    0,
+    1267,
+    1270,
+    1,
+    0,
+    0,
+    0,
+    1268,
+    1266,
+    1,
+    0,
+    0,
+    0,
+    1269,
+    1271,
+    3,
+    136,
+    68,
+    0,
+    1270,
+    1269,
+    1,
+    0,
+    0,
+    0,
+    1270,
+    1271,
+    1,
+    0,
+    0,
+    0,
+    1271,
+    1273,
+    1,
+    0,
+    0,
+    0,
+    1272,
+    1274,
+    3,
+    138,
+    69,
+    0,
+    1273,
+    1272,
+    1,
+    0,
+    0,
+    0,
+    1273,
+    1274,
+    1,
+    0,
+    0,
+    0,
+    1274,
+    87,
+    1,
+    0,
+    0,
+    0,
+    1275,
+    1283,
+    3,
+    98,
+    49,
+    0,
+    1276,
+    1277,
+    3,
+    102,
+    51,
+    0,
+    1277,
+    1279,
+    3,
+    98,
+    49,
+    0,
+    1278,
+    1280,
+    3,
+    104,
+    52,
+    0,
+    1279,
+    1278,
+    1,
+    0,
+    0,
+    0,
+    1279,
+    1280,
+    1,
+    0,
+    0,
+    0,
+    1280,
+    1282,
+    1,
+    0,
+    0,
+    0,
+    1281,
+    1276,
+    1,
+    0,
+    0,
+    0,
+    1282,
+    1285,
+    1,
+    0,
+    0,
+    0,
+    1283,
+    1281,
+    1,
+    0,
+    0,
+    0,
+    1283,
+    1284,
+    1,
+    0,
+    0,
+    0,
+    1284,
+    89,
+    1,
+    0,
+    0,
+    0,
+    1285,
+    1283,
+    1,
+    0,
+    0,
+    0,
+    1286,
+    1288,
+    5,
+    130,
+    0,
+    0,
+    1287,
+    1289,
+    7,
+    16,
+    0,
+    0,
+    1288,
+    1287,
+    1,
+    0,
+    0,
+    0,
+    1288,
+    1289,
+    1,
+    0,
+    0,
+    0,
+    1289,
+    1290,
+    1,
+    0,
+    0,
+    0,
+    1290,
+    1295,
+    3,
+    100,
+    50,
+    0,
+    1291,
+    1292,
+    5,
+    5,
+    0,
+    0,
+    1292,
+    1294,
+    3,
+    100,
+    50,
+    0,
+    1293,
+    1291,
+    1,
+    0,
+    0,
+    0,
+    1294,
+    1297,
+    1,
+    0,
+    0,
+    0,
+    1295,
+    1293,
+    1,
+    0,
+    0,
+    0,
+    1295,
+    1296,
+    1,
+    0,
+    0,
+    0,
+    1296,
+    1310,
+    1,
+    0,
+    0,
+    0,
+    1297,
+    1295,
+    1,
+    0,
+    0,
+    0,
+    1298,
+    1308,
+    5,
+    75,
+    0,
+    0,
+    1299,
+    1304,
+    3,
+    98,
+    49,
+    0,
+    1300,
+    1301,
+    5,
+    5,
+    0,
+    0,
+    1301,
+    1303,
+    3,
+    98,
+    49,
+    0,
+    1302,
+    1300,
+    1,
+    0,
+    0,
+    0,
+    1303,
+    1306,
+    1,
+    0,
+    0,
+    0,
+    1304,
+    1302,
+    1,
+    0,
+    0,
+    0,
+    1304,
+    1305,
+    1,
+    0,
+    0,
+    0,
+    1305,
+    1309,
+    1,
+    0,
+    0,
+    0,
+    1306,
+    1304,
+    1,
+    0,
+    0,
+    0,
+    1307,
+    1309,
+    3,
+    88,
+    44,
+    0,
+    1308,
+    1299,
+    1,
+    0,
+    0,
+    0,
+    1308,
+    1307,
+    1,
+    0,
+    0,
+    0,
+    1309,
+    1311,
+    1,
+    0,
+    0,
+    0,
+    1310,
+    1298,
+    1,
+    0,
+    0,
+    0,
+    1310,
+    1311,
+    1,
+    0,
+    0,
+    0,
+    1311,
+    1314,
+    1,
+    0,
+    0,
+    0,
+    1312,
+    1313,
+    5,
+    148,
+    0,
+    0,
+    1313,
+    1315,
+    3,
+    64,
+    32,
+    0,
+    1314,
+    1312,
+    1,
+    0,
+    0,
+    0,
+    1314,
+    1315,
+    1,
+    0,
+    0,
+    0,
+    1315,
+    1330,
+    1,
+    0,
+    0,
+    0,
+    1316,
+    1317,
+    5,
+    78,
+    0,
+    0,
+    1317,
+    1318,
+    5,
+    40,
+    0,
+    0,
+    1318,
+    1323,
+    3,
+    64,
+    32,
+    0,
+    1319,
+    1320,
+    5,
+    5,
+    0,
+    0,
+    1320,
+    1322,
+    3,
+    64,
+    32,
+    0,
+    1321,
+    1319,
+    1,
+    0,
+    0,
+    0,
+    1322,
+    1325,
+    1,
+    0,
+    0,
+    0,
+    1323,
+    1321,
+    1,
+    0,
+    0,
+    0,
+    1323,
+    1324,
+    1,
+    0,
+    0,
+    0,
+    1324,
+    1328,
+    1,
+    0,
+    0,
+    0,
+    1325,
+    1323,
+    1,
+    0,
+    0,
+    0,
+    1326,
+    1327,
+    5,
+    79,
+    0,
+    0,
+    1327,
+    1329,
+    3,
+    64,
+    32,
+    0,
+    1328,
+    1326,
+    1,
+    0,
+    0,
+    0,
+    1328,
+    1329,
+    1,
+    0,
+    0,
+    0,
+    1329,
+    1331,
+    1,
+    0,
+    0,
+    0,
+    1330,
+    1316,
+    1,
+    0,
+    0,
+    0,
+    1330,
+    1331,
+    1,
+    0,
+    0,
+    0,
+    1331,
+    1346,
+    1,
+    0,
+    0,
+    0,
+    1332,
+    1333,
+    5,
+    174,
+    0,
+    0,
+    1333,
+    1334,
+    3,
+    210,
+    105,
+    0,
+    1334,
+    1335,
+    5,
+    33,
+    0,
+    0,
+    1335,
+    1343,
+    3,
+    120,
+    60,
+    0,
+    1336,
+    1337,
+    5,
+    5,
+    0,
+    0,
+    1337,
+    1338,
+    3,
+    210,
+    105,
+    0,
+    1338,
+    1339,
+    5,
+    33,
+    0,
+    0,
+    1339,
+    1340,
+    3,
+    120,
+    60,
+    0,
+    1340,
+    1342,
+    1,
+    0,
+    0,
+    0,
+    1341,
+    1336,
+    1,
+    0,
+    0,
+    0,
+    1342,
+    1345,
+    1,
+    0,
+    0,
+    0,
+    1343,
+    1341,
+    1,
+    0,
+    0,
+    0,
+    1343,
+    1344,
+    1,
+    0,
+    0,
+    0,
+    1344,
+    1347,
+    1,
+    0,
+    0,
+    0,
+    1345,
+    1343,
+    1,
+    0,
+    0,
+    0,
+    1346,
+    1332,
+    1,
+    0,
+    0,
+    0,
+    1346,
+    1347,
+    1,
+    0,
+    0,
+    0,
+    1347,
+    1350,
+    1,
+    0,
+    0,
+    0,
+    1348,
+    1350,
+    3,
+    72,
+    36,
+    0,
+    1349,
+    1286,
+    1,
+    0,
+    0,
+    0,
+    1349,
+    1348,
+    1,
+    0,
+    0,
+    0,
+    1350,
+    91,
+    1,
+    0,
+    0,
+    0,
+    1351,
+    1352,
+    3,
+    86,
+    43,
+    0,
+    1352,
+    93,
+    1,
+    0,
+    0,
+    0,
+    1353,
+    1355,
+    3,
+    134,
+    67,
+    0,
+    1354,
+    1353,
+    1,
+    0,
+    0,
+    0,
+    1354,
+    1355,
+    1,
+    0,
+    0,
+    0,
+    1355,
+    1356,
+    1,
+    0,
+    0,
+    0,
+    1356,
+    1358,
+    3,
+    90,
+    45,
+    0,
+    1357,
+    1359,
+    3,
+    136,
+    68,
+    0,
+    1358,
+    1357,
+    1,
+    0,
+    0,
+    0,
+    1358,
+    1359,
+    1,
+    0,
+    0,
+    0,
+    1359,
+    1361,
+    1,
+    0,
+    0,
+    0,
+    1360,
+    1362,
+    3,
+    138,
+    69,
+    0,
+    1361,
+    1360,
+    1,
+    0,
+    0,
+    0,
+    1361,
+    1362,
+    1,
+    0,
+    0,
+    0,
+    1362,
+    95,
+    1,
+    0,
+    0,
+    0,
+    1363,
+    1365,
+    3,
+    134,
+    67,
+    0,
+    1364,
+    1363,
+    1,
+    0,
+    0,
+    0,
+    1364,
+    1365,
+    1,
+    0,
+    0,
+    0,
+    1365,
+    1366,
+    1,
+    0,
+    0,
+    0,
+    1366,
+    1376,
+    3,
+    90,
+    45,
+    0,
+    1367,
+    1369,
+    5,
+    139,
+    0,
+    0,
+    1368,
+    1370,
+    5,
+    29,
+    0,
+    0,
+    1369,
+    1368,
+    1,
+    0,
+    0,
+    0,
+    1369,
+    1370,
+    1,
+    0,
+    0,
+    0,
+    1370,
+    1374,
+    1,
+    0,
+    0,
+    0,
+    1371,
+    1374,
+    5,
+    90,
+    0,
+    0,
+    1372,
+    1374,
+    5,
+    68,
+    0,
+    0,
+    1373,
+    1367,
+    1,
+    0,
+    0,
+    0,
+    1373,
+    1371,
+    1,
+    0,
+    0,
+    0,
+    1373,
+    1372,
+    1,
+    0,
+    0,
+    0,
+    1374,
+    1375,
+    1,
+    0,
+    0,
+    0,
+    1375,
+    1377,
+    3,
+    90,
+    45,
+    0,
+    1376,
+    1373,
+    1,
+    0,
+    0,
+    0,
+    1377,
+    1378,
+    1,
+    0,
+    0,
+    0,
+    1378,
+    1376,
+    1,
+    0,
+    0,
+    0,
+    1378,
+    1379,
+    1,
+    0,
+    0,
+    0,
+    1379,
+    1381,
+    1,
+    0,
+    0,
+    0,
+    1380,
+    1382,
+    3,
+    136,
+    68,
+    0,
+    1381,
+    1380,
+    1,
+    0,
+    0,
+    0,
+    1381,
+    1382,
+    1,
+    0,
+    0,
+    0,
+    1382,
+    1384,
+    1,
+    0,
+    0,
+    0,
+    1383,
+    1385,
+    3,
+    138,
+    69,
+    0,
+    1384,
+    1383,
+    1,
+    0,
+    0,
+    0,
+    1384,
+    1385,
+    1,
+    0,
+    0,
+    0,
+    1385,
+    97,
+    1,
+    0,
+    0,
+    0,
+    1386,
+    1387,
+    3,
+    182,
+    91,
+    0,
+    1387,
+    1388,
+    5,
+    2,
+    0,
+    0,
+    1388,
+    1390,
+    1,
+    0,
+    0,
+    0,
+    1389,
+    1386,
+    1,
+    0,
+    0,
+    0,
+    1389,
+    1390,
+    1,
+    0,
+    0,
+    0,
+    1390,
+    1391,
+    1,
+    0,
+    0,
+    0,
+    1391,
+    1396,
+    3,
+    184,
+    92,
+    0,
+    1392,
+    1394,
+    5,
+    33,
+    0,
+    0,
+    1393,
+    1392,
+    1,
+    0,
+    0,
+    0,
+    1393,
+    1394,
+    1,
+    0,
+    0,
+    0,
+    1394,
+    1395,
+    1,
+    0,
+    0,
+    0,
+    1395,
+    1397,
+    3,
+    206,
+    103,
+    0,
+    1396,
+    1393,
+    1,
+    0,
+    0,
+    0,
+    1396,
+    1397,
+    1,
+    0,
+    0,
+    0,
+    1397,
+    1403,
+    1,
+    0,
+    0,
+    0,
+    1398,
+    1399,
+    5,
+    85,
+    0,
+    0,
+    1399,
+    1400,
+    5,
+    40,
+    0,
+    0,
+    1400,
+    1404,
+    3,
+    194,
+    97,
+    0,
+    1401,
+    1402,
+    5,
+    102,
+    0,
+    0,
+    1402,
+    1404,
+    5,
+    85,
+    0,
+    0,
+    1403,
+    1398,
+    1,
+    0,
+    0,
+    0,
+    1403,
+    1401,
+    1,
+    0,
+    0,
+    0,
+    1403,
+    1404,
+    1,
+    0,
+    0,
+    0,
+    1404,
+    1451,
+    1,
+    0,
+    0,
+    0,
+    1405,
+    1406,
+    3,
+    182,
+    91,
+    0,
+    1406,
+    1407,
+    5,
+    2,
+    0,
+    0,
+    1407,
+    1409,
+    1,
+    0,
+    0,
+    0,
+    1408,
+    1405,
+    1,
+    0,
+    0,
+    0,
+    1408,
+    1409,
+    1,
+    0,
+    0,
+    0,
+    1409,
+    1410,
+    1,
+    0,
+    0,
+    0,
+    1410,
+    1411,
+    3,
+    222,
+    111,
+    0,
+    1411,
+    1412,
+    5,
+    3,
+    0,
+    0,
+    1412,
+    1417,
+    3,
+    64,
+    32,
+    0,
+    1413,
+    1414,
+    5,
+    5,
+    0,
+    0,
+    1414,
+    1416,
+    3,
+    64,
+    32,
+    0,
+    1415,
+    1413,
+    1,
+    0,
+    0,
+    0,
+    1416,
+    1419,
+    1,
+    0,
+    0,
+    0,
+    1417,
+    1415,
+    1,
+    0,
+    0,
+    0,
+    1417,
+    1418,
+    1,
+    0,
+    0,
+    0,
+    1418,
+    1420,
+    1,
+    0,
+    0,
+    0,
+    1419,
+    1417,
+    1,
+    0,
+    0,
+    0,
+    1420,
+    1425,
+    5,
+    4,
+    0,
+    0,
+    1421,
+    1423,
+    5,
+    33,
+    0,
+    0,
+    1422,
+    1421,
+    1,
+    0,
+    0,
+    0,
+    1422,
+    1423,
+    1,
+    0,
+    0,
+    0,
+    1423,
+    1424,
+    1,
+    0,
+    0,
+    0,
+    1424,
+    1426,
+    3,
+    206,
+    103,
+    0,
+    1425,
+    1422,
+    1,
+    0,
+    0,
+    0,
+    1425,
+    1426,
+    1,
+    0,
+    0,
+    0,
+    1426,
+    1451,
+    1,
+    0,
+    0,
+    0,
+    1427,
+    1437,
+    5,
+    3,
+    0,
+    0,
+    1428,
+    1433,
+    3,
+    98,
+    49,
+    0,
+    1429,
+    1430,
+    5,
+    5,
+    0,
+    0,
+    1430,
+    1432,
+    3,
+    98,
+    49,
+    0,
+    1431,
+    1429,
+    1,
+    0,
+    0,
+    0,
+    1432,
+    1435,
+    1,
+    0,
+    0,
+    0,
+    1433,
+    1431,
+    1,
+    0,
+    0,
+    0,
+    1433,
+    1434,
+    1,
+    0,
+    0,
+    0,
+    1434,
+    1438,
+    1,
+    0,
+    0,
+    0,
+    1435,
+    1433,
+    1,
+    0,
+    0,
+    0,
+    1436,
+    1438,
+    3,
+    88,
+    44,
+    0,
+    1437,
+    1428,
+    1,
+    0,
+    0,
+    0,
+    1437,
+    1436,
+    1,
+    0,
+    0,
+    0,
+    1438,
+    1439,
+    1,
+    0,
+    0,
+    0,
+    1439,
+    1440,
+    5,
+    4,
+    0,
+    0,
+    1440,
+    1451,
+    1,
+    0,
+    0,
+    0,
+    1441,
+    1442,
+    5,
+    3,
+    0,
+    0,
+    1442,
+    1443,
+    3,
+    86,
+    43,
+    0,
+    1443,
+    1448,
+    5,
+    4,
+    0,
+    0,
+    1444,
+    1446,
+    5,
+    33,
+    0,
+    0,
+    1445,
+    1444,
+    1,
+    0,
+    0,
+    0,
+    1445,
+    1446,
+    1,
+    0,
+    0,
+    0,
+    1446,
+    1447,
+    1,
+    0,
+    0,
+    0,
+    1447,
+    1449,
+    3,
+    206,
+    103,
+    0,
+    1448,
+    1445,
+    1,
+    0,
+    0,
+    0,
+    1448,
+    1449,
+    1,
+    0,
+    0,
+    0,
+    1449,
+    1451,
+    1,
+    0,
+    0,
+    0,
+    1450,
+    1389,
+    1,
+    0,
+    0,
+    0,
+    1450,
+    1408,
+    1,
+    0,
+    0,
+    0,
+    1450,
+    1427,
+    1,
+    0,
+    0,
+    0,
+    1450,
+    1441,
+    1,
+    0,
+    0,
+    0,
+    1451,
+    99,
+    1,
+    0,
+    0,
+    0,
+    1452,
+    1465,
+    5,
+    7,
+    0,
+    0,
+    1453,
+    1454,
+    3,
+    184,
+    92,
+    0,
+    1454,
+    1455,
+    5,
+    2,
+    0,
+    0,
+    1455,
+    1456,
+    5,
+    7,
+    0,
+    0,
+    1456,
+    1465,
+    1,
+    0,
+    0,
+    0,
+    1457,
+    1462,
+    3,
+    64,
+    32,
+    0,
+    1458,
+    1460,
+    5,
+    33,
+    0,
+    0,
+    1459,
+    1458,
+    1,
+    0,
+    0,
+    0,
+    1459,
+    1460,
+    1,
+    0,
+    0,
+    0,
+    1460,
+    1461,
+    1,
+    0,
+    0,
+    0,
+    1461,
+    1463,
+    3,
+    174,
+    87,
+    0,
+    1462,
+    1459,
+    1,
+    0,
+    0,
+    0,
+    1462,
+    1463,
+    1,
+    0,
+    0,
+    0,
+    1463,
+    1465,
+    1,
+    0,
+    0,
+    0,
+    1464,
+    1452,
+    1,
+    0,
+    0,
+    0,
+    1464,
+    1453,
+    1,
+    0,
+    0,
+    0,
+    1464,
+    1457,
+    1,
+    0,
+    0,
+    0,
+    1465,
+    101,
+    1,
+    0,
+    0,
+    0,
+    1466,
+    1480,
+    5,
+    5,
+    0,
+    0,
+    1467,
+    1469,
+    5,
+    100,
+    0,
+    0,
+    1468,
+    1467,
+    1,
+    0,
+    0,
+    0,
+    1468,
+    1469,
+    1,
+    0,
+    0,
+    0,
+    1469,
+    1476,
+    1,
+    0,
+    0,
+    0,
+    1470,
+    1472,
+    5,
+    96,
+    0,
+    0,
+    1471,
+    1473,
+    5,
+    110,
+    0,
+    0,
+    1472,
+    1471,
+    1,
+    0,
+    0,
+    0,
+    1472,
+    1473,
+    1,
+    0,
+    0,
+    0,
+    1473,
+    1477,
+    1,
+    0,
+    0,
+    0,
+    1474,
+    1477,
+    5,
+    87,
+    0,
+    0,
+    1475,
+    1477,
+    5,
+    51,
+    0,
+    0,
+    1476,
+    1470,
+    1,
+    0,
+    0,
+    0,
+    1476,
+    1474,
+    1,
+    0,
+    0,
+    0,
+    1476,
+    1475,
+    1,
+    0,
+    0,
+    0,
+    1476,
+    1477,
+    1,
+    0,
+    0,
+    0,
+    1477,
+    1478,
+    1,
+    0,
+    0,
+    0,
+    1478,
+    1480,
+    5,
+    94,
+    0,
+    0,
+    1479,
+    1466,
+    1,
+    0,
+    0,
+    0,
+    1479,
+    1468,
+    1,
+    0,
+    0,
+    0,
+    1480,
+    103,
+    1,
+    0,
+    0,
+    0,
+    1481,
+    1482,
+    5,
+    107,
+    0,
+    0,
+    1482,
+    1496,
+    3,
+    64,
+    32,
+    0,
+    1483,
+    1484,
+    5,
+    142,
+    0,
+    0,
+    1484,
+    1485,
+    5,
+    3,
+    0,
+    0,
+    1485,
+    1490,
+    3,
+    188,
+    94,
+    0,
+    1486,
+    1487,
+    5,
+    5,
+    0,
+    0,
+    1487,
+    1489,
+    3,
+    188,
+    94,
+    0,
+    1488,
+    1486,
+    1,
+    0,
+    0,
+    0,
+    1489,
+    1492,
+    1,
+    0,
+    0,
+    0,
+    1490,
+    1488,
+    1,
+    0,
+    0,
+    0,
+    1490,
+    1491,
+    1,
+    0,
+    0,
+    0,
+    1491,
+    1493,
+    1,
+    0,
+    0,
+    0,
+    1492,
+    1490,
+    1,
+    0,
+    0,
+    0,
+    1493,
+    1494,
+    5,
+    4,
+    0,
+    0,
+    1494,
+    1496,
+    1,
+    0,
+    0,
+    0,
+    1495,
+    1481,
+    1,
+    0,
+    0,
+    0,
+    1495,
+    1483,
+    1,
+    0,
+    0,
+    0,
+    1496,
+    105,
+    1,
+    0,
+    0,
+    0,
+    1497,
+    1499,
+    5,
+    139,
+    0,
+    0,
+    1498,
+    1500,
+    5,
+    29,
+    0,
+    0,
+    1499,
+    1498,
+    1,
+    0,
+    0,
+    0,
+    1499,
+    1500,
+    1,
+    0,
+    0,
+    0,
+    1500,
+    1504,
+    1,
+    0,
+    0,
+    0,
+    1501,
+    1504,
+    5,
+    90,
+    0,
+    0,
+    1502,
+    1504,
+    5,
+    68,
+    0,
+    0,
+    1503,
+    1497,
+    1,
+    0,
+    0,
+    0,
+    1503,
+    1501,
+    1,
+    0,
+    0,
+    0,
+    1503,
+    1502,
+    1,
+    0,
+    0,
+    0,
+    1504,
+    107,
+    1,
+    0,
+    0,
+    0,
+    1505,
+    1507,
+    3,
+    48,
+    24,
+    0,
+    1506,
+    1505,
+    1,
+    0,
+    0,
+    0,
+    1506,
+    1507,
+    1,
+    0,
+    0,
+    0,
+    1507,
+    1508,
+    1,
+    0,
+    0,
+    0,
+    1508,
+    1511,
+    5,
+    141,
+    0,
+    0,
+    1509,
+    1510,
+    5,
+    108,
+    0,
+    0,
+    1510,
+    1512,
+    7,
+    8,
+    0,
+    0,
+    1511,
+    1509,
+    1,
+    0,
+    0,
+    0,
+    1511,
+    1512,
+    1,
+    0,
+    0,
+    0,
+    1512,
+    1513,
+    1,
+    0,
+    0,
+    0,
+    1513,
+    1514,
+    3,
+    114,
+    57,
+    0,
+    1514,
+    1517,
+    5,
+    131,
+    0,
+    0,
+    1515,
+    1518,
+    3,
+    188,
+    94,
+    0,
+    1516,
+    1518,
+    3,
+    110,
+    55,
+    0,
+    1517,
+    1515,
+    1,
+    0,
+    0,
+    0,
+    1517,
+    1516,
+    1,
+    0,
+    0,
+    0,
+    1518,
+    1519,
+    1,
+    0,
+    0,
+    0,
+    1519,
+    1520,
+    5,
+    6,
+    0,
+    0,
+    1520,
+    1531,
+    3,
+    64,
+    32,
+    0,
+    1521,
+    1524,
+    5,
+    5,
+    0,
+    0,
+    1522,
+    1525,
+    3,
+    188,
+    94,
+    0,
+    1523,
+    1525,
+    3,
+    110,
+    55,
+    0,
+    1524,
+    1522,
+    1,
+    0,
+    0,
+    0,
+    1524,
+    1523,
+    1,
+    0,
+    0,
+    0,
+    1525,
+    1526,
+    1,
+    0,
+    0,
+    0,
+    1526,
+    1527,
+    5,
+    6,
+    0,
+    0,
+    1527,
+    1528,
+    3,
+    64,
+    32,
+    0,
+    1528,
+    1530,
+    1,
+    0,
+    0,
+    0,
+    1529,
+    1521,
+    1,
+    0,
+    0,
+    0,
+    1530,
+    1533,
+    1,
+    0,
+    0,
+    0,
+    1531,
+    1529,
+    1,
+    0,
+    0,
+    0,
+    1531,
+    1532,
+    1,
+    0,
+    0,
+    0,
+    1532,
+    1546,
+    1,
+    0,
+    0,
+    0,
+    1533,
+    1531,
+    1,
+    0,
+    0,
+    0,
+    1534,
+    1544,
+    5,
+    75,
+    0,
+    0,
+    1535,
+    1540,
+    3,
+    98,
+    49,
+    0,
+    1536,
+    1537,
+    5,
+    5,
+    0,
+    0,
+    1537,
+    1539,
+    3,
+    98,
+    49,
+    0,
+    1538,
+    1536,
+    1,
+    0,
+    0,
+    0,
+    1539,
+    1542,
+    1,
+    0,
+    0,
+    0,
+    1540,
+    1538,
+    1,
+    0,
+    0,
+    0,
+    1540,
+    1541,
+    1,
+    0,
+    0,
+    0,
+    1541,
+    1545,
+    1,
+    0,
+    0,
+    0,
+    1542,
+    1540,
+    1,
+    0,
+    0,
+    0,
+    1543,
+    1545,
+    3,
+    88,
+    44,
+    0,
+    1544,
+    1535,
+    1,
+    0,
+    0,
+    0,
+    1544,
+    1543,
+    1,
+    0,
+    0,
+    0,
+    1545,
+    1547,
+    1,
+    0,
+    0,
+    0,
+    1546,
+    1534,
+    1,
+    0,
+    0,
+    0,
+    1546,
+    1547,
+    1,
+    0,
+    0,
+    0,
+    1547,
+    1550,
+    1,
+    0,
+    0,
+    0,
+    1548,
+    1549,
+    5,
+    148,
+    0,
+    0,
+    1549,
+    1551,
+    3,
+    64,
+    32,
+    0,
+    1550,
+    1548,
+    1,
+    0,
+    0,
+    0,
+    1550,
+    1551,
+    1,
+    0,
+    0,
+    0,
+    1551,
+    1553,
+    1,
+    0,
+    0,
+    0,
+    1552,
+    1554,
+    3,
+    76,
+    38,
+    0,
+    1553,
+    1552,
+    1,
+    0,
+    0,
+    0,
+    1553,
+    1554,
+    1,
+    0,
+    0,
+    0,
+    1554,
+    109,
+    1,
+    0,
+    0,
+    0,
+    1555,
+    1556,
+    5,
+    3,
+    0,
+    0,
+    1556,
+    1561,
+    3,
+    188,
+    94,
+    0,
+    1557,
+    1558,
+    5,
+    5,
+    0,
+    0,
+    1558,
+    1560,
+    3,
+    188,
+    94,
+    0,
+    1559,
+    1557,
+    1,
+    0,
+    0,
+    0,
+    1560,
+    1563,
+    1,
+    0,
+    0,
+    0,
+    1561,
+    1559,
+    1,
+    0,
+    0,
+    0,
+    1561,
+    1562,
+    1,
+    0,
+    0,
+    0,
+    1562,
+    1564,
+    1,
+    0,
+    0,
+    0,
+    1563,
+    1561,
+    1,
+    0,
+    0,
+    0,
+    1564,
+    1565,
+    5,
+    4,
+    0,
+    0,
+    1565,
+    111,
+    1,
+    0,
+    0,
+    0,
+    1566,
+    1568,
+    3,
+    48,
+    24,
+    0,
+    1567,
+    1566,
+    1,
+    0,
+    0,
+    0,
+    1567,
+    1568,
+    1,
+    0,
+    0,
+    0,
+    1568,
+    1569,
+    1,
+    0,
+    0,
+    0,
+    1569,
+    1572,
+    5,
+    141,
+    0,
+    0,
+    1570,
+    1571,
+    5,
+    108,
+    0,
+    0,
+    1571,
+    1573,
+    7,
+    8,
+    0,
+    0,
+    1572,
+    1570,
+    1,
+    0,
+    0,
+    0,
+    1572,
+    1573,
+    1,
+    0,
+    0,
+    0,
+    1573,
+    1574,
+    1,
+    0,
+    0,
+    0,
+    1574,
+    1575,
+    3,
+    114,
+    57,
+    0,
+    1575,
+    1578,
+    5,
+    131,
+    0,
+    0,
+    1576,
+    1579,
+    3,
+    188,
+    94,
+    0,
+    1577,
+    1579,
+    3,
+    110,
+    55,
+    0,
+    1578,
+    1576,
+    1,
+    0,
+    0,
+    0,
+    1578,
+    1577,
+    1,
+    0,
+    0,
+    0,
+    1579,
+    1580,
+    1,
+    0,
+    0,
+    0,
+    1580,
+    1581,
+    5,
+    6,
+    0,
+    0,
+    1581,
+    1592,
+    3,
+    64,
+    32,
+    0,
+    1582,
+    1585,
+    5,
+    5,
+    0,
+    0,
+    1583,
+    1586,
+    3,
+    188,
+    94,
+    0,
+    1584,
+    1586,
+    3,
+    110,
+    55,
+    0,
+    1585,
+    1583,
+    1,
+    0,
+    0,
+    0,
+    1585,
+    1584,
+    1,
+    0,
+    0,
+    0,
+    1586,
+    1587,
+    1,
+    0,
+    0,
+    0,
+    1587,
+    1588,
+    5,
+    6,
+    0,
+    0,
+    1588,
+    1589,
+    3,
+    64,
+    32,
+    0,
+    1589,
+    1591,
+    1,
+    0,
+    0,
+    0,
+    1590,
+    1582,
+    1,
+    0,
+    0,
+    0,
+    1591,
+    1594,
+    1,
+    0,
+    0,
+    0,
+    1592,
+    1590,
+    1,
+    0,
+    0,
+    0,
+    1592,
+    1593,
+    1,
+    0,
+    0,
+    0,
+    1593,
+    1597,
+    1,
+    0,
+    0,
+    0,
+    1594,
+    1592,
+    1,
+    0,
+    0,
+    0,
+    1595,
+    1596,
+    5,
+    148,
+    0,
+    0,
+    1596,
+    1598,
+    3,
+    64,
+    32,
+    0,
+    1597,
+    1595,
+    1,
+    0,
+    0,
+    0,
+    1597,
+    1598,
+    1,
+    0,
+    0,
+    0,
+    1598,
+    1600,
+    1,
+    0,
+    0,
+    0,
+    1599,
+    1601,
+    3,
+    76,
+    38,
+    0,
+    1600,
+    1599,
+    1,
+    0,
+    0,
+    0,
+    1600,
+    1601,
+    1,
+    0,
+    0,
+    0,
+    1601,
+    1606,
+    1,
+    0,
+    0,
+    0,
+    1602,
+    1604,
+    3,
+    136,
+    68,
+    0,
+    1603,
+    1602,
+    1,
+    0,
+    0,
+    0,
+    1603,
+    1604,
+    1,
+    0,
+    0,
+    0,
+    1604,
+    1605,
+    1,
+    0,
+    0,
+    0,
+    1605,
+    1607,
+    3,
+    138,
+    69,
+    0,
+    1606,
+    1603,
+    1,
+    0,
+    0,
+    0,
+    1606,
+    1607,
+    1,
+    0,
+    0,
+    0,
+    1607,
+    113,
+    1,
+    0,
+    0,
+    0,
+    1608,
+    1609,
+    3,
+    182,
+    91,
+    0,
+    1609,
+    1610,
+    5,
+    2,
+    0,
+    0,
+    1610,
+    1612,
+    1,
+    0,
+    0,
+    0,
+    1611,
+    1608,
+    1,
+    0,
+    0,
+    0,
+    1611,
+    1612,
+    1,
+    0,
+    0,
+    0,
+    1612,
+    1613,
+    1,
+    0,
+    0,
+    0,
+    1613,
+    1616,
+    3,
+    184,
+    92,
+    0,
+    1614,
+    1615,
+    5,
+    33,
+    0,
+    0,
+    1615,
+    1617,
+    3,
+    212,
+    106,
+    0,
+    1616,
+    1614,
+    1,
+    0,
+    0,
+    0,
+    1616,
+    1617,
+    1,
+    0,
+    0,
+    0,
+    1617,
+    1623,
+    1,
+    0,
+    0,
+    0,
+    1618,
+    1619,
+    5,
+    85,
+    0,
+    0,
+    1619,
+    1620,
+    5,
+    40,
+    0,
+    0,
+    1620,
+    1624,
+    3,
+    194,
+    97,
+    0,
+    1621,
+    1622,
+    5,
+    102,
+    0,
+    0,
+    1622,
+    1624,
+    5,
+    85,
+    0,
+    0,
+    1623,
+    1618,
+    1,
+    0,
+    0,
+    0,
+    1623,
+    1621,
+    1,
+    0,
+    0,
+    0,
+    1623,
+    1624,
+    1,
+    0,
+    0,
+    0,
+    1624,
+    115,
+    1,
+    0,
+    0,
+    0,
+    1625,
+    1627,
+    5,
+    143,
+    0,
+    0,
+    1626,
+    1628,
+    3,
+    182,
+    91,
+    0,
+    1627,
+    1626,
+    1,
+    0,
+    0,
+    0,
+    1627,
+    1628,
+    1,
+    0,
+    0,
+    0,
+    1628,
+    1631,
+    1,
+    0,
+    0,
+    0,
+    1629,
+    1630,
+    5,
+    91,
+    0,
+    0,
+    1630,
+    1632,
+    3,
+    214,
+    107,
+    0,
+    1631,
+    1629,
+    1,
+    0,
+    0,
+    0,
+    1631,
+    1632,
+    1,
+    0,
+    0,
+    0,
+    1632,
+    117,
+    1,
+    0,
+    0,
+    0,
+    1633,
+    1634,
+    5,
+    178,
+    0,
+    0,
+    1634,
+    1635,
+    5,
+    3,
+    0,
+    0,
+    1635,
+    1636,
+    5,
+    148,
+    0,
+    0,
+    1636,
+    1637,
+    3,
+    64,
+    32,
+    0,
+    1637,
+    1638,
+    5,
+    4,
+    0,
+    0,
+    1638,
+    119,
+    1,
+    0,
+    0,
+    0,
+    1639,
+    1641,
+    5,
+    3,
+    0,
+    0,
+    1640,
+    1642,
+    3,
+    216,
+    108,
+    0,
+    1641,
+    1640,
+    1,
+    0,
+    0,
+    0,
+    1641,
+    1642,
+    1,
+    0,
+    0,
+    0,
+    1642,
+    1653,
+    1,
+    0,
+    0,
+    0,
+    1643,
+    1644,
+    5,
+    153,
+    0,
+    0,
+    1644,
+    1645,
+    5,
+    40,
+    0,
+    0,
+    1645,
+    1650,
+    3,
+    64,
+    32,
+    0,
+    1646,
+    1647,
+    5,
+    5,
+    0,
+    0,
+    1647,
+    1649,
+    3,
+    64,
+    32,
+    0,
+    1648,
+    1646,
+    1,
+    0,
+    0,
+    0,
+    1649,
+    1652,
+    1,
+    0,
+    0,
+    0,
+    1650,
+    1648,
+    1,
+    0,
+    0,
+    0,
+    1650,
+    1651,
+    1,
+    0,
+    0,
+    0,
+    1651,
+    1654,
+    1,
+    0,
+    0,
+    0,
+    1652,
+    1650,
+    1,
+    0,
+    0,
+    0,
+    1653,
+    1643,
+    1,
+    0,
+    0,
+    0,
+    1653,
+    1654,
+    1,
+    0,
+    0,
+    0,
+    1654,
+    1655,
+    1,
+    0,
+    0,
+    0,
+    1655,
+    1656,
+    5,
+    109,
+    0,
+    0,
+    1656,
+    1657,
+    5,
+    40,
+    0,
+    0,
+    1657,
+    1662,
+    3,
+    140,
+    70,
+    0,
+    1658,
+    1659,
+    5,
+    5,
+    0,
+    0,
+    1659,
+    1661,
+    3,
+    140,
+    70,
+    0,
+    1660,
+    1658,
+    1,
+    0,
+    0,
+    0,
+    1661,
+    1664,
+    1,
+    0,
+    0,
+    0,
+    1662,
+    1660,
+    1,
+    0,
+    0,
+    0,
+    1662,
+    1663,
+    1,
+    0,
+    0,
+    0,
+    1663,
+    1666,
+    1,
+    0,
+    0,
+    0,
+    1664,
+    1662,
+    1,
+    0,
+    0,
+    0,
+    1665,
+    1667,
+    3,
+    124,
+    62,
+    0,
+    1666,
+    1665,
+    1,
+    0,
+    0,
+    0,
+    1666,
+    1667,
+    1,
+    0,
+    0,
+    0,
+    1667,
+    1668,
+    1,
+    0,
+    0,
+    0,
+    1668,
+    1669,
+    5,
+    4,
+    0,
+    0,
+    1669,
+    121,
+    1,
+    0,
+    0,
+    0,
+    1670,
+    1704,
+    5,
+    152,
+    0,
+    0,
+    1671,
+    1705,
+    3,
+    210,
+    105,
+    0,
+    1672,
+    1674,
+    5,
+    3,
+    0,
+    0,
+    1673,
+    1675,
+    3,
+    216,
+    108,
+    0,
+    1674,
+    1673,
+    1,
+    0,
+    0,
+    0,
+    1674,
+    1675,
+    1,
+    0,
+    0,
+    0,
+    1675,
+    1686,
+    1,
+    0,
+    0,
+    0,
+    1676,
+    1677,
+    5,
+    153,
+    0,
+    0,
+    1677,
+    1678,
+    5,
+    40,
+    0,
+    0,
+    1678,
+    1683,
+    3,
+    64,
+    32,
+    0,
+    1679,
+    1680,
+    5,
+    5,
+    0,
+    0,
+    1680,
+    1682,
+    3,
+    64,
+    32,
+    0,
+    1681,
+    1679,
+    1,
+    0,
+    0,
+    0,
+    1682,
+    1685,
+    1,
+    0,
+    0,
+    0,
+    1683,
+    1681,
+    1,
+    0,
+    0,
+    0,
+    1683,
+    1684,
+    1,
+    0,
+    0,
+    0,
+    1684,
+    1687,
+    1,
+    0,
+    0,
+    0,
+    1685,
+    1683,
+    1,
+    0,
+    0,
+    0,
+    1686,
+    1676,
+    1,
+    0,
+    0,
+    0,
+    1686,
+    1687,
+    1,
+    0,
+    0,
+    0,
+    1687,
+    1698,
+    1,
+    0,
+    0,
+    0,
+    1688,
+    1689,
+    5,
+    109,
+    0,
+    0,
+    1689,
+    1690,
+    5,
+    40,
+    0,
+    0,
+    1690,
+    1695,
+    3,
+    140,
+    70,
+    0,
+    1691,
+    1692,
+    5,
+    5,
+    0,
+    0,
+    1692,
+    1694,
+    3,
+    140,
+    70,
+    0,
+    1693,
+    1691,
+    1,
+    0,
+    0,
+    0,
+    1694,
+    1697,
+    1,
+    0,
+    0,
+    0,
+    1695,
+    1693,
+    1,
+    0,
+    0,
+    0,
+    1695,
+    1696,
+    1,
+    0,
+    0,
+    0,
+    1696,
+    1699,
+    1,
+    0,
+    0,
+    0,
+    1697,
+    1695,
+    1,
+    0,
+    0,
+    0,
+    1698,
+    1688,
+    1,
+    0,
+    0,
+    0,
+    1698,
+    1699,
+    1,
+    0,
+    0,
+    0,
+    1699,
+    1701,
+    1,
+    0,
+    0,
+    0,
+    1700,
+    1702,
+    3,
+    124,
+    62,
+    0,
+    1701,
+    1700,
+    1,
+    0,
+    0,
+    0,
+    1701,
+    1702,
+    1,
+    0,
+    0,
+    0,
+    1702,
+    1703,
+    1,
+    0,
+    0,
+    0,
+    1703,
+    1705,
+    5,
+    4,
+    0,
+    0,
+    1704,
+    1671,
+    1,
+    0,
+    0,
+    0,
+    1704,
+    1672,
+    1,
+    0,
+    0,
+    0,
+    1705,
+    123,
+    1,
+    0,
+    0,
+    0,
+    1706,
+    1716,
+    3,
+    126,
+    63,
+    0,
+    1707,
+    1714,
+    5,
+    180,
+    0,
+    0,
+    1708,
+    1709,
+    5,
+    101,
+    0,
+    0,
+    1709,
+    1715,
+    5,
+    182,
+    0,
+    0,
+    1710,
+    1711,
+    5,
+    157,
+    0,
+    0,
+    1711,
+    1715,
+    5,
+    127,
+    0,
+    0,
+    1712,
+    1715,
+    5,
+    78,
+    0,
+    0,
+    1713,
+    1715,
+    5,
+    181,
+    0,
+    0,
+    1714,
+    1708,
+    1,
+    0,
+    0,
+    0,
+    1714,
+    1710,
+    1,
+    0,
+    0,
+    0,
+    1714,
+    1712,
+    1,
+    0,
+    0,
+    0,
+    1714,
+    1713,
+    1,
+    0,
+    0,
+    0,
+    1715,
+    1717,
+    1,
+    0,
+    0,
+    0,
+    1716,
+    1707,
+    1,
+    0,
+    0,
+    0,
+    1716,
+    1717,
+    1,
+    0,
+    0,
+    0,
+    1717,
+    125,
+    1,
+    0,
+    0,
+    0,
+    1718,
+    1725,
+    7,
+    17,
+    0,
+    0,
+    1719,
+    1726,
+    3,
+    148,
+    74,
+    0,
+    1720,
+    1721,
+    5,
+    39,
+    0,
+    0,
+    1721,
+    1722,
+    3,
+    144,
+    72,
+    0,
+    1722,
+    1723,
+    5,
+    32,
+    0,
+    0,
+    1723,
+    1724,
+    3,
+    146,
+    73,
+    0,
+    1724,
+    1726,
+    1,
+    0,
+    0,
+    0,
+    1725,
+    1719,
+    1,
+    0,
+    0,
+    0,
+    1725,
+    1720,
+    1,
+    0,
+    0,
+    0,
+    1726,
+    127,
+    1,
+    0,
+    0,
+    0,
+    1727,
+    1728,
+    3,
+    218,
+    109,
+    0,
+    1728,
+    1738,
+    5,
+    3,
+    0,
+    0,
+    1729,
+    1734,
+    3,
+    64,
+    32,
+    0,
+    1730,
+    1731,
+    5,
+    5,
+    0,
+    0,
+    1731,
+    1733,
+    3,
+    64,
+    32,
+    0,
+    1732,
+    1730,
+    1,
+    0,
+    0,
+    0,
+    1733,
+    1736,
+    1,
+    0,
+    0,
+    0,
+    1734,
+    1732,
+    1,
+    0,
+    0,
+    0,
+    1734,
+    1735,
+    1,
+    0,
+    0,
+    0,
+    1735,
+    1739,
+    1,
+    0,
+    0,
+    0,
+    1736,
+    1734,
+    1,
+    0,
+    0,
+    0,
+    1737,
+    1739,
+    5,
+    7,
+    0,
+    0,
+    1738,
+    1729,
+    1,
+    0,
+    0,
+    0,
+    1738,
+    1737,
+    1,
+    0,
+    0,
+    0,
+    1739,
+    1740,
+    1,
+    0,
+    0,
+    0,
+    1740,
+    1741,
+    5,
+    4,
+    0,
+    0,
+    1741,
+    129,
+    1,
+    0,
+    0,
+    0,
+    1742,
+    1743,
+    3,
+    220,
+    110,
+    0,
+    1743,
+    1756,
+    5,
+    3,
+    0,
+    0,
+    1744,
+    1746,
+    5,
+    62,
+    0,
+    0,
+    1745,
+    1744,
+    1,
+    0,
+    0,
+    0,
+    1745,
+    1746,
+    1,
+    0,
+    0,
+    0,
+    1746,
+    1747,
+    1,
+    0,
+    0,
+    0,
+    1747,
+    1752,
+    3,
+    64,
+    32,
+    0,
+    1748,
+    1749,
+    5,
+    5,
+    0,
+    0,
+    1749,
+    1751,
+    3,
+    64,
+    32,
+    0,
+    1750,
+    1748,
+    1,
+    0,
+    0,
+    0,
+    1751,
+    1754,
+    1,
+    0,
+    0,
+    0,
+    1752,
+    1750,
+    1,
+    0,
+    0,
+    0,
+    1752,
+    1753,
+    1,
+    0,
+    0,
+    0,
+    1753,
+    1757,
+    1,
+    0,
+    0,
+    0,
+    1754,
+    1752,
+    1,
+    0,
+    0,
+    0,
+    1755,
+    1757,
+    5,
+    7,
+    0,
+    0,
+    1756,
+    1745,
+    1,
+    0,
+    0,
+    0,
+    1756,
+    1755,
+    1,
+    0,
+    0,
+    0,
+    1756,
+    1757,
+    1,
+    0,
+    0,
+    0,
+    1757,
+    1758,
+    1,
+    0,
+    0,
+    0,
+    1758,
+    1760,
+    5,
+    4,
+    0,
+    0,
+    1759,
+    1761,
+    3,
+    118,
+    59,
+    0,
+    1760,
+    1759,
+    1,
+    0,
+    0,
+    0,
+    1760,
+    1761,
+    1,
+    0,
+    0,
+    0,
+    1761,
+    131,
+    1,
+    0,
+    0,
+    0,
+    1762,
+    1763,
+    3,
+    150,
+    75,
+    0,
+    1763,
+    1773,
+    5,
+    3,
+    0,
+    0,
+    1764,
+    1769,
+    3,
+    64,
+    32,
+    0,
+    1765,
+    1766,
+    5,
+    5,
+    0,
+    0,
+    1766,
+    1768,
+    3,
+    64,
+    32,
+    0,
+    1767,
+    1765,
+    1,
+    0,
+    0,
+    0,
+    1768,
+    1771,
+    1,
+    0,
+    0,
+    0,
+    1769,
+    1767,
+    1,
+    0,
+    0,
+    0,
+    1769,
+    1770,
+    1,
+    0,
+    0,
+    0,
+    1770,
+    1774,
+    1,
+    0,
+    0,
+    0,
+    1771,
+    1769,
+    1,
+    0,
+    0,
+    0,
+    1772,
+    1774,
+    5,
+    7,
+    0,
+    0,
+    1773,
+    1764,
+    1,
+    0,
+    0,
+    0,
+    1773,
+    1772,
+    1,
+    0,
+    0,
+    0,
+    1773,
+    1774,
+    1,
+    0,
+    0,
+    0,
+    1774,
+    1775,
+    1,
+    0,
+    0,
+    0,
+    1775,
+    1777,
+    5,
+    4,
+    0,
+    0,
+    1776,
+    1778,
+    3,
+    118,
+    59,
+    0,
+    1777,
+    1776,
+    1,
+    0,
+    0,
+    0,
+    1777,
+    1778,
+    1,
+    0,
+    0,
+    0,
+    1778,
+    1779,
+    1,
+    0,
+    0,
+    0,
+    1779,
+    1782,
+    5,
+    152,
+    0,
+    0,
+    1780,
+    1783,
+    3,
+    120,
+    60,
+    0,
+    1781,
+    1783,
+    3,
+    210,
+    105,
+    0,
+    1782,
+    1780,
+    1,
+    0,
+    0,
+    0,
+    1782,
+    1781,
+    1,
+    0,
+    0,
+    0,
+    1783,
+    133,
+    1,
+    0,
+    0,
+    0,
+    1784,
+    1786,
+    5,
+    149,
+    0,
+    0,
+    1785,
+    1787,
+    5,
+    116,
+    0,
+    0,
+    1786,
+    1785,
+    1,
+    0,
+    0,
+    0,
+    1786,
+    1787,
+    1,
+    0,
+    0,
+    0,
+    1787,
+    1788,
+    1,
+    0,
+    0,
+    0,
+    1788,
+    1793,
+    3,
+    54,
+    27,
+    0,
+    1789,
+    1790,
+    5,
+    5,
+    0,
+    0,
+    1790,
+    1792,
+    3,
+    54,
+    27,
+    0,
+    1791,
+    1789,
+    1,
+    0,
+    0,
+    0,
+    1792,
+    1795,
+    1,
+    0,
+    0,
+    0,
+    1793,
+    1791,
+    1,
+    0,
+    0,
+    0,
+    1793,
+    1794,
+    1,
+    0,
+    0,
+    0,
+    1794,
+    135,
+    1,
+    0,
+    0,
+    0,
+    1795,
+    1793,
+    1,
+    0,
+    0,
+    0,
+    1796,
+    1797,
+    5,
+    109,
+    0,
+    0,
+    1797,
+    1798,
+    5,
+    40,
+    0,
+    0,
+    1798,
+    1803,
+    3,
+    140,
+    70,
+    0,
+    1799,
+    1800,
+    5,
+    5,
+    0,
+    0,
+    1800,
+    1802,
+    3,
+    140,
+    70,
+    0,
+    1801,
+    1799,
+    1,
+    0,
+    0,
+    0,
+    1802,
+    1805,
+    1,
+    0,
+    0,
+    0,
+    1803,
+    1801,
+    1,
+    0,
+    0,
+    0,
+    1803,
+    1804,
+    1,
+    0,
+    0,
+    0,
+    1804,
+    137,
+    1,
+    0,
+    0,
+    0,
+    1805,
+    1803,
+    1,
+    0,
+    0,
+    0,
+    1806,
+    1807,
+    5,
+    98,
+    0,
+    0,
+    1807,
+    1810,
+    3,
+    64,
+    32,
+    0,
+    1808,
+    1809,
+    7,
+    18,
+    0,
+    0,
+    1809,
+    1811,
+    3,
+    64,
+    32,
+    0,
+    1810,
+    1808,
+    1,
+    0,
+    0,
+    0,
+    1810,
+    1811,
+    1,
+    0,
+    0,
+    0,
+    1811,
+    139,
+    1,
+    0,
+    0,
+    0,
+    1812,
+    1815,
+    3,
+    64,
+    32,
+    0,
+    1813,
+    1814,
+    5,
+    45,
+    0,
+    0,
+    1814,
+    1816,
+    3,
+    190,
+    95,
+    0,
+    1815,
+    1813,
+    1,
+    0,
+    0,
+    0,
+    1815,
+    1816,
+    1,
+    0,
+    0,
+    0,
+    1816,
+    1818,
+    1,
+    0,
+    0,
+    0,
+    1817,
+    1819,
+    3,
+    142,
+    71,
+    0,
+    1818,
+    1817,
+    1,
+    0,
+    0,
+    0,
+    1818,
+    1819,
+    1,
+    0,
+    0,
+    0,
+    1819,
+    1822,
+    1,
+    0,
+    0,
+    0,
+    1820,
+    1821,
+    5,
+    175,
+    0,
+    0,
+    1821,
+    1823,
+    7,
+    19,
+    0,
+    0,
+    1822,
+    1820,
+    1,
+    0,
+    0,
+    0,
+    1822,
+    1823,
+    1,
+    0,
+    0,
+    0,
+    1823,
+    141,
+    1,
+    0,
+    0,
+    0,
+    1824,
+    1825,
+    7,
+    20,
+    0,
+    0,
+    1825,
+    143,
+    1,
+    0,
+    0,
+    0,
+    1826,
+    1827,
+    3,
+    64,
+    32,
+    0,
+    1827,
+    1828,
+    5,
+    155,
+    0,
+    0,
+    1828,
+    1837,
+    1,
+    0,
+    0,
+    0,
+    1829,
+    1830,
+    3,
+    64,
+    32,
+    0,
+    1830,
+    1831,
+    5,
+    158,
+    0,
+    0,
+    1831,
+    1837,
+    1,
+    0,
+    0,
+    0,
+    1832,
+    1833,
+    5,
+    157,
+    0,
+    0,
+    1833,
+    1837,
+    5,
+    127,
+    0,
+    0,
+    1834,
+    1835,
+    5,
+    156,
+    0,
+    0,
+    1835,
+    1837,
+    5,
+    155,
+    0,
+    0,
+    1836,
+    1826,
+    1,
+    0,
+    0,
+    0,
+    1836,
+    1829,
+    1,
+    0,
+    0,
+    0,
+    1836,
+    1832,
+    1,
+    0,
+    0,
+    0,
+    1836,
+    1834,
+    1,
+    0,
+    0,
+    0,
+    1837,
+    145,
+    1,
+    0,
+    0,
+    0,
+    1838,
+    1839,
+    3,
+    64,
+    32,
+    0,
+    1839,
+    1840,
+    5,
+    155,
+    0,
+    0,
+    1840,
+    1849,
+    1,
+    0,
+    0,
+    0,
+    1841,
+    1842,
+    3,
+    64,
+    32,
+    0,
+    1842,
+    1843,
+    5,
+    158,
+    0,
+    0,
+    1843,
+    1849,
+    1,
+    0,
+    0,
+    0,
+    1844,
+    1845,
+    5,
+    157,
+    0,
+    0,
+    1845,
+    1849,
+    5,
+    127,
+    0,
+    0,
+    1846,
+    1847,
+    5,
+    156,
+    0,
+    0,
+    1847,
+    1849,
+    5,
+    158,
+    0,
+    0,
+    1848,
+    1838,
+    1,
+    0,
+    0,
+    0,
+    1848,
+    1841,
+    1,
+    0,
+    0,
+    0,
+    1848,
+    1844,
+    1,
+    0,
+    0,
+    0,
+    1848,
+    1846,
+    1,
+    0,
+    0,
+    0,
+    1849,
+    147,
+    1,
+    0,
+    0,
+    0,
+    1850,
+    1851,
+    3,
+    64,
+    32,
+    0,
+    1851,
+    1852,
+    5,
+    155,
+    0,
+    0,
+    1852,
+    1858,
+    1,
+    0,
+    0,
+    0,
+    1853,
+    1854,
+    5,
+    156,
+    0,
+    0,
+    1854,
+    1858,
+    5,
+    155,
+    0,
+    0,
+    1855,
+    1856,
+    5,
+    157,
+    0,
+    0,
+    1856,
+    1858,
+    5,
+    127,
+    0,
+    0,
+    1857,
+    1850,
+    1,
+    0,
+    0,
+    0,
+    1857,
+    1853,
+    1,
+    0,
+    0,
+    0,
+    1857,
+    1855,
+    1,
+    0,
+    0,
+    0,
+    1858,
+    149,
+    1,
+    0,
+    0,
+    0,
+    1859,
+    1860,
+    7,
+    21,
+    0,
+    0,
+    1860,
+    1861,
+    5,
+    3,
+    0,
+    0,
+    1861,
+    1862,
+    3,
+    64,
+    32,
+    0,
+    1862,
+    1863,
+    5,
+    4,
+    0,
+    0,
+    1863,
+    1864,
+    5,
+    152,
+    0,
+    0,
+    1864,
+    1866,
+    5,
+    3,
+    0,
+    0,
+    1865,
+    1867,
+    3,
+    156,
+    78,
+    0,
+    1866,
+    1865,
+    1,
+    0,
+    0,
+    0,
+    1866,
+    1867,
+    1,
+    0,
+    0,
+    0,
+    1867,
+    1868,
+    1,
+    0,
+    0,
+    0,
+    1868,
+    1870,
+    3,
+    160,
+    80,
+    0,
+    1869,
+    1871,
+    3,
+    126,
+    63,
+    0,
+    1870,
+    1869,
+    1,
+    0,
+    0,
+    0,
+    1870,
+    1871,
+    1,
+    0,
+    0,
+    0,
+    1871,
+    1872,
+    1,
+    0,
+    0,
+    0,
+    1872,
+    1873,
+    5,
+    4,
+    0,
+    0,
+    1873,
+    1945,
+    1,
+    0,
+    0,
+    0,
+    1874,
+    1875,
+    7,
+    22,
+    0,
+    0,
+    1875,
+    1876,
+    5,
+    3,
+    0,
+    0,
+    1876,
+    1877,
+    5,
+    4,
+    0,
+    0,
+    1877,
+    1878,
+    5,
+    152,
+    0,
+    0,
+    1878,
+    1880,
+    5,
+    3,
+    0,
+    0,
+    1879,
+    1881,
+    3,
+    156,
+    78,
+    0,
+    1880,
+    1879,
+    1,
+    0,
+    0,
+    0,
+    1880,
+    1881,
+    1,
+    0,
+    0,
+    0,
+    1881,
+    1883,
+    1,
+    0,
+    0,
+    0,
+    1882,
+    1884,
+    3,
+    158,
+    79,
+    0,
+    1883,
+    1882,
+    1,
+    0,
+    0,
+    0,
+    1883,
+    1884,
+    1,
+    0,
+    0,
+    0,
+    1884,
+    1885,
+    1,
+    0,
+    0,
+    0,
+    1885,
+    1945,
+    5,
+    4,
+    0,
+    0,
+    1886,
+    1887,
+    7,
+    23,
+    0,
+    0,
+    1887,
+    1888,
+    5,
+    3,
+    0,
+    0,
+    1888,
+    1889,
+    5,
+    4,
+    0,
+    0,
+    1889,
+    1890,
+    5,
+    152,
+    0,
+    0,
+    1890,
+    1892,
+    5,
+    3,
+    0,
+    0,
+    1891,
+    1893,
+    3,
+    156,
+    78,
+    0,
+    1892,
+    1891,
+    1,
+    0,
+    0,
+    0,
+    1892,
+    1893,
+    1,
+    0,
+    0,
+    0,
+    1893,
+    1894,
+    1,
+    0,
+    0,
+    0,
+    1894,
+    1895,
+    3,
+    160,
+    80,
+    0,
+    1895,
+    1896,
+    5,
+    4,
+    0,
+    0,
+    1896,
+    1945,
+    1,
+    0,
+    0,
+    0,
+    1897,
+    1898,
+    7,
+    24,
+    0,
+    0,
+    1898,
+    1899,
+    5,
+    3,
+    0,
+    0,
+    1899,
+    1901,
+    3,
+    64,
+    32,
+    0,
+    1900,
+    1902,
+    3,
+    152,
+    76,
+    0,
+    1901,
+    1900,
+    1,
+    0,
+    0,
+    0,
+    1901,
+    1902,
+    1,
+    0,
+    0,
+    0,
+    1902,
+    1904,
+    1,
+    0,
+    0,
+    0,
+    1903,
+    1905,
+    3,
+    154,
+    77,
+    0,
+    1904,
+    1903,
+    1,
+    0,
+    0,
+    0,
+    1904,
+    1905,
+    1,
+    0,
+    0,
+    0,
+    1905,
+    1906,
+    1,
+    0,
+    0,
+    0,
+    1906,
+    1907,
+    5,
+    4,
+    0,
+    0,
+    1907,
+    1908,
+    5,
+    152,
+    0,
+    0,
+    1908,
+    1910,
+    5,
+    3,
+    0,
+    0,
+    1909,
+    1911,
+    3,
+    156,
+    78,
+    0,
+    1910,
+    1909,
+    1,
+    0,
+    0,
+    0,
+    1910,
+    1911,
+    1,
+    0,
+    0,
+    0,
+    1911,
+    1912,
+    1,
+    0,
+    0,
+    0,
+    1912,
+    1913,
+    3,
+    160,
+    80,
+    0,
+    1913,
+    1914,
+    5,
+    4,
+    0,
+    0,
+    1914,
+    1945,
+    1,
+    0,
+    0,
+    0,
+    1915,
+    1916,
+    5,
+    164,
+    0,
+    0,
+    1916,
+    1917,
+    5,
+    3,
+    0,
+    0,
+    1917,
+    1918,
+    3,
+    64,
+    32,
+    0,
+    1918,
+    1919,
+    5,
+    5,
+    0,
+    0,
+    1919,
+    1920,
+    3,
+    34,
+    17,
+    0,
+    1920,
+    1921,
+    5,
+    4,
+    0,
+    0,
+    1921,
+    1922,
+    5,
+    152,
+    0,
+    0,
+    1922,
+    1924,
+    5,
+    3,
+    0,
+    0,
+    1923,
+    1925,
+    3,
+    156,
+    78,
+    0,
+    1924,
+    1923,
+    1,
+    0,
+    0,
+    0,
+    1924,
+    1925,
+    1,
+    0,
+    0,
+    0,
+    1925,
+    1926,
+    1,
+    0,
+    0,
+    0,
+    1926,
+    1928,
+    3,
+    160,
+    80,
+    0,
+    1927,
+    1929,
+    3,
+    126,
+    63,
+    0,
+    1928,
+    1927,
+    1,
+    0,
+    0,
+    0,
+    1928,
+    1929,
+    1,
+    0,
+    0,
+    0,
+    1929,
+    1930,
+    1,
+    0,
+    0,
+    0,
+    1930,
+    1931,
+    5,
+    4,
+    0,
+    0,
+    1931,
+    1945,
+    1,
+    0,
+    0,
+    0,
+    1932,
+    1933,
+    5,
+    165,
+    0,
+    0,
+    1933,
+    1934,
+    5,
+    3,
+    0,
+    0,
+    1934,
+    1935,
+    3,
+    64,
+    32,
+    0,
+    1935,
+    1936,
+    5,
+    4,
+    0,
+    0,
+    1936,
+    1937,
+    5,
+    152,
+    0,
+    0,
+    1937,
+    1939,
+    5,
+    3,
+    0,
+    0,
+    1938,
+    1940,
+    3,
+    156,
+    78,
+    0,
+    1939,
+    1938,
+    1,
+    0,
+    0,
+    0,
+    1939,
+    1940,
+    1,
+    0,
+    0,
+    0,
+    1940,
+    1941,
+    1,
+    0,
+    0,
+    0,
+    1941,
+    1942,
+    3,
+    160,
+    80,
+    0,
+    1942,
+    1943,
+    5,
+    4,
+    0,
+    0,
+    1943,
+    1945,
+    1,
+    0,
+    0,
+    0,
+    1944,
+    1859,
+    1,
+    0,
+    0,
+    0,
+    1944,
+    1874,
+    1,
+    0,
+    0,
+    0,
+    1944,
+    1886,
+    1,
+    0,
+    0,
+    0,
+    1944,
+    1897,
+    1,
+    0,
+    0,
+    0,
+    1944,
+    1915,
+    1,
+    0,
+    0,
+    0,
+    1944,
+    1932,
+    1,
+    0,
+    0,
+    0,
+    1945,
+    151,
+    1,
+    0,
+    0,
+    0,
+    1946,
+    1947,
+    5,
+    5,
+    0,
+    0,
+    1947,
+    1948,
+    3,
+    34,
+    17,
+    0,
+    1948,
+    153,
+    1,
+    0,
+    0,
+    0,
+    1949,
+    1950,
+    5,
+    5,
+    0,
+    0,
+    1950,
+    1951,
+    3,
+    34,
+    17,
+    0,
+    1951,
+    155,
+    1,
+    0,
+    0,
+    0,
+    1952,
+    1953,
+    5,
+    153,
+    0,
+    0,
+    1953,
+    1955,
+    5,
+    40,
+    0,
+    0,
+    1954,
+    1956,
+    3,
+    64,
+    32,
+    0,
+    1955,
+    1954,
+    1,
+    0,
+    0,
+    0,
+    1956,
+    1957,
+    1,
+    0,
+    0,
+    0,
+    1957,
+    1955,
+    1,
+    0,
+    0,
+    0,
+    1957,
+    1958,
+    1,
+    0,
+    0,
+    0,
+    1958,
+    157,
+    1,
+    0,
+    0,
+    0,
+    1959,
+    1960,
+    5,
+    109,
+    0,
+    0,
+    1960,
+    1962,
+    5,
+    40,
+    0,
+    0,
+    1961,
+    1963,
+    3,
+    64,
+    32,
+    0,
+    1962,
+    1961,
+    1,
+    0,
+    0,
+    0,
+    1963,
+    1964,
+    1,
+    0,
+    0,
+    0,
+    1964,
+    1962,
+    1,
+    0,
+    0,
+    0,
+    1964,
+    1965,
+    1,
+    0,
+    0,
+    0,
+    1965,
+    159,
+    1,
+    0,
+    0,
+    0,
+    1966,
+    1967,
+    5,
+    109,
+    0,
+    0,
+    1967,
+    1968,
+    5,
+    40,
+    0,
+    0,
+    1968,
+    1969,
+    3,
+    162,
+    81,
+    0,
+    1969,
+    161,
+    1,
+    0,
+    0,
+    0,
+    1970,
+    1972,
+    3,
+    64,
+    32,
+    0,
+    1971,
+    1973,
+    3,
+    142,
+    71,
+    0,
+    1972,
+    1971,
+    1,
+    0,
+    0,
+    0,
+    1972,
+    1973,
+    1,
+    0,
+    0,
+    0,
+    1973,
+    1981,
+    1,
+    0,
+    0,
+    0,
+    1974,
+    1975,
+    5,
+    5,
+    0,
+    0,
+    1975,
+    1977,
+    3,
+    64,
+    32,
+    0,
+    1976,
+    1978,
+    3,
+    142,
+    71,
+    0,
+    1977,
+    1976,
+    1,
+    0,
+    0,
+    0,
+    1977,
+    1978,
+    1,
+    0,
+    0,
+    0,
+    1978,
+    1980,
+    1,
+    0,
+    0,
+    0,
+    1979,
+    1974,
+    1,
+    0,
+    0,
+    0,
+    1980,
+    1983,
+    1,
+    0,
+    0,
+    0,
+    1981,
+    1979,
+    1,
+    0,
+    0,
+    0,
+    1981,
+    1982,
+    1,
+    0,
+    0,
+    0,
+    1982,
+    163,
+    1,
+    0,
+    0,
+    0,
+    1983,
+    1981,
+    1,
+    0,
+    0,
+    0,
+    1984,
+    1985,
+    3,
+    86,
+    43,
+    0,
+    1985,
+    165,
+    1,
+    0,
+    0,
+    0,
+    1986,
+    1987,
+    3,
+    86,
+    43,
+    0,
+    1987,
+    167,
+    1,
+    0,
+    0,
+    0,
+    1988,
+    1989,
+    7,
+    25,
+    0,
+    0,
+    1989,
+    169,
+    1,
+    0,
+    0,
+    0,
+    1990,
+    1991,
+    5,
+    188,
+    0,
+    0,
+    1991,
+    171,
+    1,
+    0,
+    0,
+    0,
+    1992,
+    1995,
+    3,
+    64,
+    32,
+    0,
+    1993,
+    1995,
+    3,
+    28,
+    14,
+    0,
+    1994,
+    1992,
+    1,
+    0,
+    0,
+    0,
+    1994,
+    1993,
+    1,
+    0,
+    0,
+    0,
+    1995,
+    173,
+    1,
+    0,
+    0,
+    0,
+    1996,
+    1997,
+    7,
+    26,
+    0,
+    0,
+    1997,
+    175,
+    1,
+    0,
+    0,
+    0,
+    1998,
+    1999,
+    7,
+    27,
+    0,
+    0,
+    1999,
+    177,
+    1,
+    0,
+    0,
+    0,
+    2000,
+    2001,
+    3,
+    224,
+    112,
+    0,
+    2001,
+    179,
+    1,
+    0,
+    0,
+    0,
+    2002,
+    2003,
+    3,
+    224,
+    112,
+    0,
+    2003,
+    181,
+    1,
+    0,
+    0,
+    0,
+    2004,
+    2005,
+    3,
+    224,
+    112,
+    0,
+    2005,
+    183,
+    1,
+    0,
+    0,
+    0,
+    2006,
+    2007,
+    3,
+    224,
+    112,
+    0,
+    2007,
+    185,
+    1,
+    0,
+    0,
+    0,
+    2008,
+    2009,
+    3,
+    224,
+    112,
+    0,
+    2009,
+    187,
+    1,
+    0,
+    0,
+    0,
+    2010,
+    2011,
+    3,
+    224,
+    112,
+    0,
+    2011,
+    189,
+    1,
+    0,
+    0,
+    0,
+    2012,
+    2013,
+    3,
+    224,
+    112,
+    0,
+    2013,
+    191,
+    1,
+    0,
+    0,
+    0,
+    2014,
+    2015,
+    3,
+    224,
+    112,
+    0,
+    2015,
+    193,
+    1,
+    0,
+    0,
+    0,
+    2016,
+    2017,
+    3,
+    224,
+    112,
+    0,
+    2017,
+    195,
+    1,
+    0,
+    0,
+    0,
+    2018,
+    2019,
+    3,
+    224,
+    112,
+    0,
+    2019,
+    197,
+    1,
+    0,
+    0,
+    0,
+    2020,
+    2021,
+    3,
+    224,
+    112,
+    0,
+    2021,
+    199,
+    1,
+    0,
+    0,
+    0,
+    2022,
+    2023,
+    3,
+    224,
+    112,
+    0,
+    2023,
+    201,
+    1,
+    0,
+    0,
+    0,
+    2024,
+    2025,
+    3,
+    224,
+    112,
+    0,
+    2025,
+    203,
+    1,
+    0,
+    0,
+    0,
+    2026,
+    2027,
+    3,
+    224,
+    112,
+    0,
+    2027,
+    205,
+    1,
+    0,
+    0,
+    0,
+    2028,
+    2029,
+    3,
+    224,
+    112,
+    0,
+    2029,
+    207,
+    1,
+    0,
+    0,
+    0,
+    2030,
+    2031,
+    3,
+    224,
+    112,
+    0,
+    2031,
+    209,
+    1,
+    0,
+    0,
+    0,
+    2032,
+    2033,
+    3,
+    224,
+    112,
+    0,
+    2033,
+    211,
+    1,
+    0,
+    0,
+    0,
+    2034,
+    2035,
+    3,
+    224,
+    112,
+    0,
+    2035,
+    213,
+    1,
+    0,
+    0,
+    0,
+    2036,
+    2037,
+    3,
+    224,
+    112,
+    0,
+    2037,
+    215,
+    1,
+    0,
+    0,
+    0,
+    2038,
+    2039,
+    3,
+    224,
+    112,
+    0,
+    2039,
+    217,
+    1,
+    0,
+    0,
+    0,
+    2040,
+    2041,
+    3,
+    224,
+    112,
+    0,
+    2041,
+    219,
+    1,
+    0,
+    0,
+    0,
+    2042,
+    2043,
+    3,
+    224,
+    112,
+    0,
+    2043,
+    221,
+    1,
+    0,
+    0,
+    0,
+    2044,
+    2045,
+    3,
+    224,
+    112,
+    0,
+    2045,
+    223,
+    1,
+    0,
+    0,
+    0,
+    2046,
+    2054,
+    5,
+    185,
+    0,
+    0,
+    2047,
+    2054,
+    3,
+    176,
+    88,
+    0,
+    2048,
+    2054,
+    5,
+    188,
+    0,
+    0,
+    2049,
+    2050,
+    5,
+    3,
+    0,
+    0,
+    2050,
+    2051,
+    3,
+    224,
+    112,
+    0,
+    2051,
+    2052,
+    5,
+    4,
+    0,
+    0,
+    2052,
+    2054,
+    1,
+    0,
+    0,
+    0,
+    2053,
+    2046,
+    1,
+    0,
+    0,
+    0,
+    2053,
+    2047,
+    1,
+    0,
+    0,
+    0,
+    2053,
+    2048,
+    1,
+    0,
+    0,
+    0,
+    2053,
+    2049,
+    1,
+    0,
+    0,
+    0,
+    2054,
+    225,
+    1,
+    0,
+    0,
+    0,
+    296,
+    229,
+    237,
+    244,
+    249,
+    255,
+    261,
+    263,
+    289,
+    296,
+    303,
+    309,
+    313,
+    318,
+    321,
+    328,
+    331,
+    335,
+    343,
+    347,
+    349,
+    353,
+    357,
+    361,
+    364,
+    371,
+    377,
+    383,
+    388,
+    399,
+    405,
+    409,
+    413,
+    416,
+    420,
+    426,
+    431,
+    440,
+    447,
+    453,
+    457,
+    461,
+    466,
+    472,
+    484,
+    488,
+    493,
+    496,
+    499,
+    502,
+    506,
+    509,
+    523,
+    530,
+    537,
+    539,
+    542,
+    548,
+    553,
+    561,
+    566,
+    581,
+    587,
+    597,
+    602,
+    612,
+    616,
+    618,
+    622,
+    627,
+    629,
+    637,
+    643,
+    648,
+    655,
+    666,
+    669,
+    671,
+    678,
+    682,
+    689,
+    695,
+    701,
+    707,
+    712,
+    721,
+    726,
+    737,
+    742,
+    753,
+    758,
+    762,
+    778,
+    788,
+    793,
+    801,
+    813,
+    818,
+    826,
+    833,
+    836,
+    839,
+    846,
+    849,
+    852,
+    855,
+    859,
+    867,
+    872,
+    882,
+    887,
+    896,
+    903,
+    907,
+    911,
+    914,
+    922,
+    935,
+    938,
+    946,
+    955,
+    959,
+    964,
+    994,
+    1006,
+    1011,
+    1023,
+    1029,
+    1036,
+    1040,
+    1050,
+    1053,
+    1059,
+    1065,
+    1074,
+    1077,
+    1081,
+    1083,
+    1085,
+    1094,
+    1106,
+    1117,
+    1121,
+    1128,
+    1134,
+    1139,
+    1147,
+    1152,
+    1156,
+    1159,
+    1163,
+    1166,
+    1174,
+    1185,
+    1191,
+    1193,
+    1201,
+    1208,
+    1215,
+    1220,
+    1222,
+    1228,
+    1237,
+    1242,
+    1249,
+    1253,
+    1255,
+    1258,
+    1266,
+    1270,
+    1273,
+    1279,
+    1283,
+    1288,
+    1295,
+    1304,
+    1308,
+    1310,
+    1314,
+    1323,
+    1328,
+    1330,
+    1343,
+    1346,
+    1349,
+    1354,
+    1358,
+    1361,
+    1364,
+    1369,
+    1373,
+    1378,
+    1381,
+    1384,
+    1389,
+    1393,
+    1396,
+    1403,
+    1408,
+    1417,
+    1422,
+    1425,
+    1433,
+    1437,
+    1445,
+    1448,
+    1450,
+    1459,
+    1462,
+    1464,
+    1468,
+    1472,
+    1476,
+    1479,
+    1490,
+    1495,
+    1499,
+    1503,
+    1506,
+    1511,
+    1517,
+    1524,
+    1531,
+    1540,
+    1544,
+    1546,
+    1550,
+    1553,
+    1561,
+    1567,
+    1572,
+    1578,
+    1585,
+    1592,
+    1597,
+    1600,
+    1603,
+    1606,
+    1611,
+    1616,
+    1623,
+    1627,
+    1631,
+    1641,
+    1650,
+    1653,
+    1662,
+    1666,
+    1674,
+    1683,
+    1686,
+    1695,
+    1698,
+    1701,
+    1704,
+    1714,
+    1716,
+    1725,
+    1734,
+    1738,
+    1745,
+    1752,
+    1756,
+    1760,
+    1769,
+    1773,
+    1777,
+    1782,
+    1786,
+    1793,
+    1803,
+    1810,
+    1815,
+    1818,
+    1822,
+    1836,
+    1848,
+    1857,
+    1866,
+    1870,
+    1880,
+    1883,
+    1892,
+    1901,
+    1904,
+    1910,
+    1924,
+    1928,
+    1939,
+    1944,
+    1957,
+    1964,
+    1972,
+    1977,
+    1981,
+    1994,
+    2053
+  ]
+
+  private static __ATN: ATN
   public static get _ATN(): ATN {
     if (!SQLiteParser.__ATN) {
-      SQLiteParser.__ATN = new ATNDeserializer().deserialize(Utils.toCharArray(SQLiteParser._serializedATN))
+      SQLiteParser.__ATN = new ATNDeserializer().deserialize(SQLiteParser._serializedATN)
     }
 
     return SQLiteParser.__ATN
   }
+
+  static DecisionsToDFA = SQLiteParser._ATN.decisionToState.map(
+    (ds: DecisionState, index: number) => new DFA(ds, index)
+  )
 }
 
 export class ParseContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public EOF(): TerminalNode {
     return this.getToken(SQLiteParser.EOF, 0)
   }
-  public sql_stmt_list(): Sql_stmt_listContext[]
-  public sql_stmt_list(i: number): Sql_stmt_listContext
-  public sql_stmt_list(i?: number): Sql_stmt_listContext | Sql_stmt_listContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Sql_stmt_listContext)
-    } else {
-      return this.getRuleContext(i, Sql_stmt_listContext)
-    }
+  public sql_stmt_list_list(): Sql_stmt_listContext[] {
+    return this.getTypedRuleContexts(Sql_stmt_listContext) as Sql_stmt_listContext[]
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public sql_stmt_list(i: number): Sql_stmt_listContext {
+    return this.getTypedRuleContext(Sql_stmt_listContext, i) as Sql_stmt_listContext
   }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_parse
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterParse) {
       listener.enterParse(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitParse) {
       listener.exitParse(this)
@@ -11918,38 +28942,30 @@ export class ParseContext extends ParserRuleContext {
 }
 
 export class Sql_stmt_listContext extends ParserRuleContext {
-  public sql_stmt(): Sql_stmtContext[]
-  public sql_stmt(i: number): Sql_stmtContext
-  public sql_stmt(i?: number): Sql_stmtContext | Sql_stmtContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Sql_stmtContext)
-    } else {
-      return this.getRuleContext(i, Sql_stmtContext)
-    }
-  }
-  public SCOL(): TerminalNode[]
-  public SCOL(i: number): TerminalNode
-  public SCOL(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.SCOL)
-    } else {
-      return this.getToken(SQLiteParser.SCOL, i)
-    }
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public sql_stmt_list(): Sql_stmtContext[] {
+    return this.getTypedRuleContexts(Sql_stmtContext) as Sql_stmtContext[]
+  }
+  public sql_stmt(i: number): Sql_stmtContext {
+    return this.getTypedRuleContext(Sql_stmtContext, i) as Sql_stmtContext
+  }
+  public SCOL_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.SCOL)
+  }
+  public SCOL(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.SCOL, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_sql_stmt_list
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSql_stmt_list) {
       listener.enterSql_stmt_list(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSql_stmt_list) {
       listener.exitSql_stmt_list(this)
@@ -11958,101 +28974,99 @@ export class Sql_stmt_listContext extends ParserRuleContext {
 }
 
 export class Sql_stmtContext extends ParserRuleContext {
-  public alter_table_stmt(): Alter_table_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Alter_table_stmtContext)
-  }
-  public analyze_stmt(): Analyze_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Analyze_stmtContext)
-  }
-  public attach_stmt(): Attach_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Attach_stmtContext)
-  }
-  public begin_stmt(): Begin_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Begin_stmtContext)
-  }
-  public commit_stmt(): Commit_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Commit_stmtContext)
-  }
-  public create_index_stmt(): Create_index_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Create_index_stmtContext)
-  }
-  public create_table_stmt(): Create_table_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Create_table_stmtContext)
-  }
-  public create_trigger_stmt(): Create_trigger_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Create_trigger_stmtContext)
-  }
-  public create_view_stmt(): Create_view_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Create_view_stmtContext)
-  }
-  public create_virtual_table_stmt(): Create_virtual_table_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Create_virtual_table_stmtContext)
-  }
-  public delete_stmt(): Delete_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Delete_stmtContext)
-  }
-  public delete_stmt_limited(): Delete_stmt_limitedContext | undefined {
-    return this.tryGetRuleContext(0, Delete_stmt_limitedContext)
-  }
-  public detach_stmt(): Detach_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Detach_stmtContext)
-  }
-  public drop_stmt(): Drop_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Drop_stmtContext)
-  }
-  public insert_stmt(): Insert_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Insert_stmtContext)
-  }
-  public pragma_stmt(): Pragma_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Pragma_stmtContext)
-  }
-  public reindex_stmt(): Reindex_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Reindex_stmtContext)
-  }
-  public release_stmt(): Release_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Release_stmtContext)
-  }
-  public rollback_stmt(): Rollback_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Rollback_stmtContext)
-  }
-  public savepoint_stmt(): Savepoint_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Savepoint_stmtContext)
-  }
-  public select_stmt(): Select_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Select_stmtContext)
-  }
-  public update_stmt(): Update_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Update_stmtContext)
-  }
-  public update_stmt_limited(): Update_stmt_limitedContext | undefined {
-    return this.tryGetRuleContext(0, Update_stmt_limitedContext)
-  }
-  public vacuum_stmt(): Vacuum_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Vacuum_stmtContext)
-  }
-  public EXPLAIN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXPLAIN_, 0)
-  }
-  public QUERY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.QUERY_, 0)
-  }
-  public PLAN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PLAN_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public alter_table_stmt(): Alter_table_stmtContext {
+    return this.getTypedRuleContext(Alter_table_stmtContext, 0) as Alter_table_stmtContext
+  }
+  public analyze_stmt(): Analyze_stmtContext {
+    return this.getTypedRuleContext(Analyze_stmtContext, 0) as Analyze_stmtContext
+  }
+  public attach_stmt(): Attach_stmtContext {
+    return this.getTypedRuleContext(Attach_stmtContext, 0) as Attach_stmtContext
+  }
+  public begin_stmt(): Begin_stmtContext {
+    return this.getTypedRuleContext(Begin_stmtContext, 0) as Begin_stmtContext
+  }
+  public commit_stmt(): Commit_stmtContext {
+    return this.getTypedRuleContext(Commit_stmtContext, 0) as Commit_stmtContext
+  }
+  public create_index_stmt(): Create_index_stmtContext {
+    return this.getTypedRuleContext(Create_index_stmtContext, 0) as Create_index_stmtContext
+  }
+  public create_table_stmt(): Create_table_stmtContext {
+    return this.getTypedRuleContext(Create_table_stmtContext, 0) as Create_table_stmtContext
+  }
+  public create_trigger_stmt(): Create_trigger_stmtContext {
+    return this.getTypedRuleContext(Create_trigger_stmtContext, 0) as Create_trigger_stmtContext
+  }
+  public create_view_stmt(): Create_view_stmtContext {
+    return this.getTypedRuleContext(Create_view_stmtContext, 0) as Create_view_stmtContext
+  }
+  public create_virtual_table_stmt(): Create_virtual_table_stmtContext {
+    return this.getTypedRuleContext(Create_virtual_table_stmtContext, 0) as Create_virtual_table_stmtContext
+  }
+  public delete_stmt(): Delete_stmtContext {
+    return this.getTypedRuleContext(Delete_stmtContext, 0) as Delete_stmtContext
+  }
+  public delete_stmt_limited(): Delete_stmt_limitedContext {
+    return this.getTypedRuleContext(Delete_stmt_limitedContext, 0) as Delete_stmt_limitedContext
+  }
+  public detach_stmt(): Detach_stmtContext {
+    return this.getTypedRuleContext(Detach_stmtContext, 0) as Detach_stmtContext
+  }
+  public drop_stmt(): Drop_stmtContext {
+    return this.getTypedRuleContext(Drop_stmtContext, 0) as Drop_stmtContext
+  }
+  public insert_stmt(): Insert_stmtContext {
+    return this.getTypedRuleContext(Insert_stmtContext, 0) as Insert_stmtContext
+  }
+  public pragma_stmt(): Pragma_stmtContext {
+    return this.getTypedRuleContext(Pragma_stmtContext, 0) as Pragma_stmtContext
+  }
+  public reindex_stmt(): Reindex_stmtContext {
+    return this.getTypedRuleContext(Reindex_stmtContext, 0) as Reindex_stmtContext
+  }
+  public release_stmt(): Release_stmtContext {
+    return this.getTypedRuleContext(Release_stmtContext, 0) as Release_stmtContext
+  }
+  public rollback_stmt(): Rollback_stmtContext {
+    return this.getTypedRuleContext(Rollback_stmtContext, 0) as Rollback_stmtContext
+  }
+  public savepoint_stmt(): Savepoint_stmtContext {
+    return this.getTypedRuleContext(Savepoint_stmtContext, 0) as Savepoint_stmtContext
+  }
+  public select_stmt(): Select_stmtContext {
+    return this.getTypedRuleContext(Select_stmtContext, 0) as Select_stmtContext
+  }
+  public update_stmt(): Update_stmtContext {
+    return this.getTypedRuleContext(Update_stmtContext, 0) as Update_stmtContext
+  }
+  public update_stmt_limited(): Update_stmt_limitedContext {
+    return this.getTypedRuleContext(Update_stmt_limitedContext, 0) as Update_stmt_limitedContext
+  }
+  public vacuum_stmt(): Vacuum_stmtContext {
+    return this.getTypedRuleContext(Vacuum_stmtContext, 0) as Vacuum_stmtContext
+  }
+  public EXPLAIN_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXPLAIN_, 0)
+  }
+  public QUERY_(): TerminalNode {
+    return this.getToken(SQLiteParser.QUERY_, 0)
+  }
+  public PLAN_(): TerminalNode {
+    return this.getToken(SQLiteParser.PLAN_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_sql_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSql_stmt) {
       listener.enterSql_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSql_stmt) {
       listener.exitSql_stmt(this)
@@ -12064,68 +29078,60 @@ export class Alter_table_stmtContext extends ParserRuleContext {
   public _new_table_name!: Table_nameContext
   public _old_column_name!: Column_nameContext
   public _new_column_name!: Column_nameContext
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public ALTER_(): TerminalNode {
     return this.getToken(SQLiteParser.ALTER_, 0)
   }
   public TABLE_(): TerminalNode {
     return this.getToken(SQLiteParser.TABLE_, 0)
   }
-  public table_name(): Table_nameContext[]
-  public table_name(i: number): Table_nameContext
-  public table_name(i?: number): Table_nameContext | Table_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Table_nameContext)
-    } else {
-      return this.getRuleContext(i, Table_nameContext)
-    }
+  public table_name_list(): Table_nameContext[] {
+    return this.getTypedRuleContexts(Table_nameContext) as Table_nameContext[]
   }
-  public RENAME_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RENAME_, 0)
+  public table_name(i: number): Table_nameContext {
+    return this.getTypedRuleContext(Table_nameContext, i) as Table_nameContext
   }
-  public ADD_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ADD_, 0)
+  public RENAME_(): TerminalNode {
+    return this.getToken(SQLiteParser.RENAME_, 0)
   }
-  public column_def(): Column_defContext | undefined {
-    return this.tryGetRuleContext(0, Column_defContext)
+  public ADD_(): TerminalNode {
+    return this.getToken(SQLiteParser.ADD_, 0)
   }
-  public DROP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DROP_, 0)
+  public column_def(): Column_defContext {
+    return this.getTypedRuleContext(Column_defContext, 0) as Column_defContext
   }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
+  public DROP_(): TerminalNode {
+    return this.getToken(SQLiteParser.DROP_, 0)
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
   }
-  public TO_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TO_, 0)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public COLUMN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COLUMN_, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public TO_(): TerminalNode {
+    return this.getToken(SQLiteParser.TO_, 0)
   }
-  // @Override
+  public COLUMN_(): TerminalNode {
+    return this.getToken(SQLiteParser.COLUMN_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_alter_table_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterAlter_table_stmt) {
       listener.enterAlter_table_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitAlter_table_stmt) {
       listener.exitAlter_table_stmt(this)
@@ -12134,32 +29140,30 @@ export class Alter_table_stmtContext extends ParserRuleContext {
 }
 
 export class Analyze_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public ANALYZE_(): TerminalNode {
     return this.getToken(SQLiteParser.ANALYZE_, 0)
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public table_or_index_name(): Table_or_index_nameContext | undefined {
-    return this.tryGetRuleContext(0, Table_or_index_nameContext)
+  public table_or_index_name(): Table_or_index_nameContext {
+    return this.getTypedRuleContext(Table_or_index_nameContext, 0) as Table_or_index_nameContext
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_analyze_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterAnalyze_stmt) {
       listener.enterAnalyze_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitAnalyze_stmt) {
       listener.exitAnalyze_stmt(this)
@@ -12168,35 +29172,33 @@ export class Analyze_stmtContext extends ParserRuleContext {
 }
 
 export class Attach_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public ATTACH_(): TerminalNode {
     return this.getToken(SQLiteParser.ATTACH_, 0)
   }
   public expr(): ExprContext {
-    return this.getRuleContext(0, ExprContext)
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
   }
   public AS_(): TerminalNode {
     return this.getToken(SQLiteParser.AS_, 0)
   }
   public schema_name(): Schema_nameContext {
-    return this.getRuleContext(0, Schema_nameContext)
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public DATABASE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DATABASE_, 0)
+  public DATABASE_(): TerminalNode {
+    return this.getToken(SQLiteParser.DATABASE_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_attach_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterAttach_stmt) {
       listener.enterAttach_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitAttach_stmt) {
       listener.exitAttach_stmt(this)
@@ -12205,38 +29207,36 @@ export class Attach_stmtContext extends ParserRuleContext {
 }
 
 export class Begin_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public BEGIN_(): TerminalNode {
     return this.getToken(SQLiteParser.BEGIN_, 0)
   }
-  public TRANSACTION_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TRANSACTION_, 0)
+  public TRANSACTION_(): TerminalNode {
+    return this.getToken(SQLiteParser.TRANSACTION_, 0)
   }
-  public DEFERRED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DEFERRED_, 0)
+  public DEFERRED_(): TerminalNode {
+    return this.getToken(SQLiteParser.DEFERRED_, 0)
   }
-  public IMMEDIATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IMMEDIATE_, 0)
+  public IMMEDIATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.IMMEDIATE_, 0)
   }
-  public EXCLUSIVE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXCLUSIVE_, 0)
+  public EXCLUSIVE_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXCLUSIVE_, 0)
   }
-  public transaction_name(): Transaction_nameContext | undefined {
-    return this.tryGetRuleContext(0, Transaction_nameContext)
+  public transaction_name(): Transaction_nameContext {
+    return this.getTypedRuleContext(Transaction_nameContext, 0) as Transaction_nameContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_begin_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterBegin_stmt) {
       listener.enterBegin_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitBegin_stmt) {
       listener.exitBegin_stmt(this)
@@ -12245,29 +29245,27 @@ export class Begin_stmtContext extends ParserRuleContext {
 }
 
 export class Commit_stmtContext extends ParserRuleContext {
-  public COMMIT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COMMIT_, 0)
-  }
-  public END_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.END_, 0)
-  }
-  public TRANSACTION_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TRANSACTION_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public COMMIT_(): TerminalNode {
+    return this.getToken(SQLiteParser.COMMIT_, 0)
+  }
+  public END_(): TerminalNode {
+    return this.getToken(SQLiteParser.END_, 0)
+  }
+  public TRANSACTION_(): TerminalNode {
+    return this.getToken(SQLiteParser.TRANSACTION_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_commit_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCommit_stmt) {
       listener.enterCommit_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCommit_stmt) {
       listener.exitCommit_stmt(this)
@@ -12276,35 +29274,33 @@ export class Commit_stmtContext extends ParserRuleContext {
 }
 
 export class Rollback_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public ROLLBACK_(): TerminalNode {
     return this.getToken(SQLiteParser.ROLLBACK_, 0)
   }
-  public TRANSACTION_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TRANSACTION_, 0)
+  public TRANSACTION_(): TerminalNode {
+    return this.getToken(SQLiteParser.TRANSACTION_, 0)
   }
-  public TO_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TO_, 0)
+  public TO_(): TerminalNode {
+    return this.getToken(SQLiteParser.TO_, 0)
   }
-  public savepoint_name(): Savepoint_nameContext | undefined {
-    return this.tryGetRuleContext(0, Savepoint_nameContext)
+  public savepoint_name(): Savepoint_nameContext {
+    return this.getTypedRuleContext(Savepoint_nameContext, 0) as Savepoint_nameContext
   }
-  public SAVEPOINT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.SAVEPOINT_, 0)
+  public SAVEPOINT_(): TerminalNode {
+    return this.getToken(SQLiteParser.SAVEPOINT_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_rollback_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterRollback_stmt) {
       listener.enterRollback_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitRollback_stmt) {
       listener.exitRollback_stmt(this)
@@ -12313,26 +29309,24 @@ export class Rollback_stmtContext extends ParserRuleContext {
 }
 
 export class Savepoint_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public SAVEPOINT_(): TerminalNode {
     return this.getToken(SQLiteParser.SAVEPOINT_, 0)
   }
   public savepoint_name(): Savepoint_nameContext {
-    return this.getRuleContext(0, Savepoint_nameContext)
+    return this.getTypedRuleContext(Savepoint_nameContext, 0) as Savepoint_nameContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_savepoint_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSavepoint_stmt) {
       listener.enterSavepoint_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSavepoint_stmt) {
       listener.exitSavepoint_stmt(this)
@@ -12341,29 +29335,27 @@ export class Savepoint_stmtContext extends ParserRuleContext {
 }
 
 export class Release_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public RELEASE_(): TerminalNode {
     return this.getToken(SQLiteParser.RELEASE_, 0)
   }
   public savepoint_name(): Savepoint_nameContext {
-    return this.getRuleContext(0, Savepoint_nameContext)
+    return this.getTypedRuleContext(Savepoint_nameContext, 0) as Savepoint_nameContext
   }
-  public SAVEPOINT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.SAVEPOINT_, 0)
+  public SAVEPOINT_(): TerminalNode {
+    return this.getToken(SQLiteParser.SAVEPOINT_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_release_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterRelease_stmt) {
       listener.enterRelease_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitRelease_stmt) {
       listener.exitRelease_stmt(this)
@@ -12372,6 +29364,10 @@ export class Release_stmtContext extends ParserRuleContext {
 }
 
 export class Create_index_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public CREATE_(): TerminalNode {
     return this.getToken(SQLiteParser.CREATE_, 0)
   }
@@ -12379,76 +29375,64 @@ export class Create_index_stmtContext extends ParserRuleContext {
     return this.getToken(SQLiteParser.INDEX_, 0)
   }
   public index_name(): Index_nameContext {
-    return this.getRuleContext(0, Index_nameContext)
+    return this.getTypedRuleContext(Index_nameContext, 0) as Index_nameContext
   }
   public ON_(): TerminalNode {
     return this.getToken(SQLiteParser.ON_, 0)
   }
   public table_name(): Table_nameContext {
-    return this.getRuleContext(0, Table_nameContext)
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
   }
   public OPEN_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public indexed_column(): Indexed_columnContext[]
-  public indexed_column(i: number): Indexed_columnContext
-  public indexed_column(i?: number): Indexed_columnContext | Indexed_columnContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Indexed_columnContext)
-    } else {
-      return this.getRuleContext(i, Indexed_columnContext)
-    }
+  public indexed_column_list(): Indexed_columnContext[] {
+    return this.getTypedRuleContexts(Indexed_columnContext) as Indexed_columnContext[]
+  }
+  public indexed_column(i: number): Indexed_columnContext {
+    return this.getTypedRuleContext(Indexed_columnContext, i) as Indexed_columnContext
   }
   public CLOSE_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public UNIQUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UNIQUE_, 0)
+  public UNIQUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.UNIQUE_, 0)
   }
-  public IF_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IF_, 0)
+  public IF_(): TerminalNode {
+    return this.getToken(SQLiteParser.IF_, 0)
   }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
   }
-  public EXISTS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXISTS_, 0)
+  public EXISTS_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXISTS_, 0)
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  public WHERE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WHERE_, 0)
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
   }
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
+  public WHERE_(): TerminalNode {
+    return this.getToken(SQLiteParser.WHERE_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
   }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_create_index_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCreate_index_stmt) {
       listener.enterCreate_index_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCreate_index_stmt) {
       listener.exitCreate_index_stmt(this)
@@ -12457,35 +29441,33 @@ export class Create_index_stmtContext extends ParserRuleContext {
 }
 
 export class Indexed_columnContext extends ParserRuleContext {
-  public column_name(): Column_nameContext | undefined {
-    return this.tryGetRuleContext(0, Column_nameContext)
-  }
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
-  }
-  public COLLATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COLLATE_, 0)
-  }
-  public collation_name(): Collation_nameContext | undefined {
-    return this.tryGetRuleContext(0, Collation_nameContext)
-  }
-  public asc_desc(): Asc_descContext | undefined {
-    return this.tryGetRuleContext(0, Asc_descContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public column_name(): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, 0) as Column_nameContext
+  }
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public COLLATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.COLLATE_, 0)
+  }
+  public collation_name(): Collation_nameContext {
+    return this.getTypedRuleContext(Collation_nameContext, 0) as Collation_nameContext
+  }
+  public asc_desc(): Asc_descContext {
+    return this.getTypedRuleContext(Asc_descContext, 0) as Asc_descContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_indexed_column
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterIndexed_column) {
       listener.enterIndexed_column(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitIndexed_column) {
       listener.exitIndexed_column(this)
@@ -12495,6 +29477,10 @@ export class Indexed_columnContext extends ParserRuleContext {
 
 export class Create_table_stmtContext extends ParserRuleContext {
   public _row_ROW_ID!: Token
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public CREATE_(): TerminalNode {
     return this.getToken(SQLiteParser.CREATE_, 0)
   }
@@ -12502,88 +29488,73 @@ export class Create_table_stmtContext extends ParserRuleContext {
     return this.getToken(SQLiteParser.TABLE_, 0)
   }
   public table_name(): Table_nameContext {
-    return this.getRuleContext(0, Table_nameContext)
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
   }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public column_def(): Column_defContext[]
-  public column_def(i: number): Column_defContext
-  public column_def(i?: number): Column_defContext | Column_defContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_defContext)
-    } else {
-      return this.getRuleContext(i, Column_defContext)
-    }
+  public column_def_list(): Column_defContext[] {
+    return this.getTypedRuleContexts(Column_defContext) as Column_defContext[]
   }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
+  public column_def(i: number): Column_defContext {
+    return this.getTypedRuleContext(Column_defContext, i) as Column_defContext
   }
-  public AS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AS_, 0)
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public select_stmt(): Select_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Select_stmtContext)
+  public AS_(): TerminalNode {
+    return this.getToken(SQLiteParser.AS_, 0)
   }
-  public IF_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IF_, 0)
+  public select_stmt(): Select_stmtContext {
+    return this.getTypedRuleContext(Select_stmtContext, 0) as Select_stmtContext
   }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
+  public IF_(): TerminalNode {
+    return this.getToken(SQLiteParser.IF_, 0)
   }
-  public EXISTS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXISTS_, 0)
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public EXISTS_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXISTS_, 0)
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public TEMP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TEMP_, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  public TEMPORARY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TEMPORARY_, 0)
+  public TEMP_(): TerminalNode {
+    return this.getToken(SQLiteParser.TEMP_, 0)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public TEMPORARY_(): TerminalNode {
+    return this.getToken(SQLiteParser.TEMPORARY_, 0)
   }
-  public table_constraint(): Table_constraintContext[]
-  public table_constraint(i: number): Table_constraintContext
-  public table_constraint(i?: number): Table_constraintContext | Table_constraintContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Table_constraintContext)
-    } else {
-      return this.getRuleContext(i, Table_constraintContext)
-    }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  public WITHOUT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WITHOUT_, 0)
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
   }
-  public IDENTIFIER(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IDENTIFIER, 0)
+  public table_constraint_list(): Table_constraintContext[] {
+    return this.getTypedRuleContexts(Table_constraintContext) as Table_constraintContext[]
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public table_constraint(i: number): Table_constraintContext {
+    return this.getTypedRuleContext(Table_constraintContext, i) as Table_constraintContext
   }
-  // @Override
+  public WITHOUT_(): TerminalNode {
+    return this.getToken(SQLiteParser.WITHOUT_, 0)
+  }
+  public IDENTIFIER(): TerminalNode {
+    return this.getToken(SQLiteParser.IDENTIFIER, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_create_table_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCreate_table_stmt) {
       listener.enterCreate_table_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCreate_table_stmt) {
       listener.exitCreate_table_stmt(this)
@@ -12592,35 +29563,30 @@ export class Create_table_stmtContext extends ParserRuleContext {
 }
 
 export class Column_defContext extends ParserRuleContext {
-  public column_name(): Column_nameContext {
-    return this.getRuleContext(0, Column_nameContext)
-  }
-  public type_name(): Type_nameContext | undefined {
-    return this.tryGetRuleContext(0, Type_nameContext)
-  }
-  public column_constraint(): Column_constraintContext[]
-  public column_constraint(i: number): Column_constraintContext
-  public column_constraint(i?: number): Column_constraintContext | Column_constraintContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_constraintContext)
-    } else {
-      return this.getRuleContext(i, Column_constraintContext)
-    }
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public column_name(): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, 0) as Column_nameContext
+  }
+  public type_name(): Type_nameContext {
+    return this.getTypedRuleContext(Type_nameContext, 0) as Type_nameContext
+  }
+  public column_constraint_list(): Column_constraintContext[] {
+    return this.getTypedRuleContexts(Column_constraintContext) as Column_constraintContext[]
+  }
+  public column_constraint(i: number): Column_constraintContext {
+    return this.getTypedRuleContext(Column_constraintContext, i) as Column_constraintContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_column_def
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterColumn_def) {
       listener.enterColumn_def(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitColumn_def) {
       listener.exitColumn_def(this)
@@ -12629,47 +29595,39 @@ export class Column_defContext extends ParserRuleContext {
 }
 
 export class Type_nameContext extends ParserRuleContext {
-  public name(): NameContext[]
-  public name(i: number): NameContext
-  public name(i?: number): NameContext | NameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(NameContext)
-    } else {
-      return this.getRuleContext(i, NameContext)
-    }
-  }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
-  }
-  public signed_number(): Signed_numberContext[]
-  public signed_number(i: number): Signed_numberContext
-  public signed_number(i?: number): Signed_numberContext | Signed_numberContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Signed_numberContext)
-    } else {
-      return this.getRuleContext(i, Signed_numberContext)
-    }
-  }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
-  }
-  public COMMA(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COMMA, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public name_list(): NameContext[] {
+    return this.getTypedRuleContexts(NameContext) as NameContext[]
+  }
+  public name(i: number): NameContext {
+    return this.getTypedRuleContext(NameContext, i) as NameContext
+  }
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
+  }
+  public signed_number_list(): Signed_numberContext[] {
+    return this.getTypedRuleContexts(Signed_numberContext) as Signed_numberContext[]
+  }
+  public signed_number(i: number): Signed_numberContext {
+    return this.getTypedRuleContext(Signed_numberContext, i) as Signed_numberContext
+  }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
+  }
+  public COMMA(): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_type_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterType_name) {
       listener.enterType_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitType_name) {
       listener.exitType_name(this)
@@ -12678,95 +29636,93 @@ export class Type_nameContext extends ParserRuleContext {
 }
 
 export class Column_constraintContext extends ParserRuleContext {
-  public CHECK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CHECK_, 0)
-  }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
-  }
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
-  }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
-  }
-  public DEFAULT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DEFAULT_, 0)
-  }
-  public COLLATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COLLATE_, 0)
-  }
-  public collation_name(): Collation_nameContext | undefined {
-    return this.tryGetRuleContext(0, Collation_nameContext)
-  }
-  public foreign_key_clause(): Foreign_key_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Foreign_key_clauseContext)
-  }
-  public AS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AS_, 0)
-  }
-  public CONSTRAINT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CONSTRAINT_, 0)
-  }
-  public name(): NameContext | undefined {
-    return this.tryGetRuleContext(0, NameContext)
-  }
-  public PRIMARY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PRIMARY_, 0)
-  }
-  public KEY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.KEY_, 0)
-  }
-  public NULL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NULL_, 0)
-  }
-  public UNIQUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UNIQUE_, 0)
-  }
-  public signed_number(): Signed_numberContext | undefined {
-    return this.tryGetRuleContext(0, Signed_numberContext)
-  }
-  public literal_value(): Literal_valueContext | undefined {
-    return this.tryGetRuleContext(0, Literal_valueContext)
-  }
-  public conflict_clause(): Conflict_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Conflict_clauseContext)
-  }
-  public GENERATED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GENERATED_, 0)
-  }
-  public ALWAYS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ALWAYS_, 0)
-  }
-  public STORED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STORED_, 0)
-  }
-  public VIRTUAL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.VIRTUAL_, 0)
-  }
-  public asc_desc(): Asc_descContext | undefined {
-    return this.tryGetRuleContext(0, Asc_descContext)
-  }
-  public AUTOINCREMENT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AUTOINCREMENT_, 0)
-  }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public CHECK_(): TerminalNode {
+    return this.getToken(SQLiteParser.CHECK_, 0)
+  }
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
+  }
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
+  }
+  public DEFAULT_(): TerminalNode {
+    return this.getToken(SQLiteParser.DEFAULT_, 0)
+  }
+  public COLLATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.COLLATE_, 0)
+  }
+  public collation_name(): Collation_nameContext {
+    return this.getTypedRuleContext(Collation_nameContext, 0) as Collation_nameContext
+  }
+  public foreign_key_clause(): Foreign_key_clauseContext {
+    return this.getTypedRuleContext(Foreign_key_clauseContext, 0) as Foreign_key_clauseContext
+  }
+  public AS_(): TerminalNode {
+    return this.getToken(SQLiteParser.AS_, 0)
+  }
+  public CONSTRAINT_(): TerminalNode {
+    return this.getToken(SQLiteParser.CONSTRAINT_, 0)
+  }
+  public name(): NameContext {
+    return this.getTypedRuleContext(NameContext, 0) as NameContext
+  }
+  public PRIMARY_(): TerminalNode {
+    return this.getToken(SQLiteParser.PRIMARY_, 0)
+  }
+  public KEY_(): TerminalNode {
+    return this.getToken(SQLiteParser.KEY_, 0)
+  }
+  public NULL_(): TerminalNode {
+    return this.getToken(SQLiteParser.NULL_, 0)
+  }
+  public UNIQUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.UNIQUE_, 0)
+  }
+  public signed_number(): Signed_numberContext {
+    return this.getTypedRuleContext(Signed_numberContext, 0) as Signed_numberContext
+  }
+  public literal_value(): Literal_valueContext {
+    return this.getTypedRuleContext(Literal_valueContext, 0) as Literal_valueContext
+  }
+  public conflict_clause(): Conflict_clauseContext {
+    return this.getTypedRuleContext(Conflict_clauseContext, 0) as Conflict_clauseContext
+  }
+  public GENERATED_(): TerminalNode {
+    return this.getToken(SQLiteParser.GENERATED_, 0)
+  }
+  public ALWAYS_(): TerminalNode {
+    return this.getToken(SQLiteParser.ALWAYS_, 0)
+  }
+  public STORED_(): TerminalNode {
+    return this.getToken(SQLiteParser.STORED_, 0)
+  }
+  public VIRTUAL_(): TerminalNode {
+    return this.getToken(SQLiteParser.VIRTUAL_, 0)
+  }
+  public asc_desc(): Asc_descContext {
+    return this.getTypedRuleContext(Asc_descContext, 0) as Asc_descContext
+  }
+  public AUTOINCREMENT_(): TerminalNode {
+    return this.getToken(SQLiteParser.AUTOINCREMENT_, 0)
+  }
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_column_constraint
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterColumn_constraint) {
       listener.enterColumn_constraint(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitColumn_constraint) {
       listener.exitColumn_constraint(this)
@@ -12775,29 +29731,27 @@ export class Column_constraintContext extends ParserRuleContext {
 }
 
 export class Signed_numberContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public NUMERIC_LITERAL(): TerminalNode {
     return this.getToken(SQLiteParser.NUMERIC_LITERAL, 0)
   }
-  public PLUS(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PLUS, 0)
+  public PLUS(): TerminalNode {
+    return this.getToken(SQLiteParser.PLUS, 0)
   }
-  public MINUS(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.MINUS, 0)
+  public MINUS(): TerminalNode {
+    return this.getToken(SQLiteParser.MINUS, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_signed_number
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSigned_number) {
       listener.enterSigned_number(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSigned_number) {
       listener.exitSigned_number(this)
@@ -12806,83 +29760,72 @@ export class Signed_numberContext extends ParserRuleContext {
 }
 
 export class Table_constraintContext extends ParserRuleContext {
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
-  }
-  public indexed_column(): Indexed_columnContext[]
-  public indexed_column(i: number): Indexed_columnContext
-  public indexed_column(i?: number): Indexed_columnContext | Indexed_columnContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Indexed_columnContext)
-    } else {
-      return this.getRuleContext(i, Indexed_columnContext)
-    }
-  }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
-  }
-  public CHECK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CHECK_, 0)
-  }
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
-  }
-  public FOREIGN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FOREIGN_, 0)
-  }
-  public KEY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.KEY_, 0)
-  }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
-  }
-  public foreign_key_clause(): Foreign_key_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Foreign_key_clauseContext)
-  }
-  public CONSTRAINT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CONSTRAINT_, 0)
-  }
-  public name(): NameContext | undefined {
-    return this.tryGetRuleContext(0, NameContext)
-  }
-  public PRIMARY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PRIMARY_, 0)
-  }
-  public UNIQUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UNIQUE_, 0)
-  }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
-  }
-  public conflict_clause(): Conflict_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Conflict_clauseContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
+  }
+  public indexed_column_list(): Indexed_columnContext[] {
+    return this.getTypedRuleContexts(Indexed_columnContext) as Indexed_columnContext[]
+  }
+  public indexed_column(i: number): Indexed_columnContext {
+    return this.getTypedRuleContext(Indexed_columnContext, i) as Indexed_columnContext
+  }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
+  }
+  public CHECK_(): TerminalNode {
+    return this.getToken(SQLiteParser.CHECK_, 0)
+  }
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public FOREIGN_(): TerminalNode {
+    return this.getToken(SQLiteParser.FOREIGN_, 0)
+  }
+  public KEY_(): TerminalNode {
+    return this.getToken(SQLiteParser.KEY_, 0)
+  }
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
+  }
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
+  }
+  public foreign_key_clause(): Foreign_key_clauseContext {
+    return this.getTypedRuleContext(Foreign_key_clauseContext, 0) as Foreign_key_clauseContext
+  }
+  public CONSTRAINT_(): TerminalNode {
+    return this.getToken(SQLiteParser.CONSTRAINT_, 0)
+  }
+  public name(): NameContext {
+    return this.getTypedRuleContext(NameContext, 0) as NameContext
+  }
+  public PRIMARY_(): TerminalNode {
+    return this.getToken(SQLiteParser.PRIMARY_, 0)
+  }
+  public UNIQUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.UNIQUE_, 0)
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
+  public conflict_clause(): Conflict_clauseContext {
+    return this.getTypedRuleContext(Conflict_clauseContext, 0) as Conflict_clauseContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_table_constraint
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterTable_constraint) {
       listener.enterTable_constraint(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitTable_constraint) {
       listener.exitTable_constraint(this)
@@ -12891,173 +29834,129 @@ export class Table_constraintContext extends ParserRuleContext {
 }
 
 export class Foreign_key_clauseContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public REFERENCES_(): TerminalNode {
     return this.getToken(SQLiteParser.REFERENCES_, 0)
   }
   public foreign_table(): Foreign_tableContext {
-    return this.getRuleContext(0, Foreign_tableContext)
+    return this.getTypedRuleContext(Foreign_tableContext, 0) as Foreign_tableContext
   }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
   }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
   }
-  public ON_(): TerminalNode[]
-  public ON_(i: number): TerminalNode
-  public ON_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.ON_)
-    } else {
-      return this.getToken(SQLiteParser.ON_, i)
-    }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public MATCH_(): TerminalNode[]
-  public MATCH_(i: number): TerminalNode
-  public MATCH_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.MATCH_)
-    } else {
-      return this.getToken(SQLiteParser.MATCH_, i)
-    }
+  public ON__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.ON_)
   }
-  public name(): NameContext[]
-  public name(i: number): NameContext
-  public name(i?: number): NameContext | NameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(NameContext)
-    } else {
-      return this.getRuleContext(i, NameContext)
-    }
+  public ON_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.ON_, i)
   }
-  public DEFERRABLE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DEFERRABLE_, 0)
+  public MATCH__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.MATCH_)
   }
-  public DELETE_(): TerminalNode[]
-  public DELETE_(i: number): TerminalNode
-  public DELETE_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.DELETE_)
-    } else {
-      return this.getToken(SQLiteParser.DELETE_, i)
-    }
+  public MATCH_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.MATCH_, i)
   }
-  public UPDATE_(): TerminalNode[]
-  public UPDATE_(i: number): TerminalNode
-  public UPDATE_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.UPDATE_)
-    } else {
-      return this.getToken(SQLiteParser.UPDATE_, i)
-    }
+  public name_list(): NameContext[] {
+    return this.getTypedRuleContexts(NameContext) as NameContext[]
   }
-  public SET_(): TerminalNode[]
-  public SET_(i: number): TerminalNode
-  public SET_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.SET_)
-    } else {
-      return this.getToken(SQLiteParser.SET_, i)
-    }
+  public name(i: number): NameContext {
+    return this.getTypedRuleContext(NameContext, i) as NameContext
   }
-  public CASCADE_(): TerminalNode[]
-  public CASCADE_(i: number): TerminalNode
-  public CASCADE_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.CASCADE_)
-    } else {
-      return this.getToken(SQLiteParser.CASCADE_, i)
-    }
+  public DEFERRABLE_(): TerminalNode {
+    return this.getToken(SQLiteParser.DEFERRABLE_, 0)
   }
-  public RESTRICT_(): TerminalNode[]
-  public RESTRICT_(i: number): TerminalNode
-  public RESTRICT_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.RESTRICT_)
-    } else {
-      return this.getToken(SQLiteParser.RESTRICT_, i)
-    }
+  public DELETE__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.DELETE_)
   }
-  public NO_(): TerminalNode[]
-  public NO_(i: number): TerminalNode
-  public NO_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.NO_)
-    } else {
-      return this.getToken(SQLiteParser.NO_, i)
-    }
+  public DELETE_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.DELETE_, i)
   }
-  public ACTION_(): TerminalNode[]
-  public ACTION_(i: number): TerminalNode
-  public ACTION_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.ACTION_)
-    } else {
-      return this.getToken(SQLiteParser.ACTION_, i)
-    }
+  public UPDATE__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.UPDATE_)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public UPDATE_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.UPDATE_, i)
   }
-  public NULL_(): TerminalNode[]
-  public NULL_(i: number): TerminalNode
-  public NULL_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.NULL_)
-    } else {
-      return this.getToken(SQLiteParser.NULL_, i)
-    }
+  public SET__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.SET_)
   }
-  public DEFAULT_(): TerminalNode[]
-  public DEFAULT_(i: number): TerminalNode
-  public DEFAULT_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.DEFAULT_)
-    } else {
-      return this.getToken(SQLiteParser.DEFAULT_, i)
-    }
+  public SET_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.SET_, i)
   }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
+  public CASCADE__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.CASCADE_)
   }
-  public INITIALLY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INITIALLY_, 0)
+  public CASCADE_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.CASCADE_, i)
   }
-  public DEFERRED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DEFERRED_, 0)
+  public RESTRICT__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.RESTRICT_)
   }
-  public IMMEDIATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IMMEDIATE_, 0)
+  public RESTRICT_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.RESTRICT_, i)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public NO__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.NO_)
   }
-  // @Override
+  public NO_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.NO_, i)
+  }
+  public ACTION__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.ACTION_)
+  }
+  public ACTION_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.ACTION_, i)
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
+  public NULL__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.NULL_)
+  }
+  public NULL_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.NULL_, i)
+  }
+  public DEFAULT__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.DEFAULT_)
+  }
+  public DEFAULT_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.DEFAULT_, i)
+  }
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
+  }
+  public INITIALLY_(): TerminalNode {
+    return this.getToken(SQLiteParser.INITIALLY_, 0)
+  }
+  public DEFERRED_(): TerminalNode {
+    return this.getToken(SQLiteParser.DEFERRED_, 0)
+  }
+  public IMMEDIATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.IMMEDIATE_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_foreign_key_clause
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterForeign_key_clause) {
       listener.enterForeign_key_clause(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitForeign_key_clause) {
       listener.exitForeign_key_clause(this)
@@ -13066,41 +29965,39 @@ export class Foreign_key_clauseContext extends ParserRuleContext {
 }
 
 export class Conflict_clauseContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public ON_(): TerminalNode {
     return this.getToken(SQLiteParser.ON_, 0)
   }
   public CONFLICT_(): TerminalNode {
     return this.getToken(SQLiteParser.CONFLICT_, 0)
   }
-  public ROLLBACK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROLLBACK_, 0)
+  public ROLLBACK_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROLLBACK_, 0)
   }
-  public ABORT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ABORT_, 0)
+  public ABORT_(): TerminalNode {
+    return this.getToken(SQLiteParser.ABORT_, 0)
   }
-  public FAIL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FAIL_, 0)
+  public FAIL_(): TerminalNode {
+    return this.getToken(SQLiteParser.FAIL_, 0)
   }
-  public IGNORE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IGNORE_, 0)
+  public IGNORE_(): TerminalNode {
+    return this.getToken(SQLiteParser.IGNORE_, 0)
   }
-  public REPLACE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.REPLACE_, 0)
+  public REPLACE_(): TerminalNode {
+    return this.getToken(SQLiteParser.REPLACE_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_conflict_clause
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterConflict_clause) {
       listener.enterConflict_clause(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitConflict_clause) {
       listener.exitConflict_clause(this)
@@ -13109,6 +30006,10 @@ export class Conflict_clauseContext extends ParserRuleContext {
 }
 
 export class Create_trigger_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public CREATE_(): TerminalNode {
     return this.getToken(SQLiteParser.CREATE_, 0)
   }
@@ -13116,13 +30017,13 @@ export class Create_trigger_stmtContext extends ParserRuleContext {
     return this.getToken(SQLiteParser.TRIGGER_, 0)
   }
   public trigger_name(): Trigger_nameContext {
-    return this.getRuleContext(0, Trigger_nameContext)
+    return this.getTypedRuleContext(Trigger_nameContext, 0) as Trigger_nameContext
   }
   public ON_(): TerminalNode {
     return this.getToken(SQLiteParser.ON_, 0)
   }
   public table_name(): Table_nameContext {
-    return this.getRuleContext(0, Table_nameContext)
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
   }
   public BEGIN_(): TerminalNode {
     return this.getToken(SQLiteParser.BEGIN_, 0)
@@ -13130,146 +30031,116 @@ export class Create_trigger_stmtContext extends ParserRuleContext {
   public END_(): TerminalNode {
     return this.getToken(SQLiteParser.END_, 0)
   }
-  public DELETE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DELETE_, 0)
+  public DELETE_(): TerminalNode {
+    return this.getToken(SQLiteParser.DELETE_, 0)
   }
-  public INSERT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INSERT_, 0)
+  public INSERT_(): TerminalNode {
+    return this.getToken(SQLiteParser.INSERT_, 0)
   }
-  public UPDATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UPDATE_, 0)
+  public UPDATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.UPDATE_, 0)
   }
-  public IF_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IF_, 0)
+  public IF_(): TerminalNode {
+    return this.getToken(SQLiteParser.IF_, 0)
   }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
   }
-  public EXISTS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXISTS_, 0)
+  public EXISTS_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXISTS_, 0)
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  public BEFORE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BEFORE_, 0)
+  public BEFORE_(): TerminalNode {
+    return this.getToken(SQLiteParser.BEFORE_, 0)
   }
-  public AFTER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AFTER_, 0)
+  public AFTER_(): TerminalNode {
+    return this.getToken(SQLiteParser.AFTER_, 0)
   }
-  public INSTEAD_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INSTEAD_, 0)
+  public INSTEAD_(): TerminalNode {
+    return this.getToken(SQLiteParser.INSTEAD_, 0)
   }
-  public OF_(): TerminalNode[]
-  public OF_(i: number): TerminalNode
-  public OF_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.OF_)
-    } else {
-      return this.getToken(SQLiteParser.OF_, i)
-    }
+  public OF__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.OF_)
   }
-  public FOR_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FOR_, 0)
+  public OF_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.OF_, i)
   }
-  public EACH_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EACH_, 0)
+  public FOR_(): TerminalNode {
+    return this.getToken(SQLiteParser.FOR_, 0)
   }
-  public ROW_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROW_, 0)
+  public EACH_(): TerminalNode {
+    return this.getToken(SQLiteParser.EACH_, 0)
   }
-  public WHEN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WHEN_, 0)
+  public ROW_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROW_, 0)
   }
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
+  public WHEN_(): TerminalNode {
+    return this.getToken(SQLiteParser.WHEN_, 0)
   }
-  public SCOL(): TerminalNode[]
-  public SCOL(i: number): TerminalNode
-  public SCOL(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.SCOL)
-    } else {
-      return this.getToken(SQLiteParser.SCOL, i)
-    }
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
   }
-  public TEMP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TEMP_, 0)
+  public SCOL_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.SCOL)
   }
-  public TEMPORARY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TEMPORARY_, 0)
+  public SCOL(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.SCOL, i)
   }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
+  public TEMP_(): TerminalNode {
+    return this.getToken(SQLiteParser.TEMP_, 0)
   }
-  public update_stmt(): Update_stmtContext[]
-  public update_stmt(i: number): Update_stmtContext
-  public update_stmt(i?: number): Update_stmtContext | Update_stmtContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Update_stmtContext)
-    } else {
-      return this.getRuleContext(i, Update_stmtContext)
-    }
+  public TEMPORARY_(): TerminalNode {
+    return this.getToken(SQLiteParser.TEMPORARY_, 0)
   }
-  public insert_stmt(): Insert_stmtContext[]
-  public insert_stmt(i: number): Insert_stmtContext
-  public insert_stmt(i?: number): Insert_stmtContext | Insert_stmtContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Insert_stmtContext)
-    } else {
-      return this.getRuleContext(i, Insert_stmtContext)
-    }
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
   }
-  public delete_stmt(): Delete_stmtContext[]
-  public delete_stmt(i: number): Delete_stmtContext
-  public delete_stmt(i?: number): Delete_stmtContext | Delete_stmtContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Delete_stmtContext)
-    } else {
-      return this.getRuleContext(i, Delete_stmtContext)
-    }
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
   }
-  public select_stmt(): Select_stmtContext[]
-  public select_stmt(i: number): Select_stmtContext
-  public select_stmt(i?: number): Select_stmtContext | Select_stmtContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Select_stmtContext)
-    } else {
-      return this.getRuleContext(i, Select_stmtContext)
-    }
+  public update_stmt_list(): Update_stmtContext[] {
+    return this.getTypedRuleContexts(Update_stmtContext) as Update_stmtContext[]
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public update_stmt(i: number): Update_stmtContext {
+    return this.getTypedRuleContext(Update_stmtContext, i) as Update_stmtContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public insert_stmt_list(): Insert_stmtContext[] {
+    return this.getTypedRuleContexts(Insert_stmtContext) as Insert_stmtContext[]
   }
-  // @Override
+  public insert_stmt(i: number): Insert_stmtContext {
+    return this.getTypedRuleContext(Insert_stmtContext, i) as Insert_stmtContext
+  }
+  public delete_stmt_list(): Delete_stmtContext[] {
+    return this.getTypedRuleContexts(Delete_stmtContext) as Delete_stmtContext[]
+  }
+  public delete_stmt(i: number): Delete_stmtContext {
+    return this.getTypedRuleContext(Delete_stmtContext, i) as Delete_stmtContext
+  }
+  public select_stmt_list(): Select_stmtContext[] {
+    return this.getTypedRuleContexts(Select_stmtContext) as Select_stmtContext[]
+  }
+  public select_stmt(i: number): Select_stmtContext {
+    return this.getTypedRuleContext(Select_stmtContext, i) as Select_stmtContext
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_create_trigger_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCreate_trigger_stmt) {
       listener.enterCreate_trigger_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCreate_trigger_stmt) {
       listener.exitCreate_trigger_stmt(this)
@@ -13278,6 +30149,10 @@ export class Create_trigger_stmtContext extends ParserRuleContext {
 }
 
 export class Create_view_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public CREATE_(): TerminalNode {
     return this.getToken(SQLiteParser.CREATE_, 0)
   }
@@ -13285,73 +30160,61 @@ export class Create_view_stmtContext extends ParserRuleContext {
     return this.getToken(SQLiteParser.VIEW_, 0)
   }
   public view_name(): View_nameContext {
-    return this.getRuleContext(0, View_nameContext)
+    return this.getTypedRuleContext(View_nameContext, 0) as View_nameContext
   }
   public AS_(): TerminalNode {
     return this.getToken(SQLiteParser.AS_, 0)
   }
   public select_stmt(): Select_stmtContext {
-    return this.getRuleContext(0, Select_stmtContext)
+    return this.getTypedRuleContext(Select_stmtContext, 0) as Select_stmtContext
   }
-  public IF_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IF_, 0)
+  public IF_(): TerminalNode {
+    return this.getToken(SQLiteParser.IF_, 0)
   }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
   }
-  public EXISTS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXISTS_, 0)
+  public EXISTS_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXISTS_, 0)
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
   }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
   }
-  public TEMP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TEMP_, 0)
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public TEMPORARY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TEMPORARY_, 0)
+  public TEMP_(): TerminalNode {
+    return this.getToken(SQLiteParser.TEMP_, 0)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public TEMPORARY_(): TerminalNode {
+    return this.getToken(SQLiteParser.TEMPORARY_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  // @Override
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_create_view_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCreate_view_stmt) {
       listener.enterCreate_view_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCreate_view_stmt) {
       listener.exitCreate_view_stmt(this)
@@ -13360,6 +30223,10 @@ export class Create_view_stmtContext extends ParserRuleContext {
 }
 
 export class Create_virtual_table_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public CREATE_(): TerminalNode {
     return this.getToken(SQLiteParser.CREATE_, 0)
   }
@@ -13370,67 +30237,55 @@ export class Create_virtual_table_stmtContext extends ParserRuleContext {
     return this.getToken(SQLiteParser.TABLE_, 0)
   }
   public table_name(): Table_nameContext {
-    return this.getRuleContext(0, Table_nameContext)
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
   }
   public USING_(): TerminalNode {
     return this.getToken(SQLiteParser.USING_, 0)
   }
   public module_name(): Module_nameContext {
-    return this.getRuleContext(0, Module_nameContext)
+    return this.getTypedRuleContext(Module_nameContext, 0) as Module_nameContext
   }
-  public IF_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IF_, 0)
+  public IF_(): TerminalNode {
+    return this.getToken(SQLiteParser.IF_, 0)
   }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
   }
-  public EXISTS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXISTS_, 0)
+  public EXISTS_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXISTS_, 0)
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public module_argument(): Module_argumentContext[]
-  public module_argument(i: number): Module_argumentContext
-  public module_argument(i?: number): Module_argumentContext | Module_argumentContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Module_argumentContext)
-    } else {
-      return this.getRuleContext(i, Module_argumentContext)
-    }
+  public module_argument_list(): Module_argumentContext[] {
+    return this.getTypedRuleContexts(Module_argumentContext) as Module_argumentContext[]
   }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
+  public module_argument(i: number): Module_argumentContext {
+    return this.getTypedRuleContext(Module_argumentContext, i) as Module_argumentContext
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  // @Override
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_create_virtual_table_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCreate_virtual_table_stmt) {
       listener.enterCreate_virtual_table_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCreate_virtual_table_stmt) {
       listener.exitCreate_virtual_table_stmt(this)
@@ -13439,80 +30294,60 @@ export class Create_virtual_table_stmtContext extends ParserRuleContext {
 }
 
 export class With_clauseContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public WITH_(): TerminalNode {
     return this.getToken(SQLiteParser.WITH_, 0)
   }
-  public cte_table_name(): Cte_table_nameContext[]
-  public cte_table_name(i: number): Cte_table_nameContext
-  public cte_table_name(i?: number): Cte_table_nameContext | Cte_table_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Cte_table_nameContext)
-    } else {
-      return this.getRuleContext(i, Cte_table_nameContext)
-    }
+  public cte_table_name_list(): Cte_table_nameContext[] {
+    return this.getTypedRuleContexts(Cte_table_nameContext) as Cte_table_nameContext[]
   }
-  public AS_(): TerminalNode[]
-  public AS_(i: number): TerminalNode
-  public AS_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.AS_)
-    } else {
-      return this.getToken(SQLiteParser.AS_, i)
-    }
+  public cte_table_name(i: number): Cte_table_nameContext {
+    return this.getTypedRuleContext(Cte_table_nameContext, i) as Cte_table_nameContext
   }
-  public OPEN_PAR(): TerminalNode[]
-  public OPEN_PAR(i: number): TerminalNode
-  public OPEN_PAR(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.OPEN_PAR)
-    } else {
-      return this.getToken(SQLiteParser.OPEN_PAR, i)
-    }
+  public AS__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.AS_)
   }
-  public select_stmt(): Select_stmtContext[]
-  public select_stmt(i: number): Select_stmtContext
-  public select_stmt(i?: number): Select_stmtContext | Select_stmtContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Select_stmtContext)
-    } else {
-      return this.getRuleContext(i, Select_stmtContext)
-    }
+  public AS_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.AS_, i)
   }
-  public CLOSE_PAR(): TerminalNode[]
-  public CLOSE_PAR(i: number): TerminalNode
-  public CLOSE_PAR(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.CLOSE_PAR)
-    } else {
-      return this.getToken(SQLiteParser.CLOSE_PAR, i)
-    }
+  public OPEN_PAR_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.OPEN_PAR)
   }
-  public RECURSIVE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RECURSIVE_, 0)
+  public OPEN_PAR(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, i)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public select_stmt_list(): Select_stmtContext[] {
+    return this.getTypedRuleContexts(Select_stmtContext) as Select_stmtContext[]
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public select_stmt(i: number): Select_stmtContext {
+    return this.getTypedRuleContext(Select_stmtContext, i) as Select_stmtContext
   }
-  // @Override
+  public CLOSE_PAR_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.CLOSE_PAR)
+  }
+  public CLOSE_PAR(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, i)
+  }
+  public RECURSIVE_(): TerminalNode {
+    return this.getToken(SQLiteParser.RECURSIVE_, 0)
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_with_clause
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterWith_clause) {
       listener.enterWith_clause(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitWith_clause) {
       listener.exitWith_clause(this)
@@ -13521,47 +30356,39 @@ export class With_clauseContext extends ParserRuleContext {
 }
 
 export class Cte_table_nameContext extends ParserRuleContext {
-  public table_name(): Table_nameContext {
-    return this.getRuleContext(0, Table_nameContext)
-  }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
-  }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
-  }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
-  }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public table_name(): Table_nameContext {
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
+  }
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
+  }
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
+  }
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
+  }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_cte_table_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCte_table_name) {
       listener.enterCte_table_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCte_table_name) {
       listener.exitCte_table_name(this)
@@ -13570,8 +30397,12 @@ export class Cte_table_nameContext extends ParserRuleContext {
 }
 
 export class Recursive_cteContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public cte_table_name(): Cte_table_nameContext {
-    return this.getRuleContext(0, Cte_table_nameContext)
+    return this.getTypedRuleContext(Cte_table_nameContext, 0) as Cte_table_nameContext
   }
   public AS_(): TerminalNode {
     return this.getToken(SQLiteParser.AS_, 0)
@@ -13580,34 +30411,28 @@ export class Recursive_cteContext extends ParserRuleContext {
     return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
   public initial_select(): Initial_selectContext {
-    return this.getRuleContext(0, Initial_selectContext)
+    return this.getTypedRuleContext(Initial_selectContext, 0) as Initial_selectContext
   }
   public UNION_(): TerminalNode {
     return this.getToken(SQLiteParser.UNION_, 0)
   }
   public recursive_select(): Recursive_selectContext {
-    return this.getRuleContext(0, Recursive_selectContext)
+    return this.getTypedRuleContext(Recursive_selectContext, 0) as Recursive_selectContext
   }
   public CLOSE_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public ALL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ALL_, 0)
+  public ALL_(): TerminalNode {
+    return this.getToken(SQLiteParser.ALL_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_recursive_cte
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterRecursive_cte) {
       listener.enterRecursive_cte(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitRecursive_cte) {
       listener.exitRecursive_cte(this)
@@ -13616,65 +30441,51 @@ export class Recursive_cteContext extends ParserRuleContext {
 }
 
 export class Common_table_expressionContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public table_name(): Table_nameContext {
-    return this.getRuleContext(0, Table_nameContext)
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
   }
   public AS_(): TerminalNode {
     return this.getToken(SQLiteParser.AS_, 0)
   }
-  public OPEN_PAR(): TerminalNode[]
-  public OPEN_PAR(i: number): TerminalNode
-  public OPEN_PAR(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.OPEN_PAR)
-    } else {
-      return this.getToken(SQLiteParser.OPEN_PAR, i)
-    }
+  public OPEN_PAR_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.OPEN_PAR)
+  }
+  public OPEN_PAR(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, i)
   }
   public select_stmt(): Select_stmtContext {
-    return this.getRuleContext(0, Select_stmtContext)
+    return this.getTypedRuleContext(Select_stmtContext, 0) as Select_stmtContext
   }
-  public CLOSE_PAR(): TerminalNode[]
-  public CLOSE_PAR(i: number): TerminalNode
-  public CLOSE_PAR(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.CLOSE_PAR)
-    } else {
-      return this.getToken(SQLiteParser.CLOSE_PAR, i)
-    }
+  public CLOSE_PAR_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.CLOSE_PAR)
   }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
+  public CLOSE_PAR(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, i)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
   }
-  // @Override
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_common_table_expression
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCommon_table_expression) {
       listener.enterCommon_table_expression(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCommon_table_expression) {
       listener.exitCommon_table_expression(this)
@@ -13683,6 +30494,10 @@ export class Common_table_expressionContext extends ParserRuleContext {
 }
 
 export class Delete_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public DELETE_(): TerminalNode {
     return this.getToken(SQLiteParser.DELETE_, 0)
   }
@@ -13690,34 +30505,28 @@ export class Delete_stmtContext extends ParserRuleContext {
     return this.getToken(SQLiteParser.FROM_, 0)
   }
   public qualified_table_name(): Qualified_table_nameContext {
-    return this.getRuleContext(0, Qualified_table_nameContext)
+    return this.getTypedRuleContext(Qualified_table_nameContext, 0) as Qualified_table_nameContext
   }
-  public with_clause(): With_clauseContext | undefined {
-    return this.tryGetRuleContext(0, With_clauseContext)
+  public with_clause(): With_clauseContext {
+    return this.getTypedRuleContext(With_clauseContext, 0) as With_clauseContext
   }
-  public WHERE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WHERE_, 0)
+  public WHERE_(): TerminalNode {
+    return this.getToken(SQLiteParser.WHERE_, 0)
   }
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
   }
-  public returning_clause(): Returning_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Returning_clauseContext)
+  public returning_clause(): Returning_clauseContext {
+    return this.getTypedRuleContext(Returning_clauseContext, 0) as Returning_clauseContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_delete_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterDelete_stmt) {
       listener.enterDelete_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitDelete_stmt) {
       listener.exitDelete_stmt(this)
@@ -13726,6 +30535,10 @@ export class Delete_stmtContext extends ParserRuleContext {
 }
 
 export class Delete_stmt_limitedContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public DELETE_(): TerminalNode {
     return this.getToken(SQLiteParser.DELETE_, 0)
   }
@@ -13733,40 +30546,34 @@ export class Delete_stmt_limitedContext extends ParserRuleContext {
     return this.getToken(SQLiteParser.FROM_, 0)
   }
   public qualified_table_name(): Qualified_table_nameContext {
-    return this.getRuleContext(0, Qualified_table_nameContext)
+    return this.getTypedRuleContext(Qualified_table_nameContext, 0) as Qualified_table_nameContext
   }
-  public with_clause(): With_clauseContext | undefined {
-    return this.tryGetRuleContext(0, With_clauseContext)
+  public with_clause(): With_clauseContext {
+    return this.getTypedRuleContext(With_clauseContext, 0) as With_clauseContext
   }
-  public WHERE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WHERE_, 0)
+  public WHERE_(): TerminalNode {
+    return this.getToken(SQLiteParser.WHERE_, 0)
   }
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
   }
-  public returning_clause(): Returning_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Returning_clauseContext)
+  public returning_clause(): Returning_clauseContext {
+    return this.getTypedRuleContext(Returning_clauseContext, 0) as Returning_clauseContext
   }
-  public limit_stmt(): Limit_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Limit_stmtContext)
+  public limit_stmt(): Limit_stmtContext {
+    return this.getTypedRuleContext(Limit_stmtContext, 0) as Limit_stmtContext
   }
-  public order_by_stmt(): Order_by_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Order_by_stmtContext)
+  public order_by_stmt(): Order_by_stmtContext {
+    return this.getTypedRuleContext(Order_by_stmtContext, 0) as Order_by_stmtContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_delete_stmt_limited
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterDelete_stmt_limited) {
       listener.enterDelete_stmt_limited(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitDelete_stmt_limited) {
       listener.exitDelete_stmt_limited(this)
@@ -13775,29 +30582,27 @@ export class Delete_stmt_limitedContext extends ParserRuleContext {
 }
 
 export class Detach_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public DETACH_(): TerminalNode {
     return this.getToken(SQLiteParser.DETACH_, 0)
   }
   public schema_name(): Schema_nameContext {
-    return this.getRuleContext(0, Schema_nameContext)
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public DATABASE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DATABASE_, 0)
+  public DATABASE_(): TerminalNode {
+    return this.getToken(SQLiteParser.DATABASE_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_detach_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterDetach_stmt) {
       listener.enterDetach_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitDetach_stmt) {
       listener.exitDetach_stmt(this)
@@ -13807,50 +30612,48 @@ export class Detach_stmtContext extends ParserRuleContext {
 
 export class Drop_stmtContext extends ParserRuleContext {
   public _object!: Token
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public DROP_(): TerminalNode {
     return this.getToken(SQLiteParser.DROP_, 0)
   }
   public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
   }
-  public INDEX_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INDEX_, 0)
+  public INDEX_(): TerminalNode {
+    return this.getToken(SQLiteParser.INDEX_, 0)
   }
-  public TABLE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TABLE_, 0)
+  public TABLE_(): TerminalNode {
+    return this.getToken(SQLiteParser.TABLE_, 0)
   }
-  public TRIGGER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TRIGGER_, 0)
+  public TRIGGER_(): TerminalNode {
+    return this.getToken(SQLiteParser.TRIGGER_, 0)
   }
-  public VIEW_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.VIEW_, 0)
+  public VIEW_(): TerminalNode {
+    return this.getToken(SQLiteParser.VIEW_, 0)
   }
-  public IF_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IF_, 0)
+  public IF_(): TerminalNode {
+    return this.getToken(SQLiteParser.IF_, 0)
   }
-  public EXISTS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXISTS_, 0)
+  public EXISTS_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXISTS_, 0)
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_drop_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterDrop_stmt) {
       listener.enterDrop_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitDrop_stmt) {
       listener.exitDrop_stmt(this)
@@ -13859,233 +30662,216 @@ export class Drop_stmtContext extends ParserRuleContext {
 }
 
 export class ExprContext extends ParserRuleContext {
-  public literal_value(): Literal_valueContext | undefined {
-    return this.tryGetRuleContext(0, Literal_valueContext)
-  }
-  public BIND_PARAMETER(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BIND_PARAMETER, 0)
-  }
-  public column_name(): Column_nameContext | undefined {
-    return this.tryGetRuleContext(0, Column_nameContext)
-  }
-  public table_name(): Table_nameContext | undefined {
-    return this.tryGetRuleContext(0, Table_nameContext)
-  }
-  public DOT(): TerminalNode[]
-  public DOT(i: number): TerminalNode
-  public DOT(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.DOT)
-    } else {
-      return this.getToken(SQLiteParser.DOT, i)
-    }
-  }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
-  }
-  public unary_operator(): Unary_operatorContext | undefined {
-    return this.tryGetRuleContext(0, Unary_operatorContext)
-  }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
-  }
-  public PIPE2(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PIPE2, 0)
-  }
-  public STAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STAR, 0)
-  }
-  public DIV(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DIV, 0)
-  }
-  public MOD(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.MOD, 0)
-  }
-  public PLUS(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PLUS, 0)
-  }
-  public MINUS(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.MINUS, 0)
-  }
-  public LT2(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LT2, 0)
-  }
-  public GT2(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GT2, 0)
-  }
-  public AMP(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AMP, 0)
-  }
-  public PIPE(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PIPE, 0)
-  }
-  public LT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LT, 0)
-  }
-  public LT_EQ(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LT_EQ, 0)
-  }
-  public GT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GT, 0)
-  }
-  public GT_EQ(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GT_EQ, 0)
-  }
-  public ASSIGN(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ASSIGN, 0)
-  }
-  public EQ(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EQ, 0)
-  }
-  public NOT_EQ1(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_EQ1, 0)
-  }
-  public NOT_EQ2(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_EQ2, 0)
-  }
-  public IS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IS_, 0)
-  }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
-  }
-  public IN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IN_, 0)
-  }
-  public LIKE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LIKE_, 0)
-  }
-  public GLOB_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GLOB_, 0)
-  }
-  public MATCH_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.MATCH_, 0)
-  }
-  public REGEXP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.REGEXP_, 0)
-  }
-  public AND_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AND_, 0)
-  }
-  public OR_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OR_, 0)
-  }
-  public function_name(): Function_nameContext | undefined {
-    return this.tryGetRuleContext(0, Function_nameContext)
-  }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
-  }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
-  }
-  public filter_clause(): Filter_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Filter_clauseContext)
-  }
-  public over_clause(): Over_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Over_clauseContext)
-  }
-  public DISTINCT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DISTINCT_, 0)
-  }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
-  }
-  public CAST_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CAST_, 0)
-  }
-  public AS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AS_, 0)
-  }
-  public type_name(): Type_nameContext | undefined {
-    return this.tryGetRuleContext(0, Type_nameContext)
-  }
-  public COLLATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COLLATE_, 0)
-  }
-  public collation_name(): Collation_nameContext | undefined {
-    return this.tryGetRuleContext(0, Collation_nameContext)
-  }
-  public ESCAPE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ESCAPE_, 0)
-  }
-  public ISNULL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ISNULL_, 0)
-  }
-  public NOTNULL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOTNULL_, 0)
-  }
-  public NULL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NULL_, 0)
-  }
-  public BETWEEN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BETWEEN_, 0)
-  }
-  public table_function_name(): Table_function_nameContext | undefined {
-    return this.tryGetRuleContext(0, Table_function_nameContext)
-  }
-  public select_stmt(): Select_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Select_stmtContext)
-  }
-  public EXISTS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXISTS_, 0)
-  }
-  public CASE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CASE_, 0)
-  }
-  public END_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.END_, 0)
-  }
-  public WHEN_(): TerminalNode[]
-  public WHEN_(i: number): TerminalNode
-  public WHEN_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.WHEN_)
-    } else {
-      return this.getToken(SQLiteParser.WHEN_, i)
-    }
-  }
-  public THEN_(): TerminalNode[]
-  public THEN_(i: number): TerminalNode
-  public THEN_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.THEN_)
-    } else {
-      return this.getToken(SQLiteParser.THEN_, i)
-    }
-  }
-  public ELSE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ELSE_, 0)
-  }
-  public raise_function(): Raise_functionContext | undefined {
-    return this.tryGetRuleContext(0, Raise_functionContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public literal_value(): Literal_valueContext {
+    return this.getTypedRuleContext(Literal_valueContext, 0) as Literal_valueContext
+  }
+  public BIND_PARAMETER(): TerminalNode {
+    return this.getToken(SQLiteParser.BIND_PARAMETER, 0)
+  }
+  public column_name(): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, 0) as Column_nameContext
+  }
+  public table_name(): Table_nameContext {
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
+  }
+  public DOT_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.DOT)
+  }
+  public DOT(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, i)
+  }
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
+  }
+  public unary_operator(): Unary_operatorContext {
+    return this.getTypedRuleContext(Unary_operatorContext, 0) as Unary_operatorContext
+  }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
+  }
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
+  }
+  public function_name(): Function_nameContext {
+    return this.getTypedRuleContext(Function_nameContext, 0) as Function_nameContext
+  }
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
+  }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
+  }
+  public STAR(): TerminalNode {
+    return this.getToken(SQLiteParser.STAR, 0)
+  }
+  public filter_clause(): Filter_clauseContext {
+    return this.getTypedRuleContext(Filter_clauseContext, 0) as Filter_clauseContext
+  }
+  public over_clause(): Over_clauseContext {
+    return this.getTypedRuleContext(Over_clauseContext, 0) as Over_clauseContext
+  }
+  public DISTINCT_(): TerminalNode {
+    return this.getToken(SQLiteParser.DISTINCT_, 0)
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
+  public CAST_(): TerminalNode {
+    return this.getToken(SQLiteParser.CAST_, 0)
+  }
+  public AS_(): TerminalNode {
+    return this.getToken(SQLiteParser.AS_, 0)
+  }
+  public type_name(): Type_nameContext {
+    return this.getTypedRuleContext(Type_nameContext, 0) as Type_nameContext
+  }
+  public select_stmt(): Select_stmtContext {
+    return this.getTypedRuleContext(Select_stmtContext, 0) as Select_stmtContext
+  }
+  public EXISTS_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXISTS_, 0)
+  }
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
+  }
+  public CASE_(): TerminalNode {
+    return this.getToken(SQLiteParser.CASE_, 0)
+  }
+  public END_(): TerminalNode {
+    return this.getToken(SQLiteParser.END_, 0)
+  }
+  public WHEN__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.WHEN_)
+  }
+  public WHEN_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.WHEN_, i)
+  }
+  public THEN__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.THEN_)
+  }
+  public THEN_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.THEN_, i)
+  }
+  public ELSE_(): TerminalNode {
+    return this.getToken(SQLiteParser.ELSE_, 0)
+  }
+  public raise_function(): Raise_functionContext {
+    return this.getTypedRuleContext(Raise_functionContext, 0) as Raise_functionContext
+  }
+  public PIPE2(): TerminalNode {
+    return this.getToken(SQLiteParser.PIPE2, 0)
+  }
+  public DIV(): TerminalNode {
+    return this.getToken(SQLiteParser.DIV, 0)
+  }
+  public MOD(): TerminalNode {
+    return this.getToken(SQLiteParser.MOD, 0)
+  }
+  public PLUS(): TerminalNode {
+    return this.getToken(SQLiteParser.PLUS, 0)
+  }
+  public MINUS(): TerminalNode {
+    return this.getToken(SQLiteParser.MINUS, 0)
+  }
+  public LT2(): TerminalNode {
+    return this.getToken(SQLiteParser.LT2, 0)
+  }
+  public GT2(): TerminalNode {
+    return this.getToken(SQLiteParser.GT2, 0)
+  }
+  public AMP(): TerminalNode {
+    return this.getToken(SQLiteParser.AMP, 0)
+  }
+  public PIPE(): TerminalNode {
+    return this.getToken(SQLiteParser.PIPE, 0)
+  }
+  public LT(): TerminalNode {
+    return this.getToken(SQLiteParser.LT, 0)
+  }
+  public LT_EQ(): TerminalNode {
+    return this.getToken(SQLiteParser.LT_EQ, 0)
+  }
+  public GT(): TerminalNode {
+    return this.getToken(SQLiteParser.GT, 0)
+  }
+  public GT_EQ(): TerminalNode {
+    return this.getToken(SQLiteParser.GT_EQ, 0)
+  }
+  public ASSIGN(): TerminalNode {
+    return this.getToken(SQLiteParser.ASSIGN, 0)
+  }
+  public EQ(): TerminalNode {
+    return this.getToken(SQLiteParser.EQ, 0)
+  }
+  public NOT_EQ1(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_EQ1, 0)
+  }
+  public NOT_EQ2(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_EQ2, 0)
+  }
+  public IS_(): TerminalNode {
+    return this.getToken(SQLiteParser.IS_, 0)
+  }
+  public IN_(): TerminalNode {
+    return this.getToken(SQLiteParser.IN_, 0)
+  }
+  public LIKE_(): TerminalNode {
+    return this.getToken(SQLiteParser.LIKE_, 0)
+  }
+  public GLOB_(): TerminalNode {
+    return this.getToken(SQLiteParser.GLOB_, 0)
+  }
+  public MATCH_(): TerminalNode {
+    return this.getToken(SQLiteParser.MATCH_, 0)
+  }
+  public REGEXP_(): TerminalNode {
+    return this.getToken(SQLiteParser.REGEXP_, 0)
+  }
+  public AND_(): TerminalNode {
+    return this.getToken(SQLiteParser.AND_, 0)
+  }
+  public OR_(): TerminalNode {
+    return this.getToken(SQLiteParser.OR_, 0)
+  }
+  public BETWEEN_(): TerminalNode {
+    return this.getToken(SQLiteParser.BETWEEN_, 0)
+  }
+  public COLLATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.COLLATE_, 0)
+  }
+  public collation_name(): Collation_nameContext {
+    return this.getTypedRuleContext(Collation_nameContext, 0) as Collation_nameContext
+  }
+  public ESCAPE_(): TerminalNode {
+    return this.getToken(SQLiteParser.ESCAPE_, 0)
+  }
+  public ISNULL_(): TerminalNode {
+    return this.getToken(SQLiteParser.ISNULL_, 0)
+  }
+  public NOTNULL_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOTNULL_, 0)
+  }
+  public NULL_(): TerminalNode {
+    return this.getToken(SQLiteParser.NULL_, 0)
+  }
+  public table_function_name(): Table_function_nameContext {
+    return this.getTypedRuleContext(Table_function_nameContext, 0) as Table_function_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_expr
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterExpr) {
       listener.enterExpr(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitExpr) {
       listener.exitExpr(this)
@@ -14094,6 +30880,10 @@ export class ExprContext extends ParserRuleContext {
 }
 
 export class Raise_functionContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public RAISE_(): TerminalNode {
     return this.getToken(SQLiteParser.RAISE_, 0)
   }
@@ -14103,38 +30893,32 @@ export class Raise_functionContext extends ParserRuleContext {
   public CLOSE_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public IGNORE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IGNORE_, 0)
+  public IGNORE_(): TerminalNode {
+    return this.getToken(SQLiteParser.IGNORE_, 0)
   }
-  public COMMA(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COMMA, 0)
+  public COMMA(): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, 0)
   }
-  public error_message(): Error_messageContext | undefined {
-    return this.tryGetRuleContext(0, Error_messageContext)
+  public error_message(): Error_messageContext {
+    return this.getTypedRuleContext(Error_messageContext, 0) as Error_messageContext
   }
-  public ROLLBACK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROLLBACK_, 0)
+  public ROLLBACK_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROLLBACK_, 0)
   }
-  public ABORT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ABORT_, 0)
+  public ABORT_(): TerminalNode {
+    return this.getToken(SQLiteParser.ABORT_, 0)
   }
-  public FAIL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FAIL_, 0)
+  public FAIL_(): TerminalNode {
+    return this.getToken(SQLiteParser.FAIL_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_raise_function
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterRaise_function) {
       listener.enterRaise_function(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitRaise_function) {
       listener.exitRaise_function(this)
@@ -14143,47 +30927,45 @@ export class Raise_functionContext extends ParserRuleContext {
 }
 
 export class Literal_valueContext extends ParserRuleContext {
-  public NUMERIC_LITERAL(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NUMERIC_LITERAL, 0)
-  }
-  public STRING_LITERAL(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STRING_LITERAL, 0)
-  }
-  public BLOB_LITERAL(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BLOB_LITERAL, 0)
-  }
-  public NULL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NULL_, 0)
-  }
-  public TRUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TRUE_, 0)
-  }
-  public FALSE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FALSE_, 0)
-  }
-  public CURRENT_TIME_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_TIME_, 0)
-  }
-  public CURRENT_DATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_DATE_, 0)
-  }
-  public CURRENT_TIMESTAMP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_TIMESTAMP_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public NUMERIC_LITERAL(): TerminalNode {
+    return this.getToken(SQLiteParser.NUMERIC_LITERAL, 0)
+  }
+  public STRING_LITERAL(): TerminalNode {
+    return this.getToken(SQLiteParser.STRING_LITERAL, 0)
+  }
+  public BLOB_LITERAL(): TerminalNode {
+    return this.getToken(SQLiteParser.BLOB_LITERAL, 0)
+  }
+  public NULL_(): TerminalNode {
+    return this.getToken(SQLiteParser.NULL_, 0)
+  }
+  public TRUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.TRUE_, 0)
+  }
+  public FALSE_(): TerminalNode {
+    return this.getToken(SQLiteParser.FALSE_, 0)
+  }
+  public CURRENT_TIME_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_TIME_, 0)
+  }
+  public CURRENT_DATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_DATE_, 0)
+  }
+  public CURRENT_TIMESTAMP_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_TIMESTAMP_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_literal_value
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterLiteral_value) {
       listener.enterLiteral_value(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitLiteral_value) {
       listener.exitLiteral_value(this)
@@ -14192,44 +30974,36 @@ export class Literal_valueContext extends ParserRuleContext {
 }
 
 export class Value_rowContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public OPEN_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
+  }
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
   public CLOSE_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
   }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_value_row
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterValue_row) {
       listener.enterValue_row(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitValue_row) {
       listener.exitValue_row(this)
@@ -14238,41 +31012,33 @@ export class Value_rowContext extends ParserRuleContext {
 }
 
 export class Values_clauseContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public VALUES_(): TerminalNode {
     return this.getToken(SQLiteParser.VALUES_, 0)
   }
-  public value_row(): Value_rowContext[]
-  public value_row(i: number): Value_rowContext
-  public value_row(i?: number): Value_rowContext | Value_rowContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Value_rowContext)
-    } else {
-      return this.getRuleContext(i, Value_rowContext)
-    }
+  public value_row_list(): Value_rowContext[] {
+    return this.getTypedRuleContexts(Value_rowContext) as Value_rowContext[]
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public value_row(i: number): Value_rowContext {
+    return this.getTypedRuleContext(Value_rowContext, i) as Value_rowContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  // @Override
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_values_clause
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterValues_clause) {
       listener.enterValues_clause(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitValues_clause) {
       listener.exitValues_clause(this)
@@ -14281,104 +31047,96 @@ export class Values_clauseContext extends ParserRuleContext {
 }
 
 export class Insert_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public INTO_(): TerminalNode {
     return this.getToken(SQLiteParser.INTO_, 0)
   }
   public table_name(): Table_nameContext {
-    return this.getRuleContext(0, Table_nameContext)
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
   }
-  public INSERT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INSERT_, 0)
+  public INSERT_(): TerminalNode {
+    return this.getToken(SQLiteParser.INSERT_, 0)
   }
-  public REPLACE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.REPLACE_, 0)
+  public REPLACE_(): TerminalNode {
+    return this.getToken(SQLiteParser.REPLACE_, 0)
   }
-  public OR_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OR_, 0)
+  public OR_(): TerminalNode {
+    return this.getToken(SQLiteParser.OR_, 0)
   }
-  public DEFAULT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DEFAULT_, 0)
+  public DEFAULT_(): TerminalNode {
+    return this.getToken(SQLiteParser.DEFAULT_, 0)
   }
-  public VALUES_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.VALUES_, 0)
+  public VALUES_(): TerminalNode {
+    return this.getToken(SQLiteParser.VALUES_, 0)
   }
-  public with_clause(): With_clauseContext | undefined {
-    return this.tryGetRuleContext(0, With_clauseContext)
+  public with_clause(): With_clauseContext {
+    return this.getTypedRuleContext(With_clauseContext, 0) as With_clauseContext
   }
-  public ROLLBACK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROLLBACK_, 0)
+  public ROLLBACK_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROLLBACK_, 0)
   }
-  public ABORT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ABORT_, 0)
+  public ABORT_(): TerminalNode {
+    return this.getToken(SQLiteParser.ABORT_, 0)
   }
-  public FAIL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FAIL_, 0)
+  public FAIL_(): TerminalNode {
+    return this.getToken(SQLiteParser.FAIL_, 0)
   }
-  public IGNORE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IGNORE_, 0)
+  public IGNORE_(): TerminalNode {
+    return this.getToken(SQLiteParser.IGNORE_, 0)
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  public AS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AS_, 0)
+  public AS_(): TerminalNode {
+    return this.getToken(SQLiteParser.AS_, 0)
   }
-  public table_alias(): Table_aliasContext | undefined {
-    return this.tryGetRuleContext(0, Table_aliasContext)
+  public table_alias(): Table_aliasContext {
+    return this.getTypedRuleContext(Table_aliasContext, 0) as Table_aliasContext
   }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
   }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
   }
-  public returning_clause(): Returning_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Returning_clauseContext)
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public returning_clause(): Returning_clauseContext {
+    return this.getTypedRuleContext(Returning_clauseContext, 0) as Returning_clauseContext
   }
-  public values_clause(): Values_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Values_clauseContext)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  public select_stmt(): Select_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Select_stmtContext)
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
   }
-  public upsert_clause(): Upsert_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Upsert_clauseContext)
+  public values_clause(): Values_clauseContext {
+    return this.getTypedRuleContext(Values_clauseContext, 0) as Values_clauseContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public select_stmt(): Select_stmtContext {
+    return this.getTypedRuleContext(Select_stmtContext, 0) as Select_stmtContext
   }
-  // @Override
+  public upsert_clause(): Upsert_clauseContext {
+    return this.getTypedRuleContext(Upsert_clauseContext, 0) as Upsert_clauseContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_insert_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterInsert_stmt) {
       listener.enterInsert_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitInsert_stmt) {
       listener.exitInsert_stmt(this)
@@ -14387,41 +31145,33 @@ export class Insert_stmtContext extends ParserRuleContext {
 }
 
 export class Returning_clauseContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public RETURNING_(): TerminalNode {
     return this.getToken(SQLiteParser.RETURNING_, 0)
   }
-  public result_column(): Result_columnContext[]
-  public result_column(i: number): Result_columnContext
-  public result_column(i?: number): Result_columnContext | Result_columnContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Result_columnContext)
-    } else {
-      return this.getRuleContext(i, Result_columnContext)
-    }
+  public result_column_list(): Result_columnContext[] {
+    return this.getTypedRuleContexts(Result_columnContext) as Result_columnContext[]
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public result_column(i: number): Result_columnContext {
+    return this.getTypedRuleContext(Result_columnContext, i) as Result_columnContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  // @Override
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_returning_clause
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterReturning_clause) {
       listener.enterReturning_clause(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitReturning_clause) {
       listener.exitReturning_clause(this)
@@ -14430,6 +31180,10 @@ export class Returning_clauseContext extends ParserRuleContext {
 }
 
 export class Upsert_clauseContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public ON_(): TerminalNode {
     return this.getToken(SQLiteParser.ON_, 0)
   }
@@ -14439,98 +31193,71 @@ export class Upsert_clauseContext extends ParserRuleContext {
   public DO_(): TerminalNode {
     return this.getToken(SQLiteParser.DO_, 0)
   }
-  public NOTHING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOTHING_, 0)
+  public NOTHING_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOTHING_, 0)
   }
-  public UPDATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UPDATE_, 0)
+  public UPDATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.UPDATE_, 0)
   }
-  public SET_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.SET_, 0)
+  public SET_(): TerminalNode {
+    return this.getToken(SQLiteParser.SET_, 0)
   }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public indexed_column(): Indexed_columnContext[]
-  public indexed_column(i: number): Indexed_columnContext
-  public indexed_column(i?: number): Indexed_columnContext | Indexed_columnContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Indexed_columnContext)
-    } else {
-      return this.getRuleContext(i, Indexed_columnContext)
-    }
+  public indexed_column_list(): Indexed_columnContext[] {
+    return this.getTypedRuleContexts(Indexed_columnContext) as Indexed_columnContext[]
   }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
+  public indexed_column(i: number): Indexed_columnContext {
+    return this.getTypedRuleContext(Indexed_columnContext, i) as Indexed_columnContext
   }
-  public ASSIGN(): TerminalNode[]
-  public ASSIGN(i: number): TerminalNode
-  public ASSIGN(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.ASSIGN)
-    } else {
-      return this.getToken(SQLiteParser.ASSIGN, i)
-    }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public ASSIGN_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.ASSIGN)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public ASSIGN(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.ASSIGN, i)
   }
-  public WHERE_(): TerminalNode[]
-  public WHERE_(i: number): TerminalNode
-  public WHERE_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.WHERE_)
-    } else {
-      return this.getToken(SQLiteParser.WHERE_, i)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  public column_name_list(): Column_name_listContext[]
-  public column_name_list(i: number): Column_name_listContext
-  public column_name_list(i?: number): Column_name_listContext | Column_name_listContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_name_listContext)
-    } else {
-      return this.getRuleContext(i, Column_name_listContext)
-    }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
   }
-  // @Override
+  public WHERE__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.WHERE_)
+  }
+  public WHERE_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.WHERE_, i)
+  }
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
+  }
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
+  }
+  public column_name_list_list(): Column_name_listContext[] {
+    return this.getTypedRuleContexts(Column_name_listContext) as Column_name_listContext[]
+  }
+  public column_name_list(i: number): Column_name_listContext {
+    return this.getTypedRuleContext(Column_name_listContext, i) as Column_name_listContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_upsert_clause
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterUpsert_clause) {
       listener.enterUpsert_clause(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitUpsert_clause) {
       listener.exitUpsert_clause(this)
@@ -14539,44 +31266,42 @@ export class Upsert_clauseContext extends ParserRuleContext {
 }
 
 export class Pragma_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public PRAGMA_(): TerminalNode {
     return this.getToken(SQLiteParser.PRAGMA_, 0)
   }
   public pragma_name(): Pragma_nameContext {
-    return this.getRuleContext(0, Pragma_nameContext)
+    return this.getTypedRuleContext(Pragma_nameContext, 0) as Pragma_nameContext
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  public ASSIGN(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ASSIGN, 0)
+  public ASSIGN(): TerminalNode {
+    return this.getToken(SQLiteParser.ASSIGN, 0)
   }
-  public pragma_value(): Pragma_valueContext | undefined {
-    return this.tryGetRuleContext(0, Pragma_valueContext)
+  public pragma_value(): Pragma_valueContext {
+    return this.getTypedRuleContext(Pragma_valueContext, 0) as Pragma_valueContext
   }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_pragma_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterPragma_stmt) {
       listener.enterPragma_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitPragma_stmt) {
       listener.exitPragma_stmt(this)
@@ -14585,29 +31310,27 @@ export class Pragma_stmtContext extends ParserRuleContext {
 }
 
 export class Pragma_valueContext extends ParserRuleContext {
-  public signed_number(): Signed_numberContext | undefined {
-    return this.tryGetRuleContext(0, Signed_numberContext)
-  }
-  public name(): NameContext | undefined {
-    return this.tryGetRuleContext(0, NameContext)
-  }
-  public STRING_LITERAL(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STRING_LITERAL, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public signed_number(): Signed_numberContext {
+    return this.getTypedRuleContext(Signed_numberContext, 0) as Signed_numberContext
+  }
+  public name(): NameContext {
+    return this.getTypedRuleContext(NameContext, 0) as NameContext
+  }
+  public STRING_LITERAL(): TerminalNode {
+    return this.getToken(SQLiteParser.STRING_LITERAL, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_pragma_value
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterPragma_value) {
       listener.enterPragma_value(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitPragma_value) {
       listener.exitPragma_value(this)
@@ -14616,38 +31339,36 @@ export class Pragma_valueContext extends ParserRuleContext {
 }
 
 export class Reindex_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public REINDEX_(): TerminalNode {
     return this.getToken(SQLiteParser.REINDEX_, 0)
   }
-  public collation_name(): Collation_nameContext | undefined {
-    return this.tryGetRuleContext(0, Collation_nameContext)
+  public collation_name(): Collation_nameContext {
+    return this.getTypedRuleContext(Collation_nameContext, 0) as Collation_nameContext
   }
-  public table_name(): Table_nameContext | undefined {
-    return this.tryGetRuleContext(0, Table_nameContext)
+  public table_name(): Table_nameContext {
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
   }
-  public index_name(): Index_nameContext | undefined {
-    return this.tryGetRuleContext(0, Index_nameContext)
+  public index_name(): Index_nameContext {
+    return this.getTypedRuleContext(Index_nameContext, 0) as Index_nameContext
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_reindex_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterReindex_stmt) {
       listener.enterReindex_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitReindex_stmt) {
       listener.exitReindex_stmt(this)
@@ -14656,47 +31377,39 @@ export class Reindex_stmtContext extends ParserRuleContext {
 }
 
 export class Select_stmtContext extends ParserRuleContext {
-  public select_core(): Select_coreContext[]
-  public select_core(i: number): Select_coreContext
-  public select_core(i?: number): Select_coreContext | Select_coreContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Select_coreContext)
-    } else {
-      return this.getRuleContext(i, Select_coreContext)
-    }
-  }
-  public common_table_stmt(): Common_table_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Common_table_stmtContext)
-  }
-  public compound_operator(): Compound_operatorContext[]
-  public compound_operator(i: number): Compound_operatorContext
-  public compound_operator(i?: number): Compound_operatorContext | Compound_operatorContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Compound_operatorContext)
-    } else {
-      return this.getRuleContext(i, Compound_operatorContext)
-    }
-  }
-  public order_by_stmt(): Order_by_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Order_by_stmtContext)
-  }
-  public limit_stmt(): Limit_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Limit_stmtContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public select_core_list(): Select_coreContext[] {
+    return this.getTypedRuleContexts(Select_coreContext) as Select_coreContext[]
+  }
+  public select_core(i: number): Select_coreContext {
+    return this.getTypedRuleContext(Select_coreContext, i) as Select_coreContext
+  }
+  public common_table_stmt(): Common_table_stmtContext {
+    return this.getTypedRuleContext(Common_table_stmtContext, 0) as Common_table_stmtContext
+  }
+  public compound_operator_list(): Compound_operatorContext[] {
+    return this.getTypedRuleContexts(Compound_operatorContext) as Compound_operatorContext[]
+  }
+  public compound_operator(i: number): Compound_operatorContext {
+    return this.getTypedRuleContext(Compound_operatorContext, i) as Compound_operatorContext
+  }
+  public order_by_stmt(): Order_by_stmtContext {
+    return this.getTypedRuleContext(Order_by_stmtContext, 0) as Order_by_stmtContext
+  }
+  public limit_stmt(): Limit_stmtContext {
+    return this.getTypedRuleContext(Limit_stmtContext, 0) as Limit_stmtContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_select_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSelect_stmt) {
       listener.enterSelect_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSelect_stmt) {
       listener.exitSelect_stmt(this)
@@ -14705,47 +31418,36 @@ export class Select_stmtContext extends ParserRuleContext {
 }
 
 export class Join_clauseContext extends ParserRuleContext {
-  public table_or_subquery(): Table_or_subqueryContext[]
-  public table_or_subquery(i: number): Table_or_subqueryContext
-  public table_or_subquery(i?: number): Table_or_subqueryContext | Table_or_subqueryContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Table_or_subqueryContext)
-    } else {
-      return this.getRuleContext(i, Table_or_subqueryContext)
-    }
-  }
-  public join_operator(): Join_operatorContext[]
-  public join_operator(i: number): Join_operatorContext
-  public join_operator(i?: number): Join_operatorContext | Join_operatorContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Join_operatorContext)
-    } else {
-      return this.getRuleContext(i, Join_operatorContext)
-    }
-  }
-  public join_constraint(): Join_constraintContext[]
-  public join_constraint(i: number): Join_constraintContext
-  public join_constraint(i?: number): Join_constraintContext | Join_constraintContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Join_constraintContext)
-    } else {
-      return this.getRuleContext(i, Join_constraintContext)
-    }
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public table_or_subquery_list(): Table_or_subqueryContext[] {
+    return this.getTypedRuleContexts(Table_or_subqueryContext) as Table_or_subqueryContext[]
+  }
+  public table_or_subquery(i: number): Table_or_subqueryContext {
+    return this.getTypedRuleContext(Table_or_subqueryContext, i) as Table_or_subqueryContext
+  }
+  public join_operator_list(): Join_operatorContext[] {
+    return this.getTypedRuleContexts(Join_operatorContext) as Join_operatorContext[]
+  }
+  public join_operator(i: number): Join_operatorContext {
+    return this.getTypedRuleContext(Join_operatorContext, i) as Join_operatorContext
+  }
+  public join_constraint_list(): Join_constraintContext[] {
+    return this.getTypedRuleContexts(Join_constraintContext) as Join_constraintContext[]
+  }
+  public join_constraint(i: number): Join_constraintContext {
+    return this.getTypedRuleContext(Join_constraintContext, i) as Join_constraintContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_join_clause
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterJoin_clause) {
       listener.enterJoin_clause(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitJoin_clause) {
       listener.exitJoin_clause(this)
@@ -14758,116 +31460,93 @@ export class Select_coreContext extends ParserRuleContext {
   public _expr!: ExprContext
   public _groupByExpr: ExprContext[] = []
   public _havingExpr!: ExprContext
-  public SELECT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.SELECT_, 0)
-  }
-  public result_column(): Result_columnContext[]
-  public result_column(i: number): Result_columnContext
-  public result_column(i?: number): Result_columnContext | Result_columnContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Result_columnContext)
-    } else {
-      return this.getRuleContext(i, Result_columnContext)
-    }
-  }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
-  }
-  public FROM_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FROM_, 0)
-  }
-  public WHERE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WHERE_, 0)
-  }
-  public GROUP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GROUP_, 0)
-  }
-  public BY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BY_, 0)
-  }
-  public WINDOW_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WINDOW_, 0)
-  }
-  public window_name(): Window_nameContext[]
-  public window_name(i: number): Window_nameContext
-  public window_name(i?: number): Window_nameContext | Window_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Window_nameContext)
-    } else {
-      return this.getRuleContext(i, Window_nameContext)
-    }
-  }
-  public AS_(): TerminalNode[]
-  public AS_(i: number): TerminalNode
-  public AS_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.AS_)
-    } else {
-      return this.getToken(SQLiteParser.AS_, i)
-    }
-  }
-  public window_defn(): Window_defnContext[]
-  public window_defn(i: number): Window_defnContext
-  public window_defn(i?: number): Window_defnContext | Window_defnContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Window_defnContext)
-    } else {
-      return this.getRuleContext(i, Window_defnContext)
-    }
-  }
-  public DISTINCT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DISTINCT_, 0)
-  }
-  public ALL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ALL_, 0)
-  }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
-  }
-  public table_or_subquery(): Table_or_subqueryContext[]
-  public table_or_subquery(i: number): Table_or_subqueryContext
-  public table_or_subquery(i?: number): Table_or_subqueryContext | Table_or_subqueryContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Table_or_subqueryContext)
-    } else {
-      return this.getRuleContext(i, Table_or_subqueryContext)
-    }
-  }
-  public join_clause(): Join_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Join_clauseContext)
-  }
-  public HAVING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.HAVING_, 0)
-  }
-  public values_clause(): Values_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Values_clauseContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public SELECT_(): TerminalNode {
+    return this.getToken(SQLiteParser.SELECT_, 0)
+  }
+  public result_column_list(): Result_columnContext[] {
+    return this.getTypedRuleContexts(Result_columnContext) as Result_columnContext[]
+  }
+  public result_column(i: number): Result_columnContext {
+    return this.getTypedRuleContext(Result_columnContext, i) as Result_columnContext
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
+  public FROM_(): TerminalNode {
+    return this.getToken(SQLiteParser.FROM_, 0)
+  }
+  public WHERE_(): TerminalNode {
+    return this.getToken(SQLiteParser.WHERE_, 0)
+  }
+  public GROUP_(): TerminalNode {
+    return this.getToken(SQLiteParser.GROUP_, 0)
+  }
+  public BY_(): TerminalNode {
+    return this.getToken(SQLiteParser.BY_, 0)
+  }
+  public WINDOW_(): TerminalNode {
+    return this.getToken(SQLiteParser.WINDOW_, 0)
+  }
+  public window_name_list(): Window_nameContext[] {
+    return this.getTypedRuleContexts(Window_nameContext) as Window_nameContext[]
+  }
+  public window_name(i: number): Window_nameContext {
+    return this.getTypedRuleContext(Window_nameContext, i) as Window_nameContext
+  }
+  public AS__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.AS_)
+  }
+  public AS_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.AS_, i)
+  }
+  public window_defn_list(): Window_defnContext[] {
+    return this.getTypedRuleContexts(Window_defnContext) as Window_defnContext[]
+  }
+  public window_defn(i: number): Window_defnContext {
+    return this.getTypedRuleContext(Window_defnContext, i) as Window_defnContext
+  }
+  public DISTINCT_(): TerminalNode {
+    return this.getToken(SQLiteParser.DISTINCT_, 0)
+  }
+  public ALL_(): TerminalNode {
+    return this.getToken(SQLiteParser.ALL_, 0)
+  }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
+  }
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
+  }
+  public table_or_subquery_list(): Table_or_subqueryContext[] {
+    return this.getTypedRuleContexts(Table_or_subqueryContext) as Table_or_subqueryContext[]
+  }
+  public table_or_subquery(i: number): Table_or_subqueryContext {
+    return this.getTypedRuleContext(Table_or_subqueryContext, i) as Table_or_subqueryContext
+  }
+  public join_clause(): Join_clauseContext {
+    return this.getTypedRuleContext(Join_clauseContext, 0) as Join_clauseContext
+  }
+  public HAVING_(): TerminalNode {
+    return this.getToken(SQLiteParser.HAVING_, 0)
+  }
+  public values_clause(): Values_clauseContext {
+    return this.getTypedRuleContext(Values_clauseContext, 0) as Values_clauseContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_select_core
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSelect_core) {
       listener.enterSelect_core(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSelect_core) {
       listener.exitSelect_core(this)
@@ -14876,23 +31555,21 @@ export class Select_coreContext extends ParserRuleContext {
 }
 
 export class Factored_select_stmtContext extends ParserRuleContext {
-  public select_stmt(): Select_stmtContext {
-    return this.getRuleContext(0, Select_stmtContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public select_stmt(): Select_stmtContext {
+    return this.getTypedRuleContext(Select_stmtContext, 0) as Select_stmtContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_factored_select_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterFactored_select_stmt) {
       listener.enterFactored_select_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitFactored_select_stmt) {
       listener.exitFactored_select_stmt(this)
@@ -14901,32 +31578,30 @@ export class Factored_select_stmtContext extends ParserRuleContext {
 }
 
 export class Simple_select_stmtContext extends ParserRuleContext {
-  public select_core(): Select_coreContext {
-    return this.getRuleContext(0, Select_coreContext)
-  }
-  public common_table_stmt(): Common_table_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Common_table_stmtContext)
-  }
-  public order_by_stmt(): Order_by_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Order_by_stmtContext)
-  }
-  public limit_stmt(): Limit_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Limit_stmtContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public select_core(): Select_coreContext {
+    return this.getTypedRuleContext(Select_coreContext, 0) as Select_coreContext
+  }
+  public common_table_stmt(): Common_table_stmtContext {
+    return this.getTypedRuleContext(Common_table_stmtContext, 0) as Common_table_stmtContext
+  }
+  public order_by_stmt(): Order_by_stmtContext {
+    return this.getTypedRuleContext(Order_by_stmtContext, 0) as Order_by_stmtContext
+  }
+  public limit_stmt(): Limit_stmtContext {
+    return this.getTypedRuleContext(Limit_stmtContext, 0) as Limit_stmtContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_simple_select_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSimple_select_stmt) {
       listener.enterSimple_select_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSimple_select_stmt) {
       listener.exitSimple_select_stmt(this)
@@ -14935,74 +31610,57 @@ export class Simple_select_stmtContext extends ParserRuleContext {
 }
 
 export class Compound_select_stmtContext extends ParserRuleContext {
-  public select_core(): Select_coreContext[]
-  public select_core(i: number): Select_coreContext
-  public select_core(i?: number): Select_coreContext | Select_coreContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Select_coreContext)
-    } else {
-      return this.getRuleContext(i, Select_coreContext)
-    }
-  }
-  public common_table_stmt(): Common_table_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Common_table_stmtContext)
-  }
-  public order_by_stmt(): Order_by_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Order_by_stmtContext)
-  }
-  public limit_stmt(): Limit_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Limit_stmtContext)
-  }
-  public UNION_(): TerminalNode[]
-  public UNION_(i: number): TerminalNode
-  public UNION_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.UNION_)
-    } else {
-      return this.getToken(SQLiteParser.UNION_, i)
-    }
-  }
-  public INTERSECT_(): TerminalNode[]
-  public INTERSECT_(i: number): TerminalNode
-  public INTERSECT_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.INTERSECT_)
-    } else {
-      return this.getToken(SQLiteParser.INTERSECT_, i)
-    }
-  }
-  public EXCEPT_(): TerminalNode[]
-  public EXCEPT_(i: number): TerminalNode
-  public EXCEPT_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.EXCEPT_)
-    } else {
-      return this.getToken(SQLiteParser.EXCEPT_, i)
-    }
-  }
-  public ALL_(): TerminalNode[]
-  public ALL_(i: number): TerminalNode
-  public ALL_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.ALL_)
-    } else {
-      return this.getToken(SQLiteParser.ALL_, i)
-    }
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public select_core_list(): Select_coreContext[] {
+    return this.getTypedRuleContexts(Select_coreContext) as Select_coreContext[]
+  }
+  public select_core(i: number): Select_coreContext {
+    return this.getTypedRuleContext(Select_coreContext, i) as Select_coreContext
+  }
+  public common_table_stmt(): Common_table_stmtContext {
+    return this.getTypedRuleContext(Common_table_stmtContext, 0) as Common_table_stmtContext
+  }
+  public order_by_stmt(): Order_by_stmtContext {
+    return this.getTypedRuleContext(Order_by_stmtContext, 0) as Order_by_stmtContext
+  }
+  public limit_stmt(): Limit_stmtContext {
+    return this.getTypedRuleContext(Limit_stmtContext, 0) as Limit_stmtContext
+  }
+  public UNION__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.UNION_)
+  }
+  public UNION_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.UNION_, i)
+  }
+  public INTERSECT__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.INTERSECT_)
+  }
+  public INTERSECT_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.INTERSECT_, i)
+  }
+  public EXCEPT__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.EXCEPT_)
+  }
+  public EXCEPT_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.EXCEPT_, i)
+  }
+  public ALL__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.ALL_)
+  }
+  public ALL_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.ALL_, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_compound_select_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCompound_select_stmt) {
       listener.enterCompound_select_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCompound_select_stmt) {
       listener.exitCompound_select_stmt(this)
@@ -15011,89 +31669,78 @@ export class Compound_select_stmtContext extends ParserRuleContext {
 }
 
 export class Table_or_subqueryContext extends ParserRuleContext {
-  public table_name(): Table_nameContext | undefined {
-    return this.tryGetRuleContext(0, Table_nameContext)
-  }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
-  }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
-  }
-  public table_alias(): Table_aliasContext | undefined {
-    return this.tryGetRuleContext(0, Table_aliasContext)
-  }
-  public INDEXED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INDEXED_, 0)
-  }
-  public BY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BY_, 0)
-  }
-  public index_name(): Index_nameContext | undefined {
-    return this.tryGetRuleContext(0, Index_nameContext)
-  }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
-  }
-  public AS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AS_, 0)
-  }
-  public table_function_name(): Table_function_nameContext | undefined {
-    return this.tryGetRuleContext(0, Table_function_nameContext)
-  }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
-  }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
-  }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
-  }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
-  }
-  public table_or_subquery(): Table_or_subqueryContext[]
-  public table_or_subquery(i: number): Table_or_subqueryContext
-  public table_or_subquery(i?: number): Table_or_subqueryContext | Table_or_subqueryContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Table_or_subqueryContext)
-    } else {
-      return this.getRuleContext(i, Table_or_subqueryContext)
-    }
-  }
-  public join_clause(): Join_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Join_clauseContext)
-  }
-  public select_stmt(): Select_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Select_stmtContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public table_name(): Table_nameContext {
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
+  }
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
+  }
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
+  }
+  public table_alias(): Table_aliasContext {
+    return this.getTypedRuleContext(Table_aliasContext, 0) as Table_aliasContext
+  }
+  public INDEXED_(): TerminalNode {
+    return this.getToken(SQLiteParser.INDEXED_, 0)
+  }
+  public BY_(): TerminalNode {
+    return this.getToken(SQLiteParser.BY_, 0)
+  }
+  public index_name(): Index_nameContext {
+    return this.getTypedRuleContext(Index_nameContext, 0) as Index_nameContext
+  }
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
+  }
+  public AS_(): TerminalNode {
+    return this.getToken(SQLiteParser.AS_, 0)
+  }
+  public table_function_name(): Table_function_nameContext {
+    return this.getTypedRuleContext(Table_function_nameContext, 0) as Table_function_nameContext
+  }
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
+  }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
+  }
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
+  }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
+  public table_or_subquery_list(): Table_or_subqueryContext[] {
+    return this.getTypedRuleContexts(Table_or_subqueryContext) as Table_or_subqueryContext[]
+  }
+  public table_or_subquery(i: number): Table_or_subqueryContext {
+    return this.getTypedRuleContext(Table_or_subqueryContext, i) as Table_or_subqueryContext
+  }
+  public join_clause(): Join_clauseContext {
+    return this.getTypedRuleContext(Join_clauseContext, 0) as Join_clauseContext
+  }
+  public select_stmt(): Select_stmtContext {
+    return this.getTypedRuleContext(Select_stmtContext, 0) as Select_stmtContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_table_or_subquery
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterTable_or_subquery) {
       listener.enterTable_or_subquery(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitTable_or_subquery) {
       listener.exitTable_or_subquery(this)
@@ -15102,38 +31749,36 @@ export class Table_or_subqueryContext extends ParserRuleContext {
 }
 
 export class Result_columnContext extends ParserRuleContext {
-  public STAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STAR, 0)
-  }
-  public table_name(): Table_nameContext | undefined {
-    return this.tryGetRuleContext(0, Table_nameContext)
-  }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
-  }
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
-  }
-  public column_alias(): Column_aliasContext | undefined {
-    return this.tryGetRuleContext(0, Column_aliasContext)
-  }
-  public AS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AS_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public STAR(): TerminalNode {
+    return this.getToken(SQLiteParser.STAR, 0)
+  }
+  public table_name(): Table_nameContext {
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
+  }
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
+  }
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public column_alias(): Column_aliasContext {
+    return this.getTypedRuleContext(Column_aliasContext, 0) as Column_aliasContext
+  }
+  public AS_(): TerminalNode {
+    return this.getToken(SQLiteParser.AS_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_result_column
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterResult_column) {
       listener.enterResult_column(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitResult_column) {
       listener.exitResult_column(this)
@@ -15142,41 +31787,39 @@ export class Result_columnContext extends ParserRuleContext {
 }
 
 export class Join_operatorContext extends ParserRuleContext {
-  public COMMA(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COMMA, 0)
-  }
-  public JOIN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.JOIN_, 0)
-  }
-  public NATURAL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NATURAL_, 0)
-  }
-  public LEFT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LEFT_, 0)
-  }
-  public INNER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INNER_, 0)
-  }
-  public CROSS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CROSS_, 0)
-  }
-  public OUTER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OUTER_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public COMMA(): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, 0)
+  }
+  public JOIN_(): TerminalNode {
+    return this.getToken(SQLiteParser.JOIN_, 0)
+  }
+  public NATURAL_(): TerminalNode {
+    return this.getToken(SQLiteParser.NATURAL_, 0)
+  }
+  public LEFT_(): TerminalNode {
+    return this.getToken(SQLiteParser.LEFT_, 0)
+  }
+  public INNER_(): TerminalNode {
+    return this.getToken(SQLiteParser.INNER_, 0)
+  }
+  public CROSS_(): TerminalNode {
+    return this.getToken(SQLiteParser.CROSS_, 0)
+  }
+  public OUTER_(): TerminalNode {
+    return this.getToken(SQLiteParser.OUTER_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_join_operator
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterJoin_operator) {
       listener.enterJoin_operator(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitJoin_operator) {
       listener.exitJoin_operator(this)
@@ -15185,53 +31828,45 @@ export class Join_operatorContext extends ParserRuleContext {
 }
 
 export class Join_constraintContext extends ParserRuleContext {
-  public ON_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ON_, 0)
-  }
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
-  }
-  public USING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.USING_, 0)
-  }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
-  }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
-  }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
-  }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public ON_(): TerminalNode {
+    return this.getToken(SQLiteParser.ON_, 0)
+  }
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public USING_(): TerminalNode {
+    return this.getToken(SQLiteParser.USING_, 0)
+  }
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
+  }
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
+  }
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
+  }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_join_constraint
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterJoin_constraint) {
       listener.enterJoin_constraint(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitJoin_constraint) {
       listener.exitJoin_constraint(this)
@@ -15240,32 +31875,30 @@ export class Join_constraintContext extends ParserRuleContext {
 }
 
 export class Compound_operatorContext extends ParserRuleContext {
-  public UNION_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UNION_, 0)
-  }
-  public ALL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ALL_, 0)
-  }
-  public INTERSECT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INTERSECT_, 0)
-  }
-  public EXCEPT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXCEPT_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public UNION_(): TerminalNode {
+    return this.getToken(SQLiteParser.UNION_, 0)
+  }
+  public ALL_(): TerminalNode {
+    return this.getToken(SQLiteParser.ALL_, 0)
+  }
+  public INTERSECT_(): TerminalNode {
+    return this.getToken(SQLiteParser.INTERSECT_, 0)
+  }
+  public EXCEPT_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXCEPT_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_compound_operator
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCompound_operator) {
       listener.enterCompound_operator(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCompound_operator) {
       listener.exitCompound_operator(this)
@@ -15274,116 +31907,96 @@ export class Compound_operatorContext extends ParserRuleContext {
 }
 
 export class Update_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public UPDATE_(): TerminalNode {
     return this.getToken(SQLiteParser.UPDATE_, 0)
   }
   public qualified_table_name(): Qualified_table_nameContext {
-    return this.getRuleContext(0, Qualified_table_nameContext)
+    return this.getTypedRuleContext(Qualified_table_nameContext, 0) as Qualified_table_nameContext
   }
   public SET_(): TerminalNode {
     return this.getToken(SQLiteParser.SET_, 0)
   }
-  public ASSIGN(): TerminalNode[]
-  public ASSIGN(i: number): TerminalNode
-  public ASSIGN(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.ASSIGN)
-    } else {
-      return this.getToken(SQLiteParser.ASSIGN, i)
-    }
+  public ASSIGN_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.ASSIGN)
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public ASSIGN(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.ASSIGN, i)
   }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  public column_name_list(): Column_name_listContext[]
-  public column_name_list(i: number): Column_name_listContext
-  public column_name_list(i?: number): Column_name_listContext | Column_name_listContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_name_listContext)
-    } else {
-      return this.getRuleContext(i, Column_name_listContext)
-    }
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  public with_clause(): With_clauseContext | undefined {
-    return this.tryGetRuleContext(0, With_clauseContext)
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
   }
-  public OR_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OR_, 0)
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public column_name_list_list(): Column_name_listContext[] {
+    return this.getTypedRuleContexts(Column_name_listContext) as Column_name_listContext[]
   }
-  public FROM_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FROM_, 0)
+  public column_name_list(i: number): Column_name_listContext {
+    return this.getTypedRuleContext(Column_name_listContext, i) as Column_name_listContext
   }
-  public WHERE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WHERE_, 0)
+  public with_clause(): With_clauseContext {
+    return this.getTypedRuleContext(With_clauseContext, 0) as With_clauseContext
   }
-  public returning_clause(): Returning_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Returning_clauseContext)
+  public OR_(): TerminalNode {
+    return this.getToken(SQLiteParser.OR_, 0)
   }
-  public ROLLBACK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROLLBACK_, 0)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  public ABORT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ABORT_, 0)
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
   }
-  public REPLACE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.REPLACE_, 0)
+  public FROM_(): TerminalNode {
+    return this.getToken(SQLiteParser.FROM_, 0)
   }
-  public FAIL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FAIL_, 0)
+  public WHERE_(): TerminalNode {
+    return this.getToken(SQLiteParser.WHERE_, 0)
   }
-  public IGNORE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IGNORE_, 0)
+  public returning_clause(): Returning_clauseContext {
+    return this.getTypedRuleContext(Returning_clauseContext, 0) as Returning_clauseContext
   }
-  public table_or_subquery(): Table_or_subqueryContext[]
-  public table_or_subquery(i: number): Table_or_subqueryContext
-  public table_or_subquery(i?: number): Table_or_subqueryContext | Table_or_subqueryContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Table_or_subqueryContext)
-    } else {
-      return this.getRuleContext(i, Table_or_subqueryContext)
-    }
+  public ROLLBACK_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROLLBACK_, 0)
   }
-  public join_clause(): Join_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Join_clauseContext)
+  public ABORT_(): TerminalNode {
+    return this.getToken(SQLiteParser.ABORT_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public REPLACE_(): TerminalNode {
+    return this.getToken(SQLiteParser.REPLACE_, 0)
   }
-  // @Override
+  public FAIL_(): TerminalNode {
+    return this.getToken(SQLiteParser.FAIL_, 0)
+  }
+  public IGNORE_(): TerminalNode {
+    return this.getToken(SQLiteParser.IGNORE_, 0)
+  }
+  public table_or_subquery_list(): Table_or_subqueryContext[] {
+    return this.getTypedRuleContexts(Table_or_subqueryContext) as Table_or_subqueryContext[]
+  }
+  public table_or_subquery(i: number): Table_or_subqueryContext {
+    return this.getTypedRuleContext(Table_or_subqueryContext, i) as Table_or_subqueryContext
+  }
+  public join_clause(): Join_clauseContext {
+    return this.getTypedRuleContext(Join_clauseContext, 0) as Join_clauseContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_update_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterUpdate_stmt) {
       listener.enterUpdate_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitUpdate_stmt) {
       listener.exitUpdate_stmt(this)
@@ -15392,44 +32005,36 @@ export class Update_stmtContext extends ParserRuleContext {
 }
 
 export class Column_name_listContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public OPEN_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
+  }
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
   }
   public CLOSE_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
   }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_column_name_list
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterColumn_name_list) {
       listener.enterColumn_name_list(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitColumn_name_list) {
       listener.exitColumn_name_list(this)
@@ -15438,107 +32043,90 @@ export class Column_name_listContext extends ParserRuleContext {
 }
 
 export class Update_stmt_limitedContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public UPDATE_(): TerminalNode {
     return this.getToken(SQLiteParser.UPDATE_, 0)
   }
   public qualified_table_name(): Qualified_table_nameContext {
-    return this.getRuleContext(0, Qualified_table_nameContext)
+    return this.getTypedRuleContext(Qualified_table_nameContext, 0) as Qualified_table_nameContext
   }
   public SET_(): TerminalNode {
     return this.getToken(SQLiteParser.SET_, 0)
   }
-  public ASSIGN(): TerminalNode[]
-  public ASSIGN(i: number): TerminalNode
-  public ASSIGN(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.ASSIGN)
-    } else {
-      return this.getToken(SQLiteParser.ASSIGN, i)
-    }
+  public ASSIGN_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.ASSIGN)
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public ASSIGN(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.ASSIGN, i)
   }
-  public column_name(): Column_nameContext[]
-  public column_name(i: number): Column_nameContext
-  public column_name(i?: number): Column_nameContext | Column_nameContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_nameContext)
-    } else {
-      return this.getRuleContext(i, Column_nameContext)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  public column_name_list(): Column_name_listContext[]
-  public column_name_list(i: number): Column_name_listContext
-  public column_name_list(i?: number): Column_name_listContext | Column_name_listContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Column_name_listContext)
-    } else {
-      return this.getRuleContext(i, Column_name_listContext)
-    }
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  public with_clause(): With_clauseContext | undefined {
-    return this.tryGetRuleContext(0, With_clauseContext)
+  public column_name_list(): Column_nameContext[] {
+    return this.getTypedRuleContexts(Column_nameContext) as Column_nameContext[]
   }
-  public OR_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OR_, 0)
+  public column_name(i: number): Column_nameContext {
+    return this.getTypedRuleContext(Column_nameContext, i) as Column_nameContext
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public column_name_list_list(): Column_name_listContext[] {
+    return this.getTypedRuleContexts(Column_name_listContext) as Column_name_listContext[]
   }
-  public WHERE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WHERE_, 0)
+  public column_name_list(i: number): Column_name_listContext {
+    return this.getTypedRuleContext(Column_name_listContext, i) as Column_name_listContext
   }
-  public returning_clause(): Returning_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Returning_clauseContext)
+  public with_clause(): With_clauseContext {
+    return this.getTypedRuleContext(With_clauseContext, 0) as With_clauseContext
   }
-  public limit_stmt(): Limit_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Limit_stmtContext)
+  public OR_(): TerminalNode {
+    return this.getToken(SQLiteParser.OR_, 0)
   }
-  public ROLLBACK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROLLBACK_, 0)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  public ABORT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ABORT_, 0)
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
   }
-  public REPLACE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.REPLACE_, 0)
+  public WHERE_(): TerminalNode {
+    return this.getToken(SQLiteParser.WHERE_, 0)
   }
-  public FAIL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FAIL_, 0)
+  public returning_clause(): Returning_clauseContext {
+    return this.getTypedRuleContext(Returning_clauseContext, 0) as Returning_clauseContext
   }
-  public IGNORE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IGNORE_, 0)
+  public limit_stmt(): Limit_stmtContext {
+    return this.getTypedRuleContext(Limit_stmtContext, 0) as Limit_stmtContext
   }
-  public order_by_stmt(): Order_by_stmtContext | undefined {
-    return this.tryGetRuleContext(0, Order_by_stmtContext)
+  public ROLLBACK_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROLLBACK_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public ABORT_(): TerminalNode {
+    return this.getToken(SQLiteParser.ABORT_, 0)
   }
-  // @Override
+  public REPLACE_(): TerminalNode {
+    return this.getToken(SQLiteParser.REPLACE_, 0)
+  }
+  public FAIL_(): TerminalNode {
+    return this.getToken(SQLiteParser.FAIL_, 0)
+  }
+  public IGNORE_(): TerminalNode {
+    return this.getToken(SQLiteParser.IGNORE_, 0)
+  }
+  public order_by_stmt(): Order_by_stmtContext {
+    return this.getTypedRuleContext(Order_by_stmtContext, 0) as Order_by_stmtContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_update_stmt_limited
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterUpdate_stmt_limited) {
       listener.enterUpdate_stmt_limited(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitUpdate_stmt_limited) {
       listener.exitUpdate_stmt_limited(this)
@@ -15547,47 +32135,45 @@ export class Update_stmt_limitedContext extends ParserRuleContext {
 }
 
 export class Qualified_table_nameContext extends ParserRuleContext {
-  public table_name(): Table_nameContext {
-    return this.getRuleContext(0, Table_nameContext)
-  }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
-  }
-  public DOT(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DOT, 0)
-  }
-  public AS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AS_, 0)
-  }
-  public alias(): AliasContext | undefined {
-    return this.tryGetRuleContext(0, AliasContext)
-  }
-  public INDEXED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INDEXED_, 0)
-  }
-  public BY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BY_, 0)
-  }
-  public index_name(): Index_nameContext | undefined {
-    return this.tryGetRuleContext(0, Index_nameContext)
-  }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public table_name(): Table_nameContext {
+    return this.getTypedRuleContext(Table_nameContext, 0) as Table_nameContext
+  }
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
+  }
+  public DOT(): TerminalNode {
+    return this.getToken(SQLiteParser.DOT, 0)
+  }
+  public AS_(): TerminalNode {
+    return this.getToken(SQLiteParser.AS_, 0)
+  }
+  public alias(): AliasContext {
+    return this.getTypedRuleContext(AliasContext, 0) as AliasContext
+  }
+  public INDEXED_(): TerminalNode {
+    return this.getToken(SQLiteParser.INDEXED_, 0)
+  }
+  public BY_(): TerminalNode {
+    return this.getToken(SQLiteParser.BY_, 0)
+  }
+  public index_name(): Index_nameContext {
+    return this.getTypedRuleContext(Index_nameContext, 0) as Index_nameContext
+  }
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_qualified_table_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterQualified_table_name) {
       listener.enterQualified_table_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitQualified_table_name) {
       listener.exitQualified_table_name(this)
@@ -15596,32 +32182,30 @@ export class Qualified_table_nameContext extends ParserRuleContext {
 }
 
 export class Vacuum_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public VACUUM_(): TerminalNode {
     return this.getToken(SQLiteParser.VACUUM_, 0)
   }
-  public schema_name(): Schema_nameContext | undefined {
-    return this.tryGetRuleContext(0, Schema_nameContext)
+  public schema_name(): Schema_nameContext {
+    return this.getTypedRuleContext(Schema_nameContext, 0) as Schema_nameContext
   }
-  public INTO_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INTO_, 0)
+  public INTO_(): TerminalNode {
+    return this.getToken(SQLiteParser.INTO_, 0)
   }
-  public filename(): FilenameContext | undefined {
-    return this.tryGetRuleContext(0, FilenameContext)
+  public filename(): FilenameContext {
+    return this.getTypedRuleContext(FilenameContext, 0) as FilenameContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_vacuum_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterVacuum_stmt) {
       listener.enterVacuum_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitVacuum_stmt) {
       listener.exitVacuum_stmt(this)
@@ -15630,6 +32214,10 @@ export class Vacuum_stmtContext extends ParserRuleContext {
 }
 
 export class Filter_clauseContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public FILTER_(): TerminalNode {
     return this.getToken(SQLiteParser.FILTER_, 0)
   }
@@ -15640,25 +32228,19 @@ export class Filter_clauseContext extends ParserRuleContext {
     return this.getToken(SQLiteParser.WHERE_, 0)
   }
   public expr(): ExprContext {
-    return this.getRuleContext(0, ExprContext)
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
   }
   public CLOSE_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_filter_clause
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterFilter_clause) {
       listener.enterFilter_clause(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitFilter_clause) {
       listener.exitFilter_clause(this)
@@ -15667,74 +32249,60 @@ export class Filter_clauseContext extends ParserRuleContext {
 }
 
 export class Window_defnContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public OPEN_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
   public CLOSE_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public ORDER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ORDER_, 0)
+  public ORDER_(): TerminalNode {
+    return this.getToken(SQLiteParser.ORDER_, 0)
   }
-  public BY_(): TerminalNode[]
-  public BY_(i: number): TerminalNode
-  public BY_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.BY_)
-    } else {
-      return this.getToken(SQLiteParser.BY_, i)
-    }
+  public BY__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.BY_)
   }
-  public ordering_term(): Ordering_termContext[]
-  public ordering_term(i: number): Ordering_termContext
-  public ordering_term(i?: number): Ordering_termContext | Ordering_termContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Ordering_termContext)
-    } else {
-      return this.getRuleContext(i, Ordering_termContext)
-    }
+  public BY_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.BY_, i)
   }
-  public base_window_name(): Base_window_nameContext | undefined {
-    return this.tryGetRuleContext(0, Base_window_nameContext)
+  public ordering_term_list(): Ordering_termContext[] {
+    return this.getTypedRuleContexts(Ordering_termContext) as Ordering_termContext[]
   }
-  public PARTITION_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PARTITION_, 0)
+  public ordering_term(i: number): Ordering_termContext {
+    return this.getTypedRuleContext(Ordering_termContext, i) as Ordering_termContext
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public base_window_name(): Base_window_nameContext {
+    return this.getTypedRuleContext(Base_window_nameContext, 0) as Base_window_nameContext
   }
-  public frame_spec(): Frame_specContext | undefined {
-    return this.tryGetRuleContext(0, Frame_specContext)
+  public PARTITION_(): TerminalNode {
+    return this.getToken(SQLiteParser.PARTITION_, 0)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  // @Override
+  public frame_spec(): Frame_specContext {
+    return this.getTypedRuleContext(Frame_specContext, 0) as Frame_specContext
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_window_defn
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterWindow_defn) {
       listener.enterWindow_defn(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitWindow_defn) {
       listener.exitWindow_defn(this)
@@ -15743,80 +32311,66 @@ export class Window_defnContext extends ParserRuleContext {
 }
 
 export class Over_clauseContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public OVER_(): TerminalNode {
     return this.getToken(SQLiteParser.OVER_, 0)
   }
-  public window_name(): Window_nameContext | undefined {
-    return this.tryGetRuleContext(0, Window_nameContext)
+  public window_name(): Window_nameContext {
+    return this.getTypedRuleContext(Window_nameContext, 0) as Window_nameContext
   }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
   }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public base_window_name(): Base_window_nameContext | undefined {
-    return this.tryGetRuleContext(0, Base_window_nameContext)
+  public base_window_name(): Base_window_nameContext {
+    return this.getTypedRuleContext(Base_window_nameContext, 0) as Base_window_nameContext
   }
-  public PARTITION_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PARTITION_, 0)
+  public PARTITION_(): TerminalNode {
+    return this.getToken(SQLiteParser.PARTITION_, 0)
   }
-  public BY_(): TerminalNode[]
-  public BY_(i: number): TerminalNode
-  public BY_(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.BY_)
-    } else {
-      return this.getToken(SQLiteParser.BY_, i)
-    }
+  public BY__list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.BY_)
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public BY_(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.BY_, i)
   }
-  public ORDER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ORDER_, 0)
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  public ordering_term(): Ordering_termContext[]
-  public ordering_term(i: number): Ordering_termContext
-  public ordering_term(i?: number): Ordering_termContext | Ordering_termContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Ordering_termContext)
-    } else {
-      return this.getRuleContext(i, Ordering_termContext)
-    }
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  public frame_spec(): Frame_specContext | undefined {
-    return this.tryGetRuleContext(0, Frame_specContext)
+  public ORDER_(): TerminalNode {
+    return this.getToken(SQLiteParser.ORDER_, 0)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public ordering_term_list(): Ordering_termContext[] {
+    return this.getTypedRuleContexts(Ordering_termContext) as Ordering_termContext[]
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public ordering_term(i: number): Ordering_termContext {
+    return this.getTypedRuleContext(Ordering_termContext, i) as Ordering_termContext
   }
-  // @Override
+  public frame_spec(): Frame_specContext {
+    return this.getTypedRuleContext(Frame_specContext, 0) as Frame_specContext
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_over_clause
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterOver_clause) {
       listener.enterOver_clause(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitOver_clause) {
       listener.exitOver_clause(this)
@@ -15825,44 +32379,42 @@ export class Over_clauseContext extends ParserRuleContext {
 }
 
 export class Frame_specContext extends ParserRuleContext {
-  public frame_clause(): Frame_clauseContext {
-    return this.getRuleContext(0, Frame_clauseContext)
-  }
-  public EXCLUDE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXCLUDE_, 0)
-  }
-  public NO_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NO_, 0)
-  }
-  public OTHERS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OTHERS_, 0)
-  }
-  public CURRENT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_, 0)
-  }
-  public ROW_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROW_, 0)
-  }
-  public GROUP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GROUP_, 0)
-  }
-  public TIES_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TIES_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public frame_clause(): Frame_clauseContext {
+    return this.getTypedRuleContext(Frame_clauseContext, 0) as Frame_clauseContext
+  }
+  public EXCLUDE_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXCLUDE_, 0)
+  }
+  public NO_(): TerminalNode {
+    return this.getToken(SQLiteParser.NO_, 0)
+  }
+  public OTHERS_(): TerminalNode {
+    return this.getToken(SQLiteParser.OTHERS_, 0)
+  }
+  public CURRENT_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_, 0)
+  }
+  public ROW_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROW_, 0)
+  }
+  public GROUP_(): TerminalNode {
+    return this.getToken(SQLiteParser.GROUP_, 0)
+  }
+  public TIES_(): TerminalNode {
+    return this.getToken(SQLiteParser.TIES_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_frame_spec
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterFrame_spec) {
       listener.enterFrame_spec(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitFrame_spec) {
       listener.exitFrame_spec(this)
@@ -15871,44 +32423,42 @@ export class Frame_specContext extends ParserRuleContext {
 }
 
 export class Frame_clauseContext extends ParserRuleContext {
-  public RANGE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RANGE_, 0)
-  }
-  public ROWS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROWS_, 0)
-  }
-  public GROUPS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GROUPS_, 0)
-  }
-  public frame_single(): Frame_singleContext | undefined {
-    return this.tryGetRuleContext(0, Frame_singleContext)
-  }
-  public BETWEEN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BETWEEN_, 0)
-  }
-  public frame_left(): Frame_leftContext | undefined {
-    return this.tryGetRuleContext(0, Frame_leftContext)
-  }
-  public AND_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AND_, 0)
-  }
-  public frame_right(): Frame_rightContext | undefined {
-    return this.tryGetRuleContext(0, Frame_rightContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public RANGE_(): TerminalNode {
+    return this.getToken(SQLiteParser.RANGE_, 0)
+  }
+  public ROWS_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROWS_, 0)
+  }
+  public GROUPS_(): TerminalNode {
+    return this.getToken(SQLiteParser.GROUPS_, 0)
+  }
+  public frame_single(): Frame_singleContext {
+    return this.getTypedRuleContext(Frame_singleContext, 0) as Frame_singleContext
+  }
+  public BETWEEN_(): TerminalNode {
+    return this.getToken(SQLiteParser.BETWEEN_, 0)
+  }
+  public frame_left(): Frame_leftContext {
+    return this.getTypedRuleContext(Frame_leftContext, 0) as Frame_leftContext
+  }
+  public AND_(): TerminalNode {
+    return this.getToken(SQLiteParser.AND_, 0)
+  }
+  public frame_right(): Frame_rightContext {
+    return this.getTypedRuleContext(Frame_rightContext, 0) as Frame_rightContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_frame_clause
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterFrame_clause) {
       listener.enterFrame_clause(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitFrame_clause) {
       listener.exitFrame_clause(this)
@@ -15917,8 +32467,12 @@ export class Frame_clauseContext extends ParserRuleContext {
 }
 
 export class Simple_function_invocationContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public simple_func(): Simple_funcContext {
-    return this.getRuleContext(0, Simple_funcContext)
+    return this.getTypedRuleContext(Simple_funcContext, 0) as Simple_funcContext
   }
   public OPEN_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.OPEN_PAR, 0)
@@ -15926,41 +32480,29 @@ export class Simple_function_invocationContext extends ParserRuleContext {
   public CLOSE_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  public STAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STAR, 0)
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public STAR(): TerminalNode {
+    return this.getToken(SQLiteParser.STAR, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  // @Override
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_simple_function_invocation
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSimple_function_invocation) {
       listener.enterSimple_function_invocation(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSimple_function_invocation) {
       listener.exitSimple_function_invocation(this)
@@ -15969,8 +32511,12 @@ export class Simple_function_invocationContext extends ParserRuleContext {
 }
 
 export class Aggregate_function_invocationContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public aggregate_func(): Aggregate_funcContext {
-    return this.getRuleContext(0, Aggregate_funcContext)
+    return this.getTypedRuleContext(Aggregate_funcContext, 0) as Aggregate_funcContext
   }
   public OPEN_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.OPEN_PAR, 0)
@@ -15978,47 +32524,35 @@ export class Aggregate_function_invocationContext extends ParserRuleContext {
   public CLOSE_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.CLOSE_PAR, 0)
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  public STAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STAR, 0)
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  public filter_clause(): Filter_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Filter_clauseContext)
+  public STAR(): TerminalNode {
+    return this.getToken(SQLiteParser.STAR, 0)
   }
-  public DISTINCT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DISTINCT_, 0)
+  public filter_clause(): Filter_clauseContext {
+    return this.getTypedRuleContext(Filter_clauseContext, 0) as Filter_clauseContext
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public DISTINCT_(): TerminalNode {
+    return this.getToken(SQLiteParser.DISTINCT_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  // @Override
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_aggregate_function_invocation
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterAggregate_function_invocation) {
       listener.enterAggregate_function_invocation(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitAggregate_function_invocation) {
       listener.exitAggregate_function_invocation(this)
@@ -16027,8 +32561,12 @@ export class Aggregate_function_invocationContext extends ParserRuleContext {
 }
 
 export class Window_function_invocationContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public window_function(): Window_functionContext {
-    return this.getRuleContext(0, Window_functionContext)
+    return this.getTypedRuleContext(Window_functionContext, 0) as Window_functionContext
   }
   public OPEN_PAR(): TerminalNode {
     return this.getToken(SQLiteParser.OPEN_PAR, 0)
@@ -16039,50 +32577,38 @@ export class Window_function_invocationContext extends ParserRuleContext {
   public OVER_(): TerminalNode {
     return this.getToken(SQLiteParser.OVER_, 0)
   }
-  public window_defn(): Window_defnContext | undefined {
-    return this.tryGetRuleContext(0, Window_defnContext)
+  public window_defn(): Window_defnContext {
+    return this.getTypedRuleContext(Window_defnContext, 0) as Window_defnContext
   }
-  public window_name(): Window_nameContext | undefined {
-    return this.tryGetRuleContext(0, Window_nameContext)
+  public window_name(): Window_nameContext {
+    return this.getTypedRuleContext(Window_nameContext, 0) as Window_nameContext
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  public STAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STAR, 0)
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  public filter_clause(): Filter_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Filter_clauseContext)
+  public STAR(): TerminalNode {
+    return this.getToken(SQLiteParser.STAR, 0)
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public filter_clause(): Filter_clauseContext {
+    return this.getTypedRuleContext(Filter_clauseContext, 0) as Filter_clauseContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  // @Override
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_window_function_invocation
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterWindow_function_invocation) {
       listener.enterWindow_function_invocation(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitWindow_function_invocation) {
       listener.exitWindow_function_invocation(this)
@@ -16091,44 +32617,36 @@ export class Window_function_invocationContext extends ParserRuleContext {
 }
 
 export class Common_table_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public WITH_(): TerminalNode {
     return this.getToken(SQLiteParser.WITH_, 0)
   }
-  public common_table_expression(): Common_table_expressionContext[]
-  public common_table_expression(i: number): Common_table_expressionContext
-  public common_table_expression(i?: number): Common_table_expressionContext | Common_table_expressionContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Common_table_expressionContext)
-    } else {
-      return this.getRuleContext(i, Common_table_expressionContext)
-    }
+  public common_table_expression_list(): Common_table_expressionContext[] {
+    return this.getTypedRuleContexts(Common_table_expressionContext) as Common_table_expressionContext[]
   }
-  public RECURSIVE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RECURSIVE_, 0)
+  public common_table_expression(i: number): Common_table_expressionContext {
+    return this.getTypedRuleContext(Common_table_expressionContext, i) as Common_table_expressionContext
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public RECURSIVE_(): TerminalNode {
+    return this.getToken(SQLiteParser.RECURSIVE_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  // @Override
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_common_table_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCommon_table_stmt) {
       listener.enterCommon_table_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCommon_table_stmt) {
       listener.exitCommon_table_stmt(this)
@@ -16137,44 +32655,36 @@ export class Common_table_stmtContext extends ParserRuleContext {
 }
 
 export class Order_by_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public ORDER_(): TerminalNode {
     return this.getToken(SQLiteParser.ORDER_, 0)
   }
   public BY_(): TerminalNode {
     return this.getToken(SQLiteParser.BY_, 0)
   }
-  public ordering_term(): Ordering_termContext[]
-  public ordering_term(i: number): Ordering_termContext
-  public ordering_term(i?: number): Ordering_termContext | Ordering_termContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Ordering_termContext)
-    } else {
-      return this.getRuleContext(i, Ordering_termContext)
-    }
+  public ordering_term_list(): Ordering_termContext[] {
+    return this.getTypedRuleContexts(Ordering_termContext) as Ordering_termContext[]
   }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
+  public ordering_term(i: number): Ordering_termContext {
+    return this.getTypedRuleContext(Ordering_termContext, i) as Ordering_termContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
   }
-  // @Override
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_order_by_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterOrder_by_stmt) {
       listener.enterOrder_by_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitOrder_by_stmt) {
       listener.exitOrder_by_stmt(this)
@@ -16183,38 +32693,33 @@ export class Order_by_stmtContext extends ParserRuleContext {
 }
 
 export class Limit_stmtContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public LIMIT_(): TerminalNode {
     return this.getToken(SQLiteParser.LIMIT_, 0)
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  public OFFSET_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OFFSET_, 0)
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  public COMMA(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COMMA, 0)
+  public OFFSET_(): TerminalNode {
+    return this.getToken(SQLiteParser.OFFSET_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public COMMA(): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, 0)
   }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_limit_stmt
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterLimit_stmt) {
       listener.enterLimit_stmt(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitLimit_stmt) {
       listener.exitLimit_stmt(this)
@@ -16223,41 +32728,39 @@ export class Limit_stmtContext extends ParserRuleContext {
 }
 
 export class Ordering_termContext extends ParserRuleContext {
-  public expr(): ExprContext {
-    return this.getRuleContext(0, ExprContext)
-  }
-  public COLLATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COLLATE_, 0)
-  }
-  public collation_name(): Collation_nameContext | undefined {
-    return this.tryGetRuleContext(0, Collation_nameContext)
-  }
-  public asc_desc(): Asc_descContext | undefined {
-    return this.tryGetRuleContext(0, Asc_descContext)
-  }
-  public NULLS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NULLS_, 0)
-  }
-  public FIRST_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FIRST_, 0)
-  }
-  public LAST_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LAST_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public COLLATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.COLLATE_, 0)
+  }
+  public collation_name(): Collation_nameContext {
+    return this.getTypedRuleContext(Collation_nameContext, 0) as Collation_nameContext
+  }
+  public asc_desc(): Asc_descContext {
+    return this.getTypedRuleContext(Asc_descContext, 0) as Asc_descContext
+  }
+  public NULLS_(): TerminalNode {
+    return this.getToken(SQLiteParser.NULLS_, 0)
+  }
+  public FIRST_(): TerminalNode {
+    return this.getToken(SQLiteParser.FIRST_, 0)
+  }
+  public LAST_(): TerminalNode {
+    return this.getToken(SQLiteParser.LAST_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_ordering_term
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterOrdering_term) {
       listener.enterOrdering_term(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitOrdering_term) {
       listener.exitOrdering_term(this)
@@ -16266,26 +32769,24 @@ export class Ordering_termContext extends ParserRuleContext {
 }
 
 export class Asc_descContext extends ParserRuleContext {
-  public ASC_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ASC_, 0)
-  }
-  public DESC_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DESC_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public ASC_(): TerminalNode {
+    return this.getToken(SQLiteParser.ASC_, 0)
+  }
+  public DESC_(): TerminalNode {
+    return this.getToken(SQLiteParser.DESC_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_asc_desc
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterAsc_desc) {
       listener.enterAsc_desc(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitAsc_desc) {
       listener.exitAsc_desc(this)
@@ -16294,38 +32795,36 @@ export class Asc_descContext extends ParserRuleContext {
 }
 
 export class Frame_leftContext extends ParserRuleContext {
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
-  }
-  public PRECEDING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PRECEDING_, 0)
-  }
-  public FOLLOWING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FOLLOWING_, 0)
-  }
-  public CURRENT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_, 0)
-  }
-  public ROW_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROW_, 0)
-  }
-  public UNBOUNDED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UNBOUNDED_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public PRECEDING_(): TerminalNode {
+    return this.getToken(SQLiteParser.PRECEDING_, 0)
+  }
+  public FOLLOWING_(): TerminalNode {
+    return this.getToken(SQLiteParser.FOLLOWING_, 0)
+  }
+  public CURRENT_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_, 0)
+  }
+  public ROW_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROW_, 0)
+  }
+  public UNBOUNDED_(): TerminalNode {
+    return this.getToken(SQLiteParser.UNBOUNDED_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_frame_left
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterFrame_left) {
       listener.enterFrame_left(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitFrame_left) {
       listener.exitFrame_left(this)
@@ -16334,38 +32833,36 @@ export class Frame_leftContext extends ParserRuleContext {
 }
 
 export class Frame_rightContext extends ParserRuleContext {
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
-  }
-  public PRECEDING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PRECEDING_, 0)
-  }
-  public FOLLOWING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FOLLOWING_, 0)
-  }
-  public CURRENT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_, 0)
-  }
-  public ROW_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROW_, 0)
-  }
-  public UNBOUNDED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UNBOUNDED_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public PRECEDING_(): TerminalNode {
+    return this.getToken(SQLiteParser.PRECEDING_, 0)
+  }
+  public FOLLOWING_(): TerminalNode {
+    return this.getToken(SQLiteParser.FOLLOWING_, 0)
+  }
+  public CURRENT_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_, 0)
+  }
+  public ROW_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROW_, 0)
+  }
+  public UNBOUNDED_(): TerminalNode {
+    return this.getToken(SQLiteParser.UNBOUNDED_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_frame_right
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterFrame_right) {
       listener.enterFrame_right(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitFrame_right) {
       listener.exitFrame_right(this)
@@ -16374,35 +32871,33 @@ export class Frame_rightContext extends ParserRuleContext {
 }
 
 export class Frame_singleContext extends ParserRuleContext {
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
-  }
-  public PRECEDING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PRECEDING_, 0)
-  }
-  public UNBOUNDED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UNBOUNDED_, 0)
-  }
-  public CURRENT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_, 0)
-  }
-  public ROW_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROW_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public PRECEDING_(): TerminalNode {
+    return this.getToken(SQLiteParser.PRECEDING_, 0)
+  }
+  public UNBOUNDED_(): TerminalNode {
+    return this.getToken(SQLiteParser.UNBOUNDED_, 0)
+  }
+  public CURRENT_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_, 0)
+  }
+  public ROW_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROW_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_frame_single
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterFrame_single) {
       listener.enterFrame_single(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitFrame_single) {
       listener.exitFrame_single(this)
@@ -16411,101 +32906,93 @@ export class Frame_singleContext extends ParserRuleContext {
 }
 
 export class Window_functionContext extends ParserRuleContext {
-  public OPEN_PAR(): TerminalNode[]
-  public OPEN_PAR(i: number): TerminalNode
-  public OPEN_PAR(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.OPEN_PAR)
-    } else {
-      return this.getToken(SQLiteParser.OPEN_PAR, i)
-    }
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
   }
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
+  public OPEN_PAR_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.OPEN_PAR)
   }
-  public CLOSE_PAR(): TerminalNode[]
-  public CLOSE_PAR(i: number): TerminalNode
-  public CLOSE_PAR(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.CLOSE_PAR)
-    } else {
-      return this.getToken(SQLiteParser.CLOSE_PAR, i)
-    }
+  public OPEN_PAR(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, i)
+  }
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public CLOSE_PAR_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.CLOSE_PAR)
+  }
+  public CLOSE_PAR(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, i)
   }
   public OVER_(): TerminalNode {
     return this.getToken(SQLiteParser.OVER_, 0)
   }
-  public order_by_expr_asc_desc(): Order_by_expr_asc_descContext | undefined {
-    return this.tryGetRuleContext(0, Order_by_expr_asc_descContext)
+  public order_by_expr_asc_desc(): Order_by_expr_asc_descContext {
+    return this.getTypedRuleContext(Order_by_expr_asc_descContext, 0) as Order_by_expr_asc_descContext
   }
-  public FIRST_VALUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FIRST_VALUE_, 0)
+  public FIRST_VALUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.FIRST_VALUE_, 0)
   }
-  public LAST_VALUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LAST_VALUE_, 0)
+  public LAST_VALUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.LAST_VALUE_, 0)
   }
-  public partition_by(): Partition_byContext | undefined {
-    return this.tryGetRuleContext(0, Partition_byContext)
+  public partition_by(): Partition_byContext {
+    return this.getTypedRuleContext(Partition_byContext, 0) as Partition_byContext
   }
-  public frame_clause(): Frame_clauseContext | undefined {
-    return this.tryGetRuleContext(0, Frame_clauseContext)
+  public frame_clause(): Frame_clauseContext {
+    return this.getTypedRuleContext(Frame_clauseContext, 0) as Frame_clauseContext
   }
-  public CUME_DIST_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CUME_DIST_, 0)
+  public CUME_DIST_(): TerminalNode {
+    return this.getToken(SQLiteParser.CUME_DIST_, 0)
   }
-  public PERCENT_RANK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PERCENT_RANK_, 0)
+  public PERCENT_RANK_(): TerminalNode {
+    return this.getToken(SQLiteParser.PERCENT_RANK_, 0)
   }
-  public order_by_expr(): Order_by_exprContext | undefined {
-    return this.tryGetRuleContext(0, Order_by_exprContext)
+  public order_by_expr(): Order_by_exprContext {
+    return this.getTypedRuleContext(Order_by_exprContext, 0) as Order_by_exprContext
   }
-  public DENSE_RANK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DENSE_RANK_, 0)
+  public DENSE_RANK_(): TerminalNode {
+    return this.getToken(SQLiteParser.DENSE_RANK_, 0)
   }
-  public RANK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RANK_, 0)
+  public RANK_(): TerminalNode {
+    return this.getToken(SQLiteParser.RANK_, 0)
   }
-  public ROW_NUMBER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROW_NUMBER_, 0)
+  public ROW_NUMBER_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROW_NUMBER_, 0)
   }
-  public LAG_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LAG_, 0)
+  public LAG_(): TerminalNode {
+    return this.getToken(SQLiteParser.LAG_, 0)
   }
-  public LEAD_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LEAD_, 0)
+  public LEAD_(): TerminalNode {
+    return this.getToken(SQLiteParser.LEAD_, 0)
   }
-  public offset(): OffsetContext | undefined {
-    return this.tryGetRuleContext(0, OffsetContext)
+  public offset(): OffsetContext {
+    return this.getTypedRuleContext(OffsetContext, 0) as OffsetContext
   }
-  public default_value(): Default_valueContext | undefined {
-    return this.tryGetRuleContext(0, Default_valueContext)
+  public default_value(): Default_valueContext {
+    return this.getTypedRuleContext(Default_valueContext, 0) as Default_valueContext
   }
-  public NTH_VALUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NTH_VALUE_, 0)
+  public NTH_VALUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.NTH_VALUE_, 0)
   }
-  public COMMA(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COMMA, 0)
+  public COMMA(): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, 0)
   }
-  public signed_number(): Signed_numberContext | undefined {
-    return this.tryGetRuleContext(0, Signed_numberContext)
+  public signed_number(): Signed_numberContext {
+    return this.getTypedRuleContext(Signed_numberContext, 0) as Signed_numberContext
   }
-  public NTILE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NTILE_, 0)
+  public NTILE_(): TerminalNode {
+    return this.getToken(SQLiteParser.NTILE_, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_window_function
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterWindow_function) {
       listener.enterWindow_function(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitWindow_function) {
       listener.exitWindow_function(this)
@@ -16514,26 +33001,24 @@ export class Window_functionContext extends ParserRuleContext {
 }
 
 export class OffsetContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public COMMA(): TerminalNode {
     return this.getToken(SQLiteParser.COMMA, 0)
   }
   public signed_number(): Signed_numberContext {
-    return this.getRuleContext(0, Signed_numberContext)
+    return this.getTypedRuleContext(Signed_numberContext, 0) as Signed_numberContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_offset
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterOffset) {
       listener.enterOffset(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitOffset) {
       listener.exitOffset(this)
@@ -16542,26 +33027,24 @@ export class OffsetContext extends ParserRuleContext {
 }
 
 export class Default_valueContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public COMMA(): TerminalNode {
     return this.getToken(SQLiteParser.COMMA, 0)
   }
   public signed_number(): Signed_numberContext {
-    return this.getRuleContext(0, Signed_numberContext)
+    return this.getTypedRuleContext(Signed_numberContext, 0) as Signed_numberContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_default_value
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterDefault_value) {
       listener.enterDefault_value(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitDefault_value) {
       listener.exitDefault_value(this)
@@ -16570,35 +33053,30 @@ export class Default_valueContext extends ParserRuleContext {
 }
 
 export class Partition_byContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public PARTITION_(): TerminalNode {
     return this.getToken(SQLiteParser.PARTITION_, 0)
   }
   public BY_(): TerminalNode {
     return this.getToken(SQLiteParser.BY_, 0)
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_partition_by
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterPartition_by) {
       listener.enterPartition_by(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitPartition_by) {
       listener.exitPartition_by(this)
@@ -16607,35 +33085,30 @@ export class Partition_byContext extends ParserRuleContext {
 }
 
 export class Order_by_exprContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public ORDER_(): TerminalNode {
     return this.getToken(SQLiteParser.ORDER_, 0)
   }
   public BY_(): TerminalNode {
     return this.getToken(SQLiteParser.BY_, 0)
   }
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
   }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_order_by_expr
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterOrder_by_expr) {
       listener.enterOrder_by_expr(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitOrder_by_expr) {
       listener.exitOrder_by_expr(this)
@@ -16644,6 +33117,10 @@ export class Order_by_exprContext extends ParserRuleContext {
 }
 
 export class Order_by_expr_asc_descContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public ORDER_(): TerminalNode {
     return this.getToken(SQLiteParser.ORDER_, 0)
   }
@@ -16651,22 +33128,16 @@ export class Order_by_expr_asc_descContext extends ParserRuleContext {
     return this.getToken(SQLiteParser.BY_, 0)
   }
   public expr_asc_desc(): Expr_asc_descContext {
-    return this.getRuleContext(0, Expr_asc_descContext)
+    return this.getTypedRuleContext(Expr_asc_descContext, 0) as Expr_asc_descContext
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_order_by_expr_asc_desc
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterOrder_by_expr_asc_desc) {
       listener.enterOrder_by_expr_asc_desc(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitOrder_by_expr_asc_desc) {
       listener.exitOrder_by_expr_asc_desc(this)
@@ -16675,47 +33146,36 @@ export class Order_by_expr_asc_descContext extends ParserRuleContext {
 }
 
 export class Expr_asc_descContext extends ParserRuleContext {
-  public expr(): ExprContext[]
-  public expr(i: number): ExprContext
-  public expr(i?: number): ExprContext | ExprContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(ExprContext)
-    } else {
-      return this.getRuleContext(i, ExprContext)
-    }
-  }
-  public asc_desc(): Asc_descContext[]
-  public asc_desc(i: number): Asc_descContext
-  public asc_desc(i?: number): Asc_descContext | Asc_descContext[] {
-    if (i === undefined) {
-      return this.getRuleContexts(Asc_descContext)
-    } else {
-      return this.getRuleContext(i, Asc_descContext)
-    }
-  }
-  public COMMA(): TerminalNode[]
-  public COMMA(i: number): TerminalNode
-  public COMMA(i?: number): TerminalNode | TerminalNode[] {
-    if (i === undefined) {
-      return this.getTokens(SQLiteParser.COMMA)
-    } else {
-      return this.getToken(SQLiteParser.COMMA, i)
-    }
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public expr_list(): ExprContext[] {
+    return this.getTypedRuleContexts(ExprContext) as ExprContext[]
+  }
+  public expr(i: number): ExprContext {
+    return this.getTypedRuleContext(ExprContext, i) as ExprContext
+  }
+  public asc_desc_list(): Asc_descContext[] {
+    return this.getTypedRuleContexts(Asc_descContext) as Asc_descContext[]
+  }
+  public asc_desc(i: number): Asc_descContext {
+    return this.getTypedRuleContext(Asc_descContext, i) as Asc_descContext
+  }
+  public COMMA_list(): TerminalNode[] {
+    return this.getTokens(SQLiteParser.COMMA)
+  }
+  public COMMA(i: number): TerminalNode {
+    return this.getToken(SQLiteParser.COMMA, i)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_expr_asc_desc
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterExpr_asc_desc) {
       listener.enterExpr_asc_desc(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitExpr_asc_desc) {
       listener.exitExpr_asc_desc(this)
@@ -16724,23 +33184,21 @@ export class Expr_asc_descContext extends ParserRuleContext {
 }
 
 export class Initial_selectContext extends ParserRuleContext {
-  public select_stmt(): Select_stmtContext {
-    return this.getRuleContext(0, Select_stmtContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public select_stmt(): Select_stmtContext {
+    return this.getTypedRuleContext(Select_stmtContext, 0) as Select_stmtContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_initial_select
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterInitial_select) {
       listener.enterInitial_select(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitInitial_select) {
       listener.exitInitial_select(this)
@@ -16749,23 +33207,21 @@ export class Initial_selectContext extends ParserRuleContext {
 }
 
 export class Recursive_selectContext extends ParserRuleContext {
-  public select_stmt(): Select_stmtContext {
-    return this.getRuleContext(0, Select_stmtContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public select_stmt(): Select_stmtContext {
+    return this.getTypedRuleContext(Select_stmtContext, 0) as Select_stmtContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_recursive_select
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterRecursive_select) {
       listener.enterRecursive_select(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitRecursive_select) {
       listener.exitRecursive_select(this)
@@ -16774,32 +33230,30 @@ export class Recursive_selectContext extends ParserRuleContext {
 }
 
 export class Unary_operatorContext extends ParserRuleContext {
-  public MINUS(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.MINUS, 0)
-  }
-  public PLUS(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PLUS, 0)
-  }
-  public TILDE(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TILDE, 0)
-  }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public MINUS(): TerminalNode {
+    return this.getToken(SQLiteParser.MINUS, 0)
+  }
+  public PLUS(): TerminalNode {
+    return this.getToken(SQLiteParser.PLUS, 0)
+  }
+  public TILDE(): TerminalNode {
+    return this.getToken(SQLiteParser.TILDE, 0)
+  }
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_unary_operator
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterUnary_operator) {
       listener.enterUnary_operator(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitUnary_operator) {
       listener.exitUnary_operator(this)
@@ -16808,23 +33262,21 @@ export class Unary_operatorContext extends ParserRuleContext {
 }
 
 export class Error_messageContext extends ParserRuleContext {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
+    super(parent, invokingState)
+    this.parser = parser
+  }
   public STRING_LITERAL(): TerminalNode {
     return this.getToken(SQLiteParser.STRING_LITERAL, 0)
   }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
-    super(parent, invokingState)
-  }
-  // @Override
   public get ruleIndex(): number {
     return SQLiteParser.RULE_error_message
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterError_message) {
       listener.enterError_message(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitError_message) {
       listener.exitError_message(this)
@@ -16833,26 +33285,24 @@ export class Error_messageContext extends ParserRuleContext {
 }
 
 export class Module_argumentContext extends ParserRuleContext {
-  public expr(): ExprContext | undefined {
-    return this.tryGetRuleContext(0, ExprContext)
-  }
-  public column_def(): Column_defContext | undefined {
-    return this.tryGetRuleContext(0, Column_defContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public expr(): ExprContext {
+    return this.getTypedRuleContext(ExprContext, 0) as ExprContext
+  }
+  public column_def(): Column_defContext {
+    return this.getTypedRuleContext(Column_defContext, 0) as Column_defContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_module_argument
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterModule_argument) {
       listener.enterModule_argument(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitModule_argument) {
       listener.exitModule_argument(this)
@@ -16861,26 +33311,24 @@ export class Module_argumentContext extends ParserRuleContext {
 }
 
 export class Column_aliasContext extends ParserRuleContext {
-  public IDENTIFIER(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IDENTIFIER, 0)
-  }
-  public STRING_LITERAL(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STRING_LITERAL, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public IDENTIFIER(): TerminalNode {
+    return this.getToken(SQLiteParser.IDENTIFIER, 0)
+  }
+  public STRING_LITERAL(): TerminalNode {
+    return this.getToken(SQLiteParser.STRING_LITERAL, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_column_alias
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterColumn_alias) {
       listener.enterColumn_alias(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitColumn_alias) {
       listener.exitColumn_alias(this)
@@ -16889,485 +33337,483 @@ export class Column_aliasContext extends ParserRuleContext {
 }
 
 export class KeywordContext extends ParserRuleContext {
-  public ABORT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ABORT_, 0)
-  }
-  public ACTION_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ACTION_, 0)
-  }
-  public ADD_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ADD_, 0)
-  }
-  public AFTER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AFTER_, 0)
-  }
-  public ALL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ALL_, 0)
-  }
-  public ALTER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ALTER_, 0)
-  }
-  public ANALYZE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ANALYZE_, 0)
-  }
-  public AND_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AND_, 0)
-  }
-  public AS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AS_, 0)
-  }
-  public ASC_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ASC_, 0)
-  }
-  public ATTACH_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ATTACH_, 0)
-  }
-  public AUTOINCREMENT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.AUTOINCREMENT_, 0)
-  }
-  public BEFORE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BEFORE_, 0)
-  }
-  public BEGIN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BEGIN_, 0)
-  }
-  public BETWEEN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BETWEEN_, 0)
-  }
-  public BY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.BY_, 0)
-  }
-  public CASCADE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CASCADE_, 0)
-  }
-  public CASE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CASE_, 0)
-  }
-  public CAST_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CAST_, 0)
-  }
-  public CHECK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CHECK_, 0)
-  }
-  public COLLATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COLLATE_, 0)
-  }
-  public COLUMN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COLUMN_, 0)
-  }
-  public COMMIT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.COMMIT_, 0)
-  }
-  public CONFLICT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CONFLICT_, 0)
-  }
-  public CONSTRAINT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CONSTRAINT_, 0)
-  }
-  public CREATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CREATE_, 0)
-  }
-  public CROSS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CROSS_, 0)
-  }
-  public CURRENT_DATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_DATE_, 0)
-  }
-  public CURRENT_TIME_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_TIME_, 0)
-  }
-  public CURRENT_TIMESTAMP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_TIMESTAMP_, 0)
-  }
-  public DATABASE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DATABASE_, 0)
-  }
-  public DEFAULT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DEFAULT_, 0)
-  }
-  public DEFERRABLE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DEFERRABLE_, 0)
-  }
-  public DEFERRED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DEFERRED_, 0)
-  }
-  public DELETE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DELETE_, 0)
-  }
-  public DESC_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DESC_, 0)
-  }
-  public DETACH_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DETACH_, 0)
-  }
-  public DISTINCT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DISTINCT_, 0)
-  }
-  public DROP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DROP_, 0)
-  }
-  public EACH_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EACH_, 0)
-  }
-  public ELSE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ELSE_, 0)
-  }
-  public END_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.END_, 0)
-  }
-  public ESCAPE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ESCAPE_, 0)
-  }
-  public EXCEPT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXCEPT_, 0)
-  }
-  public EXCLUSIVE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXCLUSIVE_, 0)
-  }
-  public EXISTS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXISTS_, 0)
-  }
-  public EXPLAIN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXPLAIN_, 0)
-  }
-  public FAIL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FAIL_, 0)
-  }
-  public FOR_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FOR_, 0)
-  }
-  public FOREIGN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FOREIGN_, 0)
-  }
-  public FROM_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FROM_, 0)
-  }
-  public FULL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FULL_, 0)
-  }
-  public GLOB_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GLOB_, 0)
-  }
-  public GROUP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GROUP_, 0)
-  }
-  public HAVING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.HAVING_, 0)
-  }
-  public IF_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IF_, 0)
-  }
-  public IGNORE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IGNORE_, 0)
-  }
-  public IMMEDIATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IMMEDIATE_, 0)
-  }
-  public IN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IN_, 0)
-  }
-  public INDEX_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INDEX_, 0)
-  }
-  public INDEXED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INDEXED_, 0)
-  }
-  public INITIALLY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INITIALLY_, 0)
-  }
-  public INNER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INNER_, 0)
-  }
-  public INSERT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INSERT_, 0)
-  }
-  public INSTEAD_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INSTEAD_, 0)
-  }
-  public INTERSECT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INTERSECT_, 0)
-  }
-  public INTO_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.INTO_, 0)
-  }
-  public IS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IS_, 0)
-  }
-  public ISNULL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ISNULL_, 0)
-  }
-  public JOIN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.JOIN_, 0)
-  }
-  public KEY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.KEY_, 0)
-  }
-  public LEFT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LEFT_, 0)
-  }
-  public LIKE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LIKE_, 0)
-  }
-  public LIMIT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LIMIT_, 0)
-  }
-  public MATCH_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.MATCH_, 0)
-  }
-  public NATURAL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NATURAL_, 0)
-  }
-  public NO_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NO_, 0)
-  }
-  public NOT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOT_, 0)
-  }
-  public NOTNULL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NOTNULL_, 0)
-  }
-  public NULL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NULL_, 0)
-  }
-  public OF_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OF_, 0)
-  }
-  public OFFSET_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OFFSET_, 0)
-  }
-  public ON_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ON_, 0)
-  }
-  public OR_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OR_, 0)
-  }
-  public ORDER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ORDER_, 0)
-  }
-  public OUTER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OUTER_, 0)
-  }
-  public PLAN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PLAN_, 0)
-  }
-  public PRAGMA_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PRAGMA_, 0)
-  }
-  public PRIMARY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PRIMARY_, 0)
-  }
-  public QUERY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.QUERY_, 0)
-  }
-  public RAISE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RAISE_, 0)
-  }
-  public RECURSIVE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RECURSIVE_, 0)
-  }
-  public REFERENCES_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.REFERENCES_, 0)
-  }
-  public REGEXP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.REGEXP_, 0)
-  }
-  public REINDEX_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.REINDEX_, 0)
-  }
-  public RELEASE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RELEASE_, 0)
-  }
-  public RENAME_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RENAME_, 0)
-  }
-  public REPLACE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.REPLACE_, 0)
-  }
-  public RESTRICT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RESTRICT_, 0)
-  }
-  public RIGHT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RIGHT_, 0)
-  }
-  public ROLLBACK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROLLBACK_, 0)
-  }
-  public ROW_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROW_, 0)
-  }
-  public ROWS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROWS_, 0)
-  }
-  public SAVEPOINT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.SAVEPOINT_, 0)
-  }
-  public SELECT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.SELECT_, 0)
-  }
-  public SET_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.SET_, 0)
-  }
-  public TABLE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TABLE_, 0)
-  }
-  public TEMP_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TEMP_, 0)
-  }
-  public TEMPORARY_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TEMPORARY_, 0)
-  }
-  public THEN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.THEN_, 0)
-  }
-  public TO_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TO_, 0)
-  }
-  public TRANSACTION_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TRANSACTION_, 0)
-  }
-  public TRIGGER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TRIGGER_, 0)
-  }
-  public UNION_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UNION_, 0)
-  }
-  public UNIQUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UNIQUE_, 0)
-  }
-  public UPDATE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UPDATE_, 0)
-  }
-  public USING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.USING_, 0)
-  }
-  public VACUUM_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.VACUUM_, 0)
-  }
-  public VALUES_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.VALUES_, 0)
-  }
-  public VIEW_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.VIEW_, 0)
-  }
-  public VIRTUAL_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.VIRTUAL_, 0)
-  }
-  public WHEN_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WHEN_, 0)
-  }
-  public WHERE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WHERE_, 0)
-  }
-  public WITH_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WITH_, 0)
-  }
-  public WITHOUT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WITHOUT_, 0)
-  }
-  public FIRST_VALUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FIRST_VALUE_, 0)
-  }
-  public OVER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OVER_, 0)
-  }
-  public PARTITION_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PARTITION_, 0)
-  }
-  public RANGE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RANGE_, 0)
-  }
-  public PRECEDING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PRECEDING_, 0)
-  }
-  public UNBOUNDED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.UNBOUNDED_, 0)
-  }
-  public CURRENT_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CURRENT_, 0)
-  }
-  public FOLLOWING_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FOLLOWING_, 0)
-  }
-  public CUME_DIST_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CUME_DIST_, 0)
-  }
-  public DENSE_RANK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.DENSE_RANK_, 0)
-  }
-  public LAG_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LAG_, 0)
-  }
-  public LAST_VALUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LAST_VALUE_, 0)
-  }
-  public LEAD_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LEAD_, 0)
-  }
-  public NTH_VALUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NTH_VALUE_, 0)
-  }
-  public NTILE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NTILE_, 0)
-  }
-  public PERCENT_RANK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.PERCENT_RANK_, 0)
-  }
-  public RANK_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.RANK_, 0)
-  }
-  public ROW_NUMBER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ROW_NUMBER_, 0)
-  }
-  public GENERATED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GENERATED_, 0)
-  }
-  public ALWAYS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.ALWAYS_, 0)
-  }
-  public STORED_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STORED_, 0)
-  }
-  public TRUE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.TRUE_, 0)
-  }
-  public FALSE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FALSE_, 0)
-  }
-  public WINDOW_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.WINDOW_, 0)
-  }
-  public NULLS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.NULLS_, 0)
-  }
-  public FIRST_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FIRST_, 0)
-  }
-  public LAST_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.LAST_, 0)
-  }
-  public FILTER_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.FILTER_, 0)
-  }
-  public GROUPS_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.GROUPS_, 0)
-  }
-  public EXCLUDE_(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.EXCLUDE_, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public ABORT_(): TerminalNode {
+    return this.getToken(SQLiteParser.ABORT_, 0)
+  }
+  public ACTION_(): TerminalNode {
+    return this.getToken(SQLiteParser.ACTION_, 0)
+  }
+  public ADD_(): TerminalNode {
+    return this.getToken(SQLiteParser.ADD_, 0)
+  }
+  public AFTER_(): TerminalNode {
+    return this.getToken(SQLiteParser.AFTER_, 0)
+  }
+  public ALL_(): TerminalNode {
+    return this.getToken(SQLiteParser.ALL_, 0)
+  }
+  public ALTER_(): TerminalNode {
+    return this.getToken(SQLiteParser.ALTER_, 0)
+  }
+  public ANALYZE_(): TerminalNode {
+    return this.getToken(SQLiteParser.ANALYZE_, 0)
+  }
+  public AND_(): TerminalNode {
+    return this.getToken(SQLiteParser.AND_, 0)
+  }
+  public AS_(): TerminalNode {
+    return this.getToken(SQLiteParser.AS_, 0)
+  }
+  public ASC_(): TerminalNode {
+    return this.getToken(SQLiteParser.ASC_, 0)
+  }
+  public ATTACH_(): TerminalNode {
+    return this.getToken(SQLiteParser.ATTACH_, 0)
+  }
+  public AUTOINCREMENT_(): TerminalNode {
+    return this.getToken(SQLiteParser.AUTOINCREMENT_, 0)
+  }
+  public BEFORE_(): TerminalNode {
+    return this.getToken(SQLiteParser.BEFORE_, 0)
+  }
+  public BEGIN_(): TerminalNode {
+    return this.getToken(SQLiteParser.BEGIN_, 0)
+  }
+  public BETWEEN_(): TerminalNode {
+    return this.getToken(SQLiteParser.BETWEEN_, 0)
+  }
+  public BY_(): TerminalNode {
+    return this.getToken(SQLiteParser.BY_, 0)
+  }
+  public CASCADE_(): TerminalNode {
+    return this.getToken(SQLiteParser.CASCADE_, 0)
+  }
+  public CASE_(): TerminalNode {
+    return this.getToken(SQLiteParser.CASE_, 0)
+  }
+  public CAST_(): TerminalNode {
+    return this.getToken(SQLiteParser.CAST_, 0)
+  }
+  public CHECK_(): TerminalNode {
+    return this.getToken(SQLiteParser.CHECK_, 0)
+  }
+  public COLLATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.COLLATE_, 0)
+  }
+  public COLUMN_(): TerminalNode {
+    return this.getToken(SQLiteParser.COLUMN_, 0)
+  }
+  public COMMIT_(): TerminalNode {
+    return this.getToken(SQLiteParser.COMMIT_, 0)
+  }
+  public CONFLICT_(): TerminalNode {
+    return this.getToken(SQLiteParser.CONFLICT_, 0)
+  }
+  public CONSTRAINT_(): TerminalNode {
+    return this.getToken(SQLiteParser.CONSTRAINT_, 0)
+  }
+  public CREATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.CREATE_, 0)
+  }
+  public CROSS_(): TerminalNode {
+    return this.getToken(SQLiteParser.CROSS_, 0)
+  }
+  public CURRENT_DATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_DATE_, 0)
+  }
+  public CURRENT_TIME_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_TIME_, 0)
+  }
+  public CURRENT_TIMESTAMP_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_TIMESTAMP_, 0)
+  }
+  public DATABASE_(): TerminalNode {
+    return this.getToken(SQLiteParser.DATABASE_, 0)
+  }
+  public DEFAULT_(): TerminalNode {
+    return this.getToken(SQLiteParser.DEFAULT_, 0)
+  }
+  public DEFERRABLE_(): TerminalNode {
+    return this.getToken(SQLiteParser.DEFERRABLE_, 0)
+  }
+  public DEFERRED_(): TerminalNode {
+    return this.getToken(SQLiteParser.DEFERRED_, 0)
+  }
+  public DELETE_(): TerminalNode {
+    return this.getToken(SQLiteParser.DELETE_, 0)
+  }
+  public DESC_(): TerminalNode {
+    return this.getToken(SQLiteParser.DESC_, 0)
+  }
+  public DETACH_(): TerminalNode {
+    return this.getToken(SQLiteParser.DETACH_, 0)
+  }
+  public DISTINCT_(): TerminalNode {
+    return this.getToken(SQLiteParser.DISTINCT_, 0)
+  }
+  public DROP_(): TerminalNode {
+    return this.getToken(SQLiteParser.DROP_, 0)
+  }
+  public EACH_(): TerminalNode {
+    return this.getToken(SQLiteParser.EACH_, 0)
+  }
+  public ELSE_(): TerminalNode {
+    return this.getToken(SQLiteParser.ELSE_, 0)
+  }
+  public END_(): TerminalNode {
+    return this.getToken(SQLiteParser.END_, 0)
+  }
+  public ESCAPE_(): TerminalNode {
+    return this.getToken(SQLiteParser.ESCAPE_, 0)
+  }
+  public EXCEPT_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXCEPT_, 0)
+  }
+  public EXCLUSIVE_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXCLUSIVE_, 0)
+  }
+  public EXISTS_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXISTS_, 0)
+  }
+  public EXPLAIN_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXPLAIN_, 0)
+  }
+  public FAIL_(): TerminalNode {
+    return this.getToken(SQLiteParser.FAIL_, 0)
+  }
+  public FOR_(): TerminalNode {
+    return this.getToken(SQLiteParser.FOR_, 0)
+  }
+  public FOREIGN_(): TerminalNode {
+    return this.getToken(SQLiteParser.FOREIGN_, 0)
+  }
+  public FROM_(): TerminalNode {
+    return this.getToken(SQLiteParser.FROM_, 0)
+  }
+  public FULL_(): TerminalNode {
+    return this.getToken(SQLiteParser.FULL_, 0)
+  }
+  public GLOB_(): TerminalNode {
+    return this.getToken(SQLiteParser.GLOB_, 0)
+  }
+  public GROUP_(): TerminalNode {
+    return this.getToken(SQLiteParser.GROUP_, 0)
+  }
+  public HAVING_(): TerminalNode {
+    return this.getToken(SQLiteParser.HAVING_, 0)
+  }
+  public IF_(): TerminalNode {
+    return this.getToken(SQLiteParser.IF_, 0)
+  }
+  public IGNORE_(): TerminalNode {
+    return this.getToken(SQLiteParser.IGNORE_, 0)
+  }
+  public IMMEDIATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.IMMEDIATE_, 0)
+  }
+  public IN_(): TerminalNode {
+    return this.getToken(SQLiteParser.IN_, 0)
+  }
+  public INDEX_(): TerminalNode {
+    return this.getToken(SQLiteParser.INDEX_, 0)
+  }
+  public INDEXED_(): TerminalNode {
+    return this.getToken(SQLiteParser.INDEXED_, 0)
+  }
+  public INITIALLY_(): TerminalNode {
+    return this.getToken(SQLiteParser.INITIALLY_, 0)
+  }
+  public INNER_(): TerminalNode {
+    return this.getToken(SQLiteParser.INNER_, 0)
+  }
+  public INSERT_(): TerminalNode {
+    return this.getToken(SQLiteParser.INSERT_, 0)
+  }
+  public INSTEAD_(): TerminalNode {
+    return this.getToken(SQLiteParser.INSTEAD_, 0)
+  }
+  public INTERSECT_(): TerminalNode {
+    return this.getToken(SQLiteParser.INTERSECT_, 0)
+  }
+  public INTO_(): TerminalNode {
+    return this.getToken(SQLiteParser.INTO_, 0)
+  }
+  public IS_(): TerminalNode {
+    return this.getToken(SQLiteParser.IS_, 0)
+  }
+  public ISNULL_(): TerminalNode {
+    return this.getToken(SQLiteParser.ISNULL_, 0)
+  }
+  public JOIN_(): TerminalNode {
+    return this.getToken(SQLiteParser.JOIN_, 0)
+  }
+  public KEY_(): TerminalNode {
+    return this.getToken(SQLiteParser.KEY_, 0)
+  }
+  public LEFT_(): TerminalNode {
+    return this.getToken(SQLiteParser.LEFT_, 0)
+  }
+  public LIKE_(): TerminalNode {
+    return this.getToken(SQLiteParser.LIKE_, 0)
+  }
+  public LIMIT_(): TerminalNode {
+    return this.getToken(SQLiteParser.LIMIT_, 0)
+  }
+  public MATCH_(): TerminalNode {
+    return this.getToken(SQLiteParser.MATCH_, 0)
+  }
+  public NATURAL_(): TerminalNode {
+    return this.getToken(SQLiteParser.NATURAL_, 0)
+  }
+  public NO_(): TerminalNode {
+    return this.getToken(SQLiteParser.NO_, 0)
+  }
+  public NOT_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOT_, 0)
+  }
+  public NOTNULL_(): TerminalNode {
+    return this.getToken(SQLiteParser.NOTNULL_, 0)
+  }
+  public NULL_(): TerminalNode {
+    return this.getToken(SQLiteParser.NULL_, 0)
+  }
+  public OF_(): TerminalNode {
+    return this.getToken(SQLiteParser.OF_, 0)
+  }
+  public OFFSET_(): TerminalNode {
+    return this.getToken(SQLiteParser.OFFSET_, 0)
+  }
+  public ON_(): TerminalNode {
+    return this.getToken(SQLiteParser.ON_, 0)
+  }
+  public OR_(): TerminalNode {
+    return this.getToken(SQLiteParser.OR_, 0)
+  }
+  public ORDER_(): TerminalNode {
+    return this.getToken(SQLiteParser.ORDER_, 0)
+  }
+  public OUTER_(): TerminalNode {
+    return this.getToken(SQLiteParser.OUTER_, 0)
+  }
+  public PLAN_(): TerminalNode {
+    return this.getToken(SQLiteParser.PLAN_, 0)
+  }
+  public PRAGMA_(): TerminalNode {
+    return this.getToken(SQLiteParser.PRAGMA_, 0)
+  }
+  public PRIMARY_(): TerminalNode {
+    return this.getToken(SQLiteParser.PRIMARY_, 0)
+  }
+  public QUERY_(): TerminalNode {
+    return this.getToken(SQLiteParser.QUERY_, 0)
+  }
+  public RAISE_(): TerminalNode {
+    return this.getToken(SQLiteParser.RAISE_, 0)
+  }
+  public RECURSIVE_(): TerminalNode {
+    return this.getToken(SQLiteParser.RECURSIVE_, 0)
+  }
+  public REFERENCES_(): TerminalNode {
+    return this.getToken(SQLiteParser.REFERENCES_, 0)
+  }
+  public REGEXP_(): TerminalNode {
+    return this.getToken(SQLiteParser.REGEXP_, 0)
+  }
+  public REINDEX_(): TerminalNode {
+    return this.getToken(SQLiteParser.REINDEX_, 0)
+  }
+  public RELEASE_(): TerminalNode {
+    return this.getToken(SQLiteParser.RELEASE_, 0)
+  }
+  public RENAME_(): TerminalNode {
+    return this.getToken(SQLiteParser.RENAME_, 0)
+  }
+  public REPLACE_(): TerminalNode {
+    return this.getToken(SQLiteParser.REPLACE_, 0)
+  }
+  public RESTRICT_(): TerminalNode {
+    return this.getToken(SQLiteParser.RESTRICT_, 0)
+  }
+  public RIGHT_(): TerminalNode {
+    return this.getToken(SQLiteParser.RIGHT_, 0)
+  }
+  public ROLLBACK_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROLLBACK_, 0)
+  }
+  public ROW_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROW_, 0)
+  }
+  public ROWS_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROWS_, 0)
+  }
+  public SAVEPOINT_(): TerminalNode {
+    return this.getToken(SQLiteParser.SAVEPOINT_, 0)
+  }
+  public SELECT_(): TerminalNode {
+    return this.getToken(SQLiteParser.SELECT_, 0)
+  }
+  public SET_(): TerminalNode {
+    return this.getToken(SQLiteParser.SET_, 0)
+  }
+  public TABLE_(): TerminalNode {
+    return this.getToken(SQLiteParser.TABLE_, 0)
+  }
+  public TEMP_(): TerminalNode {
+    return this.getToken(SQLiteParser.TEMP_, 0)
+  }
+  public TEMPORARY_(): TerminalNode {
+    return this.getToken(SQLiteParser.TEMPORARY_, 0)
+  }
+  public THEN_(): TerminalNode {
+    return this.getToken(SQLiteParser.THEN_, 0)
+  }
+  public TO_(): TerminalNode {
+    return this.getToken(SQLiteParser.TO_, 0)
+  }
+  public TRANSACTION_(): TerminalNode {
+    return this.getToken(SQLiteParser.TRANSACTION_, 0)
+  }
+  public TRIGGER_(): TerminalNode {
+    return this.getToken(SQLiteParser.TRIGGER_, 0)
+  }
+  public UNION_(): TerminalNode {
+    return this.getToken(SQLiteParser.UNION_, 0)
+  }
+  public UNIQUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.UNIQUE_, 0)
+  }
+  public UPDATE_(): TerminalNode {
+    return this.getToken(SQLiteParser.UPDATE_, 0)
+  }
+  public USING_(): TerminalNode {
+    return this.getToken(SQLiteParser.USING_, 0)
+  }
+  public VACUUM_(): TerminalNode {
+    return this.getToken(SQLiteParser.VACUUM_, 0)
+  }
+  public VALUES_(): TerminalNode {
+    return this.getToken(SQLiteParser.VALUES_, 0)
+  }
+  public VIEW_(): TerminalNode {
+    return this.getToken(SQLiteParser.VIEW_, 0)
+  }
+  public VIRTUAL_(): TerminalNode {
+    return this.getToken(SQLiteParser.VIRTUAL_, 0)
+  }
+  public WHEN_(): TerminalNode {
+    return this.getToken(SQLiteParser.WHEN_, 0)
+  }
+  public WHERE_(): TerminalNode {
+    return this.getToken(SQLiteParser.WHERE_, 0)
+  }
+  public WITH_(): TerminalNode {
+    return this.getToken(SQLiteParser.WITH_, 0)
+  }
+  public WITHOUT_(): TerminalNode {
+    return this.getToken(SQLiteParser.WITHOUT_, 0)
+  }
+  public FIRST_VALUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.FIRST_VALUE_, 0)
+  }
+  public OVER_(): TerminalNode {
+    return this.getToken(SQLiteParser.OVER_, 0)
+  }
+  public PARTITION_(): TerminalNode {
+    return this.getToken(SQLiteParser.PARTITION_, 0)
+  }
+  public RANGE_(): TerminalNode {
+    return this.getToken(SQLiteParser.RANGE_, 0)
+  }
+  public PRECEDING_(): TerminalNode {
+    return this.getToken(SQLiteParser.PRECEDING_, 0)
+  }
+  public UNBOUNDED_(): TerminalNode {
+    return this.getToken(SQLiteParser.UNBOUNDED_, 0)
+  }
+  public CURRENT_(): TerminalNode {
+    return this.getToken(SQLiteParser.CURRENT_, 0)
+  }
+  public FOLLOWING_(): TerminalNode {
+    return this.getToken(SQLiteParser.FOLLOWING_, 0)
+  }
+  public CUME_DIST_(): TerminalNode {
+    return this.getToken(SQLiteParser.CUME_DIST_, 0)
+  }
+  public DENSE_RANK_(): TerminalNode {
+    return this.getToken(SQLiteParser.DENSE_RANK_, 0)
+  }
+  public LAG_(): TerminalNode {
+    return this.getToken(SQLiteParser.LAG_, 0)
+  }
+  public LAST_VALUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.LAST_VALUE_, 0)
+  }
+  public LEAD_(): TerminalNode {
+    return this.getToken(SQLiteParser.LEAD_, 0)
+  }
+  public NTH_VALUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.NTH_VALUE_, 0)
+  }
+  public NTILE_(): TerminalNode {
+    return this.getToken(SQLiteParser.NTILE_, 0)
+  }
+  public PERCENT_RANK_(): TerminalNode {
+    return this.getToken(SQLiteParser.PERCENT_RANK_, 0)
+  }
+  public RANK_(): TerminalNode {
+    return this.getToken(SQLiteParser.RANK_, 0)
+  }
+  public ROW_NUMBER_(): TerminalNode {
+    return this.getToken(SQLiteParser.ROW_NUMBER_, 0)
+  }
+  public GENERATED_(): TerminalNode {
+    return this.getToken(SQLiteParser.GENERATED_, 0)
+  }
+  public ALWAYS_(): TerminalNode {
+    return this.getToken(SQLiteParser.ALWAYS_, 0)
+  }
+  public STORED_(): TerminalNode {
+    return this.getToken(SQLiteParser.STORED_, 0)
+  }
+  public TRUE_(): TerminalNode {
+    return this.getToken(SQLiteParser.TRUE_, 0)
+  }
+  public FALSE_(): TerminalNode {
+    return this.getToken(SQLiteParser.FALSE_, 0)
+  }
+  public WINDOW_(): TerminalNode {
+    return this.getToken(SQLiteParser.WINDOW_, 0)
+  }
+  public NULLS_(): TerminalNode {
+    return this.getToken(SQLiteParser.NULLS_, 0)
+  }
+  public FIRST_(): TerminalNode {
+    return this.getToken(SQLiteParser.FIRST_, 0)
+  }
+  public LAST_(): TerminalNode {
+    return this.getToken(SQLiteParser.LAST_, 0)
+  }
+  public FILTER_(): TerminalNode {
+    return this.getToken(SQLiteParser.FILTER_, 0)
+  }
+  public GROUPS_(): TerminalNode {
+    return this.getToken(SQLiteParser.GROUPS_, 0)
+  }
+  public EXCLUDE_(): TerminalNode {
+    return this.getToken(SQLiteParser.EXCLUDE_, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_keyword
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterKeyword) {
       listener.enterKeyword(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitKeyword) {
       listener.exitKeyword(this)
@@ -17376,23 +33822,21 @@ export class KeywordContext extends ParserRuleContext {
 }
 
 export class NameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterName) {
       listener.enterName(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitName) {
       listener.exitName(this)
@@ -17401,23 +33845,21 @@ export class NameContext extends ParserRuleContext {
 }
 
 export class Function_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_function_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterFunction_name) {
       listener.enterFunction_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitFunction_name) {
       listener.exitFunction_name(this)
@@ -17426,23 +33868,21 @@ export class Function_nameContext extends ParserRuleContext {
 }
 
 export class Schema_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_schema_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSchema_name) {
       listener.enterSchema_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSchema_name) {
       listener.exitSchema_name(this)
@@ -17451,23 +33891,21 @@ export class Schema_nameContext extends ParserRuleContext {
 }
 
 export class Table_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_table_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterTable_name) {
       listener.enterTable_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitTable_name) {
       listener.exitTable_name(this)
@@ -17476,23 +33914,21 @@ export class Table_nameContext extends ParserRuleContext {
 }
 
 export class Table_or_index_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_table_or_index_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterTable_or_index_name) {
       listener.enterTable_or_index_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitTable_or_index_name) {
       listener.exitTable_or_index_name(this)
@@ -17501,23 +33937,21 @@ export class Table_or_index_nameContext extends ParserRuleContext {
 }
 
 export class Column_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_column_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterColumn_name) {
       listener.enterColumn_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitColumn_name) {
       listener.exitColumn_name(this)
@@ -17526,23 +33960,21 @@ export class Column_nameContext extends ParserRuleContext {
 }
 
 export class Collation_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_collation_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterCollation_name) {
       listener.enterCollation_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitCollation_name) {
       listener.exitCollation_name(this)
@@ -17551,23 +33983,21 @@ export class Collation_nameContext extends ParserRuleContext {
 }
 
 export class Foreign_tableContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_foreign_table
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterForeign_table) {
       listener.enterForeign_table(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitForeign_table) {
       listener.exitForeign_table(this)
@@ -17576,23 +34006,21 @@ export class Foreign_tableContext extends ParserRuleContext {
 }
 
 export class Index_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_index_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterIndex_name) {
       listener.enterIndex_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitIndex_name) {
       listener.exitIndex_name(this)
@@ -17601,23 +34029,21 @@ export class Index_nameContext extends ParserRuleContext {
 }
 
 export class Trigger_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_trigger_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterTrigger_name) {
       listener.enterTrigger_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitTrigger_name) {
       listener.exitTrigger_name(this)
@@ -17626,23 +34052,21 @@ export class Trigger_nameContext extends ParserRuleContext {
 }
 
 export class View_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_view_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterView_name) {
       listener.enterView_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitView_name) {
       listener.exitView_name(this)
@@ -17651,23 +34075,21 @@ export class View_nameContext extends ParserRuleContext {
 }
 
 export class Module_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_module_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterModule_name) {
       listener.enterModule_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitModule_name) {
       listener.exitModule_name(this)
@@ -17676,23 +34098,21 @@ export class Module_nameContext extends ParserRuleContext {
 }
 
 export class Pragma_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_pragma_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterPragma_name) {
       listener.enterPragma_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitPragma_name) {
       listener.exitPragma_name(this)
@@ -17701,23 +34121,21 @@ export class Pragma_nameContext extends ParserRuleContext {
 }
 
 export class Savepoint_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_savepoint_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSavepoint_name) {
       listener.enterSavepoint_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSavepoint_name) {
       listener.exitSavepoint_name(this)
@@ -17726,23 +34144,21 @@ export class Savepoint_nameContext extends ParserRuleContext {
 }
 
 export class Table_aliasContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_table_alias
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterTable_alias) {
       listener.enterTable_alias(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitTable_alias) {
       listener.exitTable_alias(this)
@@ -17751,23 +34167,21 @@ export class Table_aliasContext extends ParserRuleContext {
 }
 
 export class Transaction_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_transaction_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterTransaction_name) {
       listener.enterTransaction_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitTransaction_name) {
       listener.exitTransaction_name(this)
@@ -17776,23 +34190,21 @@ export class Transaction_nameContext extends ParserRuleContext {
 }
 
 export class Window_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_window_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterWindow_name) {
       listener.enterWindow_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitWindow_name) {
       listener.exitWindow_name(this)
@@ -17801,23 +34213,21 @@ export class Window_nameContext extends ParserRuleContext {
 }
 
 export class AliasContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_alias
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterAlias) {
       listener.enterAlias(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitAlias) {
       listener.exitAlias(this)
@@ -17826,23 +34236,21 @@ export class AliasContext extends ParserRuleContext {
 }
 
 export class FilenameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_filename
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterFilename) {
       listener.enterFilename(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitFilename) {
       listener.exitFilename(this)
@@ -17851,23 +34259,21 @@ export class FilenameContext extends ParserRuleContext {
 }
 
 export class Base_window_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_base_window_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterBase_window_name) {
       listener.enterBase_window_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitBase_window_name) {
       listener.exitBase_window_name(this)
@@ -17876,23 +34282,21 @@ export class Base_window_nameContext extends ParserRuleContext {
 }
 
 export class Simple_funcContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_simple_func
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterSimple_func) {
       listener.enterSimple_func(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitSimple_func) {
       listener.exitSimple_func(this)
@@ -17901,23 +34305,21 @@ export class Simple_funcContext extends ParserRuleContext {
 }
 
 export class Aggregate_funcContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_aggregate_func
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterAggregate_func) {
       listener.enterAggregate_func(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitAggregate_func) {
       listener.exitAggregate_func(this)
@@ -17926,23 +34328,21 @@ export class Aggregate_funcContext extends ParserRuleContext {
 }
 
 export class Table_function_nameContext extends ParserRuleContext {
-  public any_name(): Any_nameContext {
-    return this.getRuleContext(0, Any_nameContext)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_table_function_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterTable_function_name) {
       listener.enterTable_function_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitTable_function_name) {
       listener.exitTable_function_name(this)
@@ -17951,38 +34351,36 @@ export class Table_function_nameContext extends ParserRuleContext {
 }
 
 export class Any_nameContext extends ParserRuleContext {
-  public IDENTIFIER(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.IDENTIFIER, 0)
-  }
-  public keyword(): KeywordContext | undefined {
-    return this.tryGetRuleContext(0, KeywordContext)
-  }
-  public STRING_LITERAL(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.STRING_LITERAL, 0)
-  }
-  public OPEN_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.OPEN_PAR, 0)
-  }
-  public any_name(): Any_nameContext | undefined {
-    return this.tryGetRuleContext(0, Any_nameContext)
-  }
-  public CLOSE_PAR(): TerminalNode | undefined {
-    return this.tryGetToken(SQLiteParser.CLOSE_PAR, 0)
-  }
-  constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+  constructor(parser?: SQLiteParser, parent?: ParserRuleContext, invokingState?: number) {
     super(parent, invokingState)
+    this.parser = parser
   }
-  // @Override
+  public IDENTIFIER(): TerminalNode {
+    return this.getToken(SQLiteParser.IDENTIFIER, 0)
+  }
+  public keyword(): KeywordContext {
+    return this.getTypedRuleContext(KeywordContext, 0) as KeywordContext
+  }
+  public STRING_LITERAL(): TerminalNode {
+    return this.getToken(SQLiteParser.STRING_LITERAL, 0)
+  }
+  public OPEN_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.OPEN_PAR, 0)
+  }
+  public any_name(): Any_nameContext {
+    return this.getTypedRuleContext(Any_nameContext, 0) as Any_nameContext
+  }
+  public CLOSE_PAR(): TerminalNode {
+    return this.getToken(SQLiteParser.CLOSE_PAR, 0)
+  }
   public get ruleIndex(): number {
     return SQLiteParser.RULE_any_name
   }
-  // @Override
   public enterRule(listener: SQLiteParserListener): void {
     if (listener.enterAny_name) {
       listener.enterAny_name(this)
     }
   }
-  // @Override
   public exitRule(listener: SQLiteParserListener): void {
     if (listener.exitAny_name) {
       listener.exitAny_name(this)

@@ -1,6 +1,6 @@
-// Generated from ./src/grammar/SQLiteParser.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from ./src/grammar/SQLiteParser.g4 by ANTLR 4.13.1
 
-import { ParseTreeListener } from 'antlr4ts/tree/ParseTreeListener'
+import { ParseTreeListener } from 'antlr4'
 
 import { ParseContext } from './SQLiteParser'
 import { Sql_stmt_listContext } from './SQLiteParser'
@@ -120,7 +120,7 @@ import { Any_nameContext } from './SQLiteParser'
  * This interface defines a complete listener for a parse tree produced by
  * `SQLiteParser`.
  */
-export interface SQLiteParserListener extends ParseTreeListener {
+export default class SQLiteParserListener extends ParseTreeListener {
   /**
    * Enter a parse tree produced by `SQLiteParser.parse`.
    * @param ctx the parse tree
@@ -131,7 +131,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitParse?: (ctx: ParseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.sql_stmt_list`.
    * @param ctx the parse tree
@@ -142,7 +141,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSql_stmt_list?: (ctx: Sql_stmt_listContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.sql_stmt`.
    * @param ctx the parse tree
@@ -153,7 +151,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSql_stmt?: (ctx: Sql_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.alter_table_stmt`.
    * @param ctx the parse tree
@@ -164,7 +161,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitAlter_table_stmt?: (ctx: Alter_table_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.analyze_stmt`.
    * @param ctx the parse tree
@@ -175,7 +171,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitAnalyze_stmt?: (ctx: Analyze_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.attach_stmt`.
    * @param ctx the parse tree
@@ -186,7 +181,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitAttach_stmt?: (ctx: Attach_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.begin_stmt`.
    * @param ctx the parse tree
@@ -197,7 +191,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitBegin_stmt?: (ctx: Begin_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.commit_stmt`.
    * @param ctx the parse tree
@@ -208,7 +201,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCommit_stmt?: (ctx: Commit_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.rollback_stmt`.
    * @param ctx the parse tree
@@ -219,7 +211,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitRollback_stmt?: (ctx: Rollback_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.savepoint_stmt`.
    * @param ctx the parse tree
@@ -230,7 +221,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSavepoint_stmt?: (ctx: Savepoint_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.release_stmt`.
    * @param ctx the parse tree
@@ -241,7 +231,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitRelease_stmt?: (ctx: Release_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.create_index_stmt`.
    * @param ctx the parse tree
@@ -252,7 +241,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCreate_index_stmt?: (ctx: Create_index_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.indexed_column`.
    * @param ctx the parse tree
@@ -263,7 +251,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitIndexed_column?: (ctx: Indexed_columnContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.create_table_stmt`.
    * @param ctx the parse tree
@@ -274,7 +261,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCreate_table_stmt?: (ctx: Create_table_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.column_def`.
    * @param ctx the parse tree
@@ -285,7 +271,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitColumn_def?: (ctx: Column_defContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.type_name`.
    * @param ctx the parse tree
@@ -296,7 +281,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitType_name?: (ctx: Type_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.column_constraint`.
    * @param ctx the parse tree
@@ -307,7 +291,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitColumn_constraint?: (ctx: Column_constraintContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.signed_number`.
    * @param ctx the parse tree
@@ -318,7 +301,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSigned_number?: (ctx: Signed_numberContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.table_constraint`.
    * @param ctx the parse tree
@@ -329,7 +311,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitTable_constraint?: (ctx: Table_constraintContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.foreign_key_clause`.
    * @param ctx the parse tree
@@ -340,7 +321,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitForeign_key_clause?: (ctx: Foreign_key_clauseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.conflict_clause`.
    * @param ctx the parse tree
@@ -351,7 +331,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitConflict_clause?: (ctx: Conflict_clauseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.create_trigger_stmt`.
    * @param ctx the parse tree
@@ -362,7 +341,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCreate_trigger_stmt?: (ctx: Create_trigger_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.create_view_stmt`.
    * @param ctx the parse tree
@@ -373,7 +351,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCreate_view_stmt?: (ctx: Create_view_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.create_virtual_table_stmt`.
    * @param ctx the parse tree
@@ -384,7 +361,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCreate_virtual_table_stmt?: (ctx: Create_virtual_table_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.with_clause`.
    * @param ctx the parse tree
@@ -395,7 +371,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitWith_clause?: (ctx: With_clauseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.cte_table_name`.
    * @param ctx the parse tree
@@ -406,7 +381,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCte_table_name?: (ctx: Cte_table_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.recursive_cte`.
    * @param ctx the parse tree
@@ -417,7 +391,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitRecursive_cte?: (ctx: Recursive_cteContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.common_table_expression`.
    * @param ctx the parse tree
@@ -428,7 +401,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCommon_table_expression?: (ctx: Common_table_expressionContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.delete_stmt`.
    * @param ctx the parse tree
@@ -439,7 +411,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitDelete_stmt?: (ctx: Delete_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.delete_stmt_limited`.
    * @param ctx the parse tree
@@ -450,7 +421,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitDelete_stmt_limited?: (ctx: Delete_stmt_limitedContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.detach_stmt`.
    * @param ctx the parse tree
@@ -461,7 +431,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitDetach_stmt?: (ctx: Detach_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.drop_stmt`.
    * @param ctx the parse tree
@@ -472,7 +441,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitDrop_stmt?: (ctx: Drop_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.expr`.
    * @param ctx the parse tree
@@ -483,7 +451,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitExpr?: (ctx: ExprContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.raise_function`.
    * @param ctx the parse tree
@@ -494,7 +461,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitRaise_function?: (ctx: Raise_functionContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.literal_value`.
    * @param ctx the parse tree
@@ -505,7 +471,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitLiteral_value?: (ctx: Literal_valueContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.value_row`.
    * @param ctx the parse tree
@@ -516,7 +481,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitValue_row?: (ctx: Value_rowContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.values_clause`.
    * @param ctx the parse tree
@@ -527,7 +491,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitValues_clause?: (ctx: Values_clauseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.insert_stmt`.
    * @param ctx the parse tree
@@ -538,7 +501,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitInsert_stmt?: (ctx: Insert_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.returning_clause`.
    * @param ctx the parse tree
@@ -549,7 +511,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitReturning_clause?: (ctx: Returning_clauseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.upsert_clause`.
    * @param ctx the parse tree
@@ -560,7 +521,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitUpsert_clause?: (ctx: Upsert_clauseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.pragma_stmt`.
    * @param ctx the parse tree
@@ -571,7 +531,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitPragma_stmt?: (ctx: Pragma_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.pragma_value`.
    * @param ctx the parse tree
@@ -582,7 +541,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitPragma_value?: (ctx: Pragma_valueContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.reindex_stmt`.
    * @param ctx the parse tree
@@ -593,7 +551,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitReindex_stmt?: (ctx: Reindex_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.select_stmt`.
    * @param ctx the parse tree
@@ -604,7 +561,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSelect_stmt?: (ctx: Select_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.join_clause`.
    * @param ctx the parse tree
@@ -615,7 +571,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitJoin_clause?: (ctx: Join_clauseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.select_core`.
    * @param ctx the parse tree
@@ -626,7 +581,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSelect_core?: (ctx: Select_coreContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.factored_select_stmt`.
    * @param ctx the parse tree
@@ -637,7 +591,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitFactored_select_stmt?: (ctx: Factored_select_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.simple_select_stmt`.
    * @param ctx the parse tree
@@ -648,7 +601,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSimple_select_stmt?: (ctx: Simple_select_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.compound_select_stmt`.
    * @param ctx the parse tree
@@ -659,7 +611,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCompound_select_stmt?: (ctx: Compound_select_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.table_or_subquery`.
    * @param ctx the parse tree
@@ -670,7 +621,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitTable_or_subquery?: (ctx: Table_or_subqueryContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.result_column`.
    * @param ctx the parse tree
@@ -681,7 +631,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitResult_column?: (ctx: Result_columnContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.join_operator`.
    * @param ctx the parse tree
@@ -692,7 +641,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitJoin_operator?: (ctx: Join_operatorContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.join_constraint`.
    * @param ctx the parse tree
@@ -703,7 +651,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitJoin_constraint?: (ctx: Join_constraintContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.compound_operator`.
    * @param ctx the parse tree
@@ -714,7 +661,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCompound_operator?: (ctx: Compound_operatorContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.update_stmt`.
    * @param ctx the parse tree
@@ -725,7 +671,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitUpdate_stmt?: (ctx: Update_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.column_name_list`.
    * @param ctx the parse tree
@@ -736,7 +681,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitColumn_name_list?: (ctx: Column_name_listContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.update_stmt_limited`.
    * @param ctx the parse tree
@@ -747,7 +691,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitUpdate_stmt_limited?: (ctx: Update_stmt_limitedContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.qualified_table_name`.
    * @param ctx the parse tree
@@ -758,7 +701,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitQualified_table_name?: (ctx: Qualified_table_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.vacuum_stmt`.
    * @param ctx the parse tree
@@ -769,7 +711,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitVacuum_stmt?: (ctx: Vacuum_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.filter_clause`.
    * @param ctx the parse tree
@@ -780,7 +721,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitFilter_clause?: (ctx: Filter_clauseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.window_defn`.
    * @param ctx the parse tree
@@ -791,7 +731,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitWindow_defn?: (ctx: Window_defnContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.over_clause`.
    * @param ctx the parse tree
@@ -802,7 +741,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitOver_clause?: (ctx: Over_clauseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.frame_spec`.
    * @param ctx the parse tree
@@ -813,7 +751,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitFrame_spec?: (ctx: Frame_specContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.frame_clause`.
    * @param ctx the parse tree
@@ -824,7 +761,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitFrame_clause?: (ctx: Frame_clauseContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.simple_function_invocation`.
    * @param ctx the parse tree
@@ -835,7 +771,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSimple_function_invocation?: (ctx: Simple_function_invocationContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.aggregate_function_invocation`.
    * @param ctx the parse tree
@@ -846,7 +781,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitAggregate_function_invocation?: (ctx: Aggregate_function_invocationContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.window_function_invocation`.
    * @param ctx the parse tree
@@ -857,7 +791,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitWindow_function_invocation?: (ctx: Window_function_invocationContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.common_table_stmt`.
    * @param ctx the parse tree
@@ -868,7 +801,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCommon_table_stmt?: (ctx: Common_table_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.order_by_stmt`.
    * @param ctx the parse tree
@@ -879,7 +811,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitOrder_by_stmt?: (ctx: Order_by_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.limit_stmt`.
    * @param ctx the parse tree
@@ -890,7 +821,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitLimit_stmt?: (ctx: Limit_stmtContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.ordering_term`.
    * @param ctx the parse tree
@@ -901,7 +831,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitOrdering_term?: (ctx: Ordering_termContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.asc_desc`.
    * @param ctx the parse tree
@@ -912,7 +841,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitAsc_desc?: (ctx: Asc_descContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.frame_left`.
    * @param ctx the parse tree
@@ -923,7 +851,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitFrame_left?: (ctx: Frame_leftContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.frame_right`.
    * @param ctx the parse tree
@@ -934,7 +861,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitFrame_right?: (ctx: Frame_rightContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.frame_single`.
    * @param ctx the parse tree
@@ -945,7 +871,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitFrame_single?: (ctx: Frame_singleContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.window_function`.
    * @param ctx the parse tree
@@ -956,7 +881,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitWindow_function?: (ctx: Window_functionContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.offset`.
    * @param ctx the parse tree
@@ -967,7 +891,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitOffset?: (ctx: OffsetContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.default_value`.
    * @param ctx the parse tree
@@ -978,7 +901,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitDefault_value?: (ctx: Default_valueContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.partition_by`.
    * @param ctx the parse tree
@@ -989,7 +911,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitPartition_by?: (ctx: Partition_byContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.order_by_expr`.
    * @param ctx the parse tree
@@ -1000,7 +921,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitOrder_by_expr?: (ctx: Order_by_exprContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.order_by_expr_asc_desc`.
    * @param ctx the parse tree
@@ -1011,7 +931,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitOrder_by_expr_asc_desc?: (ctx: Order_by_expr_asc_descContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.expr_asc_desc`.
    * @param ctx the parse tree
@@ -1022,7 +941,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitExpr_asc_desc?: (ctx: Expr_asc_descContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.initial_select`.
    * @param ctx the parse tree
@@ -1033,7 +951,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitInitial_select?: (ctx: Initial_selectContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.recursive_select`.
    * @param ctx the parse tree
@@ -1044,7 +961,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitRecursive_select?: (ctx: Recursive_selectContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.unary_operator`.
    * @param ctx the parse tree
@@ -1055,7 +971,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitUnary_operator?: (ctx: Unary_operatorContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.error_message`.
    * @param ctx the parse tree
@@ -1066,7 +981,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitError_message?: (ctx: Error_messageContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.module_argument`.
    * @param ctx the parse tree
@@ -1077,7 +991,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitModule_argument?: (ctx: Module_argumentContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.column_alias`.
    * @param ctx the parse tree
@@ -1088,7 +1001,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitColumn_alias?: (ctx: Column_aliasContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.keyword`.
    * @param ctx the parse tree
@@ -1099,7 +1011,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitKeyword?: (ctx: KeywordContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.name`.
    * @param ctx the parse tree
@@ -1110,7 +1021,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitName?: (ctx: NameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.function_name`.
    * @param ctx the parse tree
@@ -1121,7 +1031,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitFunction_name?: (ctx: Function_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.schema_name`.
    * @param ctx the parse tree
@@ -1132,7 +1041,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSchema_name?: (ctx: Schema_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.table_name`.
    * @param ctx the parse tree
@@ -1143,7 +1051,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitTable_name?: (ctx: Table_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.table_or_index_name`.
    * @param ctx the parse tree
@@ -1154,7 +1061,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitTable_or_index_name?: (ctx: Table_or_index_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.column_name`.
    * @param ctx the parse tree
@@ -1165,7 +1071,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitColumn_name?: (ctx: Column_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.collation_name`.
    * @param ctx the parse tree
@@ -1176,7 +1081,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitCollation_name?: (ctx: Collation_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.foreign_table`.
    * @param ctx the parse tree
@@ -1187,7 +1091,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitForeign_table?: (ctx: Foreign_tableContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.index_name`.
    * @param ctx the parse tree
@@ -1198,7 +1101,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitIndex_name?: (ctx: Index_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.trigger_name`.
    * @param ctx the parse tree
@@ -1209,7 +1111,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitTrigger_name?: (ctx: Trigger_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.view_name`.
    * @param ctx the parse tree
@@ -1220,7 +1121,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitView_name?: (ctx: View_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.module_name`.
    * @param ctx the parse tree
@@ -1231,7 +1131,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitModule_name?: (ctx: Module_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.pragma_name`.
    * @param ctx the parse tree
@@ -1242,7 +1141,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitPragma_name?: (ctx: Pragma_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.savepoint_name`.
    * @param ctx the parse tree
@@ -1253,7 +1151,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSavepoint_name?: (ctx: Savepoint_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.table_alias`.
    * @param ctx the parse tree
@@ -1264,7 +1161,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitTable_alias?: (ctx: Table_aliasContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.transaction_name`.
    * @param ctx the parse tree
@@ -1275,7 +1171,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitTransaction_name?: (ctx: Transaction_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.window_name`.
    * @param ctx the parse tree
@@ -1286,7 +1181,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitWindow_name?: (ctx: Window_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.alias`.
    * @param ctx the parse tree
@@ -1297,7 +1191,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitAlias?: (ctx: AliasContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.filename`.
    * @param ctx the parse tree
@@ -1308,7 +1201,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitFilename?: (ctx: FilenameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.base_window_name`.
    * @param ctx the parse tree
@@ -1319,7 +1211,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitBase_window_name?: (ctx: Base_window_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.simple_func`.
    * @param ctx the parse tree
@@ -1330,7 +1221,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitSimple_func?: (ctx: Simple_funcContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.aggregate_func`.
    * @param ctx the parse tree
@@ -1341,7 +1231,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitAggregate_func?: (ctx: Aggregate_funcContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.table_function_name`.
    * @param ctx the parse tree
@@ -1352,7 +1241,6 @@ export interface SQLiteParserListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   exitTable_function_name?: (ctx: Table_function_nameContext) => void
-
   /**
    * Enter a parse tree produced by `SQLiteParser.any_name`.
    * @param ctx the parse tree
