@@ -26,6 +26,7 @@
     "test": "jest",
     "lint": "eslint src/**/*.ts",
     "build-parser": "antlr4ts -Dlanguage=JavaScript -listener ./src/grammar/MySQLLexer.g4 ./src/grammar/MySQLParser.g4",
+    "build-parser-sqlite": "java -jar c:\\Javalib\\antlr-4.13.1-complete.jar -Dlanguage=TypeScript -o ./src/sqlite/ -listener ./src/grammar/SQLiteLexer.g4 ./src/grammar/SQLiteParser.g4",
     "build": "tsc",
     "watch": "tsc -b -w",
     "clean": "rm -rf dist"
@@ -58,6 +59,7 @@
     }
   },
   "dependencies": {
+    "antlr4": "^4.13.1",
     "antlr4ts": "^0.5.0-alpha.3",
     "typescript": "^3.9.10"
   },
