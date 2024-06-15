@@ -1,4 +1,4 @@
-import { Token } from 'antlr4ts'
+import { Token } from 'antlr4'
 
 class ListenerError extends Error {
   name: string

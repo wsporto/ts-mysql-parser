@@ -25,7 +25,7 @@
     "pub": "np",
     "test": "jest",
     "lint": "eslint src/**/*.ts",
-    "build-parser": "antlr4ts -Dlanguage=JavaScript -listener ./src/grammar/MySQLLexer.g4 ./src/grammar/MySQLParser.g4",
+    "build-parser-mysql": "java -jar c:\\Javalib\\antlr-4.13.1-complete.jar -Dlanguage=TypeScript -o ./src/grammar/ -listener ./src/grammar/MySQLLexer.g4 ./src/grammar/MySQLParser.g4",
     "build-parser-sqlite": "java -jar c:\\Javalib\\antlr-4.13.1-complete.jar -Dlanguage=TypeScript -o ./src/sqlite/ -listener ./src/grammar/SQLiteLexer.g4 ./src/grammar/SQLiteParser.g4",
     "build": "tsc",
     "watch": "tsc -b -w",
@@ -60,7 +60,6 @@
   },
   "dependencies": {
     "antlr4": "^4.13.1",
-    "antlr4ts": "^0.5.0-alpha.3",
     "typescript": "^3.9.10"
   },
   "devDependencies": {
@@ -69,7 +68,6 @@
     "@types/prettier": "^1.19.1",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
-    "antlr4ts-cli": "^0.5.0-alpha.3",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.15.0",
     "husky": "^4.3.8",

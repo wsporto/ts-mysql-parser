@@ -1,8 +1,8 @@
-import { Parser, CommonTokenStream } from 'antlr4ts'
+import { Parser, CommonTokenStream } from 'antlr4'
 import { SqlMode } from './common'
 
 // This is a superclass used to customize parser functionality.
-export abstract class MySQLBaseParser extends Parser {
+export default abstract class MySQLBaseParser extends Parser {
   serverVersion: number
   sqlMode?: SqlMode
 
@@ -12,7 +12,7 @@ export abstract class MySQLBaseParser extends Parser {
   }
 
   public reset(): void {
-    super.reset(false)
+    super.reset()
   }
 
   // Checks the token at the given position relative to the current position, whether it matches the expected value.
@@ -20,7 +20,7 @@ export abstract class MySQLBaseParser extends Parser {
   // Note: position == 0 is not defined. position == 1 is the current position.
   public look(position: number, expected: number): boolean {
     // TODO: String.fromCharcode?
-    return this.inputStream.LA(position) === expected
+    return this.getTokenStream().LA(position) === expected
   }
 
   // TODO:

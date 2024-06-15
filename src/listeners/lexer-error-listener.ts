@@ -1,9 +1,9 @@
-import { ANTLRErrorListener } from 'antlr4ts'
+import { ErrorListener } from 'antlr4'
 import { LexerError } from './errors'
-import { MySQLLexer } from '../grammar/MySQLLexer'
-import { Interval } from 'antlr4ts/misc/Interval'
+import MySQLLexer from '../grammar/MySQLLexer'
+import { Interval } from 'antlr4'
 
-export class LexerErrorListener implements ANTLRErrorListener<null> {
+export class LexerErrorListener implements ErrorListener<null> {
   error?: LexerError
   lexer: MySQLLexer
 
@@ -25,7 +25,7 @@ export class LexerErrorListener implements ANTLRErrorListener<null> {
       return
     }
 
-    const input = this.lexer.inputStream
+    const input = this.lexer._input
     const interval = new Interval(this.lexer._tokenStartCharIndex, input.index)
     const text = this.lexer.getErrorDisplay(input.getText(interval)) || ' '
 

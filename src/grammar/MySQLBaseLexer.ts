@@ -1,10 +1,10 @@
-import { Token, CharStream } from 'antlr4ts'
-import { MySQLLexer } from './MySQLLexer'
-import { Lexer } from 'antlr4ts/Lexer'
+import { Token, CharStream } from 'antlr4'
+import MySQLLexer from './MySQLLexer'
+import { Lexer } from 'antlr4'
 import { SqlMode } from './common'
 
 // This is a superclass used to customize lexer functionality.
-export abstract class MySQLBaseLexer extends Lexer {
+export default abstract class MySQLBaseLexer extends Lexer {
   inVersionComment: boolean
   pendingTokens: Token[]
   serverVersion: number
@@ -61,7 +61,7 @@ export abstract class MySQLBaseLexer extends Lexer {
   }
 
   public emitDot(): void {
-    const token = this.tokenFactory.create(
+    const token = this._factory.create(
       this._tokenFactorySourcePair,
       MySQLLexer.DOT_SYMBOL,
       '.',
@@ -69,7 +69,7 @@ export abstract class MySQLBaseLexer extends Lexer {
       this._tokenStartCharIndex,
       this._tokenStartCharIndex,
       this._tokenStartLine,
-      this._tokenStartCharPositionInLine
+      this._tokenStartLine
     )
 
     this.pendingTokens.push(token)
@@ -113,9 +113,9 @@ export abstract class MySQLBaseLexer extends Lexer {
       let input = this._input.LA(1)
       let character = String.fromCharCode(input)
       while (character === ' ' || character === '\t' || character === '\r' || character === '\n') {
-        this.interpreter.consume(this._input)
-        this.channel = Lexer.HIDDEN
-        this.type = MySQLLexer.WHITESPACE
+        this._interp.consume(this._input)
+        this._channel = Lexer.HIDDEN
+        this._type = MySQLLexer.WHITESPACE
         input = this._input.LA(1)
         character = String.fromCharCode(input)
       }

@@ -17,7 +17,7 @@ tokens {
 }
 
 @header {
-  import { MySQLBaseLexer } from './MySQLBaseLexer'
+  // import { MySQLBaseLexer } from './MySQLBaseLexer'
   import { SqlMode } from './common'
 }
 

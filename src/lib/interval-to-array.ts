@@ -1,5 +1,5 @@
-import { Vocabulary } from 'antlr4ts'
-import { IntervalSet } from 'antlr4ts/misc/IntervalSet'
+import { Vocabulary } from 'antlr4'
+import { IntervalSet } from 'antlr4'
 
 export function intervalToArray(set: IntervalSet, vocabulary: Vocabulary): string[] {
   const symbols = set.toIntegerList()

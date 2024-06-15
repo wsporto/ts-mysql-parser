@@ -1,14 +1,14 @@
 import {
-  ANTLRErrorListener,
+  ErrorListener,
   FailedPredicateException,
   InputMismatchException,
   NoViableAltException,
   RecognitionException,
   Token,
   Recognizer
-} from 'antlr4ts'
+} from 'antlr4'
 import { ParserError } from './errors'
-import { ATNSimulator } from 'antlr4ts/atn/ATNSimulator'
+// import { ATNSimulator } from 'antlr4/atn/ATNSimulator'
 import { intervalToArray } from '../lib/interval-to-array'
 
 function getErrorMessage(
@@ -49,11 +49,11 @@ function getErrorMessage(
   return message
 }
 
-export class ParserErrorListener implements ANTLRErrorListener<Token> {
+export class ParserErrorListener implements ErrorListener<Token> {
   error: ParserError | undefined
 
   syntaxError<T extends Token>(
-    recognizer: Recognizer<T, ATNSimulator>,
+    recognizer: Recognizer<T>,
     offendingToken: T | undefined,
     line: number,
     character: number,

@@ -7,7 +7,7 @@ options {
 }
 
 @header {
-  import { MySQLBaseParser } from './MySQLBaseParser'
+  // import { MySQLBaseParser } from './MySQLBaseParser'
   import { SqlMode } from './common'
 }
 

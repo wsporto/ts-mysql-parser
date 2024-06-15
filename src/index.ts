@@ -2,6 +2,7 @@ import parser from './parser'
 
 export default parser
 
+export * from 'antlr4';
 export * from './grammar/MySQLParserListener'
 export * from './grammar/MySQLParser'
 export * from './grammar/MySQLLexer'
@@ -14,6 +15,5 @@ export * from './lib/version'
 export * from './lib/unquote'
 export * from './lib/rule-name'
 
-export * from './listeners/parser-listener'
 export * from './listeners/lexer-error-listener'
 export * from './listeners/parser-error-listener'
