@@ -23,6 +23,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "pub": "np",
+    "test": "tsc -v",
     "lint": "eslint src/**/*.ts",
     "build-parser-mysql": "java -jar c:\\Javalib\\antlr-4.13.1-complete.jar -Dlanguage=TypeScript -o ./src/grammar/ -listener ./src/grammar/MySQLLexer.g4 ./src/grammar/MySQLParser.g4",
     "build-parser-sqlite": "java -jar c:\\Javalib\\antlr-4.13.1-complete.jar -Dlanguage=TypeScript -o ./src/sqlite/ -listener ./src/grammar/SQLiteLexer.g4 ./src/grammar/SQLiteParser.g4",
